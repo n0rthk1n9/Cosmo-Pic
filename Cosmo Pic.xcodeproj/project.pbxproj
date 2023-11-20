@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		578A19B32B0BA94C00294392 /* Cosmo_PicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19B22B0BA94C00294392 /* Cosmo_PicApp.swift */; };
+		578A19B52B0BA94C00294392 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19B42B0BA94C00294392 /* ContentView.swift */; };
+		578A19B72B0BA94E00294392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 578A19B62B0BA94E00294392 /* Assets.xcassets */; };
+		578A19BA2B0BA94E00294392 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 578A19B92B0BA94E00294392 /* Preview Assets.xcassets */; };
+		578A19C42B0BA94E00294392 /* Cosmo_PicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19C32B0BA94E00294392 /* Cosmo_PicTests.swift */; };
+		578A19CE2B0BA94E00294392 /* Cosmo_PicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CD2B0BA94E00294392 /* Cosmo_PicUITests.swift */; };
+		578A19D02B0BA94E00294392 /* Cosmo_PicUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CF2B0BA94E00294392 /* Cosmo_PicUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		578A19C02B0BA94E00294392 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 578A19A72B0BA94C00294392 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 578A19AE2B0BA94C00294392;
+			remoteInfo = "Cosmo Pic";
+		};
+		578A19CA2B0BA94E00294392 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 578A19A72B0BA94C00294392 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 578A19AE2B0BA94C00294392;
+			remoteInfo = "Cosmo Pic";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		578A19AF2B0BA94C00294392 /* Cosmo Pic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cosmo Pic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		578A19B22B0BA94C00294392 /* Cosmo_PicApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cosmo_PicApp.swift; sourceTree = "<group>"; };
+		578A19B42B0BA94C00294392 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		578A19B62B0BA94E00294392 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		578A19B92B0BA94E00294392 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		578A19BF2B0BA94E00294392 /* Cosmo PicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cosmo PicTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		578A19C32B0BA94E00294392 /* Cosmo_PicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cosmo_PicTests.swift; sourceTree = "<group>"; };
+		578A19C92B0BA94E00294392 /* Cosmo PicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cosmo PicUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		578A19CD2B0BA94E00294392 /* Cosmo_PicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cosmo_PicUITests.swift; sourceTree = "<group>"; };
+		578A19CF2B0BA94E00294392 /* Cosmo_PicUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cosmo_PicUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		578A19AC2B0BA94C00294392 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		578A19BC2B0BA94E00294392 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		578A19C62B0BA94E00294392 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		578A19A62B0BA94C00294392 = {
+			isa = PBXGroup;
+			children = (
+				578A19B12B0BA94C00294392 /* Cosmo Pic */,
+				578A19C22B0BA94E00294392 /* Cosmo PicTests */,
+				578A19CC2B0BA94E00294392 /* Cosmo PicUITests */,
+				578A19B02B0BA94C00294392 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		578A19B02B0BA94C00294392 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				578A19AF2B0BA94C00294392 /* Cosmo Pic.app */,
+				578A19BF2B0BA94E00294392 /* Cosmo PicTests.xctest */,
+				578A19C92B0BA94E00294392 /* Cosmo PicUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		578A19B12B0BA94C00294392 /* Cosmo Pic */ = {
+			isa = PBXGroup;
+			children = (
+				578A19B22B0BA94C00294392 /* Cosmo_PicApp.swift */,
+				578A19B42B0BA94C00294392 /* ContentView.swift */,
+				578A19B62B0BA94E00294392 /* Assets.xcassets */,
+				578A19B82B0BA94E00294392 /* Preview Content */,
+			);
+			path = "Cosmo Pic";
+			sourceTree = "<group>";
+		};
+		578A19B82B0BA94E00294392 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				578A19B92B0BA94E00294392 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		578A19C22B0BA94E00294392 /* Cosmo PicTests */ = {
+			isa = PBXGroup;
+			children = (
+				578A19C32B0BA94E00294392 /* Cosmo_PicTests.swift */,
+			);
+			path = "Cosmo PicTests";
+			sourceTree = "<group>";
+		};
+		578A19CC2B0BA94E00294392 /* Cosmo PicUITests */ = {
+			isa = PBXGroup;
+			children = (
+				578A19CD2B0BA94E00294392 /* Cosmo_PicUITests.swift */,
+				578A19CF2B0BA94E00294392 /* Cosmo_PicUITestsLaunchTests.swift */,
+			);
+			path = "Cosmo PicUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		578A19AE2B0BA94C00294392 /* Cosmo Pic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 578A19D32B0BA94E00294392 /* Build configuration list for PBXNativeTarget "Cosmo Pic" */;
+			buildPhases = (
+				578A19AB2B0BA94C00294392 /* Sources */,
+				578A19AC2B0BA94C00294392 /* Frameworks */,
+				578A19AD2B0BA94C00294392 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Cosmo Pic";
+			productName = "Cosmo Pic";
+			productReference = 578A19AF2B0BA94C00294392 /* Cosmo Pic.app */;
+			productType = "com.apple.product-type.application";
+		};
+		578A19BE2B0BA94E00294392 /* Cosmo PicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 578A19D62B0BA94E00294392 /* Build configuration list for PBXNativeTarget "Cosmo PicTests" */;
+			buildPhases = (
+				578A19BB2B0BA94E00294392 /* Sources */,
+				578A19BC2B0BA94E00294392 /* Frameworks */,
+				578A19BD2B0BA94E00294392 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				578A19C12B0BA94E00294392 /* PBXTargetDependency */,
+			);
+			name = "Cosmo PicTests";
+			productName = "Cosmo PicTests";
+			productReference = 578A19BF2B0BA94E00294392 /* Cosmo PicTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		578A19C82B0BA94E00294392 /* Cosmo PicUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 578A19D92B0BA94E00294392 /* Build configuration list for PBXNativeTarget "Cosmo PicUITests" */;
+			buildPhases = (
+				578A19C52B0BA94E00294392 /* Sources */,
+				578A19C62B0BA94E00294392 /* Frameworks */,
+				578A19C72B0BA94E00294392 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				578A19CB2B0BA94E00294392 /* PBXTargetDependency */,
+			);
+			name = "Cosmo PicUITests";
+			productName = "Cosmo PicUITests";
+			productReference = 578A19C92B0BA94E00294392 /* Cosmo PicUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		578A19A72B0BA94C00294392 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					578A19AE2B0BA94C00294392 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					578A19BE2B0BA94E00294392 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 578A19AE2B0BA94C00294392;
+					};
+					578A19C82B0BA94E00294392 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 578A19AE2B0BA94C00294392;
+					};
+				};
+			};
+			buildConfigurationList = 578A19AA2B0BA94C00294392 /* Build configuration list for PBXProject "Cosmo Pic" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 578A19A62B0BA94C00294392;
+			productRefGroup = 578A19B02B0BA94C00294392 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				578A19AE2B0BA94C00294392 /* Cosmo Pic */,
+				578A19BE2B0BA94E00294392 /* Cosmo PicTests */,
+				578A19C82B0BA94E00294392 /* Cosmo PicUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		578A19AD2B0BA94C00294392 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				578A19BA2B0BA94E00294392 /* Preview Assets.xcassets in Resources */,
+				578A19B72B0BA94E00294392 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		578A19BD2B0BA94E00294392 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		578A19C72B0BA94E00294392 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		578A19AB2B0BA94C00294392 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				578A19B52B0BA94C00294392 /* ContentView.swift in Sources */,
+				578A19B32B0BA94C00294392 /* Cosmo_PicApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		578A19BB2B0BA94E00294392 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				578A19C42B0BA94E00294392 /* Cosmo_PicTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		578A19C52B0BA94E00294392 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				578A19CE2B0BA94E00294392 /* Cosmo_PicUITests.swift in Sources */,
+				578A19D02B0BA94E00294392 /* Cosmo_PicUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		578A19C12B0BA94E00294392 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 578A19AE2B0BA94C00294392 /* Cosmo Pic */;
+			targetProxy = 578A19C02B0BA94E00294392 /* PBXContainerItemProxy */;
+		};
+		578A19CB2B0BA94E00294392 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 578A19AE2B0BA94C00294392 /* Cosmo Pic */;
+			targetProxy = 578A19CA2B0BA94E00294392 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		578A19D12B0BA94E00294392 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		578A19D22B0BA94E00294392 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		578A19D42B0BA94E00294392 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Cosmo Pic/Preview Content\"";
+				DEVELOPMENT_TEAM = G7HRH2B3C7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.xbow.Cosmo-Pic";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		578A19D52B0BA94E00294392 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Cosmo Pic/Preview Content\"";
+				DEVELOPMENT_TEAM = G7HRH2B3C7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.xbow.Cosmo-Pic";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		578A19D72B0BA94E00294392 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G7HRH2B3C7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.xbow.Cosmo-PicTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cosmo Pic.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cosmo Pic";
+			};
+			name = Debug;
+		};
+		578A19D82B0BA94E00294392 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G7HRH2B3C7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.xbow.Cosmo-PicTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cosmo Pic.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cosmo Pic";
+			};
+			name = Release;
+		};
+		578A19DA2B0BA94E00294392 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G7HRH2B3C7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.xbow.Cosmo-PicUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Cosmo Pic";
+			};
+			name = Debug;
+		};
+		578A19DB2B0BA94E00294392 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G7HRH2B3C7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.xbow.Cosmo-PicUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Cosmo Pic";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		578A19AA2B0BA94C00294392 /* Build configuration list for PBXProject "Cosmo Pic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				578A19D12B0BA94E00294392 /* Debug */,
+				578A19D22B0BA94E00294392 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		578A19D32B0BA94E00294392 /* Build configuration list for PBXNativeTarget "Cosmo Pic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				578A19D42B0BA94E00294392 /* Debug */,
+				578A19D52B0BA94E00294392 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		578A19D62B0BA94E00294392 /* Build configuration list for PBXNativeTarget "Cosmo PicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				578A19D72B0BA94E00294392 /* Debug */,
+				578A19D82B0BA94E00294392 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		578A19D92B0BA94E00294392 /* Build configuration list for PBXNativeTarget "Cosmo PicUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				578A19DA2B0BA94E00294392 /* Debug */,
+				578A19DB2B0BA94E00294392 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 578A19A72B0BA94C00294392 /* Project object */;
+}
