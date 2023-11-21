@@ -1,14 +1,13 @@
 //
-//  Cosmo_PicUITests.swift
-//  Cosmo PicUITests
+//  CosmoPicUITests.swift
+//  CosmoPicUITests
 //
 //  Created by Jan Armbrust on 20.11.23.
 //
 
 import XCTest
 
-final class Cosmo_PicUITests: XCTestCase {
-
+final class CosmoPicUITests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 

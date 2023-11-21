@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		578A19B32B0BA94C00294392 /* Cosmo_PicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19B22B0BA94C00294392 /* Cosmo_PicApp.swift */; };
-		578A19B52B0BA94C00294392 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19B42B0BA94C00294392 /* ContentView.swift */; };
-		578A19B72B0BA94E00294392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 578A19B62B0BA94E00294392 /* Assets.xcassets */; };
-		578A19BA2B0BA94E00294392 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 578A19B92B0BA94E00294392 /* Preview Assets.xcassets */; };
-		578A19C42B0BA94E00294392 /* Cosmo_PicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19C32B0BA94E00294392 /* Cosmo_PicTests.swift */; };
-		578A19CE2B0BA94E00294392 /* Cosmo_PicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CD2B0BA94E00294392 /* Cosmo_PicUITests.swift */; };
-		578A19D02B0BA94E00294392 /* Cosmo_PicUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CF2B0BA94E00294392 /* Cosmo_PicUITestsLaunchTests.swift */; };
+		578A19C42B0BA94E00294392 /* CosmoPicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19C32B0BA94E00294392 /* CosmoPicTests.swift */; };
+		578A19D02B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */; };
+		57D8C4412B0D53C100294392 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43D2B0D53C100294392 /* Preview Content */; };
+		57D8C4422B0D53C100294392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43E2B0D53C100294392 /* Assets.xcassets */; };
+		57D8C4432B0D53C100294392 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8C43F2B0D53C100294392 /* ContentView.swift */; };
+		57D8C4442B0D53C100294392 /* CosmoPicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8C4402B0D53C100294392 /* CosmoPicApp.swift */; };
+		57D8C4462B0D55E500294392 /* CosmoPicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CD2B0BA94E00294392 /* CosmoPicUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,16 +34,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		578A19AF2B0BA94C00294392 /* Cosmo Pic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cosmo Pic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		578A19B22B0BA94C00294392 /* Cosmo_PicApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cosmo_PicApp.swift; sourceTree = "<group>"; };
-		578A19B42B0BA94C00294392 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		578A19B62B0BA94E00294392 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		578A19B92B0BA94E00294392 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		578A19BF2B0BA94E00294392 /* Cosmo PicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cosmo PicTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		578A19C32B0BA94E00294392 /* Cosmo_PicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cosmo_PicTests.swift; sourceTree = "<group>"; };
-		578A19C92B0BA94E00294392 /* Cosmo PicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cosmo PicUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		578A19CD2B0BA94E00294392 /* Cosmo_PicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cosmo_PicUITests.swift; sourceTree = "<group>"; };
-		578A19CF2B0BA94E00294392 /* Cosmo_PicUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cosmo_PicUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		578A19AF2B0BA94C00294392 /* CosmoPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CosmoPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		578A19BF2B0BA94E00294392 /* CosmoPicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmoPicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		578A19C32B0BA94E00294392 /* CosmoPicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicTests.swift; sourceTree = "<group>"; };
+		578A19C92B0BA94E00294392 /* CosmoPicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmoPicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		578A19CD2B0BA94E00294392 /* CosmoPicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicUITests.swift; sourceTree = "<group>"; };
+		578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		57D8C43D2B0D53C100294392 /* Preview Content */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Preview Content"; path = "CosmoPic/Preview Content"; sourceTree = SOURCE_ROOT; };
+		57D8C43E2B0D53C100294392 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CosmoPic/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		57D8C43F2B0D53C100294392 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = CosmoPic/ContentView.swift; sourceTree = SOURCE_ROOT; };
+		57D8C4402B0D53C100294392 /* CosmoPicApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CosmoPicApp.swift; path = CosmoPic/CosmoPicApp.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,9 +74,9 @@
 		578A19A62B0BA94C00294392 = {
 			isa = PBXGroup;
 			children = (
-				578A19B12B0BA94C00294392 /* Cosmo Pic */,
-				578A19C22B0BA94E00294392 /* Cosmo PicTests */,
-				578A19CC2B0BA94E00294392 /* Cosmo PicUITests */,
+				578A19B12B0BA94C00294392 /* CosmoPic */,
+				578A19C22B0BA94E00294392 /* CosmoPicTests */,
+				578A19CC2B0BA94E00294392 /* CosmoPicUITests */,
 				578A19B02B0BA94C00294392 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,55 +84,47 @@
 		578A19B02B0BA94C00294392 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				578A19AF2B0BA94C00294392 /* Cosmo Pic.app */,
-				578A19BF2B0BA94E00294392 /* Cosmo PicTests.xctest */,
-				578A19C92B0BA94E00294392 /* Cosmo PicUITests.xctest */,
+				578A19AF2B0BA94C00294392 /* CosmoPic.app */,
+				578A19BF2B0BA94E00294392 /* CosmoPicTests.xctest */,
+				578A19C92B0BA94E00294392 /* CosmoPicUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		578A19B12B0BA94C00294392 /* Cosmo Pic */ = {
+		578A19B12B0BA94C00294392 /* CosmoPic */ = {
 			isa = PBXGroup;
 			children = (
-				578A19B22B0BA94C00294392 /* Cosmo_PicApp.swift */,
-				578A19B42B0BA94C00294392 /* ContentView.swift */,
-				578A19B62B0BA94E00294392 /* Assets.xcassets */,
-				578A19B82B0BA94E00294392 /* Preview Content */,
+				57D8C4402B0D53C100294392 /* CosmoPicApp.swift */,
+				57D8C43F2B0D53C100294392 /* ContentView.swift */,
+				57D8C43E2B0D53C100294392 /* Assets.xcassets */,
+				57D8C43D2B0D53C100294392 /* Preview Content */,
 			);
-			path = "Cosmo Pic";
+			path = CosmoPic;
 			sourceTree = "<group>";
 		};
-		578A19B82B0BA94E00294392 /* Preview Content */ = {
+		578A19C22B0BA94E00294392 /* CosmoPicTests */ = {
 			isa = PBXGroup;
 			children = (
-				578A19B92B0BA94E00294392 /* Preview Assets.xcassets */,
+				578A19C32B0BA94E00294392 /* CosmoPicTests.swift */,
 			);
-			path = "Preview Content";
+			path = CosmoPicTests;
 			sourceTree = "<group>";
 		};
-		578A19C22B0BA94E00294392 /* Cosmo PicTests */ = {
+		578A19CC2B0BA94E00294392 /* CosmoPicUITests */ = {
 			isa = PBXGroup;
 			children = (
-				578A19C32B0BA94E00294392 /* Cosmo_PicTests.swift */,
+				578A19CD2B0BA94E00294392 /* CosmoPicUITests.swift */,
+				578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */,
 			);
-			path = "Cosmo PicTests";
-			sourceTree = "<group>";
-		};
-		578A19CC2B0BA94E00294392 /* Cosmo PicUITests */ = {
-			isa = PBXGroup;
-			children = (
-				578A19CD2B0BA94E00294392 /* Cosmo_PicUITests.swift */,
-				578A19CF2B0BA94E00294392 /* Cosmo_PicUITestsLaunchTests.swift */,
-			);
-			path = "Cosmo PicUITests";
+			path = CosmoPicUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		578A19AE2B0BA94C00294392 /* Cosmo Pic */ = {
+		578A19AE2B0BA94C00294392 /* CosmoPic */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 578A19D32B0BA94E00294392 /* Build configuration list for PBXNativeTarget "Cosmo Pic" */;
+			buildConfigurationList = 578A19D32B0BA94E00294392 /* Build configuration list for PBXNativeTarget "CosmoPic" */;
 			buildPhases = (
 				578A19AB2B0BA94C00294392 /* Sources */,
 				578A19AC2B0BA94C00294392 /* Frameworks */,
@@ -142,14 +134,14 @@
 			);
 			dependencies = (
 			);
-			name = "Cosmo Pic";
+			name = CosmoPic;
 			productName = "Cosmo Pic";
-			productReference = 578A19AF2B0BA94C00294392 /* Cosmo Pic.app */;
+			productReference = 578A19AF2B0BA94C00294392 /* CosmoPic.app */;
 			productType = "com.apple.product-type.application";
 		};
-		578A19BE2B0BA94E00294392 /* Cosmo PicTests */ = {
+		578A19BE2B0BA94E00294392 /* CosmoPicTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 578A19D62B0BA94E00294392 /* Build configuration list for PBXNativeTarget "Cosmo PicTests" */;
+			buildConfigurationList = 578A19D62B0BA94E00294392 /* Build configuration list for PBXNativeTarget "CosmoPicTests" */;
 			buildPhases = (
 				578A19BB2B0BA94E00294392 /* Sources */,
 				578A19BC2B0BA94E00294392 /* Frameworks */,
@@ -160,14 +152,14 @@
 			dependencies = (
 				578A19C12B0BA94E00294392 /* PBXTargetDependency */,
 			);
-			name = "Cosmo PicTests";
+			name = CosmoPicTests;
 			productName = "Cosmo PicTests";
-			productReference = 578A19BF2B0BA94E00294392 /* Cosmo PicTests.xctest */;
+			productReference = 578A19BF2B0BA94E00294392 /* CosmoPicTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		578A19C82B0BA94E00294392 /* Cosmo PicUITests */ = {
+		578A19C82B0BA94E00294392 /* CosmoPicUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 578A19D92B0BA94E00294392 /* Build configuration list for PBXNativeTarget "Cosmo PicUITests" */;
+			buildConfigurationList = 578A19D92B0BA94E00294392 /* Build configuration list for PBXNativeTarget "CosmoPicUITests" */;
 			buildPhases = (
 				578A19C52B0BA94E00294392 /* Sources */,
 				578A19C62B0BA94E00294392 /* Frameworks */,
@@ -178,9 +170,9 @@
 			dependencies = (
 				578A19CB2B0BA94E00294392 /* PBXTargetDependency */,
 			);
-			name = "Cosmo PicUITests";
+			name = CosmoPicUITests;
 			productName = "Cosmo PicUITests";
-			productReference = 578A19C92B0BA94E00294392 /* Cosmo PicUITests.xctest */;
+			productReference = 578A19C92B0BA94E00294392 /* CosmoPicUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -206,7 +198,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 578A19AA2B0BA94C00294392 /* Build configuration list for PBXProject "Cosmo Pic" */;
+			buildConfigurationList = 578A19AA2B0BA94C00294392 /* Build configuration list for PBXProject "CosmoPic" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -219,9 +211,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				578A19AE2B0BA94C00294392 /* Cosmo Pic */,
-				578A19BE2B0BA94E00294392 /* Cosmo PicTests */,
-				578A19C82B0BA94E00294392 /* Cosmo PicUITests */,
+				578A19AE2B0BA94C00294392 /* CosmoPic */,
+				578A19BE2B0BA94E00294392 /* CosmoPicTests */,
+				578A19C82B0BA94E00294392 /* CosmoPicUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -231,8 +223,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				578A19BA2B0BA94E00294392 /* Preview Assets.xcassets in Resources */,
-				578A19B72B0BA94E00294392 /* Assets.xcassets in Resources */,
+				57D8C4412B0D53C100294392 /* Preview Content in Resources */,
+				57D8C4422B0D53C100294392 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,8 +249,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				578A19B52B0BA94C00294392 /* ContentView.swift in Sources */,
-				578A19B32B0BA94C00294392 /* Cosmo_PicApp.swift in Sources */,
+				57D8C4442B0D53C100294392 /* CosmoPicApp.swift in Sources */,
+				57D8C4432B0D53C100294392 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				578A19C42B0BA94E00294392 /* Cosmo_PicTests.swift in Sources */,
+				578A19C42B0BA94E00294392 /* CosmoPicTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,8 +266,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				578A19CE2B0BA94E00294392 /* Cosmo_PicUITests.swift in Sources */,
-				578A19D02B0BA94E00294392 /* Cosmo_PicUITestsLaunchTests.swift in Sources */,
+				57D8C4462B0D55E500294392 /* CosmoPicUITests.swift in Sources */,
+				578A19D02B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,12 +276,12 @@
 /* Begin PBXTargetDependency section */
 		578A19C12B0BA94E00294392 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 578A19AE2B0BA94C00294392 /* Cosmo Pic */;
+			target = 578A19AE2B0BA94C00294392 /* CosmoPic */;
 			targetProxy = 578A19C02B0BA94E00294392 /* PBXContainerItemProxy */;
 		};
 		578A19CB2B0BA94E00294392 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 578A19AE2B0BA94C00294392 /* Cosmo Pic */;
+			target = 578A19AE2B0BA94C00294392 /* CosmoPic */;
 			targetProxy = 578A19CA2B0BA94E00294392 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -421,10 +413,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Cosmo Pic/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CosmoPic/Preview Content\"";
 				DEVELOPMENT_TEAM = G7HRH2B3C7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cosmo Pic";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -450,10 +443,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Cosmo Pic/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CosmoPic/Preview Content\"";
 				DEVELOPMENT_TEAM = G7HRH2B3C7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cosmo Pic";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -488,7 +482,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cosmo Pic.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cosmo Pic";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CosmoPic.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CosmoPic";
 			};
 			name = Debug;
 		};
@@ -508,7 +502,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cosmo Pic.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cosmo Pic";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CosmoPic.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CosmoPic";
 			};
 			name = Release;
 		};
@@ -523,10 +517,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.xbow.Cosmo-PicUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Cosmo Pic";
+				TEST_TARGET_NAME = CosmoPic;
 			};
 			name = Debug;
 		};
@@ -541,17 +536,18 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.xbow.Cosmo-PicUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Cosmo Pic";
+				TEST_TARGET_NAME = CosmoPic;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		578A19AA2B0BA94C00294392 /* Build configuration list for PBXProject "Cosmo Pic" */ = {
+		578A19AA2B0BA94C00294392 /* Build configuration list for PBXProject "CosmoPic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				578A19D12B0BA94E00294392 /* Debug */,
@@ -560,7 +556,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		578A19D32B0BA94E00294392 /* Build configuration list for PBXNativeTarget "Cosmo Pic" */ = {
+		578A19D32B0BA94E00294392 /* Build configuration list for PBXNativeTarget "CosmoPic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				578A19D42B0BA94E00294392 /* Debug */,
@@ -569,7 +565,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		578A19D62B0BA94E00294392 /* Build configuration list for PBXNativeTarget "Cosmo PicTests" */ = {
+		578A19D62B0BA94E00294392 /* Build configuration list for PBXNativeTarget "CosmoPicTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				578A19D72B0BA94E00294392 /* Debug */,
@@ -578,7 +574,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		578A19D92B0BA94E00294392 /* Build configuration list for PBXNativeTarget "Cosmo PicUITests" */ = {
+		578A19D92B0BA94E00294392 /* Build configuration list for PBXNativeTarget "CosmoPicUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				578A19DA2B0BA94E00294392 /* Debug */,

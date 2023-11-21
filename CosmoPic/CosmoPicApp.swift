@@ -1,6 +1,6 @@
 //
-//  Cosmo_PicApp.swift
-//  Cosmo Pic
+//  CosmoPicApp.swift
+//  CosmoPic
 //
 //  Created by Jan Armbrust on 20.11.23.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Cosmo_PicApp: App {
+struct CosmoPicApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

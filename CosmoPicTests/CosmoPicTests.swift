@@ -1,15 +1,14 @@
 //
-//  Cosmo_PicTests.swift
-//  Cosmo PicTests
+//  CosmoPicTests.swift
+//  CosmoPicTests
 //
 //  Created by Jan Armbrust on 20.11.23.
 //
 
+@testable import CosmoPic
 import XCTest
-@testable import Cosmo_Pic
 
-final class Cosmo_PicTests: XCTestCase {
-
+final class CosmoPicTests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -32,5 +31,4 @@ final class Cosmo_PicTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

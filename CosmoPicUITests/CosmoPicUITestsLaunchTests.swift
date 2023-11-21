@@ -1,14 +1,13 @@
 //
-//  Cosmo_PicUITestsLaunchTests.swift
-//  Cosmo PicUITests
+//  CosmoPicUITestsLaunchTests.swift
+//  CosmoPicUITests
 //
 //  Created by Jan Armbrust on 20.11.23.
 //
 
 import XCTest
 
-final class Cosmo_PicUITestsLaunchTests: XCTestCase {
-
+final class CosmoPicUITestsLaunchTests: XCTestCase {
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }

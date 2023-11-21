@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Cosmo Pic
+//  CosmoPic
 //
 //  Created by Jan Armbrust on 20.11.23.
 //
