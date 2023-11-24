@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Photo {
+struct Photo: Codable {
   let copyright: String
-  let date: Date
+  let date: String
   let explanation: String
   let hdURL: URL
   let mediaType: String
