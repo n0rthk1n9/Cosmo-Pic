@@ -34,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		572FAFA62B11276800294392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		578A19AF2B0BA94C00294392 /* CosmoPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CosmoPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		578A19BF2B0BA94E00294392 /* CosmoPicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmoPicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		578A19C32B0BA94E00294392 /* CosmoPicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicTests.swift; sourceTree = "<group>"; };
@@ -94,6 +95,7 @@
 		578A19B12B0BA94C00294392 /* CosmoPic */ = {
 			isa = PBXGroup;
 			children = (
+				572FAFA62B11276800294392 /* Info.plist */,
 				57D8C4402B0D53C100294392 /* CosmoPicApp.swift */,
 				57D8C43F2B0D53C100294392 /* ContentView.swift */,
 				57D8C43E2B0D53C100294392 /* Assets.xcassets */,
@@ -126,6 +128,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 578A19D32B0BA94E00294392 /* Build configuration list for PBXNativeTarget "CosmoPic" */;
 			buildPhases = (
+				57F7709A2B11244500294392 /* ShellScript */,
 				578A19AB2B0BA94C00294392 /* Sources */,
 				578A19AC2B0BA94C00294392 /* Frameworks */,
 				578A19AD2B0BA94C00294392 /* Resources */,
@@ -161,6 +164,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 578A19D92B0BA94E00294392 /* Build configuration list for PBXNativeTarget "CosmoPicUITests" */;
 			buildPhases = (
+				57F770992B1123F600294392 /* ShellScript */,
 				578A19C52B0BA94E00294392 /* Sources */,
 				578A19C62B0BA94E00294392 /* Frameworks */,
 				578A19C72B0BA94E00294392 /* Resources */,
@@ -243,6 +247,44 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		57F770992B1123F600294392 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
+		57F7709A2B11244500294392 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		578A19AB2B0BA94C00294392 /* Sources */ = {
@@ -416,7 +458,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CosmoPic/Preview Content\"";
 				DEVELOPMENT_TEAM = G7HRH2B3C7;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CosmoPic/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Cosmo Pic";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -446,7 +490,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CosmoPic/Preview Content\"";
 				DEVELOPMENT_TEAM = G7HRH2B3C7;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CosmoPic/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Cosmo Pic";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
