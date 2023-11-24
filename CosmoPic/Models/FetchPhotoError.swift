@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum FetchPhotoError: Error {
+  case invalidURL
+  case invalidResponse
+  case requestFailed
+  case decodingFailed
+}
