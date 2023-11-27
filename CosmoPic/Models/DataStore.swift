@@ -22,7 +22,30 @@ class DataStore: ObservableObject {
     apiKey = "DEMO_KEY"
   }
 
-  func fetchPhoto(for date: String) async throws {
+  func getPhoto(for date: String) async throws {
+    let fileManager = FileManager.default
+    let documentsDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+    let jsonPath = documentsDirectory.appendingPathComponent("\(date).json")
+
+    if fileManager.fileExists(atPath: jsonPath.path) {
+      Task { @MainActor in
+        photo = try loadPhoto(from: jsonPath, for: date)
+      }
+
+      return
+    }
+
+    let fetchedPhoto = try await fetchAndSavePhoto(for: date, to: documentsDirectory, jsonPath: jsonPath)
+
+    let jsonData = try JSONEncoder().encode(fetchedPhoto)
+    try jsonData.write(to: jsonPath)
+
+    Task { @MainActor in
+      self.photo = fetchedPhoto
+    }
+  }
+
+  private func fetchAndSavePhoto(for date: String, to directory: URL, jsonPath _: URL) async throws -> Photo {
     var urlComponents = URLComponents()
     urlComponents.scheme = "https"
     urlComponents.host = "api.nasa.gov"
@@ -40,17 +63,56 @@ class DataStore: ObservableObject {
 
     do {
       let (data, response) = try await session.data(for: request)
-      guard let httpResponse = response as? HTTPURLResponse else {
+      guard (response as? HTTPURLResponse) != nil else {
         throw FetchPhotoError.invalidResponse
       }
-      let decodedAPODAPIPhotoResponse = try JSONDecoder().decode(Photo.self, from: data)
-      Task { @MainActor in
-        self.photo = decodedAPODAPIPhotoResponse
+      var decodedPhoto = try JSONDecoder().decode(Photo.self, from: data)
+
+      let fileExtension = decodedPhoto.hdURL.pathExtension
+      let localImagePath = directory.appendingPathComponent("\(date).\(fileExtension)")
+
+      if let imageData = try? Data(contentsOf: decodedPhoto.hdURL) {
+        try imageData.write(to: localImagePath)
+      } else {
+        throw FetchPhotoError.fileError
       }
-    } catch is URLError {
-      throw FetchPhotoError.requestFailed
-    } catch is DecodingError {
-      throw FetchPhotoError.decodingFailed
+
+      decodedPhoto.hdURL = localImagePath
+
+      return decodedPhoto
+    } catch let DecodingError.dataCorrupted(context) {
+      print(context)
+      throw DecodingError.dataCorrupted(context)
+    } catch let DecodingError.keyNotFound(key, context) {
+      print("Key '\(key)' not found:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+      throw DecodingError.keyNotFound(key, context)
+    } catch let DecodingError.valueNotFound(value, context) {
+      print("Value '\(value)' not found:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+      throw DecodingError.valueNotFound(value, context)
+    } catch let DecodingError.typeMismatch(type, context) {
+      print("Type '\(type)' mismatch:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+      throw DecodingError.typeMismatch(type, context)
+    } catch {
+      print("error: ", error)
+      throw error
     }
+  }
+
+  private func loadPhoto(from jsonPath: URL, for date: String) throws -> Photo {
+    let fileManager = FileManager.default
+    let documentsDirectory = jsonPath.deletingLastPathComponent()
+
+    let possibleFiles = try fileManager.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil)
+    guard let imagePath = possibleFiles.first(where: { $0.lastPathComponent.starts(with: date) && $0.pathExtension != "json" }) else {
+      throw FetchPhotoError.noFileFound
+    }
+
+    let jsonData = try Data(contentsOf: jsonPath)
+    var photo = try JSONDecoder().decode(Photo.self, from: jsonData)
+    photo.hdURL = imagePath
+    return photo
   }
 }
