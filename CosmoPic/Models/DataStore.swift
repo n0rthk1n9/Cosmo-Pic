@@ -10,6 +10,7 @@ import SwiftUI
 
 class DataStore: ObservableObject {
   @Published var photo: Photo?
+  @Published var history: [Photo] = []
 
   private var apiKey: String {
     if let filePath = Bundle.main.path(forResource: "APOD-Info", ofType: "plist") {
@@ -88,10 +89,14 @@ class DataStore: ObservableObject {
       }
       var decodedPhoto = try JSONDecoder().decode(Photo.self, from: data)
 
-      let fileExtension = decodedPhoto.hdURL.pathExtension
+      guard let decodedPhotoHdUrl = decodedPhoto.hdURL else {
+        throw FetchPhotoError.fileError
+      }
+
+      let fileExtension = decodedPhotoHdUrl.pathExtension
       let localImagePath = directory.appendingPathComponent("\(date).\(fileExtension)")
 
-      if let imageData = try? Data(contentsOf: decodedPhoto.hdURL) {
+      if let imageData = try? Data(contentsOf: decodedPhotoHdUrl) {
         try imageData.write(to: localImagePath)
       } else {
         throw FetchPhotoError.fileError
@@ -123,9 +128,11 @@ class DataStore: ObservableObject {
 
   private func loadPhoto(from jsonPath: URL, for date: String) throws -> Photo {
     let fileManager = FileManager.default
-    let documentsDirectory = jsonPath.deletingLastPathComponent()
 
-    let possibleFiles = try fileManager.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil)
+    let possibleFiles = try fileManager.contentsOfDirectory(
+      at: FileManager.documentsDirectoryURL,
+      includingPropertiesForKeys: nil
+    )
     guard let imagePath = possibleFiles
       .first(where: { $0.lastPathComponent.starts(with: date) && $0.pathExtension != "json" })
     else {
@@ -136,5 +143,96 @@ class DataStore: ObservableObject {
     var photo = try JSONDecoder().decode(Photo.self, from: jsonData)
     photo.hdURL = imagePath
     return photo
+  }
+
+  func fetchHistory() async throws {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+
+    let currentDate = Date()
+    let oneMonthAgo = Calendar.current.date(byAdding: .month, value: -1, to: currentDate)!
+
+    let todayString = dateFormatter.string(from: currentDate)
+    let startDate = dateFormatter.string(from: oneMonthAgo)
+
+    let fileManager = FileManager.default
+    let historyFileName = "\(todayString)-history.json"
+    let historyFilePath = FileManager.documentsDirectoryURL.appendingPathComponent(historyFileName)
+
+    do {
+      if fileManager.fileExists(atPath: historyFilePath.path) {
+        let jsonData = try Data(contentsOf: historyFilePath)
+        let loadedHistory = try JSONDecoder().decode([Photo].self, from: jsonData)
+        Task { @MainActor in
+          self.history = loadedHistory
+        }
+      } else {
+        let existingHistoryFiles = try fileManager.contentsOfDirectory(
+          at: FileManager.documentsDirectoryURL,
+          includingPropertiesForKeys: nil
+        )
+
+        for file in existingHistoryFiles where file.lastPathComponent.contains("-history.json") {
+          try fileManager.removeItem(at: file)
+        }
+
+        let fetchedHistory = try await fetchPhotosFromAPI(starting: startDate, ending: todayString)
+
+        let newJsonData = try JSONEncoder().encode(fetchedHistory)
+        try newJsonData.write(to: historyFilePath)
+
+        Task { @MainActor in
+          self.history = fetchedHistory
+        }
+      }
+    } catch {
+      throw error
+    }
+  }
+
+  private func fetchPhotosFromAPI(starting startDate: String, ending endDate: String) async throws -> [Photo] {
+    var urlComponents = URLComponents()
+    urlComponents.scheme = "https"
+    urlComponents.host = "api.nasa.gov"
+    urlComponents.path = "/planetary/apod"
+    urlComponents.queryItems = [
+      URLQueryItem(name: "api_key", value: apiKey),
+      URLQueryItem(name: "start_date", value: startDate),
+      URLQueryItem(name: "end_date", value: endDate)
+    ]
+
+    guard let url = urlComponents.url else {
+      throw FetchPhotoError.invalidURL
+    }
+
+    let request = URLRequest(url: url)
+
+    do {
+      let (data, response) = try await session.data(for: request)
+      guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+        throw FetchPhotoError.invalidResponse
+      }
+
+      let photos = try JSONDecoder().decode([Photo].self, from: data)
+      return photos
+    } catch let DecodingError.dataCorrupted(context) {
+      print(context)
+      throw DecodingError.dataCorrupted(context)
+    } catch let DecodingError.keyNotFound(key, context) {
+      print("Key '\(key)' not found:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+      throw DecodingError.keyNotFound(key, context)
+    } catch let DecodingError.valueNotFound(value, context) {
+      print("Value '\(value)' not found:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+      throw DecodingError.valueNotFound(value, context)
+    } catch let DecodingError.typeMismatch(type, context) {
+      print("Type '\(type)' mismatch:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+      throw DecodingError.typeMismatch(type, context)
+    } catch {
+      print("error: ", error)
+      throw error
+    }
   }
 }
