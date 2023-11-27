@@ -15,7 +15,7 @@ struct Photo: Codable {
   let mediaType: String
   let serviceVersion: String
   let title: String
-  let sdURL: URL
+  let sdURL: URL?
 
   enum CodingKeys: String, CodingKey {
     case copyright, date, explanation, title

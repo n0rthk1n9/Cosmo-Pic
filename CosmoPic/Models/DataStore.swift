@@ -41,6 +41,10 @@ class DataStore: ObservableObject {
   }
 
   func getPhoto(for date: String) async throws {
+    Task { @MainActor in
+      photo = nil
+    }
+    
     let fileManager = FileManager.default
     let apodJsonPathURL = URL(filePath: "\(date).json", relativeTo: FileManager.documentsDirectoryURL)
 

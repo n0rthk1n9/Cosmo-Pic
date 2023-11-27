@@ -16,17 +16,21 @@ struct HistoryView: View {
   }
 
   var body: some View {
-    List(sortedHistory, id: \.title) { photo in
-      Text(photo.title)
-    }
-    .navigationTitle("Photo History")
-    .overlay {
-      if isLoading {
-        ProgressView()
+    NavigationStack {
+      List(sortedHistory, id: \.title) { photo in
+        NavigationLink(destination: HistoryDetailView(photo: photo)) {
+          Text(photo.title)
+        }
       }
-    }
-    .task {
-      await loadHistory()
+      .navigationTitle("Photo History")
+      .overlay {
+        if isLoading {
+          ProgressView()
+        }
+      }
+      .task {
+        await loadHistory()
+      }
     }
   }
 
