@@ -20,6 +20,7 @@
 		57D8C4432B0D53C100294392 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8C43F2B0D53C100294392 /* MainView.swift */; };
 		57D8C4442B0D53C100294392 /* CosmoPicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8C4402B0D53C100294392 /* CosmoPicApp.swift */; };
 		57D8C4462B0D55E500294392 /* CosmoPicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CD2B0BA94E00294392 /* CosmoPicUITests.swift */; };
+		57E049072B147CF500294392 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E049062B147CF500294392 /* FileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		57D8C43E2B0D53C100294392 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CosmoPic/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		57D8C43F2B0D53C100294392 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainView.swift; path = CosmoPic/Views/MainView.swift; sourceTree = SOURCE_ROOT; };
 		57D8C4402B0D53C100294392 /* CosmoPicApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CosmoPicApp.swift; path = CosmoPic/CosmoPicApp.swift; sourceTree = SOURCE_ROOT; };
+		57E049062B147CF500294392 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				57D8C4402B0D53C100294392 /* CosmoPicApp.swift */,
 				5712326B2B112B4C00294392 /* Views */,
 				5712326A2B112B3E00294392 /* Models */,
+				57E049052B147CDF00294392 /* Extensions */,
 				57D8C43E2B0D53C100294392 /* Assets.xcassets */,
 				57D8C43D2B0D53C100294392 /* Preview Content */,
 			);
@@ -153,6 +156,14 @@
 				578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */,
 			);
 			path = CosmoPicUITests;
+			sourceTree = "<group>";
+		};
+		57E049052B147CDF00294392 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				57E049062B147CF500294392 /* FileManager.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +342,7 @@
 				57D8C4442B0D53C100294392 /* CosmoPicApp.swift in Sources */,
 				571232712B112C0800294392 /* HistoryView.swift in Sources */,
 				5712326D2B112BD400294392 /* APODView.swift in Sources */,
+				57E049072B147CF500294392 /* FileManager.swift in Sources */,
 				571232772B11650A00294392 /* FetchPhotoError.swift in Sources */,
 				57D8C4432B0D53C100294392 /* MainView.swift in Sources */,
 			);

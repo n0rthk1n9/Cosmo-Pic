@@ -24,21 +24,24 @@ class DataStore: ObservableObject {
 
   func getPhoto(for date: String) async throws {
     let fileManager = FileManager.default
-    let documentsDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-    let jsonPath = documentsDirectory.appendingPathComponent("\(date).json")
+    let apodJsonPathURL = URL(filePath: "\(date).json", relativeTo: FileManager.documentsDirectoryURL)
 
-    if fileManager.fileExists(atPath: jsonPath.path) {
+    if fileManager.fileExists(atPath: apodJsonPathURL.path) {
       Task { @MainActor in
-        photo = try loadPhoto(from: jsonPath, for: date)
+        photo = try loadPhoto(from: apodJsonPathURL, for: date)
       }
 
       return
     }
 
-    let fetchedPhoto = try await fetchAndSavePhoto(for: date, to: documentsDirectory, jsonPath: jsonPath)
+    let fetchedPhoto = try await fetchAndSavePhoto(
+      for: date,
+      to: FileManager.documentsDirectoryURL,
+      jsonPath: apodJsonPathURL
+    )
 
     let jsonData = try JSONEncoder().encode(fetchedPhoto)
-    try jsonData.write(to: jsonPath)
+    try jsonData.write(to: apodJsonPathURL)
 
     Task { @MainActor in
       self.photo = fetchedPhoto
@@ -52,7 +55,7 @@ class DataStore: ObservableObject {
     urlComponents.path = "/planetary/apod"
     urlComponents.queryItems = [
       URLQueryItem(name: "api_key", value: apiKey),
-      URLQueryItem(name: "date", value: date),
+      URLQueryItem(name: "date", value: date)
     ]
 
     guard let url = urlComponents.url else {
@@ -106,7 +109,9 @@ class DataStore: ObservableObject {
     let documentsDirectory = jsonPath.deletingLastPathComponent()
 
     let possibleFiles = try fileManager.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil)
-    guard let imagePath = possibleFiles.first(where: { $0.lastPathComponent.starts(with: date) && $0.pathExtension != "json" }) else {
+    guard let imagePath = possibleFiles
+      .first(where: { $0.lastPathComponent.starts(with: date) && $0.pathExtension != "json" })
+    else {
       throw FetchPhotoError.noFileFound
     }
 
