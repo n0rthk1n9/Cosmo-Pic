@@ -19,7 +19,30 @@ struct HistoryView: View {
     NavigationStack {
       List(sortedHistory, id: \.title) { photo in
         NavigationLink(destination: PhotoDetailView(photo: photo)) {
-          Text(photo.title)
+          HStack {
+            if let localFilename = photo.localFilename {
+              let localURL = FileManager.localFileURL(for: localFilename)
+              AsyncImage(url: localURL) { image in
+                image
+                  .resizable()
+                  .aspectRatio(contentMode: .fit)
+                  .frame(height: 25)
+              } placeholder: {
+                ProgressView()
+              }
+            } else {
+              AsyncImage(url: photo.hdURL) { image in
+                image
+                  .resizable()
+                  .aspectRatio(contentMode: .fit)
+                  .frame(height: 25)
+              } placeholder: {
+                ProgressView()
+              }
+            }
+
+            Text(photo.title)
+          }
         }
       }
       .navigationTitle("Photo History")

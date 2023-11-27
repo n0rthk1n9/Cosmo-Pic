@@ -64,7 +64,10 @@ class DataStore: ObservableObject {
       jsonPath: apodJsonPathURL
     )
 
-    let jsonData = try JSONEncoder().encode(fetchedPhoto)
+    let encoder = JSONEncoder()
+    encoder.outputFormatting = .prettyPrinted
+
+    let jsonData = try encoder.encode(fetchedPhoto)
     try jsonData.write(to: apodJsonPathURL)
 
     Task { @MainActor in
@@ -186,16 +189,53 @@ class DataStore: ObservableObject {
 
         let fetchedHistory = try await fetchPhotosFromAPI(starting: startDate, ending: todayString)
 
-        let newJsonData = try JSONEncoder().encode(fetchedHistory)
+        let updatedHistory = try await withThrowingTaskGroup(of: Photo?.self, returning: [Photo].self) { group in
+          for photo in fetchedHistory {
+            group.addTask {
+              guard photo.mediaType == "image" else { return nil }
+              return try await self.updatePhotoWithLocalURL(photo, dateFormatter: dateFormatter)
+            }
+          }
+
+          return try await group.compactMap { $0 }.reduce(into: []) { $0.append($1) }
+        }
+
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+
+        let newJsonData = try encoder.encode(updatedHistory)
         try newJsonData.write(to: historyFilePath)
 
         Task { @MainActor in
-          self.history = fetchedHistory
+          self.history = updatedHistory
         }
       }
     } catch {
       throw error
     }
+  }
+
+  func updatePhotoWithLocalURL(_ photo: Photo, dateFormatter _: DateFormatter) async throws -> Photo {
+    var updatedPhoto = photo
+    let identifier = photo.date
+    guard let photoHdURL = photo.hdURL else {
+      throw FetchPhotoError.invalidURL
+    }
+    if let localFilename = try? await cacheImage(from: photoHdURL, identifier: identifier) {
+      updatedPhoto.localFilename = localFilename
+    }
+    return updatedPhoto
+  }
+
+  func cacheImage(from url: URL, identifier: String) async throws -> String {
+    let fileExtension = url.pathExtension
+    let filename = "\(identifier).\(fileExtension)"
+    let localFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(filename)
+
+    let (imageData, _) = try await URLSession.shared.data(from: url)
+    try imageData.write(to: localFileURL)
+
+    return filename
   }
 
   private func fetchPhotosFromAPI(starting startDate: String, ending endDate: String) async throws -> [Photo] {

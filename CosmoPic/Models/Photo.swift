@@ -16,9 +16,10 @@ struct Photo: Codable {
   let serviceVersion: String
   let title: String
   let sdURL: URL?
+  var localFilename: String?
 
   enum CodingKeys: String, CodingKey {
-    case copyright, date, explanation, title
+    case copyright, date, explanation, title, localFilename
     case hdURL = "hdurl"
     case mediaType = "media_type"
     case serviceVersion = "service_version"
