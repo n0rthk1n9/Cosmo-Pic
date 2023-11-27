@@ -11,7 +11,7 @@ struct Photo: Codable {
   let copyright: String?
   let date: String
   let explanation: String
-  var hdURL: URL
+  var hdURL: URL?
   let mediaType: String
   let serviceVersion: String
   let title: String
