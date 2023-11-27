@@ -11,6 +11,7 @@ import SwiftUI
 class DataStore: ObservableObject {
   @Published var photo: Photo?
   @Published var history: [Photo] = []
+  @Published var favorites: [Photo] = []
 
   private var apiKey: String {
     if let filePath = Bundle.main.path(forResource: "APOD-Info", ofType: "plist") {
@@ -34,6 +35,7 @@ class DataStore: ObservableObject {
 
   private let session: URLSession
   private let sessionConfiguration: URLSessionConfiguration
+  private let favoritesFileName = "favorites.json"
 
   init() {
     sessionConfiguration = URLSessionConfiguration.default
@@ -44,7 +46,7 @@ class DataStore: ObservableObject {
     Task { @MainActor in
       photo = nil
     }
-    
+
     let fileManager = FileManager.default
     let apodJsonPathURL = URL(filePath: "\(date).json", relativeTo: FileManager.documentsDirectoryURL)
 
@@ -154,7 +156,9 @@ class DataStore: ObservableObject {
     dateFormatter.dateFormat = "yyyy-MM-dd"
 
     let currentDate = Date()
-    let oneMonthAgo = Calendar.current.date(byAdding: .month, value: -1, to: currentDate)!
+    guard let oneMonthAgo = Calendar.current.date(byAdding: .month, value: -1, to: currentDate) else {
+      throw FetchPhotoError.fileError
+    }
 
     let todayString = dateFormatter.string(from: currentDate)
     let startDate = dateFormatter.string(from: oneMonthAgo)
@@ -238,5 +242,46 @@ class DataStore: ObservableObject {
       print("error: ", error)
       throw error
     }
+  }
+
+  func loadFavorites() {
+    let fileManager = FileManager.default
+    let favoritesFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(favoritesFileName)
+
+    if fileManager.fileExists(atPath: favoritesFileURL.path) {
+      do {
+        let jsonData = try Data(contentsOf: favoritesFileURL)
+        favorites = try JSONDecoder().decode([Photo].self, from: jsonData)
+      } catch {
+        print("Error loading favorites: \(error.localizedDescription)")
+      }
+    }
+  }
+
+  func addToFavorites(_ photo: Photo) {
+    if !favorites.contains(where: { $0.title == photo.title }) {
+      favorites.append(photo)
+      saveFavorites()
+    }
+  }
+
+  func removeFromFavorites(_ photo: Photo) {
+    favorites.removeAll { $0.title == photo.title }
+    saveFavorites()
+  }
+
+  private func saveFavorites() {
+    let favoritesFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(favoritesFileName)
+
+    do {
+      let jsonData = try JSONEncoder().encode(favorites)
+      try jsonData.write(to: favoritesFileURL)
+    } catch {
+      print("Error saving favorites: \(error.localizedDescription)")
+    }
+  }
+
+  func isFavorite(_ photo: Photo) -> Bool {
+    return favorites.contains { $0.title == photo.title }
   }
 }

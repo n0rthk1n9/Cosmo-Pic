@@ -18,7 +18,7 @@ struct HistoryView: View {
   var body: some View {
     NavigationStack {
       List(sortedHistory, id: \.title) { photo in
-        NavigationLink(destination: HistoryDetailView(photo: photo)) {
+        NavigationLink(destination: PhotoDetailView(photo: photo)) {
           Text(photo.title)
         }
       }
@@ -40,7 +40,6 @@ struct HistoryView: View {
       try await dataStore.fetchHistory()
     } catch {
       print("Error fetching history: \(error.localizedDescription)")
-      // Handle the error appropriately here
     }
     isLoading = false
   }
