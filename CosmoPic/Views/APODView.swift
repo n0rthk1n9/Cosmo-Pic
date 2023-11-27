@@ -11,15 +11,31 @@ struct APODView: View {
   @EnvironmentObject var dataStore: DataStore
 
   var body: some View {
-    Text(dataStore.photo?.title ?? "")
-      .task {
-        await fetchPhoto()
+    VStack {
+      AsyncImage(url: dataStore.photo?.hdURL) { image in
+        image
+          .resizable()
+          .aspectRatio(contentMode: .fit)
+      } placeholder: {
+        ProgressView()
       }
+      .cornerRadius(20)
+      .clipped()
+      .padding(.horizontal)
+      Text(dataStore.photo?.title ?? "")
+        .task {
+          await fetchPhoto()
+        }
+    }
   }
 
   func fetchPhoto() async {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    let currentDate = dateFormatter.string(from: Date())
+
     do {
-      try await dataStore.fetchPhoto(for: "2023-11-23")
+      try await dataStore.getPhoto(for: currentDate)
     } catch {
       print(error.localizedDescription)
     }
