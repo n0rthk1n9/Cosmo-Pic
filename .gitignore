@@ -131,4 +131,7 @@ iOSInjectionProject/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
+# APOD secrets
+APOD-Info.plist
+
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,macos

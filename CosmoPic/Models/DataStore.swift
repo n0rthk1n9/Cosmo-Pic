@@ -11,7 +11,25 @@ import SwiftUI
 class DataStore: ObservableObject {
   @Published var photo: Photo?
 
-  private var apiKey = ""
+  private var apiKey: String {
+    if let filePath = Bundle.main.path(forResource: "APOD-Info", ofType: "plist") {
+      let plist = NSDictionary(contentsOfFile: filePath)
+      guard let value = plist?.object(forKey: "API_KEY") as? String else {
+        fatalError("Couldn't find key 'API_KEY' in 'APOD-Info.plist'.")
+      }
+      return value
+    } else {
+      guard let sampleFilePath = Bundle.main.path(forResource: "APOD-Info-Sample", ofType: "plist") else {
+        fatalError("Couldn't find either file 'APOD-Info-Sample.plist'.")
+      }
+      let plist = NSDictionary(contentsOfFile: sampleFilePath)
+      guard let value = plist?.object(forKey: "API_KEY") as? String else {
+        fatalError("Couldn't find key 'API_KEY' in 'APOD-Info-Sample.plist'.")
+      }
+      print("Using demo key, register your own key at: https://api.nasa.gov/")
+      return value
+    }
+  }
 
   private let session: URLSession
   private let sessionConfiguration: URLSessionConfiguration
@@ -19,7 +37,6 @@ class DataStore: ObservableObject {
   init() {
     sessionConfiguration = URLSessionConfiguration.default
     session = URLSession(configuration: sessionConfiguration)
-    apiKey = "DEMO_KEY"
   }
 
   func getPhoto(for date: String) async throws {

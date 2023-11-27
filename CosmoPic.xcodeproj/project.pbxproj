@@ -13,6 +13,7 @@
 		571232732B115FD100294392 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232722B115FD100294392 /* Photo.swift */; };
 		571232752B1161D400294392 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232742B1161D400294392 /* DataStore.swift */; };
 		571232772B11650A00294392 /* FetchPhotoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232762B11650900294392 /* FetchPhotoError.swift */; };
+		574D86912B14836B00294392 /* APOD-Info-Sample.plist in Resources */ = {isa = PBXBuildFile; fileRef = 574D86902B14836B00294392 /* APOD-Info-Sample.plist */; };
 		578A19C42B0BA94E00294392 /* CosmoPicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19C32B0BA94E00294392 /* CosmoPicTests.swift */; };
 		578A19D02B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */; };
 		57D8C4412B0D53C100294392 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43D2B0D53C100294392 /* Preview Content */; };
@@ -21,6 +22,7 @@
 		57D8C4442B0D53C100294392 /* CosmoPicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8C4402B0D53C100294392 /* CosmoPicApp.swift */; };
 		57D8C4462B0D55E500294392 /* CosmoPicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CD2B0BA94E00294392 /* CosmoPicUITests.swift */; };
 		57E049072B147CF500294392 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E049062B147CF500294392 /* FileManager.swift */; };
+		57E049092B1481F300294392 /* APOD-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57E049082B1481F300294392 /* APOD-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,7 @@
 		571232742B1161D400294392 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		571232762B11650900294392 /* FetchPhotoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoError.swift; sourceTree = "<group>"; };
 		572FAFA62B11276800294392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		574D86902B14836B00294392 /* APOD-Info-Sample.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "APOD-Info-Sample.plist"; sourceTree = "<group>"; };
 		578A19AF2B0BA94C00294392 /* CosmoPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CosmoPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		578A19BF2B0BA94E00294392 /* CosmoPicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmoPicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		578A19C32B0BA94E00294392 /* CosmoPicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicTests.swift; sourceTree = "<group>"; };
@@ -59,6 +62,7 @@
 		57D8C43F2B0D53C100294392 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainView.swift; path = CosmoPic/Views/MainView.swift; sourceTree = SOURCE_ROOT; };
 		57D8C4402B0D53C100294392 /* CosmoPicApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CosmoPicApp.swift; path = CosmoPic/CosmoPicApp.swift; sourceTree = SOURCE_ROOT; };
 		57E049062B147CF500294392 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		57E049082B1481F300294392 /* APOD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "APOD-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				572FAFA62B11276800294392 /* Info.plist */,
+				57E049082B1481F300294392 /* APOD-Info.plist */,
+				574D86902B14836B00294392 /* APOD-Info-Sample.plist */,
 				57D8C4402B0D53C100294392 /* CosmoPicApp.swift */,
 				5712326B2B112B4C00294392 /* Views */,
 				5712326A2B112B3E00294392 /* Models */,
@@ -272,6 +278,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				574D86912B14836B00294392 /* APOD-Info-Sample.plist in Resources */,
+				57E049092B1481F300294392 /* APOD-Info.plist in Resources */,
 				57D8C4412B0D53C100294392 /* Preview Content in Resources */,
 				57D8C4422B0D53C100294392 /* Assets.xcassets in Resources */,
 			);
