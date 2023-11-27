@@ -8,10 +8,10 @@
 import Foundation
 
 struct Photo: Codable {
-  let copyright: String
+  let copyright: String?
   let date: String
   let explanation: String
-  let hdURL: URL
+  var hdURL: URL
   let mediaType: String
   let serviceVersion: String
   let title: String
