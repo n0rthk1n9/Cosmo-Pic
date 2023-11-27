@@ -12,4 +12,6 @@ enum FetchPhotoError: Error {
   case invalidResponse
   case requestFailed
   case decodingFailed
+  case fileError
+  case noFileFound
 }
