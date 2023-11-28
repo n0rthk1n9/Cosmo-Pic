@@ -9,22 +9,25 @@ import SwiftUI
 
 struct PhotoDetailView: View {
   @EnvironmentObject var dataStore: DataStore
+  @StateObject var dataStoreNew = DataStoreNew()
   @State private var isCurrentPhotoFavorite = false
   @State private var showCheckmark = false
   let photo: Photo
 
   var body: some View {
     ScrollView {
-      AsyncImage(url: dataStore.photo?.hdURL) { image in
-        image
-          .resizable()
-          .aspectRatio(contentMode: .fit)
-      } placeholder: {
+      if !dataStoreNew.isLoading {
+        if let localFilename = dataStoreNew.photo?.localFilename {
+          let localFileURL = dataStoreNew.getLocalFileURL(forFilename: localFilename)
+          PhotoView(url: localFileURL)
+        } else {
+          if let hdUrl = dataStoreNew.photo?.hdURL {
+            PhotoView(url: hdUrl)
+          }
+        }
+      } else {
         ProgressView()
       }
-      .cornerRadius(20)
-      .clipped()
-      .padding(.horizontal)
       if showCheckmark {
         Image(systemName: "checkmark.circle.fill")
           .font(.title)
@@ -46,27 +49,33 @@ struct PhotoDetailView: View {
         .buttonStyle(.bordered)
         .padding(.top)
       }
-      Text(photo.explanation)
-        .padding()
+      if !dataStoreNew.isLoading {
+        if let photoExplanation = dataStoreNew.photo?.explanation {
+          Text(photoExplanation)
+            .padding()
+        }
+      } else {
+        EmptyView()
+      }
     }
     .task {
-      await fetchPhoto()
+      await dataStoreNew.getPhoto(for: photo.date)
     }
     .onAppear {
       dataStore.loadFavorites()
     }
-    .navigationTitle(photo.title)
-  }
-
-  func fetchPhoto() async {
-    do {
-      try await dataStore.getPhoto(for: photo.date)
-      Task { @MainActor in
-        checkIfFavorite()
+    .alert(
+      "Something went wrong...",
+      isPresented: $dataStoreNew.errorIsPresented,
+      presenting: dataStoreNew.error,
+      actions: { _ in
+        Button("Ok", action: {})
+      },
+      message: { error in
+        Text(error.localizedDescription)
       }
-    } catch {
-      print(error.localizedDescription)
-    }
+    )
+    .navigationTitle(photo.title)
   }
 
   func addToFavorites(_ photo: Photo) {
@@ -84,15 +93,15 @@ struct PhotoDetailView: View {
   }
 }
 
-#Preview {
-  PhotoDetailView(photo: Photo(
-    copyright: "Bubu",
-    date: "2023-11-24",
-    explanation: "Test",
-    hdURL: URL(string: "https://apod.nasa.gov/apod/image/1709/InsideSaturnsRings_Cassini_1280.gif"),
-    mediaType: "image",
-    serviceVersion: "v1",
-    title: "Test",
-    sdURL: URL(string: "https://apod.nasa.gov/apod/image/1709/InsideSaturnsRings_Cassini_1280.gif")
-  ))
-}
+// #Preview {
+//  PhotoDetailView(photo: Photo(
+//    copyright: "Bubu",
+//    date: "2023-11-24",
+//    explanation: "Test",
+//    hdURL: URL(string: "https://apod.nasa.gov/apod/image/1709/InsideSaturnsRings_Cassini_1280.gif"),
+//    mediaType: "image",
+//    serviceVersion: "v1",
+//    title: "Test",
+//    sdURL: URL(string: "https://apod.nasa.gov/apod/image/1709/InsideSaturnsRings_Cassini_1280.gif")
+//  ))
+// }

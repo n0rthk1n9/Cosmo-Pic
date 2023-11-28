@@ -12,8 +12,6 @@ struct APODView: View {
   @StateObject var dataStoreNew = DataStoreNew()
   @State private var isCurrentPhotoFavorite = false
   @State private var showCheckmark = false
-  @State private var showAlert = false
-  @State private var alertMessage = ""
 
   var body: some View {
     NavigationStack {
