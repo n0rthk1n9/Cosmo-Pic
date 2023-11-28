@@ -64,6 +64,7 @@ class DataStoreNew: ObservableObject {
 
   @MainActor
   func getHistory() async {
+    isLoading = true
     do {
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "yyyy-MM-dd"
