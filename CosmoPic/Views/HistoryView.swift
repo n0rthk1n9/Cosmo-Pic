@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct HistoryView: View {
-  @EnvironmentObject var dataStore: DataStore
-  @StateObject var dataStoreNew = DataStoreNew()
+  @EnvironmentObject var dataStoreNew: DataStoreNew
   @State private var isLoading = false
 
   private var sortedHistory: [Photo] {

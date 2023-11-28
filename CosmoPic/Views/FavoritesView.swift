@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FavoritesView: View {
-  @StateObject var dataStoreNew = DataStoreNew()
+  @EnvironmentObject var dataStoreNew: DataStoreNew
 
   var body: some View {
     NavigationStack {

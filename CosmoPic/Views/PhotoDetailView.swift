@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PhotoDetailView: View {
-  @StateObject var dataStoreNew = DataStoreNew()
+  @EnvironmentObject var dataStoreNew: DataStoreNew
   @State private var isCurrentPhotoFavorite = false
   @State private var showCheckmark = false
   let photo: Photo
