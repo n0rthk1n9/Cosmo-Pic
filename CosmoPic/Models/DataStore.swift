@@ -1,5 +1,5 @@
 //
-//  DataStoreNew.swift
+//  DataStore.swift
 //  CosmoPic
 //
 //  Created by Jan Armbrust on 28.11.23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DataStoreNew: ObservableObject {
+class DataStore: ObservableObject {
   @Published var photo: Photo?
   @Published var history: [Photo] = []
   @Published var favorites: [Photo] = []

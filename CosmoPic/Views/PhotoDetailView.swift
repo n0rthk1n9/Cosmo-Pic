@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct PhotoDetailView: View {
-  @EnvironmentObject var dataStoreNew: DataStoreNew
+  @EnvironmentObject var dataStore: DataStore
   @State private var isCurrentPhotoFavorite = false
   @State private var showCheckmark = false
   let photo: Photo
 
   var body: some View {
     ScrollView {
-      if !dataStoreNew.isLoading {
-        if let localFilename = dataStoreNew.photo?.localFilename {
+      if !dataStore.isLoading {
+        if let localFilename = dataStore.photo?.localFilename {
           let localFileURL = FileManager.localFileURL(for: localFilename)
           PhotoView(url: localFileURL)
         } else {
-          if let hdUrl = dataStoreNew.photo?.hdURL {
+          if let hdUrl = dataStore.photo?.hdURL {
             PhotoView(url: hdUrl)
           }
         }
@@ -41,15 +41,15 @@ struct PhotoDetailView: View {
               }
             }
           }
-      } else if let photo = dataStoreNew.photo, !isCurrentPhotoFavorite {
+      } else if let photo = dataStore.photo, !isCurrentPhotoFavorite {
         Button("Add to Favorites") {
           addToFavorites(photo)
         }
         .buttonStyle(.bordered)
         .padding(.top)
       }
-      if !dataStoreNew.isLoading {
-        if let photoExplanation = dataStoreNew.photo?.explanation {
+      if !dataStore.isLoading {
+        if let photoExplanation = dataStore.photo?.explanation {
           Text(photoExplanation)
             .padding()
         }
@@ -58,18 +58,18 @@ struct PhotoDetailView: View {
       }
     }
     .task {
-      await dataStoreNew.getPhoto(for: photo.date)
+      await dataStore.getPhoto(for: photo.date)
       checkIfFavorite()
     }
     .onAppear {
-      dataStoreNew.loadFavorites()
+      dataStore.loadFavorites()
     }
     .alert(
       "Something went wrong...",
-      isPresented: $dataStoreNew.errorIsPresented,
-      presenting: dataStoreNew.error,
+      isPresented: $dataStore.errorIsPresented,
+      presenting: dataStore.error,
       actions: { _ in
-        Button("Ok", action: {})
+        Button("Ok") {}
       },
       message: { error in
         Text(error.localizedDescription)
@@ -79,7 +79,7 @@ struct PhotoDetailView: View {
   }
 
   func addToFavorites(_ photo: Photo) {
-    dataStoreNew.addToFavorites(photo)
+    dataStore.addToFavorites(photo)
     withAnimation {
       showCheckmark = true
       isCurrentPhotoFavorite = true
@@ -87,8 +87,8 @@ struct PhotoDetailView: View {
   }
 
   func checkIfFavorite() {
-    if let currentPhoto = dataStoreNew.photo {
-      isCurrentPhotoFavorite = dataStoreNew.isFavorite(currentPhoto)
+    if let currentPhoto = dataStore.photo {
+      isCurrentPhotoFavorite = dataStore.isFavorite(currentPhoto)
     }
   }
 }

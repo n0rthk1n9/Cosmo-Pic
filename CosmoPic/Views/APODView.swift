@@ -8,27 +8,27 @@
 import SwiftUI
 
 struct APODView: View {
-  @EnvironmentObject var dataStoreNew: DataStoreNew
+  @EnvironmentObject var dataStore: DataStore
   @State private var isCurrentPhotoFavorite = false
   @State private var showCheckmark = false
 
   var body: some View {
     NavigationStack {
       VStack {
-        if !dataStoreNew.isLoading {
-          if let localFilename = dataStoreNew.photo?.localFilename {
+        if !dataStore.isLoading {
+          if let localFilename = dataStore.photo?.localFilename {
             let localFileURL = FileManager.localFileURL(for: localFilename)
             PhotoView(url: localFileURL)
           } else {
-            if let hdUrl = dataStoreNew.photo?.hdURL {
+            if let hdUrl = dataStore.photo?.hdURL {
               PhotoView(url: hdUrl)
             }
           }
         } else {
           ProgressView()
         }
-        if !dataStoreNew.isLoading {
-          if let photoTitle = dataStoreNew.photo?.title {
+        if !dataStore.isLoading {
+          if let photoTitle = dataStore.photo?.title {
             Text(photoTitle)
               .padding([.top, .trailing, .leading])
               .font(.title2)
@@ -50,7 +50,7 @@ struct APODView: View {
                 }
               }
             }
-        } else if let photo = dataStoreNew.photo, !isCurrentPhotoFavorite {
+        } else if let photo = dataStore.photo, !isCurrentPhotoFavorite {
           Button("Add to Favorites") {
             addToFavorites(photo)
           }
@@ -61,22 +61,22 @@ struct APODView: View {
       .navigationTitle("Cosmo Pic")
     }
     .task {
-      guard dataStoreNew.photo == nil else { return }
+      guard dataStore.photo == nil else { return }
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "yyyy-MM-dd"
       let currentDate = dateFormatter.string(from: Date())
-      await dataStoreNew.getPhoto(for: currentDate)
+      await dataStore.getPhoto(for: currentDate)
       checkIfFavorite()
     }
     .onAppear {
-      dataStoreNew.loadFavorites()
+      dataStore.loadFavorites()
     }
     .alert(
       "Something went wrong...",
-      isPresented: $dataStoreNew.errorIsPresented,
-      presenting: dataStoreNew.error,
+      isPresented: $dataStore.errorIsPresented,
+      presenting: dataStore.error,
       actions: { _ in
-        Button("Ok", action: {})
+        Button("Ok") {}
       },
       message: { error in
         Text(error.localizedDescription)
@@ -85,7 +85,7 @@ struct APODView: View {
   }
 
   func addToFavorites(_ photo: Photo) {
-    dataStoreNew.addToFavorites(photo)
+    dataStore.addToFavorites(photo)
     withAnimation {
       showCheckmark = true
       isCurrentPhotoFavorite = true
@@ -93,8 +93,8 @@ struct APODView: View {
   }
 
   func checkIfFavorite() {
-    if let currentPhoto = dataStoreNew.photo {
-      isCurrentPhotoFavorite = dataStoreNew.isFavorite(currentPhoto)
+    if let currentPhoto = dataStore.photo {
+      isCurrentPhotoFavorite = dataStore.isFavorite(currentPhoto)
     }
   }
 }

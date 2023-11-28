@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct HistoryView: View {
-  @EnvironmentObject var dataStoreNew: DataStoreNew
+  @EnvironmentObject var dataStore: DataStore
   @State private var isLoading = false
 
   private var sortedHistory: [Photo] {
-    dataStoreNew.history.sorted { $0.date > $1.date }
+    dataStore.history.sorted { $0.date > $1.date }
   }
 
   var body: some View {
@@ -58,12 +58,12 @@ struct HistoryView: View {
       }
       .navigationTitle("Photo History")
       .overlay {
-        if dataStoreNew.isLoading {
+        if dataStore.isLoading {
           ProgressView()
         }
       }
       .task {
-        await dataStoreNew.getHistory()
+        await dataStore.getHistory()
       }
     }
   }

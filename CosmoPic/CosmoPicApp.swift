@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct CosmoPicApp: App {
-  @StateObject var dataStoreNew = DataStoreNew()
+  @StateObject var dataStore = DataStore()
 
   var body: some Scene {
     WindowGroup {
       MainView()
-        .environmentObject(dataStoreNew)
+        .environmentObject(dataStore)
     }
   }
 }
