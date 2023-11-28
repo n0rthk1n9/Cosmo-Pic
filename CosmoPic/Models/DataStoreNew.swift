@@ -58,10 +58,6 @@ class DataStoreNew: ObservableObject {
     isLoading = false
   }
 
-  func getLocalFileURL(forFilename filename: String) -> URL {
-    return FileManager.documentsDirectoryURL.appendingPathComponent(filename)
-  }
-
   @MainActor
   func getHistory() async {
     isLoading = true

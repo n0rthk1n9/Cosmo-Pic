@@ -20,28 +20,40 @@ struct HistoryView: View {
     NavigationStack {
       List(sortedHistory, id: \.title) { photo in
         NavigationLink(destination: PhotoDetailView(photo: photo)) {
-          HStack {
+          HStack(alignment: .top, spacing: 0.0) {
             if let localFilename = photo.localFilename {
-              let localURL = FileManager.localFileURL(for: localFilename)
-              AsyncImage(url: localURL) { image in
+              let localFileURL = FileManager.localFileURL(for: localFilename)
+              AsyncImage(url: localFileURL) { image in
                 image
                   .resizable()
                   .aspectRatio(contentMode: .fit)
                   .frame(height: 25)
+                  .frame(minWidth: 50)
               } placeholder: {
                 ProgressView()
+                  .frame(minWidth: 50)
               }
+              .padding(.trailing)
             } else {
               AsyncImage(url: photo.hdURL) { image in
                 image
                   .resizable()
                   .aspectRatio(contentMode: .fit)
                   .frame(height: 25)
+                  .frame(minWidth: 50)
               } placeholder: {
                 ProgressView()
+                  .frame(minWidth: 50)
               }
+              .padding(.trailing)
             }
-            Text(photo.title)
+            VStack(alignment: .leading, spacing: 0.0) {
+              Text(photo.title)
+              Text(photo.copyright ?? "No copyright")
+                .font(.caption)
+                .foregroundStyle(.gray)
+                .padding(.top)
+            }
           }
         }
       }

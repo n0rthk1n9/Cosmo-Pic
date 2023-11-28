@@ -18,7 +18,7 @@ struct APODView: View {
       VStack {
         if !dataStoreNew.isLoading {
           if let localFilename = dataStoreNew.photo?.localFilename {
-            let localFileURL = dataStoreNew.getLocalFileURL(forFilename: localFilename)
+            let localFileURL = FileManager.localFileURL(for: localFilename)
             PhotoView(url: localFileURL)
           } else {
             if let hdUrl = dataStoreNew.photo?.hdURL {
