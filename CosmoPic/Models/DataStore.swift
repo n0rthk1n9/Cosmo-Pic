@@ -58,11 +58,7 @@ class DataStore: ObservableObject {
       return
     }
 
-    let fetchedPhoto = try await fetchAndSavePhoto(
-      for: date,
-      to: FileManager.documentsDirectoryURL,
-      jsonPath: apodJsonPathURL
-    )
+    let fetchedPhoto = try await fetchAndSavePhoto(for: date, to: FileManager.documentsDirectoryURL)
 
     let encoder = JSONEncoder()
     encoder.outputFormatting = .prettyPrinted
@@ -75,7 +71,7 @@ class DataStore: ObservableObject {
     }
   }
 
-  private func fetchAndSavePhoto(for date: String, to directory: URL, jsonPath _: URL) async throws -> Photo {
+  private func fetchAndSavePhoto(for date: String, to directory: URL) async throws -> Photo {
     var urlComponents = URLComponents()
     urlComponents.scheme = "https"
     urlComponents.host = "api.nasa.gov"
@@ -93,25 +89,32 @@ class DataStore: ObservableObject {
 
     do {
       let (data, response) = try await session.data(for: request)
-      guard (response as? HTTPURLResponse) != nil else {
+      guard let httpResponse = response as? HTTPURLResponse else {
         throw FetchPhotoError.invalidResponse
+      }
+
+      if httpResponse.statusCode == 404 {
+        let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+        if json?["msg"] as? String == "No data available for date: \(date)" {
+          throw FetchPhotoError.invalidResponse
+        }
       }
       var decodedPhoto = try JSONDecoder().decode(Photo.self, from: data)
 
-      guard let decodedPhotoHdUrl = decodedPhoto.hdURL else {
+      guard decodedPhoto.mediaType == "image", let decodedPhotoHdUrl = decodedPhoto.hdURL else {
         throw FetchPhotoError.fileError
       }
 
       let fileExtension = decodedPhotoHdUrl.pathExtension
-      let localImagePath = directory.appendingPathComponent("\(date).\(fileExtension)")
+      let localFilename = "\(date).\(fileExtension)"
+      let localImagePath = directory.appendingPathComponent(localFilename)
 
-      if let imageData = try? Data(contentsOf: decodedPhotoHdUrl) {
+      if !FileManager.default.fileExists(atPath: localImagePath.path) {
+        let (imageData, _) = try await session.data(from: decodedPhotoHdUrl)
         try imageData.write(to: localImagePath)
-      } else {
-        throw FetchPhotoError.fileError
       }
 
-      decodedPhoto.hdURL = localImagePath
+      decodedPhoto.localFilename = localFilename
 
       return decodedPhoto
     } catch let DecodingError.dataCorrupted(context) {
