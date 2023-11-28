@@ -30,6 +30,8 @@
 		57E049072B147CF500294392 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E049062B147CF500294392 /* FileManager.swift */; };
 		57E049092B1481F300294392 /* APOD-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57E049082B1481F300294392 /* APOD-Info.plist */; };
 		57FC94252B1667AF00294392 /* PhotoAPIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */; };
+		57FC94272B166CB800294392 /* HistoryAPIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC94262B166CB800294392 /* HistoryAPIServiceMock.swift */; };
+		57FC94292B166F3E00294392 /* PhotoAPIServiceErrorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC94282B166F3E00294392 /* PhotoAPIServiceErrorMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		57E049062B147CF500294392 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		57E049082B1481F300294392 /* APOD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "APOD-Info.plist"; sourceTree = "<group>"; };
 		57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIServiceMock.swift; sourceTree = "<group>"; };
+		57FC94262B166CB800294392 /* HistoryAPIServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAPIServiceMock.swift; sourceTree = "<group>"; };
+		57FC94282B166F3E00294392 /* PhotoAPIServiceErrorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIServiceErrorMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,9 +135,11 @@
 			children = (
 				574D86992B1583C800294392 /* PhotoAPIServiceProtocol.swift */,
 				574D86962B15837100294392 /* PhotoAPIService.swift */,
+				57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */,
+				57FC94282B166F3E00294392 /* PhotoAPIServiceErrorMock.swift */,
 				574D86A22B16453D00294392 /* HistoryAPIServiceProtocol.swift */,
 				574D869F2B16452500294392 /* HistoryAPIService.swift */,
-				57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */,
+				57FC94262B166CB800294392 /* HistoryAPIServiceMock.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -389,10 +395,12 @@
 				574D86972B15837100294392 /* PhotoAPIService.swift in Sources */,
 				57D8C4442B0D53C100294392 /* CosmoPicApp.swift in Sources */,
 				571232712B112C0800294392 /* HistoryView.swift in Sources */,
+				57FC94292B166F3E00294392 /* PhotoAPIServiceErrorMock.swift in Sources */,
 				574D869C2B160CFB00294392 /* DataStore.swift in Sources */,
 				574D86A32B16453D00294392 /* HistoryAPIServiceProtocol.swift in Sources */,
 				574D869E2B161C6200294392 /* PhotoView.swift in Sources */,
 				5712326D2B112BD400294392 /* APODView.swift in Sources */,
+				57FC94272B166CB800294392 /* HistoryAPIServiceMock.swift in Sources */,
 				574D86A02B16452600294392 /* HistoryAPIService.swift in Sources */,
 				57E049072B147CF500294392 /* FileManager.swift in Sources */,
 				571232772B11650A00294392 /* FetchPhotoError.swift in Sources */,
