@@ -21,28 +21,10 @@ struct APODView: View {
         if !dataStoreNew.isLoading {
           if let localFilename = dataStoreNew.photo?.localFilename {
             let localFileURL = dataStoreNew.getLocalFileURL(forFilename: localFilename)
-            AsyncImage(url: localFileURL) { image in
-              image
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-            } placeholder: {
-              ProgressView()
-            }
-            .cornerRadius(20)
-            .clipped()
-            .padding(.horizontal)
+            PhotoView(url: localFileURL)
           } else {
             if let hdUrl = dataStoreNew.photo?.hdURL {
-              AsyncImage(url: hdUrl) { image in
-                image
-                  .resizable()
-                  .aspectRatio(contentMode: .fit)
-              } placeholder: {
-                ProgressView()
-              }
-              .cornerRadius(20)
-              .clipped()
-              .padding(.horizontal)
+              PhotoView(url: hdUrl)
             }
           }
         } else {
