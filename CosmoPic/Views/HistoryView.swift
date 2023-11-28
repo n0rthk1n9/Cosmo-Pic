@@ -9,10 +9,11 @@ import SwiftUI
 
 struct HistoryView: View {
   @EnvironmentObject var dataStore: DataStore
+  @StateObject var dataStoreNew = DataStoreNew()
   @State private var isLoading = false
 
   private var sortedHistory: [Photo] {
-    dataStore.history.sorted { $0.date > $1.date }
+    dataStoreNew.history.sorted { $0.date > $1.date }
   }
 
   var body: some View {
@@ -40,34 +41,23 @@ struct HistoryView: View {
                 ProgressView()
               }
             }
-
             Text(photo.title)
           }
         }
       }
       .navigationTitle("Photo History")
       .overlay {
-        if isLoading {
+        if dataStoreNew.isLoading {
           ProgressView()
         }
       }
       .task {
-        await loadHistory()
+        await dataStoreNew.getHistory()
       }
     }
   }
-
-  private func loadHistory() async {
-    isLoading = true
-    do {
-      try await dataStore.fetchHistory()
-    } catch {
-      print("Error fetching history: \(error.localizedDescription)")
-    }
-    isLoading = false
-  }
 }
 
-#Preview {
-  HistoryView()
-}
+// #Preview {
+//  HistoryView()
+// }
