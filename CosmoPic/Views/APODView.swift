@@ -91,33 +91,17 @@ struct APODView: View {
     .onAppear {
       dataStore.loadFavorites()
     }
-    .alert(isPresented: $showAlert) {
-      Alert(
-        title: Text("Data Unavailable"),
-        message: Text(alertMessage),
-        primaryButton: .default(Text("Try Previous Day")) {
-          Task {
-            await loadPreviousDayImage()
-          }
-        },
-        secondaryButton: .cancel()
-      )
-    }
-  }
-
-  private func loadPreviousDayImage() async {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-
-    if let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date()) {
-      let yesterdayString = dateFormatter.string(from: yesterday)
-
-      do {
-        try await dataStore.getPhoto(for: yesterdayString)
-      } catch {
-        print("Error loading photo for previous day: \(error.localizedDescription)")
+    .alert(
+      "Something went wrong...",
+      isPresented: $dataStoreNew.errorIsPresented,
+      presenting: dataStoreNew.error,
+      actions: { _ in
+        Button("Ok", action: {})
+      },
+      message: { error in
+        Text(error.localizedDescription)
       }
-    }
+    )
   }
 
   func addToFavorites(_ photo: Photo) {
