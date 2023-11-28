@@ -31,6 +31,7 @@ class DataStore: ObservableObject {
 
   @MainActor
   func getPhoto(for date: String) async {
+    photo = nil
     isLoading = true
     let jsonPathURL = FileManager.documentsDirectoryURL.appendingPathComponent("\(date).json")
 

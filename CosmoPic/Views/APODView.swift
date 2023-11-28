@@ -61,7 +61,6 @@ struct APODView: View {
       .navigationTitle("Cosmo Pic")
     }
     .task {
-      guard dataStore.photo == nil else { return }
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "yyyy-MM-dd"
       let currentDate = dateFormatter.string(from: Date())
