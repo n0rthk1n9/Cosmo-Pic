@@ -106,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				571232722B115FD100294392 /* Photo.swift */,
-				574D869B2B160CFB00294392 /* DataStore.swift */,
 				571232762B11650900294392 /* FetchPhotoError.swift */,
 			);
 			path = Models;
@@ -164,6 +163,7 @@
 				574D86902B14836B00294392 /* APOD-Info-Sample.plist */,
 				57D8C4402B0D53C100294392 /* CosmoPicApp.swift */,
 				5712326B2B112B4C00294392 /* Views */,
+				57CDE76C2B165BEE00294392 /* ViewModels */,
 				5712326A2B112B3E00294392 /* Models */,
 				57E049052B147CDF00294392 /* Extensions */,
 				574D86982B15839700294392 /* Services */,
@@ -188,6 +188,14 @@
 				578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */,
 			);
 			path = CosmoPicUITests;
+			sourceTree = "<group>";
+		};
+		57CDE76C2B165BEE00294392 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				574D869B2B160CFB00294392 /* DataStore.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		57E049052B147CDF00294392 /* Extensions */ = {

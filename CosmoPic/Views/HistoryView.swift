@@ -26,11 +26,11 @@ struct HistoryView: View {
                 image
                   .resizable()
                   .aspectRatio(contentMode: .fit)
-                  .frame(height: 25)
-                  .frame(minWidth: 50)
+                  .frame(height: 30)
+                  .frame(minWidth: 60)
               } placeholder: {
                 ProgressView()
-                  .frame(minWidth: 50)
+                  .frame(minWidth: 60)
               }
               .padding(.trailing)
             } else {
@@ -38,11 +38,11 @@ struct HistoryView: View {
                 image
                   .resizable()
                   .aspectRatio(contentMode: .fit)
-                  .frame(height: 25)
-                  .frame(minWidth: 50)
+                  .frame(height: 30)
+                  .frame(minWidth: 60)
               } placeholder: {
                 ProgressView()
-                  .frame(minWidth: 50)
+                  .frame(minWidth: 60)
               }
               .padding(.trailing)
             }
