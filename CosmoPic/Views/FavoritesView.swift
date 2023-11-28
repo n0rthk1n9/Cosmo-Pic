@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct FavoritesView: View {
-  @EnvironmentObject var dataStore: DataStore
+  @StateObject var dataStoreNew = DataStoreNew()
 
   var body: some View {
     NavigationStack {
-      if dataStore.favorites.isEmpty {
+      if dataStoreNew.favorites.isEmpty {
         Text("No favorites yet")
           .font(.title)
           .foregroundColor(.gray)
@@ -20,7 +20,7 @@ struct FavoritesView: View {
           .multilineTextAlignment(.center)
       } else {
         List {
-          ForEach(dataStore.favorites, id: \.title) { photo in
+          ForEach(dataStoreNew.favorites, id: \.title) { photo in
             NavigationLink(destination: PhotoDetailView(photo: photo)) {
               Text(photo.title)
             }
@@ -31,14 +31,14 @@ struct FavoritesView: View {
       }
     }
     .onAppear {
-      dataStore.loadFavorites()
+      dataStoreNew.loadFavorites()
     }
   }
 
   private func delete(at offsets: IndexSet) {
     for index in offsets {
-      let photo = dataStore.favorites[index]
-      dataStore.removeFromFavorites(photo)
+      let photo = dataStoreNew.favorites[index]
+      dataStoreNew.removeFromFavorites(photo)
     }
   }
 }

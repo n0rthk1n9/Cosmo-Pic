@@ -10,10 +10,13 @@ import Foundation
 class DataStoreNew: ObservableObject {
   @Published var photo: Photo?
   @Published var history: [Photo] = []
+  @Published var favorites: [Photo] = []
   @Published var isLoading = false
 
   @Published var errorIsPresented = false
   @Published var error: Error?
+
+  private let favoritesFileName = "favorites.json"
 
   let photoAPIService: PhotoAPIServiceProtocol
   let historyAPIService: HistoryAPIServiceProtocol
@@ -92,5 +95,52 @@ class DataStoreNew: ObservableObject {
       errorIsPresented = true
     }
     isLoading = false
+  }
+
+  func loadFavorites() {
+    isLoading = true
+
+    let fileManager = FileManager.default
+    let favoritesFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(favoritesFileName)
+
+    if fileManager.fileExists(atPath: favoritesFileURL.path) {
+      do {
+        let jsonData = try Data(contentsOf: favoritesFileURL)
+        favorites = try JSONDecoder().decode([Photo].self, from: jsonData)
+      } catch {
+        self.error = error
+        errorIsPresented = true
+      }
+    }
+
+    isLoading = false
+  }
+
+  func addToFavorites(_ photo: Photo) {
+    if !favorites.contains(where: { $0.title == photo.title }) {
+      favorites.append(photo)
+      saveFavorites()
+    }
+  }
+
+  func removeFromFavorites(_ photo: Photo) {
+    favorites.removeAll { $0.title == photo.title }
+    saveFavorites()
+  }
+
+  private func saveFavorites() {
+    let favoritesFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(favoritesFileName)
+
+    do {
+      let jsonData = try JSONEncoder().encode(favorites)
+      try jsonData.write(to: favoritesFileURL)
+    } catch {
+      self.error = error
+      errorIsPresented = true
+    }
+  }
+
+  func isFavorite(_ photo: Photo) -> Bool {
+    return favorites.contains { $0.title == photo.title }
   }
 }

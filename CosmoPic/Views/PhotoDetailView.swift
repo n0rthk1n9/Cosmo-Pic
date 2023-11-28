@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct PhotoDetailView: View {
-  @EnvironmentObject var dataStore: DataStore
   @StateObject var dataStoreNew = DataStoreNew()
   @State private var isCurrentPhotoFavorite = false
   @State private var showCheckmark = false
@@ -42,7 +41,7 @@ struct PhotoDetailView: View {
               }
             }
           }
-      } else if let photo = dataStore.photo, !isCurrentPhotoFavorite {
+      } else if let photo = dataStoreNew.photo, !isCurrentPhotoFavorite {
         Button("Add to Favorites") {
           addToFavorites(photo)
         }
@@ -60,9 +59,10 @@ struct PhotoDetailView: View {
     }
     .task {
       await dataStoreNew.getPhoto(for: photo.date)
+      checkIfFavorite()
     }
     .onAppear {
-      dataStore.loadFavorites()
+      dataStoreNew.loadFavorites()
     }
     .alert(
       "Something went wrong...",
@@ -79,7 +79,7 @@ struct PhotoDetailView: View {
   }
 
   func addToFavorites(_ photo: Photo) {
-    dataStore.addToFavorites(photo)
+    dataStoreNew.addToFavorites(photo)
     withAnimation {
       showCheckmark = true
       isCurrentPhotoFavorite = true
@@ -87,8 +87,8 @@ struct PhotoDetailView: View {
   }
 
   func checkIfFavorite() {
-    if let currentPhoto = dataStore.photo {
-      isCurrentPhotoFavorite = dataStore.isFavorite(currentPhoto)
+    if let currentPhoto = dataStoreNew.photo {
+      isCurrentPhotoFavorite = dataStoreNew.isFavorite(currentPhoto)
     }
   }
 }

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct APODView: View {
-  @EnvironmentObject var dataStore: DataStore
   @StateObject var dataStoreNew = DataStoreNew()
   @State private var isCurrentPhotoFavorite = false
   @State private var showCheckmark = false
@@ -51,7 +50,7 @@ struct APODView: View {
                 }
               }
             }
-        } else if let photo = dataStore.photo, !isCurrentPhotoFavorite {
+        } else if let photo = dataStoreNew.photo, !isCurrentPhotoFavorite {
           Button("Add to Favorites") {
             addToFavorites(photo)
           }
@@ -62,14 +61,15 @@ struct APODView: View {
       .navigationTitle("Cosmo Pic")
     }
     .task {
-      guard dataStore.photo == nil else { return }
+      guard dataStoreNew.photo == nil else { return }
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "yyyy-MM-dd"
       let currentDate = dateFormatter.string(from: Date())
       await dataStoreNew.getPhoto(for: currentDate)
+      checkIfFavorite()
     }
     .onAppear {
-      dataStore.loadFavorites()
+      dataStoreNew.loadFavorites()
     }
     .alert(
       "Something went wrong...",
@@ -85,7 +85,7 @@ struct APODView: View {
   }
 
   func addToFavorites(_ photo: Photo) {
-    dataStore.addToFavorites(photo)
+    dataStoreNew.addToFavorites(photo)
     withAnimation {
       showCheckmark = true
       isCurrentPhotoFavorite = true
@@ -93,8 +93,8 @@ struct APODView: View {
   }
 
   func checkIfFavorite() {
-    if let currentPhoto = dataStore.photo {
-      isCurrentPhotoFavorite = dataStore.isFavorite(currentPhoto)
+    if let currentPhoto = dataStoreNew.photo {
+      isCurrentPhotoFavorite = dataStoreNew.isFavorite(currentPhoto)
     }
   }
 }
