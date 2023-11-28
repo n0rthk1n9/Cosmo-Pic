@@ -9,6 +9,7 @@ import SwiftUI
 
 struct APODView: View {
   @EnvironmentObject var dataStore: DataStore
+  @StateObject var dataStoreNew = DataStoreNew()
   @State private var isCurrentPhotoFavorite = false
   @State private var showCheckmark = false
   @State private var showAlert = false
@@ -17,19 +18,45 @@ struct APODView: View {
   var body: some View {
     NavigationStack {
       VStack {
-        AsyncImage(url: getLocalFileURLOrDefault(for: dataStore.photo)) { image in
-          image
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-        } placeholder: {
+        if !dataStoreNew.isLoading {
+          if let localFilename = dataStoreNew.photo?.localFilename {
+            let localFileURL = dataStoreNew.getLocalFileURL(forFilename: localFilename)
+            AsyncImage(url: localFileURL) { image in
+              image
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            } placeholder: {
+              ProgressView()
+            }
+            .cornerRadius(20)
+            .clipped()
+            .padding(.horizontal)
+          } else {
+            if let hdUrl = dataStoreNew.photo?.hdURL {
+              AsyncImage(url: hdUrl) { image in
+                image
+                  .resizable()
+                  .aspectRatio(contentMode: .fit)
+              } placeholder: {
+                ProgressView()
+              }
+              .cornerRadius(20)
+              .clipped()
+              .padding(.horizontal)
+            }
+          }
+        } else {
           ProgressView()
         }
-        .cornerRadius(20)
-        .clipped()
-        .padding(.horizontal)
-        Text(dataStore.photo?.title ?? "")
-          .padding([.top, .trailing, .leading])
-          .font(.title2)
+        if !dataStoreNew.isLoading {
+          if let photoTitle = dataStoreNew.photo?.title {
+            Text(photoTitle)
+              .padding([.top, .trailing, .leading])
+              .font(.title2)
+          }
+        } else {
+          EmptyView()
+        }
         if showCheckmark {
           Image(systemName: "checkmark.circle.fill")
             .font(.title)
@@ -55,7 +82,11 @@ struct APODView: View {
       .navigationTitle("Cosmo Pic")
     }
     .task {
-      await fetchPhoto()
+      guard dataStore.photo == nil else { return }
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "yyyy-MM-dd"
+      let currentDate = dateFormatter.string(from: Date())
+      await dataStoreNew.getPhoto(for: currentDate)
     }
     .onAppear {
       dataStore.loadFavorites()
@@ -71,23 +102,6 @@ struct APODView: View {
         },
         secondaryButton: .cancel()
       )
-    }
-  }
-
-  func fetchPhoto() async {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-    let currentDate = dateFormatter.string(from: Date())
-
-    do {
-      try await dataStore.getPhoto(for: currentDate)
-      Task { @MainActor in
-        checkIfFavorite()
-      }
-    } catch {
-      alertMessage = "No data available for \(currentDate). Would you like to try the previous day?"
-      showAlert = true
-      print(error.localizedDescription)
     }
   }
 
@@ -119,23 +133,8 @@ struct APODView: View {
       isCurrentPhotoFavorite = dataStore.isFavorite(currentPhoto)
     }
   }
-
-  func getLocalFileURLOrDefault(for photo: Photo?) -> URL? {
-    guard let photo = photo else {
-      return nil
-    }
-
-    if let localFilename = photo.localFilename {
-      let localFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(localFilename)
-      if FileManager.default.fileExists(atPath: localFileURL.path) {
-        return localFileURL
-      }
-    }
-
-    return photo.hdURL
-  }
 }
 
-#Preview {
-  APODView()
-}
+// #Preview {
+//  APODView()
+// }
