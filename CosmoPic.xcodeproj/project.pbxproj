@@ -11,10 +11,15 @@
 		5712326F2B112BE500294392 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5712326E2B112BE500294392 /* FavoritesView.swift */; };
 		571232712B112C0800294392 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232702B112C0800294392 /* HistoryView.swift */; };
 		571232732B115FD100294392 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232722B115FD100294392 /* Photo.swift */; };
-		571232752B1161D400294392 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232742B1161D400294392 /* DataStore.swift */; };
 		571232772B11650A00294392 /* FetchPhotoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232762B11650900294392 /* FetchPhotoError.swift */; };
 		574D86912B14836B00294392 /* APOD-Info-Sample.plist in Resources */ = {isa = PBXBuildFile; fileRef = 574D86902B14836B00294392 /* APOD-Info-Sample.plist */; };
 		574D86952B14A43A00294392 /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D86942B14A43A00294392 /* PhotoDetailView.swift */; };
+		574D86972B15837100294392 /* PhotoAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D86962B15837100294392 /* PhotoAPIService.swift */; };
+		574D869A2B1583C800294392 /* PhotoAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D86992B1583C800294392 /* PhotoAPIServiceProtocol.swift */; };
+		574D869C2B160CFB00294392 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D869B2B160CFB00294392 /* DataStore.swift */; };
+		574D869E2B161C6200294392 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D869D2B161C6200294392 /* PhotoView.swift */; };
+		574D86A02B16452600294392 /* HistoryAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D869F2B16452500294392 /* HistoryAPIService.swift */; };
+		574D86A32B16453D00294392 /* HistoryAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D86A22B16453D00294392 /* HistoryAPIServiceProtocol.swift */; };
 		578A19C42B0BA94E00294392 /* CosmoPicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19C32B0BA94E00294392 /* CosmoPicTests.swift */; };
 		578A19D02B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */; };
 		57D8C4412B0D53C100294392 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43D2B0D53C100294392 /* Preview Content */; };
@@ -48,11 +53,16 @@
 		5712326E2B112BE500294392 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		571232702B112C0800294392 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		571232722B115FD100294392 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		571232742B1161D400294392 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		571232762B11650900294392 /* FetchPhotoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoError.swift; sourceTree = "<group>"; };
 		572FAFA62B11276800294392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		574D86902B14836B00294392 /* APOD-Info-Sample.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "APOD-Info-Sample.plist"; sourceTree = "<group>"; };
 		574D86942B14A43A00294392 /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
+		574D86962B15837100294392 /* PhotoAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIService.swift; sourceTree = "<group>"; };
+		574D86992B1583C800294392 /* PhotoAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIServiceProtocol.swift; sourceTree = "<group>"; };
+		574D869B2B160CFB00294392 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		574D869D2B161C6200294392 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		574D869F2B16452500294392 /* HistoryAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAPIService.swift; sourceTree = "<group>"; };
+		574D86A22B16453D00294392 /* HistoryAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAPIServiceProtocol.swift; sourceTree = "<group>"; };
 		578A19AF2B0BA94C00294392 /* CosmoPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CosmoPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		578A19BF2B0BA94E00294392 /* CosmoPicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmoPicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		578A19C32B0BA94E00294392 /* CosmoPicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicTests.swift; sourceTree = "<group>"; };
@@ -96,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				571232722B115FD100294392 /* Photo.swift */,
-				571232742B1161D400294392 /* DataStore.swift */,
 				571232762B11650900294392 /* FetchPhotoError.swift */,
 			);
 			path = Models;
@@ -107,11 +116,23 @@
 			children = (
 				57D8C43F2B0D53C100294392 /* MainView.swift */,
 				5712326C2B112BD400294392 /* APODView.swift */,
+				574D869D2B161C6200294392 /* PhotoView.swift */,
 				5712326E2B112BE500294392 /* FavoritesView.swift */,
 				571232702B112C0800294392 /* HistoryView.swift */,
 				574D86942B14A43A00294392 /* PhotoDetailView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		574D86982B15839700294392 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				574D86992B1583C800294392 /* PhotoAPIServiceProtocol.swift */,
+				574D86962B15837100294392 /* PhotoAPIService.swift */,
+				574D86A22B16453D00294392 /* HistoryAPIServiceProtocol.swift */,
+				574D869F2B16452500294392 /* HistoryAPIService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		578A19A62B0BA94C00294392 = {
@@ -142,8 +163,10 @@
 				574D86902B14836B00294392 /* APOD-Info-Sample.plist */,
 				57D8C4402B0D53C100294392 /* CosmoPicApp.swift */,
 				5712326B2B112B4C00294392 /* Views */,
+				57CDE76C2B165BEE00294392 /* ViewModels */,
 				5712326A2B112B3E00294392 /* Models */,
 				57E049052B147CDF00294392 /* Extensions */,
+				574D86982B15839700294392 /* Services */,
 				57D8C43E2B0D53C100294392 /* Assets.xcassets */,
 				57D8C43D2B0D53C100294392 /* Preview Content */,
 			);
@@ -165,6 +188,14 @@
 				578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */,
 			);
 			path = CosmoPicUITests;
+			sourceTree = "<group>";
+		};
+		57CDE76C2B165BEE00294392 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				574D869B2B160CFB00294392 /* DataStore.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		57E049052B147CDF00294392 /* Extensions */ = {
@@ -347,13 +378,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				571232752B1161D400294392 /* DataStore.swift in Sources */,
 				571232732B115FD100294392 /* Photo.swift in Sources */,
 				574D86952B14A43A00294392 /* PhotoDetailView.swift in Sources */,
+				574D869A2B1583C800294392 /* PhotoAPIServiceProtocol.swift in Sources */,
 				5712326F2B112BE500294392 /* FavoritesView.swift in Sources */,
+				574D86972B15837100294392 /* PhotoAPIService.swift in Sources */,
 				57D8C4442B0D53C100294392 /* CosmoPicApp.swift in Sources */,
 				571232712B112C0800294392 /* HistoryView.swift in Sources */,
+				574D869C2B160CFB00294392 /* DataStore.swift in Sources */,
+				574D86A32B16453D00294392 /* HistoryAPIServiceProtocol.swift in Sources */,
+				574D869E2B161C6200294392 /* PhotoView.swift in Sources */,
 				5712326D2B112BD400294392 /* APODView.swift in Sources */,
+				574D86A02B16452600294392 /* HistoryAPIService.swift in Sources */,
 				57E049072B147CF500294392 /* FileManager.swift in Sources */,
 				571232772B11650A00294392 /* FetchPhotoError.swift in Sources */,
 				57D8C4432B0D53C100294392 /* MainView.swift in Sources */,

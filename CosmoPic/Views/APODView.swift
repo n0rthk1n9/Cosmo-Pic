@@ -15,19 +15,27 @@ struct APODView: View {
   var body: some View {
     NavigationStack {
       VStack {
-        AsyncImage(url: dataStore.photo?.hdURL) { image in
-          image
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-        } placeholder: {
+        if !dataStore.isLoading {
+          if let localFilename = dataStore.photo?.localFilename {
+            let localFileURL = FileManager.localFileURL(for: localFilename)
+            PhotoView(url: localFileURL)
+          } else {
+            if let hdUrl = dataStore.photo?.hdURL {
+              PhotoView(url: hdUrl)
+            }
+          }
+        } else {
           ProgressView()
         }
-        .cornerRadius(20)
-        .clipped()
-        .padding(.horizontal)
-        Text(dataStore.photo?.title ?? "")
-          .padding([.top, .trailing, .leading])
-          .font(.title2)
+        if !dataStore.isLoading {
+          if let photoTitle = dataStore.photo?.title {
+            Text(photoTitle)
+              .padding([.top, .trailing, .leading])
+              .font(.title2)
+          }
+        } else {
+          EmptyView()
+        }
         if showCheckmark {
           Image(systemName: "checkmark.circle.fill")
             .font(.title)
@@ -53,26 +61,27 @@ struct APODView: View {
       .navigationTitle("Cosmo Pic")
     }
     .task {
-      await fetchPhoto()
+      guard dataStore.photo == nil else { return }
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "yyyy-MM-dd"
+      let currentDate = dateFormatter.string(from: Date())
+      await dataStore.getPhoto(for: currentDate)
+      checkIfFavorite()
     }
     .onAppear {
       dataStore.loadFavorites()
     }
-  }
-
-  func fetchPhoto() async {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-    let currentDate = dateFormatter.string(from: Date())
-
-    do {
-      try await dataStore.getPhoto(for: currentDate)
-      Task { @MainActor in
-        checkIfFavorite()
+    .alert(
+      "Something went wrong...",
+      isPresented: $dataStore.errorIsPresented,
+      presenting: dataStore.error,
+      actions: { _ in
+        Button("Ok") {}
+      },
+      message: { error in
+        Text(error.localizedDescription)
       }
-    } catch {
-      print(error.localizedDescription)
-    }
+    )
   }
 
   func addToFavorites(_ photo: Photo) {
@@ -90,6 +99,6 @@ struct APODView: View {
   }
 }
 
-#Preview {
-  APODView()
-}
+// #Preview {
+//  APODView()
+// }
