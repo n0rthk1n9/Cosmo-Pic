@@ -20,7 +20,7 @@
 		574D869E2B161C6200294392 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D869D2B161C6200294392 /* PhotoView.swift */; };
 		574D86A02B16452600294392 /* HistoryAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D869F2B16452500294392 /* HistoryAPIService.swift */; };
 		574D86A32B16453D00294392 /* HistoryAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D86A22B16453D00294392 /* HistoryAPIServiceProtocol.swift */; };
-		578A19C42B0BA94E00294392 /* CosmoPicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19C32B0BA94E00294392 /* CosmoPicTests.swift */; };
+		578A19C42B0BA94E00294392 /* CosmoPicDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19C32B0BA94E00294392 /* CosmoPicDataStoreTests.swift */; };
 		578A19D02B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */; };
 		57D8C4412B0D53C100294392 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43D2B0D53C100294392 /* Preview Content */; };
 		57D8C4422B0D53C100294392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43E2B0D53C100294392 /* Assets.xcassets */; };
@@ -29,6 +29,7 @@
 		57D8C4462B0D55E500294392 /* CosmoPicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CD2B0BA94E00294392 /* CosmoPicUITests.swift */; };
 		57E049072B147CF500294392 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E049062B147CF500294392 /* FileManager.swift */; };
 		57E049092B1481F300294392 /* APOD-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57E049082B1481F300294392 /* APOD-Info.plist */; };
+		57FC94252B1667AF00294392 /* PhotoAPIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +66,7 @@
 		574D86A22B16453D00294392 /* HistoryAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAPIServiceProtocol.swift; sourceTree = "<group>"; };
 		578A19AF2B0BA94C00294392 /* CosmoPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CosmoPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		578A19BF2B0BA94E00294392 /* CosmoPicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmoPicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		578A19C32B0BA94E00294392 /* CosmoPicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicTests.swift; sourceTree = "<group>"; };
+		578A19C32B0BA94E00294392 /* CosmoPicDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicDataStoreTests.swift; sourceTree = "<group>"; };
 		578A19C92B0BA94E00294392 /* CosmoPicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmoPicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		578A19CD2B0BA94E00294392 /* CosmoPicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicUITests.swift; sourceTree = "<group>"; };
 		578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 		57D8C4402B0D53C100294392 /* CosmoPicApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CosmoPicApp.swift; path = CosmoPic/CosmoPicApp.swift; sourceTree = SOURCE_ROOT; };
 		57E049062B147CF500294392 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		57E049082B1481F300294392 /* APOD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "APOD-Info.plist"; sourceTree = "<group>"; };
+		57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIServiceMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				574D86962B15837100294392 /* PhotoAPIService.swift */,
 				574D86A22B16453D00294392 /* HistoryAPIServiceProtocol.swift */,
 				574D869F2B16452500294392 /* HistoryAPIService.swift */,
+				57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -176,7 +179,7 @@
 		578A19C22B0BA94E00294392 /* CosmoPicTests */ = {
 			isa = PBXGroup;
 			children = (
-				578A19C32B0BA94E00294392 /* CosmoPicTests.swift */,
+				578A19C32B0BA94E00294392 /* CosmoPicDataStoreTests.swift */,
 			);
 			path = CosmoPicTests;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				571232732B115FD100294392 /* Photo.swift in Sources */,
 				574D86952B14A43A00294392 /* PhotoDetailView.swift in Sources */,
 				574D869A2B1583C800294392 /* PhotoAPIServiceProtocol.swift in Sources */,
+				57FC94252B1667AF00294392 /* PhotoAPIServiceMock.swift in Sources */,
 				5712326F2B112BE500294392 /* FavoritesView.swift in Sources */,
 				574D86972B15837100294392 /* PhotoAPIService.swift in Sources */,
 				57D8C4442B0D53C100294392 /* CosmoPicApp.swift in Sources */,
@@ -400,7 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				578A19C42B0BA94E00294392 /* CosmoPicTests.swift in Sources */,
+				578A19C42B0BA94E00294392 /* CosmoPicDataStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +622,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G7HRH2B3C7;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
@@ -638,6 +643,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G7HRH2B3C7;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
@@ -657,6 +663,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G7HRH2B3C7;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.xbow.Cosmo-PicUITests";
@@ -676,6 +683,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G7HRH2B3C7;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.xbow.Cosmo-PicUITests";
