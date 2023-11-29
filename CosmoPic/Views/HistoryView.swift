@@ -65,6 +65,7 @@ struct HistoryView: View {
       .task {
         await dataStore.getHistory()
       }
+      .accessibilityIdentifier("history-list")
     }
   }
 }

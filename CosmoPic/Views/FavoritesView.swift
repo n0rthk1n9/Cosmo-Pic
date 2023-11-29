@@ -28,6 +28,7 @@ struct FavoritesView: View {
           .onDelete(perform: delete)
         }
         .navigationTitle("Favorites")
+        .accessibilityIdentifier("favorites-list")
       }
     }
     .onAppear {
