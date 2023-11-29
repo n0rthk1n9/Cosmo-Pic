@@ -19,9 +19,11 @@ struct APODView: View {
           if let localFilename = dataStore.photo?.localFilename {
             let localFileURL = FileManager.localFileURL(for: localFilename)
             PhotoView(url: localFileURL)
+              .accessibilityIdentifier("apod-view-photo")
           } else {
             if let hdUrl = dataStore.photo?.hdURL {
               PhotoView(url: hdUrl)
+                .accessibilityIdentifier("apod-view-photo")
             }
           }
         } else {
@@ -56,6 +58,7 @@ struct APODView: View {
           }
           .buttonStyle(.bordered)
           .padding(.top)
+          .accessibilityIdentifier("apod-view-favorites-button")
         }
       }
       .navigationTitle("Cosmo Pic")

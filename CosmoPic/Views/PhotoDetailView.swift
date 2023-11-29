@@ -52,6 +52,7 @@ struct PhotoDetailView: View {
         if let photoExplanation = dataStore.photo?.explanation {
           Text(photoExplanation)
             .padding()
+            .accessibilityIdentifier("photo-detail-view-photo-explanation")
         }
       } else {
         EmptyView()
