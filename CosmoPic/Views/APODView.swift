@@ -100,7 +100,3 @@ struct APODView: View {
     }
   }
 }
-
-// #Preview {
-//  APODView()
-// }
