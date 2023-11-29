@@ -101,7 +101,7 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
     dateFormatter: DateFormatter,
     onPhotoUpdated: @escaping () -> Void
   ) async throws -> [Photo] {
-    var updatedPhotos = [Photo]()
+    var updatedPhotos: [Photo] = []
     try await withThrowingTaskGroup(of: Photo?.self) { group in
       for photo in photos {
         group.addTask {
@@ -110,10 +110,10 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
           return updatedPhoto
         }
       }
-      for try await updatedPhoto in group {
-        if updatedPhoto != nil {
+      for try await updatedPhotoOptional in group {
+        if let updatedPhoto = updatedPhotoOptional {
           onPhotoUpdated()
-          updatedPhotos.append(updatedPhoto!)
+          updatedPhotos.append(updatedPhoto)
         }
       }
     }

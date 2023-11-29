@@ -59,13 +59,13 @@ extension Photo {
       explanation: "This is the logo of Apple Inc.",
       hdURL: URL(
         string: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1024px-Apple_logo_black.svg.png"
-      )!,
+      ),
       mediaType: "image",
       serviceVersion: "v1",
       title: "Apple Logo",
       sdURL: URL(
         string: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1024px-Apple_logo_black.svg.png"
-      )!,
+      ),
       localFilename: "2023-09-04.svg"
     )
   }
