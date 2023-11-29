@@ -10,6 +10,7 @@ import SwiftUI
 struct HistoryView: View {
   @EnvironmentObject var dataStore: DataStore
   @State private var isLoading = false
+  @State private var progress = 0.0
 
   private var sortedHistory: [Photo] {
     dataStore.history.sorted { $0.date > $1.date }
@@ -59,7 +60,17 @@ struct HistoryView: View {
       .navigationTitle("Photo History")
       .overlay {
         if dataStore.isLoading {
-          ProgressView()
+          VStack {
+            ProgressView()
+              .padding(.bottom)
+            ProgressView(
+              value: Double(dataStore.loadedHistoryElements),
+              total: Double(dataStore.totalHistoryElements)
+            )
+            .padding(.bottom)
+            Text("\(dataStore.loadedHistoryElements) / \(dataStore.totalHistoryElements)")
+          }
+          .padding()
         }
       }
       .task {

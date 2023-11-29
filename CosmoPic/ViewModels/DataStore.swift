@@ -12,6 +12,8 @@ class DataStore: ObservableObject {
   @Published var history: [Photo] = []
   @Published var favorites: [Photo] = []
   @Published var isLoading = false
+  @Published var loadedHistoryElements = 0
+  @Published var totalHistoryElements = 31
 
   @Published var errorIsPresented = false
   @Published var error: Error?
@@ -80,15 +82,21 @@ class DataStore: ObservableObject {
       if FileManager.default.fileExists(atPath: historyFilePath.path) {
         history = try historyAPIService.loadHistory(for: todayString)
       } else {
-        let fetchedHistory = try await historyAPIService.fetchHistory(starting: startDate, ending: todayString)
+        let fetchedHistory = try await historyAPIService.fetchHistory(
+          starting: startDate,
+          ending: todayString
+        )
 
         let updatedHistory = try await historyAPIService.updatePhotosWithLocalURLs(
           fetchedHistory,
           dateFormatter: dateFormatter
-        )
+        ) {
+          Task { @MainActor in
+            self.loadedHistoryElements += 1
+          }
+        }
 
         try historyAPIService.saveHistory(updatedHistory, for: todayString)
-
         history = updatedHistory
       }
     } catch {

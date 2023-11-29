@@ -96,16 +96,28 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
     return try JSONDecoder().decode([Photo].self, from: jsonData)
   }
 
-  func updatePhotosWithLocalURLs(_ photos: [Photo], dateFormatter: DateFormatter) async throws -> [Photo] {
-    return try await withThrowingTaskGroup(of: Photo?.self, returning: [Photo].self) { group in
+  func updatePhotosWithLocalURLs(
+    _ photos: [Photo],
+    dateFormatter: DateFormatter,
+    onPhotoUpdated: @escaping () -> Void
+  ) async throws -> [Photo] {
+    var updatedPhotos = [Photo]()
+    try await withThrowingTaskGroup(of: Photo?.self) { group in
       for photo in photos {
         group.addTask {
           guard photo.mediaType == "image" else { return nil }
-          return try await self.updatePhotoWithLocalURL(photo, dateFormatter: dateFormatter)
+          let updatedPhoto = try await self.updatePhotoWithLocalURL(photo, dateFormatter: dateFormatter)
+          return updatedPhoto
         }
       }
-      return try await group.compactMap { $0 }.reduce(into: []) { $0.append($1) }
+      for try await updatedPhoto in group {
+        if updatedPhoto != nil {
+          onPhotoUpdated()
+          updatedPhotos.append(updatedPhoto!)
+        }
+      }
     }
+    return updatedPhotos
   }
 
   func updatePhotoWithLocalURL(_ photo: Photo, dateFormatter _: DateFormatter) async throws -> Photo {
