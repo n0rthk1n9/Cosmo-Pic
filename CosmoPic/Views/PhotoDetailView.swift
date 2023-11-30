@@ -15,47 +15,61 @@ struct PhotoDetailView: View {
 
   var body: some View {
     ScrollView {
-      if !dataStore.isLoading {
-        if let localFilename = dataStore.photo?.localFilename {
-          let localFileURL = FileManager.localFileURL(for: localFilename)
-          PhotoView(url: localFileURL)
-        } else {
-          if let hdUrl = dataStore.photo?.hdURL {
-            PhotoView(url: hdUrl)
-          }
-        }
-      } else {
-        ProgressView()
-      }
-      if showCheckmark {
-        Image(systemName: "checkmark.circle.fill")
+      VStack(alignment: .leading) {
+        Text(photo.title)
           .font(.title)
-          .foregroundStyle(.green)
-          .padding(.top)
-          .transition(.opacity)
-          .onAppear {
-            Task {
-              try await Task.sleep(nanoseconds: 1_000_000_000)
-              withAnimation {
-                showCheckmark = false
-              }
+          .padding(.horizontal)
+        if !dataStore.isLoading {
+          if let localFilename = dataStore.photo?.localFilename {
+            let localFileURL = FileManager.localFileURL(for: localFilename)
+            PhotoView(url: localFileURL)
+          } else {
+            if let hdUrl = dataStore.photo?.hdURL {
+              PhotoView(url: hdUrl)
             }
           }
-      } else if let photo = dataStore.photo, !isCurrentPhotoFavorite {
-        Button("Add to Favorites") {
-          addToFavorites(photo)
+        } else {
+          HStack {
+            Spacer()
+            ProgressView()
+            Spacer()
+          }
         }
-        .buttonStyle(.bordered)
-        .padding(.top)
-      }
-      if !dataStore.isLoading {
-        if let photoExplanation = dataStore.photo?.explanation {
-          Text(photoExplanation)
-            .padding()
-            .accessibilityIdentifier("photo-detail-view-photo-explanation")
+        HStack {
+          Spacer()
+          if showCheckmark {
+            Image(systemName: "checkmark.circle.fill")
+              .font(.title)
+              .foregroundStyle(.green)
+              .padding(.top)
+              .transition(.opacity)
+              .onAppear {
+                Task {
+                  try await Task.sleep(nanoseconds: 1_000_000_000)
+                  withAnimation {
+                    showCheckmark = false
+                  }
+                }
+              }
+          } else if let photo = dataStore.photo, !isCurrentPhotoFavorite {
+            Button("Add to Favorites") {
+              addToFavorites(photo)
+            }
+            .buttonStyle(.bordered)
+            .padding(.top)
+          }
+          Spacer()
         }
-      } else {
-        EmptyView()
+
+        if !dataStore.isLoading {
+          if let photoExplanation = dataStore.photo?.explanation {
+            Text(photoExplanation)
+              .padding()
+              .accessibilityIdentifier("photo-detail-view-photo-explanation")
+          }
+        } else {
+          EmptyView()
+        }
       }
     }
     .task {
@@ -76,7 +90,7 @@ struct PhotoDetailView: View {
         Text(error.localizedDescription)
       }
     )
-    .navigationTitle(photo.title)
+    .navigationTitle(localizedDateString(from: photo.date))
   }
 
   func addToFavorites(_ photo: Photo) {
@@ -90,6 +104,23 @@ struct PhotoDetailView: View {
   func checkIfFavorite() {
     if let currentPhoto = dataStore.photo {
       isCurrentPhotoFavorite = dataStore.isFavorite(currentPhoto)
+    }
+  }
+
+  func localizedDateString(from dateString: String) -> String {
+    let inputFormatter = DateFormatter()
+    inputFormatter.dateFormat = "yyyy-MM-dd"
+    inputFormatter.locale = Locale(identifier: "en_US_POSIX")
+
+    let outputFormatter = DateFormatter()
+    outputFormatter.dateStyle = .medium
+    outputFormatter.timeStyle = .none
+    outputFormatter.locale = Locale.current
+
+    if let date = inputFormatter.date(from: dateString) {
+      return outputFormatter.string(from: date)
+    } else {
+      return "Invalid Date"
     }
   }
 }
