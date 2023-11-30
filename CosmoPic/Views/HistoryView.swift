@@ -57,6 +57,17 @@ struct HistoryView: View {
           }
         }
       }
+      .alert(
+        "Something went wrong...",
+        isPresented: $dataStore.errorIsPresented,
+        presenting: dataStore.error,
+        actions: { _ in
+          Button("Ok") {}
+        },
+        message: { error in
+          Text(error.localizedDescription)
+        }
+      )
       .navigationTitle("Photo History")
       .overlay {
         if dataStore.isLoading {
@@ -80,7 +91,3 @@ struct HistoryView: View {
     }
   }
 }
-
-// #Preview {
-//  HistoryView()
-// }

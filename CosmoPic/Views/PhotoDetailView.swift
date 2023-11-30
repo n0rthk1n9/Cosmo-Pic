@@ -93,16 +93,3 @@ struct PhotoDetailView: View {
     }
   }
 }
-
-// #Preview {
-//  PhotoDetailView(photo: Photo(
-//    copyright: "Bubu",
-//    date: "2023-11-24",
-//    explanation: "Test",
-//    hdURL: URL(string: "https://apod.nasa.gov/apod/image/1709/InsideSaturnsRings_Cassini_1280.gif"),
-//    mediaType: "image",
-//    serviceVersion: "v1",
-//    title: "Test",
-//    sdURL: URL(string: "https://apod.nasa.gov/apod/image/1709/InsideSaturnsRings_Cassini_1280.gif")
-//  ))
-// }

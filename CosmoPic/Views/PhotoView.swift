@@ -23,7 +23,3 @@ struct PhotoView: View {
     .padding(.horizontal)
   }
 }
-
-// #Preview {
-//  PhotoView()
-// }
