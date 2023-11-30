@@ -17,13 +17,13 @@ Cosmo Pic is a captivating and educational mobile application that offers astron
 |---------------------------------|-------------|:------:|
 | **Xcode and iOS Version**       | Used Xcode 15 with iOS 17.x | ✅ |
 | **No Third-party Frameworks**   | The app does not use any third-party frameworks | ✅ |
-| **Launch Screen**               | Description of the launch screen design and functionality | ✅ |
+| **Launch Screen**               | Launch screen featuring the App Icon in a bigger version | ✅ |
 | **Completed Features**          | All features in the app are completed and fully functional | ✅ |
-| **List Screen**                 | Description of the list screen and its functionality | ✅ |
+| **List Screen**                 | The history is loaded as a list | ✅ |
 | **Detail View Navigation**      | Details of how tapping an item navigates to a detailed view | ✅ |
 | **Network Calls**               | Explanation of the network calls implemented using URLSession | ✅ |
-| **Error Handling**              | Description of error handling mechanisms for network calls | ✅ |
-| **Data Saving Method**          | Description of the method used to save data (e.g., UserDefaults, plist, file) | ✅ |
+| **Error Handling**              | Cusom Error Handlers for Network and Decoding errors | ✅ |
+| **Data Saving Method**          | Use UserDefaults and files to store data | ✅ |
 | **Concurrency**                 | Usage of Swift Modern Concurrency, async/await, and MainActor | ✅ |
 | **User Communication**          | Strategies used to communicate with the user when data is missing or empty | ✅ |
 | **UI Design Compliance**        | Assurance of no UI issues and adaptability to different orientations and themes | ✅ |
@@ -31,7 +31,7 @@ Cosmo Pic is a captivating and educational mobile application that offers astron
 | **MVVM Architecture**           | MVVM is used | ✅ |
 | **SwiftLint**                   | Confirmation of using SwiftLint with Kodeco’s configuration | ✅ |
 | **Build Status**                | The app builds without warnings or errors | ✅ |
-| **Testing**                     | Details of the test plan, including UI and unit tests, and code coverage | ✅ |
+| **Testing**                     | Test plan, including UI and unit tests, and code coverage | ✅ |
 | **Additional Elements**         | Custom app icon, onboarding screen, custom display name, SwiftUI animations, styled text properties | ✅ |
 
 ### Specific File Locations
