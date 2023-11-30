@@ -8,14 +8,17 @@
 import XCTest
 
 final class CosmoPicUITests: XCTestCase {
-  var app: XCUIApplication!
+  var app: XCUIApplication = .init()
 
   override func setUp() {
     app = XCUIApplication()
+    app.launchArguments = ["UITesting"]
     app.launch()
   }
 
   func test_APODView_photoView_isLoaded() {
+    app.dismissWelcomeSheet()
+
     let photoView = app.descendants(matching: .any)
       .matching(identifier: "apod-view-photo")
       .element
@@ -26,6 +29,14 @@ final class CosmoPicUITests: XCTestCase {
   }
 
   func test_APODView_favoritesButton_vanishes() {
+    app.dismissWelcomeSheet()
+
+    let photoView = app.descendants(matching: .any)
+      .matching(identifier: "apod-view-photo")
+      .element
+
+    XCTAssertTrue(photoView.waitForExistence(timeout: 20))
+
     let favoritesTab = app.tabBars.buttons.element(boundBy: 1)
 
     favoritesTab.tap()
@@ -60,6 +71,8 @@ final class CosmoPicUITests: XCTestCase {
   }
 
   func test_photoDetailView_photoView_isLoaded() {
+    app.dismissWelcomeSheet()
+
     let favoritesTab = app.tabBars.buttons.element(boundBy: 1)
 
     favoritesTab.tap()
@@ -79,9 +92,14 @@ final class CosmoPicUITests: XCTestCase {
       .matching(identifier: "photo-detail-view-photo-explanation")
       .element
 
-    XCTAssertTrue(photoDetailViewPhotoExplanationView.exists)
+    XCTAssertTrue(photoDetailViewPhotoExplanationView.waitForExistence(timeout: 20))
 
     screenshot(named: "photo-detail-view-photo-explanation")
+  }
+
+  func test_WelcomeScreen_isLoaded() {
+    let welcomeText = app.staticTexts["Welcome to Cosmo Pic"]
+    XCTAssertTrue(welcomeText.waitForExistence(timeout: 10))
   }
 }
 
@@ -96,5 +114,17 @@ extension XCTestCase {
     )
     screenshotAttachment.lifetime = .keepAlways
     add(screenshotAttachment)
+  }
+}
+
+extension XCUIApplication {
+  func dismissWelcomeSheet() {
+    let welcomeText = staticTexts["Welcome to Cosmo Pic"]
+    XCTAssertTrue(welcomeText.waitForExistence(timeout: 10))
+
+    if welcomeText.exists {
+      let getStartedButton = buttons["Get Started"]
+      getStartedButton.tap()
+    }
   }
 }

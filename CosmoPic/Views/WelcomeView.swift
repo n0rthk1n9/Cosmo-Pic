@@ -25,7 +25,7 @@ struct WelcomeView: View {
           featureText: "Discover breathtaking space imagery and learn about the cosmos."
         )
         FeatureView(
-          iconName: "heart",
+          iconName: "list.star",
           featureTitle: "Favorites",
           featureText: "Save your favorite cosmic images to view anytime."
         )

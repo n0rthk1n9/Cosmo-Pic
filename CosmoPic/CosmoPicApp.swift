@@ -11,6 +11,12 @@ import SwiftUI
 struct CosmoPicApp: App {
   @StateObject var dataStore = DataStore()
 
+  init() {
+    if ProcessInfo.processInfo.arguments.contains("UITesting") {
+      UserDefaults.standard.set(false, forKey: "WelcomeScreenShown")
+    }
+  }
+
   var body: some Scene {
     WindowGroup {
       MainView()

@@ -9,7 +9,7 @@
 import XCTest
 
 final class CosmoPicDataStoreTests: XCTestCase {
-  var dataStore: DataStore!
+  var dataStore: DataStore = .init()
 
   override func setUp() {
     dataStore = DataStore(
