@@ -73,17 +73,25 @@ struct APODView: View {
     .onAppear {
       dataStore.loadFavorites()
     }
-    .alert(
-      "Something went wrong...",
-      isPresented: $dataStore.errorIsPresented,
-      presenting: dataStore.error,
-      actions: { _ in
-        Button("Ok") {}
-      },
-      message: { error in
-        Text(error.localizedDescription)
+    .alert(isPresented: $dataStore.errorIsPresented) {
+      if case .photoForTodayNotAvailableYet = dataStore.error as? FetchPhotoError {
+        return Alert(
+          title: Text("Photo Not Available"),
+          message: Text(dataStore.error?
+            .localizedDescription ?? "The photo for today is not available yet, do you want to load yesterdays photo?"),
+          primaryButton: .default(Text("Load Yesterday's Photo")) {
+            loadYesterdayPhoto()
+          },
+          secondaryButton: .cancel()
+        )
+      } else {
+        return Alert(
+          title: Text("Error"),
+          message: Text(dataStore.error?.localizedDescription ?? "An unknown error occurred"),
+          dismissButton: .default(Text("Ok"))
+        )
       }
-    )
+    }
   }
 
   func addToFavorites(_ photo: Photo) {
@@ -97,6 +105,17 @@ struct APODView: View {
   func checkIfFavorite() {
     if let currentPhoto = dataStore.photo {
       isCurrentPhotoFavorite = dataStore.isFavorite(currentPhoto)
+    }
+  }
+
+  func loadYesterdayPhoto() {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    guard let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date()) else { return }
+    let yesterdayString = dateFormatter.string(from: yesterday)
+
+    Task {
+      await dataStore.getPhoto(for: yesterdayString)
     }
   }
 }

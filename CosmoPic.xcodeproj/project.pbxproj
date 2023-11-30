@@ -24,6 +24,8 @@
 		575CFF5D2B17F2E400294392 /* FeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CFF5C2B17F2E400294392 /* FeatureView.swift */; };
 		578A19C42B0BA94E00294392 /* CosmoPicDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19C32B0BA94E00294392 /* CosmoPicDataStoreTests.swift */; };
 		578A19D02B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */; };
+		57A827EB2B18A3C600294392 /* JSONDecoderErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A827EA2B18A3C600294392 /* JSONDecoderErrorHandler.swift */; };
+		57A827ED2B18ACD400294392 /* FetchHistoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A827EC2B18ACD300294392 /* FetchHistoryError.swift */; };
 		57D8C4412B0D53C100294392 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43D2B0D53C100294392 /* Preview Content */; };
 		57D8C4422B0D53C100294392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43E2B0D53C100294392 /* Assets.xcassets */; };
 		57D8C4432B0D53C100294392 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8C43F2B0D53C100294392 /* MainView.swift */; };
@@ -76,6 +78,8 @@
 		578A19C92B0BA94E00294392 /* CosmoPicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmoPicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		578A19CD2B0BA94E00294392 /* CosmoPicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicUITests.swift; sourceTree = "<group>"; };
 		578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		57A827EA2B18A3C600294392 /* JSONDecoderErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderErrorHandler.swift; sourceTree = "<group>"; };
+		57A827EC2B18ACD300294392 /* FetchHistoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchHistoryError.swift; sourceTree = "<group>"; };
 		57D8C43D2B0D53C100294392 /* Preview Content */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Preview Content"; path = "CosmoPic/Preview Content"; sourceTree = SOURCE_ROOT; };
 		57D8C43E2B0D53C100294392 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CosmoPic/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		57D8C43F2B0D53C100294392 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainView.swift; path = CosmoPic/Views/MainView.swift; sourceTree = SOURCE_ROOT; };
@@ -116,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				571232722B115FD100294392 /* Photo.swift */,
-				571232762B11650900294392 /* FetchPhotoError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -141,11 +144,14 @@
 			children = (
 				574D86992B1583C800294392 /* PhotoAPIServiceProtocol.swift */,
 				574D86962B15837100294392 /* PhotoAPIService.swift */,
+				571232762B11650900294392 /* FetchPhotoError.swift */,
+				57A827EA2B18A3C600294392 /* JSONDecoderErrorHandler.swift */,
 				57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */,
 				57FC94282B166F3E00294392 /* PhotoAPIServiceErrorMock.swift */,
 				574D86A22B16453D00294392 /* HistoryAPIServiceProtocol.swift */,
 				574D869F2B16452500294392 /* HistoryAPIService.swift */,
 				57FC94262B166CB800294392 /* HistoryAPIServiceMock.swift */,
+				57A827EC2B18ACD300294392 /* FetchHistoryError.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -406,10 +412,12 @@
 				574D869C2B160CFB00294392 /* DataStore.swift in Sources */,
 				574D86A32B16453D00294392 /* HistoryAPIServiceProtocol.swift in Sources */,
 				575CFF5D2B17F2E400294392 /* FeatureView.swift in Sources */,
+				57A827ED2B18ACD400294392 /* FetchHistoryError.swift in Sources */,
 				574D869E2B161C6200294392 /* PhotoView.swift in Sources */,
 				5712326D2B112BD400294392 /* APODView.swift in Sources */,
 				57FC94272B166CB800294392 /* HistoryAPIServiceMock.swift in Sources */,
 				574D86A02B16452600294392 /* HistoryAPIService.swift in Sources */,
+				57A827EB2B18A3C600294392 /* JSONDecoderErrorHandler.swift in Sources */,
 				57E049072B147CF500294392 /* FileManager.swift in Sources */,
 				571232772B11650A00294392 /* FetchPhotoError.swift in Sources */,
 				57D8C4432B0D53C100294392 /* MainView.swift in Sources */,

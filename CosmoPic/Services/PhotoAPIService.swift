@@ -50,24 +50,29 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
 
     let request = URLRequest(url: url)
 
-    let (data, response) = try await session.data(for: request)
-    guard let httpResponse = response as? HTTPURLResponse else {
-      throw FetchPhotoError.invalidResponse
-    }
-
-    if httpResponse.statusCode == 404 {
-      let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-      if json?["msg"] as? String == "No data available for date: \(date)" {
-        throw FetchPhotoError.invalidURL
+    do {
+      let (data, response) = try await session.data(for: request)
+      guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 404 {
+          let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+          if json?["msg"] as? String == "No data available for date: \(date)" {
+            throw FetchPhotoError.photoForTodayNotAvailableYet
+          }
+        }
+        throw FetchPhotoError.invalidResponseCode
       }
-    }
 
-    return try JSONDecoder().decode(Photo.self, from: data)
+      let photo = try JSONDecoder().decode(Photo.self, from: data)
+      return photo
+    } catch {
+      try JSONDecoderErrorHandler().handleError(error: error)
+      throw error
+    }
   }
 
   func savePhoto(_ photo: Photo, for date: String, to directory: URL) async throws -> Photo {
     guard photo.mediaType == "image", let photoHdURL = photo.hdURL else {
-      throw FetchPhotoError.fileError
+      throw FetchPhotoError.savePhotoError
     }
 
     let fileExtension = photoHdURL.pathExtension
@@ -89,18 +94,23 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
   }
 
   func loadPhoto(from jsonPath: URL, for _: String) throws -> Photo {
-    let jsonData = try Data(contentsOf: jsonPath)
-    let photo = try JSONDecoder().decode(Photo.self, from: jsonData)
+    do {
+      let jsonData = try Data(contentsOf: jsonPath)
+      let photo = try JSONDecoder().decode(Photo.self, from: jsonData)
 
-    if let localFilename = photo.localFilename {
-      let localFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(localFilename)
-      if !FileManager.default.fileExists(atPath: localFileURL.path) {
+      if let localFilename = photo.localFilename {
+        let localFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(localFilename)
+        if !FileManager.default.fileExists(atPath: localFileURL.path) {
+          throw FetchPhotoError.noFileFound
+        }
+      } else {
         throw FetchPhotoError.noFileFound
       }
-    } else {
-      throw FetchPhotoError.noFileFound
-    }
 
-    return photo
+      return photo
+    } catch {
+      try JSONDecoderErrorHandler().handleError(error: error)
+      throw error
+    }
   }
 }
