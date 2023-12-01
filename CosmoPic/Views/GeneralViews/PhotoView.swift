@@ -16,7 +16,12 @@ struct PhotoView: View {
         .resizable()
         .aspectRatio(contentMode: .fit)
     } placeholder: {
-      ProgressView()
+      HStack {
+        Spacer()
+        ProgressView()
+          .frame(height: 300)
+        Spacer()
+      }
     }
     .cornerRadius(20)
     .clipped()

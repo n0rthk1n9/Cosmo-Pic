@@ -33,6 +33,10 @@
 		57D8C4462B0D55E500294392 /* CosmoPicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CD2B0BA94E00294392 /* CosmoPicUITests.swift */; };
 		57E049072B147CF500294392 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E049062B147CF500294392 /* FileManager.swift */; };
 		57E049092B1481F300294392 /* APOD-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57E049082B1481F300294392 /* APOD-Info.plist */; };
+		57E4DD7E2B1A230100294392 /* APODContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4DD7D2B1A230100294392 /* APODContentView.swift */; };
+		57E4DD802B1A235600294392 /* DynamicPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4DD7F2B1A235600294392 /* DynamicPhotoView.swift */; };
+		57E4DD822B1A237A00294392 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4DD812B1A237A00294392 /* CheckmarkView.swift */; };
+		57E4DD842B1A23AE00294392 /* FavoriteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4DD832B1A23AE00294392 /* FavoriteButtonView.swift */; };
 		57FC94252B1667AF00294392 /* PhotoAPIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */; };
 		57FC94272B166CB800294392 /* HistoryAPIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC94262B166CB800294392 /* HistoryAPIServiceMock.swift */; };
 		57FC94292B166F3E00294392 /* PhotoAPIServiceErrorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC94282B166F3E00294392 /* PhotoAPIServiceErrorMock.swift */; };
@@ -86,6 +90,10 @@
 		57D8C4402B0D53C100294392 /* CosmoPicApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CosmoPicApp.swift; path = CosmoPic/CosmoPicApp.swift; sourceTree = SOURCE_ROOT; };
 		57E049062B147CF500294392 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		57E049082B1481F300294392 /* APOD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "APOD-Info.plist"; sourceTree = "<group>"; };
+		57E4DD7D2B1A230100294392 /* APODContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODContentView.swift; sourceTree = "<group>"; };
+		57E4DD7F2B1A235600294392 /* DynamicPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPhotoView.swift; sourceTree = "<group>"; };
+		57E4DD812B1A237A00294392 /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
+		57E4DD832B1A23AE00294392 /* FavoriteButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButtonView.swift; sourceTree = "<group>"; };
 		57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIServiceMock.swift; sourceTree = "<group>"; };
 		57FC94262B166CB800294392 /* HistoryAPIServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAPIServiceMock.swift; sourceTree = "<group>"; };
 		57FC94282B166F3E00294392 /* PhotoAPIServiceErrorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIServiceErrorMock.swift; sourceTree = "<group>"; };
@@ -127,14 +135,13 @@
 		5712326B2B112B4C00294392 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				57E4DD852B1A27C700294392 /* GeneralViews */,
 				575CFF5A2B17F2C800294392 /* WelcomeView.swift */,
 				575CFF5C2B17F2E400294392 /* FeatureView.swift */,
 				57D8C43F2B0D53C100294392 /* MainView.swift */,
-				5712326C2B112BD400294392 /* APODView.swift */,
-				574D869D2B161C6200294392 /* PhotoView.swift */,
+				57E4DD7C2B1A22D600294392 /* APODViews */,
 				5712326E2B112BE500294392 /* FavoritesView.swift */,
 				571232702B112C0800294392 /* HistoryView.swift */,
-				574D86942B14A43A00294392 /* PhotoDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,6 +232,27 @@
 				57E049062B147CF500294392 /* FileManager.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		57E4DD7C2B1A22D600294392 /* APODViews */ = {
+			isa = PBXGroup;
+			children = (
+				5712326C2B112BD400294392 /* APODView.swift */,
+				57E4DD7D2B1A230100294392 /* APODContentView.swift */,
+			);
+			path = APODViews;
+			sourceTree = "<group>";
+		};
+		57E4DD852B1A27C700294392 /* GeneralViews */ = {
+			isa = PBXGroup;
+			children = (
+				574D86942B14A43A00294392 /* PhotoDetailView.swift */,
+				57E4DD7F2B1A235600294392 /* DynamicPhotoView.swift */,
+				574D869D2B161C6200294392 /* PhotoView.swift */,
+				57E4DD812B1A237A00294392 /* CheckmarkView.swift */,
+				57E4DD832B1A23AE00294392 /* FavoriteButtonView.swift */,
+			);
+			path = GeneralViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,6 +431,8 @@
 				571232732B115FD100294392 /* Photo.swift in Sources */,
 				574D86952B14A43A00294392 /* PhotoDetailView.swift in Sources */,
 				574D869A2B1583C800294392 /* PhotoAPIServiceProtocol.swift in Sources */,
+				57E4DD822B1A237A00294392 /* CheckmarkView.swift in Sources */,
+				57E4DD842B1A23AE00294392 /* FavoriteButtonView.swift in Sources */,
 				57FC94252B1667AF00294392 /* PhotoAPIServiceMock.swift in Sources */,
 				5712326F2B112BE500294392 /* FavoritesView.swift in Sources */,
 				574D86972B15837100294392 /* PhotoAPIService.swift in Sources */,
@@ -412,8 +442,10 @@
 				574D869C2B160CFB00294392 /* DataStore.swift in Sources */,
 				574D86A32B16453D00294392 /* HistoryAPIServiceProtocol.swift in Sources */,
 				575CFF5D2B17F2E400294392 /* FeatureView.swift in Sources */,
+				57E4DD7E2B1A230100294392 /* APODContentView.swift in Sources */,
 				57A827ED2B18ACD400294392 /* FetchHistoryError.swift in Sources */,
 				574D869E2B161C6200294392 /* PhotoView.swift in Sources */,
+				57E4DD802B1A235600294392 /* DynamicPhotoView.swift in Sources */,
 				5712326D2B112BD400294392 /* APODView.swift in Sources */,
 				57FC94272B166CB800294392 /* HistoryAPIServiceMock.swift in Sources */,
 				574D86A02B16452600294392 /* HistoryAPIService.swift in Sources */,
