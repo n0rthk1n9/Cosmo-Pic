@@ -24,7 +24,9 @@ struct APODView: View {
             showCheckmark: $showCheckmark
           )
         } else {
-          ContentUnavailableView("No Data available", systemImage: "x.circle")
+          if dataStore.errorIsPresented {
+            ContentUnavailableView("No Data available", systemImage: "x.circle")
+          }
         }
       }
       .navigationTitle("Cosmo Pic")

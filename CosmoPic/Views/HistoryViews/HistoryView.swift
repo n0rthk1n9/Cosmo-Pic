@@ -16,28 +16,32 @@ struct HistoryView: View {
 
   var body: some View {
     NavigationStack {
-      List(sortedHistory, id: \.title) { photo in
-        NavigationLink(destination: PhotoDetailView(photo: photo)) {
-          HistoryRowView(photo: photo)
-        }
+      if sortedHistory.isEmpty && !dataStore.isLoadingHistory {
+        ContentUnavailableView("No Data available", systemImage: "x.circle")
+      } else {
+        historyListView
       }
-      .alert(
-        "Error",
-        isPresented: $dataStore.errorIsPresented,
-        presenting: dataStore.error,
-        actions: { _ in
-          Button("Ok") {}
-        },
-        message: { error in
-          Text(error.localizedDescription)
-        }
-      )
-      .navigationTitle("Photo History")
-      .overlay(loadingOverlay)
-      .task {
-        await dataStore.getHistory()
+    }
+    .alert(
+      "Error",
+      isPresented: $dataStore.errorIsPresented,
+      presenting: dataStore.error,
+      actions: { _ in Button("Ok") {} },
+      message: { error in Text(error.localizedDescription) }
+    )
+    .navigationTitle("Photo History")
+    .overlay(loadingOverlay)
+    .task {
+      await dataStore.getHistory()
+    }
+    .accessibilityIdentifier("history-list")
+  }
+
+  private var historyListView: some View {
+    List(sortedHistory, id: \.title) { photo in
+      NavigationLink(destination: PhotoDetailView(photo: photo)) {
+        HistoryRowView(photo: photo)
       }
-      .accessibilityIdentifier("history-list")
     }
   }
 
