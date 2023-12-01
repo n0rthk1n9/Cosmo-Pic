@@ -137,13 +137,13 @@
 		5712326B2B112B4C00294392 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				57E4DD852B1A27C700294392 /* GeneralViews */,
 				575CFF5A2B17F2C800294392 /* WelcomeView.swift */,
 				575CFF5C2B17F2E400294392 /* FeatureView.swift */,
 				57D8C43F2B0D53C100294392 /* MainView.swift */,
 				57E4DD7C2B1A22D600294392 /* APODViews */,
 				5712326E2B112BE500294392 /* FavoritesView.swift */,
 				57E4DD892B1A2BBE00294392 /* HistoryViews */,
+				57E4DD852B1A27C700294392 /* GeneralViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
