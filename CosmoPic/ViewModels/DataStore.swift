@@ -12,6 +12,7 @@ class DataStore: ObservableObject {
   @Published var history: [Photo] = []
   @Published var favorites: [Photo] = []
   @Published var isLoading = false
+  @Published var isLoadingHistory = false
   @Published var loadedHistoryElements = 0
   @Published var totalHistoryElements = 31
 
@@ -69,7 +70,7 @@ class DataStore: ObservableObject {
 
   @MainActor
   func getHistory() async {
-    isLoading = true
+    isLoadingHistory = true
     do {
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -106,7 +107,7 @@ class DataStore: ObservableObject {
       self.error = error
       errorIsPresented = true
     }
-    isLoading = false
+    isLoadingHistory = false
   }
 
   func loadFavorites() {

@@ -66,15 +66,12 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
   }
 
   func saveHistory(_ history: [Photo], for date: String) throws {
-    do { let historyFileName = "\(date)-history.json"
-      let historyFilePath = FileManager.documentsDirectoryURL.appendingPathComponent(historyFileName)
-      let encoder = JSONEncoder()
-      encoder.outputFormatting = .prettyPrinted
-      let jsonData = try encoder.encode(history)
-      try jsonData.write(to: historyFilePath)
-    } catch {
-      throw error
-    }
+    let historyFileName = "\(date)-history.json"
+    let historyFilePath = FileManager.documentsDirectoryURL.appendingPathComponent(historyFileName)
+    let encoder = JSONEncoder()
+    encoder.outputFormatting = .prettyPrinted
+    let jsonData = try encoder.encode(history)
+    try jsonData.write(to: historyFilePath)
   }
 
   func loadHistory(for date: String) throws -> [Photo] {
@@ -94,57 +91,45 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
     dateFormatter: DateFormatter,
     onPhotoUpdated: @escaping () -> Void
   ) async throws -> [Photo] {
-    do {
-      var updatedPhotos: [Photo] = []
-      try await withThrowingTaskGroup(of: Photo?.self) { group in
-        for photo in photos {
-          group.addTask {
-            guard photo.mediaType == "image" else { return nil }
-            let updatedPhoto = try await self.updatePhotoWithLocalURL(photo, dateFormatter: dateFormatter)
-            return updatedPhoto
-          }
-        }
-        for try await updatedPhotoOptional in group {
-          if let updatedPhoto = updatedPhotoOptional {
-            onPhotoUpdated()
-            updatedPhotos.append(updatedPhoto)
-          }
+    var updatedPhotos: [Photo] = []
+    try await withThrowingTaskGroup(of: Photo?.self) { group in
+      for photo in photos {
+        group.addTask {
+          guard photo.mediaType == "image" else { return nil }
+          let updatedPhoto = try await self.updatePhotoWithLocalURL(photo, dateFormatter: dateFormatter)
+          return updatedPhoto
         }
       }
-      return updatedPhotos
-    } catch {
-      throw error
+      for try await updatedPhotoOptional in group {
+        if let updatedPhoto = updatedPhotoOptional {
+          onPhotoUpdated()
+          updatedPhotos.append(updatedPhoto)
+        }
+      }
     }
+    return updatedPhotos
   }
 
   func updatePhotoWithLocalURL(_ photo: Photo, dateFormatter _: DateFormatter) async throws -> Photo {
-    do {
-      var updatedPhoto = photo
-      let identifier = photo.date
-      guard let photoHdURL = photo.hdURL else {
-        throw FetchHistoryError.invalidURL
-      }
-      if let localFilename = try? await cacheImage(from: photoHdURL, identifier: identifier) {
-        updatedPhoto.localFilename = localFilename
-      }
-      return updatedPhoto
-    } catch {
-      throw error
+    var updatedPhoto = photo
+    let identifier = photo.date
+    guard let photoHdURL = photo.hdURL else {
+      throw FetchHistoryError.invalidURL
     }
+    if let localFilename = try? await cacheImage(from: photoHdURL, identifier: identifier) {
+      updatedPhoto.localFilename = localFilename
+    }
+    return updatedPhoto
   }
 
   func cacheImage(from url: URL, identifier: String) async throws -> String {
-    do {
-      let fileExtension = url.pathExtension
-      let filename = "\(identifier).\(fileExtension)"
-      let localFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(filename)
+    let fileExtension = url.pathExtension
+    let filename = "\(identifier).\(fileExtension)"
+    let localFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(filename)
 
-      let (imageData, _) = try await URLSession.shared.data(from: url)
-      try imageData.write(to: localFileURL)
+    let (imageData, _) = try await URLSession.shared.data(from: url)
+    try imageData.write(to: localFileURL)
 
-      return filename
-    } catch {
-      throw error
-    }
+    return filename
   }
 }

@@ -19,57 +19,23 @@ struct PhotoDetailView: View {
         Text(photo.title)
           .font(.title)
           .padding(.horizontal)
-        if !dataStore.isLoading {
-          if let localFilename = dataStore.photo?.localFilename {
-            let localFileURL = FileManager.localFileURL(for: localFilename)
-            PhotoView(url: localFileURL)
-          } else {
-            if let hdUrl = dataStore.photo?.hdURL {
-              PhotoView(url: hdUrl)
-            }
-          }
-        } else {
-          HStack {
-            Spacer()
-            ProgressView()
-            Spacer()
-          }
-        }
+        DynamicPhotoView(photo: photo)
         HStack {
           Spacer()
           if showCheckmark {
-            Image(systemName: "checkmark.circle.fill")
-              .font(.title)
-              .foregroundStyle(.green)
-              .padding(.top)
-              .transition(.opacity)
-              .onAppear {
-                Task {
-                  try await Task.sleep(nanoseconds: 1_000_000_000)
-                  withAnimation {
-                    showCheckmark = false
-                  }
-                }
-              }
-          } else if let photo = dataStore.photo, !isCurrentPhotoFavorite {
-            Button("Add to Favorites") {
-              addToFavorites(photo)
-            }
-            .buttonStyle(.bordered)
-            .padding(.top)
+            CheckmarkView(showCheckmark: $showCheckmark)
+          } else if !isCurrentPhotoFavorite {
+            FavoriteButtonView(
+              photo: photo,
+              isCurrentPhotoFavorite: $isCurrentPhotoFavorite,
+              showCheckmark: $showCheckmark
+            )
           }
           Spacer()
         }
-
-        if !dataStore.isLoading {
-          if let photoExplanation = dataStore.photo?.explanation {
-            Text(photoExplanation)
-              .padding()
-              .accessibilityIdentifier("photo-detail-view-photo-explanation")
-          }
-        } else {
-          EmptyView()
-        }
+        Text(photo.explanation)
+          .padding()
+          .accessibilityIdentifier("photo-detail-view-photo-explanation")
       }
     }
     .task {
@@ -81,15 +47,11 @@ struct PhotoDetailView: View {
       dataStore.loadFavorites()
     }
     .alert(
-      "Something went wrong...",
+      "Error",
       isPresented: $dataStore.errorIsPresented,
       presenting: dataStore.error,
-      actions: { _ in
-        Button("Ok") {}
-      },
-      message: { error in
-        Text(error.localizedDescription)
-      }
+      actions: { _ in Button("Ok") {} },
+      message: { error in Text(error.localizedDescription) }
     )
     .navigationTitle(localizedDateString(from: photo.date))
   }

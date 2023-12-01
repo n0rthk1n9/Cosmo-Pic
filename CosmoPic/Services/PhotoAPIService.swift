@@ -79,18 +79,14 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
     let localFilename = "\(date).\(fileExtension)"
     let localImagePath = directory.appendingPathComponent(localFilename)
 
-    do {
-      if !FileManager.default.fileExists(atPath: localImagePath.path) {
-        let (imageData, _) = try await URLSession.shared.data(from: photoHdURL)
-        try imageData.write(to: localImagePath)
-      }
-
-      var updatedPhoto = photo
-      updatedPhoto.localFilename = localFilename
-      return updatedPhoto
-    } catch {
-      throw error
+    if !FileManager.default.fileExists(atPath: localImagePath.path) {
+      let (imageData, _) = try await URLSession.shared.data(from: photoHdURL)
+      try imageData.write(to: localImagePath)
     }
+
+    var updatedPhoto = photo
+    updatedPhoto.localFilename = localFilename
+    return updatedPhoto
   }
 
   func loadPhoto(from jsonPath: URL, for _: String) throws -> Photo {
