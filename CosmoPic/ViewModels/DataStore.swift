@@ -31,9 +31,12 @@ class DataStore: ObservableObject {
     self.historyAPIService = historyAPIService
   }
 
+  func resetPhoto() {
+    photo = nil
+  }
+
   @MainActor
   func getPhoto(for date: String) async {
-    photo = nil
     isLoading = true
     let jsonPathURL = FileManager.documentsDirectoryURL.appendingPathComponent("\(date).json")
 

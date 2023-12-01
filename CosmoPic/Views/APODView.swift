@@ -76,6 +76,7 @@ struct APODView: View {
       checkIfFavorite()
     }
     .onAppear {
+      dataStore.resetPhoto()
       dataStore.loadFavorites()
     }
     .alert(isPresented: $dataStore.errorIsPresented) {

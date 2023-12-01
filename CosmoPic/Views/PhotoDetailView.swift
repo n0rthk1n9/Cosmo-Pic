@@ -77,6 +77,7 @@ struct PhotoDetailView: View {
       checkIfFavorite()
     }
     .onAppear {
+      dataStore.resetPhoto()
       dataStore.loadFavorites()
     }
     .alert(
