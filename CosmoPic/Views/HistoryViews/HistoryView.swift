@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HistoryView: View {
   @EnvironmentObject var dataStore: DataStore
+  @State private var showAlert = false
 
   private var sortedHistory: [Photo] {
     dataStore.history.sorted { $0.date > $1.date }
@@ -22,17 +23,18 @@ struct HistoryView: View {
         historyListView
       }
     }
-    .alert(
-      "Error",
-      isPresented: $dataStore.errorIsPresented,
-      presenting: dataStore.error,
-      actions: { _ in Button("Ok") {} },
-      message: { error in Text(error.localizedDescription) }
-    )
+    .alert(isPresented: $showAlert) {
+      Alert(
+        title: Text("Error"),
+        message: Text(dataStore.error?.localizedDescription ?? "An unknown error occurred"),
+        dismissButton: .default(Text("Ok"))
+      )
+    }
     .navigationTitle("Photo History")
     .overlay(loadingOverlay)
     .task {
       await dataStore.getHistory()
+      checkAndPrepareErrorAlert()
     }
     .accessibilityIdentifier("history-list")
   }
@@ -55,6 +57,14 @@ struct HistoryView: View {
         Text("\(dataStore.loadedHistoryElements) / \(dataStore.totalHistoryElements)")
       }
       .padding()
+    }
+  }
+
+  func checkAndPrepareErrorAlert() {
+    if let urlError = dataStore.error as? URLError, urlError.code == .cancelled {
+      showAlert = false
+    } else if dataStore.error != nil {
+      showAlert = true
     }
   }
 }

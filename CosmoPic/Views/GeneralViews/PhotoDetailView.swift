@@ -11,6 +11,8 @@ struct PhotoDetailView: View {
   @EnvironmentObject var dataStore: DataStore
   @State private var isCurrentPhotoFavorite = false
   @State private var showCheckmark = false
+  @State private var showAlert = false
+
   let photo: Photo
 
   var body: some View {
@@ -40,19 +42,20 @@ struct PhotoDetailView: View {
     }
     .task {
       await dataStore.getPhoto(for: photo.date)
+      checkAndPrepareErrorAlert()
       checkIfFavorite()
     }
     .onAppear {
       dataStore.resetPhoto()
       dataStore.loadFavorites()
     }
-    .alert(
-      "Error",
-      isPresented: $dataStore.errorIsPresented,
-      presenting: dataStore.error,
-      actions: { _ in Button("Ok") {} },
-      message: { error in Text(error.localizedDescription) }
-    )
+    .alert(isPresented: $showAlert) {
+      Alert(
+        title: Text("Error"),
+        message: Text(dataStore.error?.localizedDescription ?? "An unknown error occurred"),
+        dismissButton: .default(Text("Ok"))
+      )
+    }
     .navigationTitle(localizedDateString(from: photo.date))
   }
 
@@ -84,6 +87,14 @@ struct PhotoDetailView: View {
       return outputFormatter.string(from: date)
     } else {
       return "Invalid Date"
+    }
+  }
+
+  func checkAndPrepareErrorAlert() {
+    if let urlError = dataStore.error as? URLError, urlError.code == .cancelled {
+      showAlert = false
+    } else if dataStore.error != nil {
+      showAlert = true
     }
   }
 }

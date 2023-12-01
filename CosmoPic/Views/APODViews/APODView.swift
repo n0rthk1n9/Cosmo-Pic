@@ -11,6 +11,7 @@ struct APODView: View {
   @EnvironmentObject var dataStore: DataStore
   @State private var isCurrentPhotoFavorite = false
   @State private var showCheckmark = false
+  @State private var showAlert = false
 
   var body: some View {
     NavigationStack {
@@ -34,7 +35,7 @@ struct APODView: View {
       .task {
         await initialFetch()
       }
-      .alert(isPresented: $dataStore.errorIsPresented, content: errorAlert)
+      .alert(isPresented: $showAlert, content: errorAlert)
     }
   }
 
@@ -48,7 +49,16 @@ struct APODView: View {
     dateFormatter.dateFormat = "yyyy-MM-dd"
     let currentDate = dateFormatter.string(from: Date())
     await dataStore.getPhoto(for: currentDate)
+    checkAndPrepareErrorAlert()
     checkIfFavorite()
+  }
+
+  func checkAndPrepareErrorAlert() {
+    if let urlError = dataStore.error as? URLError, urlError.code == .cancelled {
+      showAlert = false
+    } else if dataStore.error != nil {
+      showAlert = true
+    }
   }
 
   func errorAlert() -> Alert {
