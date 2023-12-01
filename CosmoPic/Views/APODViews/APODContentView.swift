@@ -19,6 +19,7 @@ struct APODContentView: View {
         .font(.largeTitle)
 
       DynamicPhotoView(photo: photo)
+        .accessibilityIdentifier("apod-view-photo")
 
       Text(photo.title)
         .padding([.top, .trailing, .leading])
@@ -32,6 +33,7 @@ struct APODContentView: View {
           isCurrentPhotoFavorite: $isCurrentPhotoFavorite,
           showCheckmark: $showCheckmark
         )
+        .accessibilityIdentifier("apod-view-favorites-button")
       }
     }
   }

@@ -84,14 +84,14 @@ final class CosmoPicDataStoreTests: XCTestCase {
   }
 
   func test_getHistory() async {
-    XCTAssertFalse(dataStore.isLoading)
+    XCTAssertFalse(dataStore.isLoadingHistory)
     XCTAssertEqual(dataStore.history, [])
     XCTAssertFalse(dataStore.errorIsPresented)
     XCTAssertNil(dataStore.error)
 
     await dataStore.getHistory()
 
-    XCTAssertFalse(dataStore.isLoading)
+    XCTAssertFalse(dataStore.isLoadingHistory)
     XCTAssertEqual(
       dataStore.history,
       [
@@ -114,7 +114,7 @@ final class CosmoPicDataStoreTests: XCTestCase {
 
     await dataStore.getHistory()
 
-    XCTAssertFalse(dataStore.isLoading)
+    XCTAssertFalse(dataStore.isLoadingHistory)
     XCTAssertEqual(dataStore.history.count, 2)
     XCTAssertFalse(dataStore.errorIsPresented)
     XCTAssertNil(dataStore.error)
@@ -131,7 +131,7 @@ final class CosmoPicDataStoreTests: XCTestCase {
 
     await dataStore.getHistory()
 
-    XCTAssertFalse(dataStore.isLoading)
+    XCTAssertFalse(dataStore.isLoadingHistory)
     XCTAssertEqual(dataStore.history.count, 2)
     XCTAssertFalse(dataStore.errorIsPresented)
     XCTAssertNil(dataStore.error)
