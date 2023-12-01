@@ -37,6 +37,7 @@
 		57E4DD802B1A235600294392 /* DynamicPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4DD7F2B1A235600294392 /* DynamicPhotoView.swift */; };
 		57E4DD822B1A237A00294392 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4DD812B1A237A00294392 /* CheckmarkView.swift */; };
 		57E4DD842B1A23AE00294392 /* FavoriteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4DD832B1A23AE00294392 /* FavoriteButtonView.swift */; };
+		57E4DD872B1A28F200294392 /* HistoryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4DD862B1A28F200294392 /* HistoryRowView.swift */; };
 		57FC94252B1667AF00294392 /* PhotoAPIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */; };
 		57FC94272B166CB800294392 /* HistoryAPIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC94262B166CB800294392 /* HistoryAPIServiceMock.swift */; };
 		57FC94292B166F3E00294392 /* PhotoAPIServiceErrorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC94282B166F3E00294392 /* PhotoAPIServiceErrorMock.swift */; };
@@ -94,6 +95,7 @@
 		57E4DD7F2B1A235600294392 /* DynamicPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPhotoView.swift; sourceTree = "<group>"; };
 		57E4DD812B1A237A00294392 /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		57E4DD832B1A23AE00294392 /* FavoriteButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButtonView.swift; sourceTree = "<group>"; };
+		57E4DD862B1A28F200294392 /* HistoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRowView.swift; sourceTree = "<group>"; };
 		57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIServiceMock.swift; sourceTree = "<group>"; };
 		57FC94262B166CB800294392 /* HistoryAPIServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAPIServiceMock.swift; sourceTree = "<group>"; };
 		57FC94282B166F3E00294392 /* PhotoAPIServiceErrorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIServiceErrorMock.swift; sourceTree = "<group>"; };
@@ -141,7 +143,7 @@
 				57D8C43F2B0D53C100294392 /* MainView.swift */,
 				57E4DD7C2B1A22D600294392 /* APODViews */,
 				5712326E2B112BE500294392 /* FavoritesView.swift */,
-				571232702B112C0800294392 /* HistoryView.swift */,
+				57E4DD892B1A2BBE00294392 /* HistoryViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -253,6 +255,15 @@
 				57E4DD832B1A23AE00294392 /* FavoriteButtonView.swift */,
 			);
 			path = GeneralViews;
+			sourceTree = "<group>";
+		};
+		57E4DD892B1A2BBE00294392 /* HistoryViews */ = {
+			isa = PBXGroup;
+			children = (
+				571232702B112C0800294392 /* HistoryView.swift */,
+				57E4DD862B1A28F200294392 /* HistoryRowView.swift */,
+			);
+			path = HistoryViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,6 +445,7 @@
 				57E4DD822B1A237A00294392 /* CheckmarkView.swift in Sources */,
 				57E4DD842B1A23AE00294392 /* FavoriteButtonView.swift in Sources */,
 				57FC94252B1667AF00294392 /* PhotoAPIServiceMock.swift in Sources */,
+				57E4DD872B1A28F200294392 /* HistoryRowView.swift in Sources */,
 				5712326F2B112BE500294392 /* FavoritesView.swift in Sources */,
 				574D86972B15837100294392 /* PhotoAPIService.swift in Sources */,
 				57D8C4442B0D53C100294392 /* CosmoPicApp.swift in Sources */,
