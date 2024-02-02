@@ -24,6 +24,7 @@
 		575CFF5D2B17F2E400294392 /* FeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CFF5C2B17F2E400294392 /* FeatureView.swift */; };
 		578A19C42B0BA94E00294392 /* CosmoPicDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19C32B0BA94E00294392 /* CosmoPicDataStoreTests.swift */; };
 		578A19D02B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */; };
+		5791A00A2B6D321E00294392 /* APODViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791A0092B6D321E00294392 /* APODViewModel.swift */; };
 		57A827EB2B18A3C600294392 /* JSONDecoderErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A827EA2B18A3C600294392 /* JSONDecoderErrorHandler.swift */; };
 		57A827ED2B18ACD400294392 /* FetchHistoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A827EC2B18ACD300294392 /* FetchHistoryError.swift */; };
 		57D8C4412B0D53C100294392 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43D2B0D53C100294392 /* Preview Content */; };
@@ -83,6 +84,7 @@
 		578A19C92B0BA94E00294392 /* CosmoPicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmoPicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		578A19CD2B0BA94E00294392 /* CosmoPicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicUITests.swift; sourceTree = "<group>"; };
 		578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5791A0092B6D321E00294392 /* APODViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODViewModel.swift; sourceTree = "<group>"; };
 		57A827EA2B18A3C600294392 /* JSONDecoderErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderErrorHandler.swift; sourceTree = "<group>"; };
 		57A827EC2B18ACD300294392 /* FetchHistoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchHistoryError.swift; sourceTree = "<group>"; };
 		57D8C43D2B0D53C100294392 /* Preview Content */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Preview Content"; path = "CosmoPic/Preview Content"; sourceTree = SOURCE_ROOT; };
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				574D869B2B160CFB00294392 /* DataStore.swift */,
+				5791A0092B6D321E00294392 /* APODViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				57FC94292B166F3E00294392 /* PhotoAPIServiceErrorMock.swift in Sources */,
 				574D869C2B160CFB00294392 /* DataStore.swift in Sources */,
 				574D86A32B16453D00294392 /* HistoryAPIServiceProtocol.swift in Sources */,
+				5791A00A2B6D321E00294392 /* APODViewModel.swift in Sources */,
 				575CFF5D2B17F2E400294392 /* FeatureView.swift in Sources */,
 				57E4DD7E2B1A230100294392 /* APODContentView.swift in Sources */,
 				57A827ED2B18ACD400294392 /* FetchHistoryError.swift in Sources */,
