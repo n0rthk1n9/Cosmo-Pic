@@ -9,6 +9,7 @@ import SwiftUI
 
 struct APODView: View {
   @EnvironmentObject var dataStore: DataStore
+  @StateObject private var viewModel = APODViewModel() // Assuming APODViewModel is correctly set up to fetch photos.
   @State private var isCurrentPhotoFavorite = false
   @State private var showCheckmark = false
   @State private var showAlert = false
@@ -16,77 +17,56 @@ struct APODView: View {
   var body: some View {
     NavigationStack {
       VStack {
-        if dataStore.isLoading {
+        if viewModel.isLoading {
           ProgressView()
-        } else if let photo = dataStore.photo {
+        } else if let photo = viewModel.photo {
           APODContentView(
             photo: photo,
             isCurrentPhotoFavorite: $isCurrentPhotoFavorite,
             showCheckmark: $showCheckmark
           )
         } else {
-          if dataStore.errorIsPresented {
+          if let error = viewModel.error {
+            // TODO: Refine error Handling
             ContentUnavailableView("No Data available", systemImage: "x.circle")
+              .alert("Error", isPresented: Binding<Bool>(
+                get: { error != nil },
+                set: { _ in viewModel.error = nil }
+              ), presenting: error.localizedDescription) { _ in
+                Button("OK", role: .cancel) {}
+              } message: { message in
+                Text(message)
+              }
           }
         }
       }
       .navigationTitle("Cosmo Pic")
-      .onAppear(perform: onAppear)
       .task {
         await initialFetch()
       }
-      .alert(isPresented: $showAlert, content: errorAlert)
     }
   }
 
+  // Remove after some time!
   func onAppear() {
     dataStore.resetPhoto()
     dataStore.loadFavorites()
   }
 
   func initialFetch() async {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-    let currentDate = dateFormatter.string(from: Date())
-    await dataStore.getPhoto(for: currentDate)
-    checkAndPrepareErrorAlert()
+    await viewModel.fetchPhotoForToday()
     checkIfFavorite()
   }
 
-  func checkAndPrepareErrorAlert() {
-    if let urlError = dataStore.error as? URLError, urlError.code == .cancelled {
-      showAlert = false
-    } else if dataStore.error != nil {
-      showAlert = true
-    }
-  }
-
-  func errorAlert() -> Alert {
-    if case .photoForTodayNotAvailableYet = dataStore.error as? FetchPhotoError {
-      return Alert(
-        title: Text("Photo Not Available"),
-        message: Text(dataStore.error?
-          .localizedDescription ??
-          "The photo for today is not available yet, do you want to load yesterday's photo?"),
-        primaryButton: .default(Text("Load Yesterday's Photo"), action: loadYesterdayPhoto),
-        secondaryButton: .cancel()
-      )
-    } else {
-      return Alert(
-        title: Text("Error"),
-        message: Text(dataStore.error?.localizedDescription ?? "An unknown error occurred"),
-        dismissButton: .default(Text("Ok"))
-      )
-    }
-  }
-
   func checkIfFavorite() {
-    if let currentPhoto = dataStore.photo {
+    // This checks if the photo fetched by the ViewModel is a favorite in the DataStore
+    if let currentPhoto = viewModel.photo {
       isCurrentPhotoFavorite = dataStore.isFavorite(currentPhoto)
     }
   }
 
   func loadYesterdayPhoto() {
+    // This function remains unchanged, it's here for context
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd"
     guard let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date()) else { return }
@@ -94,6 +74,7 @@ struct APODView: View {
 
     Task {
       await dataStore.getPhoto(for: yesterdayString)
+      checkIfFavorite()
     }
   }
 }
