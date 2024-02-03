@@ -12,6 +12,7 @@ struct FavoriteButtonView: View {
   @Binding var isCurrentPhotoFavorite: Bool
   @Binding var showCheckmark: Bool
   @EnvironmentObject var dataStore: DataStore
+  @EnvironmentObject var viewModel: FavoritesViewModel
 
   var body: some View {
     Button("Add to Favorites") {
@@ -23,7 +24,7 @@ struct FavoriteButtonView: View {
   }
 
   private func addToFavorites() {
-    dataStore.addToFavorites(photo)
+    viewModel.addToFavorites(photo)
     withAnimation {
       showCheckmark = true
       isCurrentPhotoFavorite = true

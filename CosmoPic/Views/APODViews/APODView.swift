@@ -9,6 +9,7 @@ import SwiftUI
 
 struct APODView: View {
   @EnvironmentObject var dataStore: DataStore
+  @EnvironmentObject var favoritesViewModel: FavoritesViewModel
   @StateObject private var viewModel = APODViewModel() // Assuming APODViewModel is correctly set up to fetch photos.
   @State private var isCurrentPhotoFavorite = false
   @State private var showCheckmark = false
@@ -44,13 +45,10 @@ struct APODView: View {
       .task {
         await initialFetch()
       }
+      .onAppear {
+        favoritesViewModel.loadFavorites()
+      }
     }
-  }
-
-  // Remove after some time!
-  func onAppear() {
-    dataStore.resetPhoto()
-    dataStore.loadFavorites()
   }
 
   func initialFetch() async {
@@ -61,20 +59,7 @@ struct APODView: View {
   func checkIfFavorite() {
     // This checks if the photo fetched by the ViewModel is a favorite in the DataStore
     if let currentPhoto = viewModel.photo {
-      isCurrentPhotoFavorite = dataStore.isFavorite(currentPhoto)
-    }
-  }
-
-  func loadYesterdayPhoto() {
-    // This function remains unchanged, it's here for context
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-    guard let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date()) else { return }
-    let yesterdayString = dateFormatter.string(from: yesterday)
-
-    Task {
-      await dataStore.getPhoto(for: yesterdayString)
-      checkIfFavorite()
+      isCurrentPhotoFavorite = favoritesViewModel.isFavorite(currentPhoto)
     }
   }
 }
