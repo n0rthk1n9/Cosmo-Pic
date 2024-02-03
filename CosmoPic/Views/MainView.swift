@@ -11,6 +11,7 @@ struct MainView: View {
   @AppStorage("WelcomeScreenShown")
   var welcomeScreenShown = false
   @State private var showingWelcomeScreen = false
+  @StateObject var favoritesViewModel = FavoritesViewModel()
 
   var body: some View {
     TabView {
@@ -18,10 +19,12 @@ struct MainView: View {
         .tabItem {
           Label("APOD", systemImage: "photo.stack")
         }
+        .environmentObject(favoritesViewModel)
       FavoritesView()
         .tabItem {
           Label("Favorites", systemImage: "list.star")
         }
+        .environmentObject(favoritesViewModel)
       HistoryView()
         .tabItem {
           Label("History", systemImage: "clock.arrow.circlepath")
