@@ -10,7 +10,7 @@ import SwiftUI
 struct APODView: View {
   @EnvironmentObject var dataStore: DataStore
   @EnvironmentObject var favoritesViewModel: FavoritesViewModel
-  @StateObject private var viewModel = APODViewModel() // Assuming APODViewModel is correctly set up to fetch photos.
+  @StateObject private var viewModel = APODViewModel()
   @State private var isCurrentPhotoFavorite = false
   @State private var showCheckmark = false
   @State private var showAlert = false
@@ -57,7 +57,6 @@ struct APODView: View {
   }
 
   func checkIfFavorite() {
-    // This checks if the photo fetched by the ViewModel is a favorite in the DataStore
     if let currentPhoto = viewModel.photo {
       isCurrentPhotoFavorite = favoritesViewModel.isFavorite(currentPhoto)
     }

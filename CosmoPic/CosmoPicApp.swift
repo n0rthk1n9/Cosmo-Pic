@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct CosmoPicApp: App {
   @StateObject var dataStore = DataStore()
+  @StateObject var favoritesViewModel = FavoritesViewModel()
 
   init() {
     if ProcessInfo.processInfo.arguments.contains("UITesting") {
@@ -21,6 +22,7 @@ struct CosmoPicApp: App {
     WindowGroup {
       MainView()
         .environmentObject(dataStore)
+        .environmentObject(favoritesViewModel)
     }
   }
 }
