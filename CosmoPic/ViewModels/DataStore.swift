@@ -8,18 +8,13 @@
 import Foundation
 
 class DataStore: ObservableObject {
-  @Published var photo: Photo?
   @Published var history: [Photo] = []
-  @Published var favorites: [Photo] = []
-  @Published var isLoading = false
   @Published var isLoadingHistory = false
   @Published var loadedHistoryElements = 0
   @Published var totalHistoryElements = 31
 
   @Published var errorIsPresented = false
   @Published var error: Error?
-
-  private let favoritesFileName = "favorites.json"
 
   let photoAPIService: PhotoAPIServiceProtocol
   let historyAPIService: HistoryAPIServiceProtocol
@@ -30,42 +25,6 @@ class DataStore: ObservableObject {
   ) {
     self.photoAPIService = photoAPIService
     self.historyAPIService = historyAPIService
-  }
-
-  func resetPhoto() {
-    photo = nil
-  }
-
-  @MainActor
-  func getPhoto(for date: String) async {
-    isLoading = true
-    let jsonPathURL = FileManager.documentsDirectoryURL.appendingPathComponent("\(date).json")
-
-    do {
-      if FileManager.default.fileExists(atPath: jsonPathURL.path) {
-        let loadedPhoto = try photoAPIService.loadPhoto(from: jsonPathURL, for: date)
-        photo = loadedPhoto
-      } else {
-        let fetchedPhoto = try await photoAPIService.fetchPhoto(from: date)
-        let savedPhoto = try await photoAPIService.savePhoto(
-          fetchedPhoto,
-          for: date,
-          to: FileManager.documentsDirectoryURL
-        )
-
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let jsonData = try encoder.encode(savedPhoto)
-        try jsonData.write(to: jsonPathURL)
-
-        photo = savedPhoto
-      }
-    } catch {
-      self.error = error
-      errorIsPresented = true
-    }
-
-    isLoading = false
   }
 
   @MainActor
