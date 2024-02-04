@@ -10,6 +10,7 @@ import SwiftUI
 struct PhotoDetailView: View {
   @EnvironmentObject var dataStore: DataStore
   @EnvironmentObject var favoritesViewModel: FavoritesViewModel
+  @StateObject private var viewModel = PhotoDetailViewModel()
   @State private var isCurrentPhotoFavorite = false
   @State private var showCheckmark = false
   @State private var showAlert = false
@@ -42,34 +43,25 @@ struct PhotoDetailView: View {
       }
     }
     .task {
-      await dataStore.getPhoto(for: photo.date)
+      await viewModel.getPhoto(for: photo.date)
       checkAndPrepareErrorAlert()
       checkIfFavorite()
     }
     .onAppear {
-      dataStore.resetPhoto()
       favoritesViewModel.loadFavorites()
     }
     .alert(isPresented: $showAlert) {
       Alert(
         title: Text("Error"),
-        message: Text(dataStore.error?.localizedDescription ?? "An unknown error occurred"),
+        message: Text(viewModel.error?.localizedDescription ?? "An unknown error occurred"),
         dismissButton: .default(Text("Ok"))
       )
     }
     .navigationTitle(localizedDateString(from: photo.date))
   }
 
-  func addToFavorites(_ photo: Photo) {
-    favoritesViewModel.addToFavorites(photo)
-    withAnimation {
-      showCheckmark = true
-      isCurrentPhotoFavorite = true
-    }
-  }
-
   func checkIfFavorite() {
-    if let currentPhoto = dataStore.photo {
+    if let currentPhoto = viewModel.photo {
       isCurrentPhotoFavorite = favoritesViewModel.isFavorite(currentPhoto)
     }
   }
@@ -92,9 +84,9 @@ struct PhotoDetailView: View {
   }
 
   func checkAndPrepareErrorAlert() {
-    if let urlError = dataStore.error as? URLError, urlError.code == .cancelled {
+    if let urlError = viewModel.error as? URLError, urlError.code == .cancelled {
       showAlert = false
-    } else if dataStore.error != nil {
+    } else if viewModel.error != nil {
       showAlert = true
     }
   }
