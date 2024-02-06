@@ -29,6 +29,7 @@ class DataStore: ObservableObject {
 
   @MainActor
   func getHistory() async {
+    loadedHistoryElements = totalHistoryElements - history.count
     isLoadingHistory = true
     do {
       let dateFormatter = DateFormatter()
@@ -93,35 +94,34 @@ class DataStore: ObservableObject {
     do {
       let fileURLs = try fileManager.contentsOfDirectory(
         at: documentsDirectory,
-        includingPropertiesForKeys: [.creationDateKey],
+        includingPropertiesForKeys: nil,
         options: .skipsHiddenFiles
       )
 
       for fileURL in fileURLs {
         let fileName = fileURL.lastPathComponent
 
-        // Skip today's history file, favorites file, and any file related to a favorited photo
-        if fileName == todayHistoryFileName || fileName == "favorites.json" || favoriteFilenames
-          .contains(fileName)
-        {
+        // Skip the favorites.json file and any favorited photo files
+        if fileName == "favorites.json" || favoriteFilenames.contains(where: { fileName.contains($0) }) {
           continue
         }
 
-        // For history files, delete if not today's (no need to check date for these, just the name)
+        // Extract the date which is always the first 10 characters of the filename
+        let dateString = String(fileName.prefix(10))
+
+        // For history files, directly compare the fileName due to its specific format
         if fileName.hasSuffix("-history.json") && fileName != todayHistoryFileName {
           try fileManager.removeItem(at: fileURL)
           continue
         }
 
-        // For other files, check if they are older than one month and not favorited
-        let fileAttributes = try fileManager.attributesOfItem(atPath: fileURL.path)
-        if let creationDate = fileAttributes[.creationDate] as? Date, creationDate < oneMonthAgo {
+        // For image files, compare the extracted date to oneMonthAgo
+        if let fileDate = dateFormatter.date(from: dateString), fileDate < oneMonthAgo {
           try fileManager.removeItem(at: fileURL)
         }
       }
     } catch {
       print("Failed to delete old files: \(error)")
-      // Optionally handle the error, e.g., log or display to the user
     }
   }
 }
