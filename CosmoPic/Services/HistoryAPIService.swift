@@ -127,9 +127,15 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
     let filename = "\(identifier).\(fileExtension)"
     let localFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(filename)
 
-    let (imageData, _) = try await URLSession.shared.data(from: url)
-    try imageData.write(to: localFileURL)
-
-    return filename
+    // Check if the file already exists at the local file URL
+    if FileManager.default.fileExists(atPath: localFileURL.path) {
+      // The image is already cached, so we can just return the filename
+      return filename
+    } else {
+      // The image isn't cached yet, so download it and save to the local file URL
+      let (imageData, _) = try await URLSession.shared.data(from: url)
+      try imageData.write(to: localFileURL)
+      return filename
+    }
   }
 }
