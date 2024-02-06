@@ -51,6 +51,8 @@ struct HistoryView: View {
     if dataStore.isLoadingHistory {
       VStack {
         Spacer()
+        Text("Loading 1 Month History")
+          .padding(.bottom)
         ProgressView()
           .padding(.bottom)
         ProgressView(value: Double(dataStore.loadedHistoryElements), total: Double(dataStore.totalHistoryElements))
