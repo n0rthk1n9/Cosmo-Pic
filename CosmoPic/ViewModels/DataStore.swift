@@ -29,7 +29,7 @@ class DataStore: ObservableObject {
 
   @MainActor
   func getHistory() async {
-    loadedHistoryElements = totalHistoryElements - history.count
+    loadedHistoryElements = 0
     isLoadingHistory = true
     do {
       let dateFormatter = DateFormatter()
