@@ -50,13 +50,17 @@ struct HistoryView: View {
   @ViewBuilder private var loadingOverlay: some View {
     if dataStore.isLoadingHistory {
       VStack {
+        Spacer()
         ProgressView()
           .padding(.bottom)
         ProgressView(value: Double(dataStore.loadedHistoryElements), total: Double(dataStore.totalHistoryElements))
           .padding(.bottom)
         Text("\(dataStore.loadedHistoryElements) / \(dataStore.totalHistoryElements)")
+        Spacer()
       }
       .padding()
+      .background(.thinMaterial)
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
   }
 
