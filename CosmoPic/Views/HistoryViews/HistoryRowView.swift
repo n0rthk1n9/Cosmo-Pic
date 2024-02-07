@@ -19,8 +19,8 @@ struct HistoryRowView: View {
 
   private var photoImageView: some View {
     Group {
-      if let localFilename = photo.localFilename {
-        AsyncImage(url: FileManager.localFileURL(for: localFilename), content: { image in
+      if let localFilenameThumbnail = photo.localFilenameThumbnail {
+        AsyncImage(url: FileManager.localFileURL(for: localFilenameThumbnail), content: { image in
           image.resizable()
         }, placeholder: {
           ProgressView()
