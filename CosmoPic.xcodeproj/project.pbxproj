@@ -41,6 +41,7 @@
 		57E4DD822B1A237A00294392 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4DD812B1A237A00294392 /* CheckmarkView.swift */; };
 		57E4DD842B1A23AE00294392 /* FavoriteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4DD832B1A23AE00294392 /* FavoriteButtonView.swift */; };
 		57E4DD872B1A28F200294392 /* HistoryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4DD862B1A28F200294392 /* HistoryRowView.swift */; };
+		57F550432B73DEFE00294392 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F550422B73DEFE00294392 /* DateFormatter.swift */; };
 		57FC94252B1667AF00294392 /* PhotoAPIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */; };
 		57FC94272B166CB800294392 /* HistoryAPIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC94262B166CB800294392 /* HistoryAPIServiceMock.swift */; };
 		57FC94292B166F3E00294392 /* PhotoAPIServiceErrorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC94282B166F3E00294392 /* PhotoAPIServiceErrorMock.swift */; };
@@ -102,6 +103,7 @@
 		57E4DD812B1A237A00294392 /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		57E4DD832B1A23AE00294392 /* FavoriteButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButtonView.swift; sourceTree = "<group>"; };
 		57E4DD862B1A28F200294392 /* HistoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRowView.swift; sourceTree = "<group>"; };
+		57F550422B73DEFE00294392 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIServiceMock.swift; sourceTree = "<group>"; };
 		57FC94262B166CB800294392 /* HistoryAPIServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAPIServiceMock.swift; sourceTree = "<group>"; };
 		57FC94282B166F3E00294392 /* PhotoAPIServiceErrorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIServiceErrorMock.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				57E049062B147CF500294392 /* FileManager.swift */,
+				57F550422B73DEFE00294392 /* DateFormatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				57A827ED2B18ACD400294392 /* FetchHistoryError.swift in Sources */,
 				574D869E2B161C6200294392 /* PhotoView.swift in Sources */,
 				57E4DD802B1A235600294392 /* DynamicPhotoView.swift in Sources */,
+				57F550432B73DEFE00294392 /* DateFormatter.swift in Sources */,
 				5712326D2B112BD400294392 /* APODView.swift in Sources */,
 				57FC94272B166CB800294392 /* HistoryAPIServiceMock.swift in Sources */,
 				574D86A02B16452600294392 /* HistoryAPIService.swift in Sources */,
