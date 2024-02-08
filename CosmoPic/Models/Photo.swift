@@ -17,9 +17,10 @@ struct Photo: Codable, Equatable {
   let title: String
   let sdURL: URL?
   var localFilename: String?
+  var localFilenameThumbnail: String?
 
   enum CodingKeys: String, CodingKey {
-    case copyright, date, explanation, title, localFilename
+    case copyright, date, explanation, title, localFilename, localFilenameThumbnail
     case hdURL = "hdurl"
     case mediaType = "media_type"
     case serviceVersion = "service_version"
@@ -37,7 +38,8 @@ extension Photo {
     serviceVersion: String = "",
     title: String = "",
     sdURL: URL? = nil,
-    localFilename: String? = nil
+    localFilename: String? = nil,
+    localFilenameThumbnail: String? = nil
   ) -> Photo {
     Photo(
       copyright: copyright,
@@ -48,7 +50,8 @@ extension Photo {
       serviceVersion: serviceVersion,
       title: title,
       sdURL: sdURL,
-      localFilename: localFilename
+      localFilename: localFilename,
+      localFilenameThumbnail: localFilenameThumbnail
     )
   }
 
@@ -66,7 +69,8 @@ extension Photo {
       sdURL: URL(
         string: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1024px-Apple_logo_black.svg.png"
       ),
-      localFilename: "2023-09-04.svg"
+      localFilename: "2023-09-04.svg",
+      localFilenameThumbnail: "2023-09-04-thumbnail.svg"
     )
   }
 }

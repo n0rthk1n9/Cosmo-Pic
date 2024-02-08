@@ -71,57 +71,79 @@ class DataStore: ObservableObject {
     await deleteOldHistoryAndPhotos()
   }
 
-  func deleteOldHistoryAndPhotos() async {
-    let fileManager = FileManager.default
-    let documentsDirectory = FileManager.documentsDirectoryURL
-    let currentDate = Date()
-    guard let oneMonthAgo = Calendar.current.date(byAdding: .month, value: -1, to: currentDate) else { return }
+  func loadFavoriteFilenames() -> Set<String> {
+    guard let jsonData = try? Data(contentsOf: FileManager.documentsDirectoryURL
+      .appendingPathComponent("favorites.json")),
+      let favorites = try? JSONDecoder().decode([Photo].self, from: jsonData)
+    else {
+      return []
+    }
+    return Set(favorites.compactMap { $0.localFilename })
+  }
+
+  func determineOldestDateToKeep(from fileURL: URL) -> Date? {
+    guard let jsonData = try? Data(contentsOf: fileURL),
+          let photos = try? JSONDecoder().decode([Photo].self, from: jsonData)
+    else {
+      return nil
+    }
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    return photos.compactMap { dateFormatter.date(from: $0.date) }.min()
+  }
+
+  func deleteFilesOlderThan(cutoffDate: Date, excluding favorites: Set<String>) {
+    guard let fileURLs = try? FileManager.default.contentsOfDirectory(at: FileManager.documentsDirectoryURL)
+    else { return }
 
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd"
-    let todayString = dateFormatter.string(from: currentDate)
-    let todayHistoryFileName = "\(todayString)-history.json"
 
-    // Load favorite photo filenames
-    var favoriteFilenames: Set<String> = []
-    let favoritesFileURL = documentsDirectory.appendingPathComponent("favorites.json")
-    if let jsonData = try? Data(contentsOf: favoritesFileURL),
-       let favorites = try? JSONDecoder().decode([Photo].self, from: jsonData)
-    {
-      favoriteFilenames = Set(favorites.compactMap { $0.localFilename })
-    }
+    for fileURL in fileURLs {
+      let fileName = fileURL.lastPathComponent
 
-    do {
-      let fileURLs = try fileManager.contentsOfDirectory(
-        at: documentsDirectory,
-        includingPropertiesForKeys: nil,
-        options: .skipsHiddenFiles
-      )
-
-      for fileURL in fileURLs {
-        let fileName = fileURL.lastPathComponent
-
-        // Skip the favorites.json file and any favorited photo files
-        if fileName == "favorites.json" || favoriteFilenames.contains(where: { fileName.contains($0) }) {
-          continue
-        }
-
-        // Extract the date which is always the first 10 characters of the filename
-        let dateString = String(fileName.prefix(10))
-
-        // For history files, directly compare the fileName due to its specific format
-        if fileName.hasSuffix("-history.json") && fileName != todayHistoryFileName {
-          try fileManager.removeItem(at: fileURL)
-          continue
-        }
-
-        // For image files, compare the extracted date to oneMonthAgo
-        if let fileDate = dateFormatter.date(from: dateString), fileDate < oneMonthAgo {
-          try fileManager.removeItem(at: fileURL)
-        }
+      // Skip specific non-deletable files and favorites
+      if fileName == "favorites.json" || favorites.contains(where: { fileName.contains($0) }) {
+        continue
       }
-    } catch {
-      print("Failed to delete old files: \(error)")
+
+      // Skip history files for special handling
+      if fileName.hasSuffix("-history.json") {
+        continue
+      }
+
+      // Delete based on date comparison for other files
+      let dateString = String(fileName.prefix(10))
+      if let fileDate = dateFormatter.date(from: dateString), fileDate < cutoffDate {
+        try? FileManager.default.deleteFile(at: fileURL)
+      }
+    }
+  }
+
+  func deleteOlderHistoryFiles(excluding currentDayFileName: String, favorites: Set<String>) {
+    guard let fileURLs = try? FileManager.default.contentsOfDirectory(at: FileManager.documentsDirectoryURL)
+    else { return }
+
+    for fileURL in fileURLs where fileURL.lastPathComponent.hasSuffix("-history.json") {
+      let fileName = fileURL.lastPathComponent
+
+      if fileName != currentDayFileName && !favorites.contains(where: { fileName.contains($0) }) {
+        try? FileManager.default.deleteFile(at: fileURL)
+      }
+    }
+  }
+
+  func deleteOldHistoryAndPhotos() async {
+    let dateFormatter = DateFormatter.yyyyMMdd
+    let todayHistoryFileName = "\(dateFormatter.string(from: Date()))-history.json"
+    let favoriteFilenames = loadFavoriteFilenames()
+    let todayHistoryFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(todayHistoryFileName)
+
+    if let cutoffDate = determineOldestDateToKeep(from: todayHistoryFileURL) {
+      // Delete non-history files older than the cutoff date, excluding favorites
+      deleteFilesOlderThan(cutoffDate: cutoffDate, excluding: favoriteFilenames)
+      // Delete older history files separately
+      deleteOlderHistoryFiles(excluding: todayHistoryFileName, favorites: favoriteFilenames)
     }
   }
 }

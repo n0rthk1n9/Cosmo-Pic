@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct HistoryAPIService: HistoryAPIServiceProtocol {
   private var apiKey: String {
@@ -116,26 +117,57 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
     guard let photoHdURL = photo.hdURL else {
       throw FetchHistoryError.invalidURL
     }
-    if let localFilename = try? await cacheImage(from: photoHdURL, identifier: identifier) {
-      updatedPhoto.localFilename = localFilename
+    if let (fullSizeFilename, thumbnailFilename) = try? await cacheImageAndCreateThumbnail(
+      from: photoHdURL,
+      identifier: photo.date
+    ) {
+      updatedPhoto.localFilename = fullSizeFilename
+      updatedPhoto.localFilenameThumbnail = thumbnailFilename
     }
     return updatedPhoto
   }
 
-  func cacheImage(from url: URL, identifier: String) async throws -> String {
+  func cacheImageAndCreateThumbnail(from url: URL,
+                                    identifier: String) async throws -> (
+    fullSizeFilename: String,
+    thumbnailFilename: String
+  ) {
     let fileExtension = url.pathExtension
-    let filename = "\(identifier).\(fileExtension)"
-    let localFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(filename)
+    let fullSizeFilename = "\(identifier).\(fileExtension)"
+    let thumbnailFilename = "\(identifier)-thumbnail.\(fileExtension)"
 
-    // Check if the file already exists at the local file URL
-    if FileManager.default.fileExists(atPath: localFileURL.path) {
-      // The image is already cached, so we can just return the filename
-      return filename
+    let fullSizeFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(fullSizeFilename)
+    let thumbnailFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(thumbnailFilename)
+
+    // Check if the full-size file already exists
+    if FileManager.default.fileExists(atPath: fullSizeFileURL.path) && FileManager.default
+      .fileExists(atPath: thumbnailFileURL.path)
+    {
+      // Assume the thumbnail also exists if the full-size image does, and return both filenames
+      return (fullSizeFilename, thumbnailFilename)
     } else {
-      // The image isn't cached yet, so download it and save to the local file URL
+      // Download the image
       let (imageData, _) = try await URLSession.shared.data(from: url)
-      try imageData.write(to: localFileURL)
-      return filename
+      try imageData.write(to: fullSizeFileURL)
+
+      // Create and save the thumbnail
+      if let image = UIImage(data: imageData) {
+        // Ensure we're on the main actor before processing the image
+        await MainActor.run {
+          if let thumbnailData = image.downsampledData(
+            to: CGSize(width: 100, height: 100),
+            scale: UIScreen.main.scale
+          ) {
+            do {
+              try thumbnailData.write(to: thumbnailFileURL)
+            } catch {
+              print("Failed to write thumbnail data: \(error)")
+            }
+          }
+        }
+      }
+
+      return (fullSizeFilename, thumbnailFilename)
     }
   }
 }
