@@ -17,9 +17,5 @@ protocol HistoryAPIServiceProtocol {
     onPhotoUpdated: @escaping () -> Void
   ) async throws -> [Photo]
   func updatePhotoWithLocalURL(_ photo: Photo, dateFormatter: DateFormatter) async throws -> Photo
-  func cacheImageAndCreateThumbnail(from url: URL,
-                                    identifier: String) async throws -> (
-    fullSizeFilename: String,
-    thumbnailFilename: String
-  )
+  func cacheThumbnail(from _: URL, identifier _: String) async throws -> String
 }

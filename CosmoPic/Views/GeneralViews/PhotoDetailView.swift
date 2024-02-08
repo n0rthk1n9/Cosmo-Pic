@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct PhotoDetailView: View {
-  @EnvironmentObject var dataStore: DataStore
   @EnvironmentObject var favoritesViewModel: FavoritesViewModel
   @StateObject private var viewModel = PhotoDetailViewModel()
   @State private var isCurrentPhotoFavorite = false
@@ -23,7 +22,16 @@ struct PhotoDetailView: View {
         Text(photo.title)
           .font(.title)
           .padding(.horizontal)
-        DynamicPhotoView(photo: photo)
+        if viewModel.isLoading {
+          HStack {
+            Spacer()
+            ProgressView()
+              .frame(height: 300)
+            Spacer()
+          }
+        } else if let photo = viewModel.photo {
+          DynamicPhotoView(photo: photo)
+        }
         HStack {
           Spacer()
           if showCheckmark {

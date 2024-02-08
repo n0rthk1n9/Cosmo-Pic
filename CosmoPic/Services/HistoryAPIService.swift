@@ -114,45 +114,30 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
   func updatePhotoWithLocalURL(_ photo: Photo, dateFormatter _: DateFormatter) async throws -> Photo {
     var updatedPhoto = photo
     let identifier = photo.date
-    guard let photoHdURL = photo.hdURL else {
+    guard let photoSdURL = photo.sdURL else {
       throw FetchHistoryError.invalidURL
     }
-    if let (fullSizeFilename, thumbnailFilename) = try? await cacheImageAndCreateThumbnail(
-      from: photoHdURL,
-      identifier: photo.date
-    ) {
-      updatedPhoto.localFilename = fullSizeFilename
+    if let thumbnailFilename = try? await cacheThumbnail(from: photoSdURL, identifier: photo.date) {
       updatedPhoto.localFilenameThumbnail = thumbnailFilename
     }
     return updatedPhoto
   }
 
-  func cacheImageAndCreateThumbnail(from url: URL,
-                                    identifier: String) async throws -> (
-    fullSizeFilename: String,
-    thumbnailFilename: String
-  ) {
+  func cacheThumbnail(from url: URL, identifier: String) async throws -> String {
     let fileExtension = url.pathExtension
-    let fullSizeFilename = "\(identifier).\(fileExtension)"
     let thumbnailFilename = "\(identifier)-thumbnail.\(fileExtension)"
-
-    let fullSizeFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(fullSizeFilename)
     let thumbnailFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(thumbnailFilename)
 
-    // Check if the full-size file already exists
-    if FileManager.default.fileExists(atPath: fullSizeFileURL.path) && FileManager.default
-      .fileExists(atPath: thumbnailFileURL.path)
-    {
-      // Assume the thumbnail also exists if the full-size image does, and return both filenames
-      return (fullSizeFilename, thumbnailFilename)
+    // Check if the thumbnail file already exists
+    if FileManager.default.fileExists(atPath: thumbnailFileURL.path) {
+      // The thumbnail already exists, no need to re-download or recreate it
+      return thumbnailFilename
     } else {
-      // Download the image
+      // Download the image data
       let (imageData, _) = try await URLSession.shared.data(from: url)
-      try imageData.write(to: fullSizeFileURL)
 
-      // Create and save the thumbnail
+      // Attempt to create and save the thumbnail
       if let image = UIImage(data: imageData) {
-        // Ensure we're on the main actor before processing the image
         await MainActor.run {
           if let thumbnailData = image.downsampledData(
             to: CGSize(width: 100, height: 100),
@@ -166,8 +151,7 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
           }
         }
       }
-
-      return (fullSizeFilename, thumbnailFilename)
+      return thumbnailFilename
     }
   }
 }

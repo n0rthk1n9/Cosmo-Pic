@@ -33,11 +33,7 @@ struct HistoryAPIServiceMock: HistoryAPIServiceProtocol {
     photoResponse
   }
 
-  func cacheImageAndCreateThumbnail(from _: URL,
-                                    identifier _: String) async throws -> (
-    fullSizeFilename: String,
-    thumbnailFilename: String
-  ) {
-    ("2023-09-04.jpg", "2023-09-04-thumbnail.jpg")
+  func cacheThumbnail(from _: URL, identifier _: String) async throws -> String {
+    "2023-09-04.jpg"
   }
 }
