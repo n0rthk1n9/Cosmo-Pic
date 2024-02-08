@@ -11,7 +11,6 @@ struct APODContentView: View {
   let photo: Photo
   @Binding var isCurrentPhotoFavorite: Bool
   @Binding var showCheckmark: Bool
-  @EnvironmentObject var dataStore: DataStore
 
   var body: some View {
     VStack {

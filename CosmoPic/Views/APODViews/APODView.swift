@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct APODView: View {
-  @EnvironmentObject var dataStore: DataStore
   @EnvironmentObject var favoritesViewModel: FavoritesViewModel
   @StateObject private var viewModel = APODViewModel()
   @State private var isCurrentPhotoFavorite = false
