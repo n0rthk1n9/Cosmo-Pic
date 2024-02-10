@@ -17,30 +17,33 @@ struct APODView: View {
         if viewModel.isLoading {
           ProgressView()
         } else if let photo = viewModel.photo {
-          APODContentView(photo: photo)
+          PhotoDetailContentView(photo: photo)
         } else {
           if let error = viewModel.error {
-            // TODO: Refine error Handling
             ContentUnavailableView("No Data available", systemImage: "x.circle")
-              .alert("Error", isPresented: Binding<Bool>(
-                get: { error != nil },
-                set: { _ in viewModel.error = nil }
-              ), presenting: error.localizedDescription) { _ in
-                Button("OK", role: .cancel) {}
-              } message: { message in
-                Text(message)
+              .alert(isPresented: $showAlert) {
+                Alert(
+                  title: Text("Error"),
+                  message: Text(error.localizedDescription),
+                  dismissButton: .default(Text("Ok"))
+                )
               }
           }
         }
       }
       .navigationTitle("Cosmo Pic")
       .task {
-        await initialFetch()
+        await viewModel.fetchPhotoForToday()
+        checkAndPrepareErrorAlert()
       }
     }
   }
 
-  func initialFetch() async {
-    await viewModel.fetchPhotoForToday()
+  func checkAndPrepareErrorAlert() {
+    if let urlError = viewModel.error as? URLError, urlError.code == .cancelled {
+      showAlert = false
+    } else if viewModel.error != nil {
+      showAlert = true
+    }
   }
 }
