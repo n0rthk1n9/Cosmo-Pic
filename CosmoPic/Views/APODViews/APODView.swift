@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct APODView: View {
-  @EnvironmentObject var favoritesViewModel: FavoritesViewModel
   @StateObject private var viewModel = APODViewModel()
-  @State private var isCurrentPhotoFavorite = false
-  @State private var showCheckmark = false
   @State private var showAlert = false
 
   var body: some View {
@@ -20,11 +17,7 @@ struct APODView: View {
         if viewModel.isLoading {
           ProgressView()
         } else if let photo = viewModel.photo {
-          APODContentView(
-            photo: photo,
-            isCurrentPhotoFavorite: $isCurrentPhotoFavorite,
-            showCheckmark: $showCheckmark
-          )
+          APODContentView(photo: photo)
         } else {
           if let error = viewModel.error {
             // TODO: Refine error Handling
@@ -44,20 +37,10 @@ struct APODView: View {
       .task {
         await initialFetch()
       }
-      .onAppear {
-        favoritesViewModel.loadFavorites()
-      }
     }
   }
 
   func initialFetch() async {
     await viewModel.fetchPhotoForToday()
-    checkIfFavorite()
-  }
-
-  func checkIfFavorite() {
-    if let currentPhoto = viewModel.photo {
-      isCurrentPhotoFavorite = favoritesViewModel.isFavorite(currentPhoto)
-    }
   }
 }

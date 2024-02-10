@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct APODContentView: View {
+  @EnvironmentObject var favoritesViewModel: FavoritesViewModel
+  @State private var isCurrentPhotoFavorite = false
+  @State private var showCheckmark = false
+
   let photo: Photo
-  @Binding var isCurrentPhotoFavorite: Bool
-  @Binding var showCheckmark: Bool
 
   var body: some View {
     VStack {
@@ -35,6 +37,10 @@ struct APODContentView: View {
         .accessibilityIdentifier("apod-view-favorites-button")
       }
     }
+    .onAppear {
+      favoritesViewModel.loadFavorites()
+      checkIfFavorite()
+    }
   }
 
   func localizedDateString(from dateString: String) -> String {
@@ -52,5 +58,9 @@ struct APODContentView: View {
     } else {
       return "Invalid Date"
     }
+  }
+
+  func checkIfFavorite() {
+    isCurrentPhotoFavorite = favoritesViewModel.isFavorite(photo)
   }
 }
