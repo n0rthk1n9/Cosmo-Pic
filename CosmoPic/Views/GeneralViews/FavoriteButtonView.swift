@@ -11,7 +11,6 @@ struct FavoriteButtonView: View {
   let photo: Photo
   @Binding var isCurrentPhotoFavorite: Bool
   @Binding var showCheckmark: Bool
-  @EnvironmentObject var dataStore: DataStore
   @EnvironmentObject var viewModel: FavoritesViewModel
 
   var body: some View {

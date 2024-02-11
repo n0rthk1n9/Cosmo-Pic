@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct CosmoPicApp: App {
-  @StateObject var dataStore = DataStore()
   @StateObject var favoritesViewModel = FavoritesViewModel()
 
   init() {
@@ -22,7 +21,6 @@ struct CosmoPicApp: App {
   var body: some Scene {
     WindowGroup {
       MainView()
-        .environmentObject(dataStore)
         .environmentObject(favoritesViewModel)
     }
   }
@@ -39,11 +37,9 @@ struct CosmoPicApp: App {
         options: []
       )
 
-      for fileURL in tmpDirectoryContents {
-        if fileURL.path.contains("CFNetworkDownload") {
-          try fileManager.removeItem(at: fileURL)
-          print("Deleted: \(fileURL.lastPathComponent)")
-        }
+      for fileURL in tmpDirectoryContents where fileURL.path.contains("CFNetworkDownload") {
+        try fileManager.removeItem(at: fileURL)
+        print("Deleted: \(fileURL.lastPathComponent)")
       }
     } catch {
       print("Error deleting CFNetworkDownload files: \(error)")

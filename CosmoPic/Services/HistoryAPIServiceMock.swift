@@ -21,15 +21,11 @@ struct HistoryAPIServiceMock: HistoryAPIServiceProtocol {
     historyResponse
   }
 
-  func updatePhotosWithLocalURLs(
-    _: [Photo],
-    dateFormatter _: DateFormatter,
-    onPhotoUpdated _: @escaping () -> Void
-  ) async throws -> [Photo] {
+  func updatePhotosWithLocalURLs(_: [Photo], onPhotoUpdated _: @escaping () -> Void) async throws -> [Photo] {
     historyResponse
   }
 
-  func updatePhotoWithLocalURL(_: Photo, dateFormatter _: DateFormatter) async throws -> Photo {
+  func updatePhotoWithLocalURL(_: Photo) async throws -> Photo {
     photoResponse
   }
 

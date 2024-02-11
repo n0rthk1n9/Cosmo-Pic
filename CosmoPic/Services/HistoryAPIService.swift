@@ -89,7 +89,6 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
 
   func updatePhotosWithLocalURLs(
     _ photos: [Photo],
-    dateFormatter: DateFormatter,
     onPhotoUpdated: @escaping () -> Void
   ) async throws -> [Photo] {
     var updatedPhotos: [Photo] = []
@@ -97,7 +96,7 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
       for photo in photos {
         group.addTask {
           guard photo.mediaType == "image" else { return nil }
-          let updatedPhoto = try await self.updatePhotoWithLocalURL(photo, dateFormatter: dateFormatter)
+          let updatedPhoto = try await self.updatePhotoWithLocalURL(photo)
           return updatedPhoto
         }
       }
@@ -111,9 +110,8 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
     return updatedPhotos
   }
 
-  func updatePhotoWithLocalURL(_ photo: Photo, dateFormatter _: DateFormatter) async throws -> Photo {
+  func updatePhotoWithLocalURL(_ photo: Photo) async throws -> Photo {
     var updatedPhoto = photo
-    let identifier = photo.date
     guard let photoSdURL = photo.sdURL else {
       throw FetchHistoryError.invalidURL
     }

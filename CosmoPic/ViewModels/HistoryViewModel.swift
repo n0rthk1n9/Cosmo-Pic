@@ -1,44 +1,37 @@
 //
-//  DataStore.swift
+//  HistoryViewModel.swift
 //  CosmoPic
 //
-//  Created by Jan Armbrust on 28.11.23.
+//  Created by Jan Armbrust on 11.02.24.
 //
 
 import Foundation
+import SwiftUI
 
-class DataStore: ObservableObject {
+class HistoryViewModel: ObservableObject {
   @Published var history: [Photo] = []
-  @Published var isLoadingHistory = false
-  @Published var loadedHistoryElements = 0
-  @Published var totalHistoryElements = 31
+  @Published var isLoading = false
+  @Published var loadedElements = 0
+  @Published var totalElements = 31
 
-  @Published var errorIsPresented = false
   @Published var error: Error?
 
-  let photoAPIService: PhotoAPIServiceProtocol
-  let historyAPIService: HistoryAPIServiceProtocol
+  private let historyAPIService: HistoryAPIServiceProtocol
 
-  init(
-    photoAPIService: PhotoAPIServiceProtocol = PhotoAPIService(),
-    historyAPIService: HistoryAPIServiceProtocol = HistoryAPIService()
-  ) {
-    self.photoAPIService = photoAPIService
+  init(historyAPIService: HistoryAPIServiceProtocol = HistoryAPIService()) {
     self.historyAPIService = historyAPIService
   }
 
   @MainActor
   func getHistory() async {
-    loadedHistoryElements = 0
-    isLoadingHistory = true
+    loadedElements = 0
+    isLoading = true
     do {
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "yyyy-MM-dd"
       let currentDate = Date()
       guard let oneMonthAgo = Calendar.current.date(byAdding: .month, value: -1, to: currentDate) else { return }
 
-      let todayString = dateFormatter.string(from: currentDate)
-      let startDate = dateFormatter.string(from: oneMonthAgo)
+      let todayString = DateFormatter.yyyyMMdd.string(from: currentDate)
+      let startDate = DateFormatter.yyyyMMdd.string(from: oneMonthAgo)
 
       let historyFilePath = FileManager.documentsDirectoryURL
         .appendingPathComponent("\(todayString)-history.json")
@@ -51,12 +44,9 @@ class DataStore: ObservableObject {
           ending: todayString
         )
 
-        let updatedHistory = try await historyAPIService.updatePhotosWithLocalURLs(
-          fetchedHistory,
-          dateFormatter: dateFormatter
-        ) {
+        let updatedHistory = try await historyAPIService.updatePhotosWithLocalURLs(fetchedHistory) {
           Task { @MainActor in
-            self.loadedHistoryElements += 1
+            self.loadedElements += 1
           }
         }
 
@@ -65,13 +55,12 @@ class DataStore: ObservableObject {
       }
     } catch {
       self.error = error
-      errorIsPresented = true
     }
-    isLoadingHistory = false
-    await deleteOldHistoryAndPhotos()
+    isLoading = false
+    await deletOldFiles()
   }
 
-  func loadFavoriteFilenames() -> Set<String> {
+  func getFavoriteFilenames() -> Set<String> {
     guard let jsonData = try? Data(contentsOf: FileManager.documentsDirectoryURL
       .appendingPathComponent("favorites.json")),
       let favorites = try? JSONDecoder().decode([Photo].self, from: jsonData)
@@ -81,23 +70,18 @@ class DataStore: ObservableObject {
     return Set(favorites.compactMap { $0.localFilename })
   }
 
-  func determineOldestDateToKeep(from fileURL: URL) -> Date? {
+  func getCutoffDate(from fileURL: URL) -> Date? {
     guard let jsonData = try? Data(contentsOf: fileURL),
           let photos = try? JSONDecoder().decode([Photo].self, from: jsonData)
     else {
       return nil
     }
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-    return photos.compactMap { dateFormatter.date(from: $0.date) }.min()
+    return photos.compactMap { DateFormatter.yyyyMMdd.date(from: $0.date) }.min()
   }
 
   func deleteFilesOlderThan(cutoffDate: Date, excluding favorites: Set<String>) {
     guard let fileURLs = try? FileManager.default.contentsOfDirectory(at: FileManager.documentsDirectoryURL)
     else { return }
-
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
 
     for fileURL in fileURLs {
       let fileName = fileURL.lastPathComponent
@@ -114,7 +98,7 @@ class DataStore: ObservableObject {
 
       // Delete based on date comparison for other files
       let dateString = String(fileName.prefix(10))
-      if let fileDate = dateFormatter.date(from: dateString), fileDate < cutoffDate {
+      if let fileDate = DateFormatter.yyyyMMdd.date(from: dateString), fileDate < cutoffDate {
         try? FileManager.default.deleteFile(at: fileURL)
       }
     }
@@ -133,13 +117,12 @@ class DataStore: ObservableObject {
     }
   }
 
-  func deleteOldHistoryAndPhotos() async {
-    let dateFormatter = DateFormatter.yyyyMMdd
-    let todayHistoryFileName = "\(dateFormatter.string(from: Date()))-history.json"
-    let favoriteFilenames = loadFavoriteFilenames()
+  func deletOldFiles() async {
+    let todayHistoryFileName = "\(DateFormatter.yyyyMMdd.string(from: Date()))-history.json"
+    let favoriteFilenames = getFavoriteFilenames()
     let todayHistoryFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(todayHistoryFileName)
 
-    if let cutoffDate = determineOldestDateToKeep(from: todayHistoryFileURL) {
+    if let cutoffDate = getCutoffDate(from: todayHistoryFileURL) {
       // Delete non-history files older than the cutoff date, excluding favorites
       deleteFilesOlderThan(cutoffDate: cutoffDate, excluding: favoriteFilenames)
       // Delete older history files separately

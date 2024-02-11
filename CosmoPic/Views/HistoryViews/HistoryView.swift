@@ -8,32 +8,35 @@
 import SwiftUI
 
 struct HistoryView: View {
-  @EnvironmentObject var dataStore: DataStore
+  @StateObject private var viewModel = HistoryViewModel()
   @State private var showAlert = false
 
   private var sortedHistory: [Photo] {
-    dataStore.history.sorted { $0.date > $1.date }
+    viewModel.history.sorted { $0.date > $1.date }
   }
 
   var body: some View {
     NavigationStack {
-      if sortedHistory.isEmpty && !dataStore.isLoadingHistory {
-        ContentUnavailableView("No Data available", systemImage: "x.circle")
-      } else {
-        historyListView
+      VStack {
+        if viewModel.isLoading {
+          loadingOverlay
+        } else if !sortedHistory.isEmpty {
+          historyListView
+        } else {
+          ContentUnavailableView("No Data available", systemImage: "x.circle")
+        }
       }
+      .navigationTitle("Photo History")
     }
     .alert(isPresented: $showAlert) {
       Alert(
         title: Text("Error"),
-        message: Text(dataStore.error?.localizedDescription ?? "An unknown error occurred"),
+        message: Text(viewModel.error?.localizedDescription ?? "An unknown error occurred"),
         dismissButton: .default(Text("Ok"))
       )
     }
-    .navigationTitle("Photo History")
-    .overlay(loadingOverlay)
     .task {
-      await dataStore.getHistory()
+      await viewModel.getHistory()
       checkAndPrepareErrorAlert()
     }
     .accessibilityIdentifier("history-list")
@@ -47,29 +50,26 @@ struct HistoryView: View {
     }
   }
 
-  @ViewBuilder private var loadingOverlay: some View {
-    if dataStore.isLoadingHistory {
-      VStack {
-        Spacer()
-        Text("Loading 1 Month History")
-          .padding(.bottom)
-        ProgressView()
-          .padding(.bottom)
-        ProgressView(value: Double(dataStore.loadedHistoryElements), total: Double(dataStore.totalHistoryElements))
-          .padding(.bottom)
-        Text("\(dataStore.loadedHistoryElements) / \(dataStore.totalHistoryElements)")
-        Spacer()
-      }
-      .padding()
-      .background(.thinMaterial)
-      .frame(maxWidth: .infinity, maxHeight: .infinity)
+  private var loadingOverlay: some View {
+    VStack {
+      Spacer()
+      Text("Loading 1 Month History")
+        .padding(.bottom)
+      ProgressView()
+        .padding(.bottom)
+      ProgressView(value: Double(viewModel.loadedElements), total: Double(viewModel.totalElements))
+        .padding(.bottom)
+      Text("\(viewModel.loadedElements) / \(viewModel.totalElements)")
+      Spacer()
     }
+    .padding()
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
   }
 
   func checkAndPrepareErrorAlert() {
-    if let urlError = dataStore.error as? URLError, urlError.code == .cancelled {
+    if let urlError = viewModel.error as? URLError, urlError.code == .cancelled {
       showAlert = false
-    } else if dataStore.error != nil {
+    } else if viewModel.error != nil {
       showAlert = true
     }
   }
