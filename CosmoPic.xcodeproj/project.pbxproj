@@ -17,7 +17,6 @@
 		574D86952B14A43A00294392 /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D86942B14A43A00294392 /* PhotoDetailView.swift */; };
 		574D86972B15837100294392 /* PhotoAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D86962B15837100294392 /* PhotoAPIService.swift */; };
 		574D869A2B1583C800294392 /* PhotoAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D86992B1583C800294392 /* PhotoAPIServiceProtocol.swift */; };
-		574D869C2B160CFB00294392 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D869B2B160CFB00294392 /* DataStore.swift */; };
 		574D869E2B161C6200294392 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D869D2B161C6200294392 /* PhotoView.swift */; };
 		574D86A02B16452600294392 /* HistoryAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D869F2B16452500294392 /* HistoryAPIService.swift */; };
 		574D86A32B16453D00294392 /* HistoryAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D86A22B16453D00294392 /* HistoryAPIServiceProtocol.swift */; };
@@ -78,7 +77,6 @@
 		574D86942B14A43A00294392 /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
 		574D86962B15837100294392 /* PhotoAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIService.swift; sourceTree = "<group>"; };
 		574D86992B1583C800294392 /* PhotoAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIServiceProtocol.swift; sourceTree = "<group>"; };
-		574D869B2B160CFB00294392 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		574D869D2B161C6200294392 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		574D869F2B16452500294392 /* HistoryAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAPIService.swift; sourceTree = "<group>"; };
 		574D86A22B16453D00294392 /* HistoryAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAPIServiceProtocol.swift; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 		57CDE76C2B165BEE00294392 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				574D869B2B160CFB00294392 /* DataStore.swift */,
 				5791A0092B6D321E00294392 /* APODViewModel.swift */,
 				57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */,
 				57409B9E2B700EEC00294392 /* PhotoDetailViewModel.swift */,
@@ -464,7 +461,6 @@
 				571232712B112C0800294392 /* HistoryView.swift in Sources */,
 				578C96B82B793EB900294392 /* HistoryViewModel.swift in Sources */,
 				57FC94292B166F3E00294392 /* PhotoAPIServiceErrorMock.swift in Sources */,
-				574D869C2B160CFB00294392 /* DataStore.swift in Sources */,
 				574D86A32B16453D00294392 /* HistoryAPIServiceProtocol.swift in Sources */,
 				5791A00A2B6D321E00294392 /* APODViewModel.swift in Sources */,
 				575CFF5D2B17F2E400294392 /* FeatureView.swift in Sources */,
