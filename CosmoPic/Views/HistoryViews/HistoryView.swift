@@ -17,13 +17,16 @@ struct HistoryView: View {
 
   var body: some View {
     NavigationStack {
-      if viewModel.isLoading {
-        loadingOverlay
-      } else if !sortedHistory.isEmpty {
-        historyListView
-      } else {
-        ContentUnavailableView("No Data available", systemImage: "x.circle")
+      VStack {
+        if viewModel.isLoading {
+          loadingOverlay
+        } else if !sortedHistory.isEmpty {
+          historyListView
+        } else {
+          ContentUnavailableView("No Data available", systemImage: "x.circle")
+        }
       }
+      .navigationTitle("Photo History")
     }
     .alert(isPresented: $showAlert) {
       Alert(
@@ -32,7 +35,6 @@ struct HistoryView: View {
         dismissButton: .default(Text("Ok"))
       )
     }
-    .navigationTitle("Photo History")
     .task {
       await viewModel.getHistory()
       checkAndPrepareErrorAlert()
