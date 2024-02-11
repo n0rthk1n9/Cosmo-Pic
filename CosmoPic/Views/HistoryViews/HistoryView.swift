@@ -17,10 +17,12 @@ struct HistoryView: View {
 
   var body: some View {
     NavigationStack {
-      if sortedHistory.isEmpty && !viewModel.isLoading {
-        ContentUnavailableView("No Data available", systemImage: "x.circle")
-      } else {
+      if viewModel.isLoading {
+        loadingOverlay
+      } else if !sortedHistory.isEmpty {
         historyListView
+      } else {
+        ContentUnavailableView("No Data available", systemImage: "x.circle")
       }
     }
     .alert(isPresented: $showAlert) {
@@ -31,7 +33,6 @@ struct HistoryView: View {
       )
     }
     .navigationTitle("Photo History")
-    .overlay(loadingOverlay)
     .task {
       await viewModel.getHistory()
       checkAndPrepareErrorAlert()
@@ -47,23 +48,20 @@ struct HistoryView: View {
     }
   }
 
-  @ViewBuilder private var loadingOverlay: some View {
-    if viewModel.isLoading {
-      VStack {
-        Spacer()
-        Text("Loading 1 Month History")
-          .padding(.bottom)
-        ProgressView()
-          .padding(.bottom)
-        ProgressView(value: Double(viewModel.loadedElements), total: Double(viewModel.totalElements))
-          .padding(.bottom)
-        Text("\(viewModel.loadedElements) / \(viewModel.totalElements)")
-        Spacer()
-      }
-      .padding()
-      .background(.thinMaterial)
-      .frame(maxWidth: .infinity, maxHeight: .infinity)
+  private var loadingOverlay: some View {
+    VStack {
+      Spacer()
+      Text("Loading 1 Month History")
+        .padding(.bottom)
+      ProgressView()
+        .padding(.bottom)
+      ProgressView(value: Double(viewModel.loadedElements), total: Double(viewModel.totalElements))
+        .padding(.bottom)
+      Text("\(viewModel.loadedElements) / \(viewModel.totalElements)")
+      Spacer()
     }
+    .padding()
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
   }
 
   func checkAndPrepareErrorAlert() {
