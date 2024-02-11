@@ -24,9 +24,7 @@ class APODViewModel: ObservableObject {
     isLoading = true
     error = nil
 
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-    let currentDate = dateFormatter.string(from: Date())
+    let currentDate = DateFormatter.yyyyMMdd.string(from: Date())
     let jsonPathURL = FileManager.documentsDirectoryURL.appendingPathComponent("\(currentDate).json")
 
     do {
