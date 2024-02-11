@@ -52,8 +52,7 @@ class DataStore: ObservableObject {
         )
 
         let updatedHistory = try await historyAPIService.updatePhotosWithLocalURLs(
-          fetchedHistory,
-          dateFormatter: dateFormatter
+          fetchedHistory
         ) {
           Task { @MainActor in
             self.loadedHistoryElements += 1
