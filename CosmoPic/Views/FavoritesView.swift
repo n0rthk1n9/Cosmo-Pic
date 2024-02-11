@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct FavoritesView: View {
-  @EnvironmentObject var dataStore: DataStore
   @EnvironmentObject var viewModel: FavoritesViewModel
 
   var body: some View {

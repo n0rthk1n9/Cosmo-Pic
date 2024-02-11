@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HistoryView: View {
-  @EnvironmentObject var dataStore: DataStore
   @StateObject private var viewModel = HistoryViewModel()
   @State private var showAlert = false
 

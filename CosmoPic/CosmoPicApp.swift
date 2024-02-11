@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct CosmoPicApp: App {
-  @StateObject var dataStore = DataStore()
   @StateObject var favoritesViewModel = FavoritesViewModel()
 
   init() {
@@ -22,7 +21,6 @@ struct CosmoPicApp: App {
   var body: some Scene {
     WindowGroup {
       MainView()
-        .environmentObject(dataStore)
         .environmentObject(favoritesViewModel)
     }
   }
