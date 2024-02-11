@@ -37,11 +37,9 @@ struct CosmoPicApp: App {
         options: []
       )
 
-      for fileURL in tmpDirectoryContents {
-        if fileURL.path.contains("CFNetworkDownload") {
-          try fileManager.removeItem(at: fileURL)
-          print("Deleted: \(fileURL.lastPathComponent)")
-        }
+      for fileURL in tmpDirectoryContents where fileURL.path.contains("CFNetworkDownload") {
+        try fileManager.removeItem(at: fileURL)
+        print("Deleted: \(fileURL.lastPathComponent)")
       }
     } catch {
       print("Error deleting CFNetworkDownload files: \(error)")
