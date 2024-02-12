@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		570652B42B7A743C00294392 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570652B32B7A743C00294392 /* JSONDecoder.swift */; };
+		570652B62B7A7A3D00294392 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570652B52B7A7A3D00294392 /* View.swift */; };
+		570652B82B7A7A7D00294392 /* LocalizedAlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570652B72B7A7A7D00294392 /* LocalizedAlertError.swift */; };
 		5712326D2B112BD400294392 /* APODView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5712326C2B112BD400294392 /* APODView.swift */; };
 		5712326F2B112BE500294392 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5712326E2B112BE500294392 /* FavoritesView.swift */; };
 		571232712B112C0800294392 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232702B112C0800294392 /* HistoryView.swift */; };
@@ -26,7 +29,6 @@
 		578A19D02B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */; };
 		578C96B82B793EB900294392 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578C96B72B793EB900294392 /* HistoryViewModel.swift */; };
 		5791A00A2B6D321E00294392 /* APODViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791A0092B6D321E00294392 /* APODViewModel.swift */; };
-		57A827EB2B18A3C600294392 /* JSONDecoderErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A827EA2B18A3C600294392 /* JSONDecoderErrorHandler.swift */; };
 		57A827ED2B18ACD400294392 /* FetchHistoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A827EC2B18ACD300294392 /* FetchHistoryError.swift */; };
 		57B8985F2B6EB37D00294392 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */; };
 		57D8C4412B0D53C100294392 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43D2B0D53C100294392 /* Preview Content */; };
@@ -66,6 +68,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		570652B32B7A743C00294392 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
+		570652B52B7A7A3D00294392 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		570652B72B7A7A7D00294392 /* LocalizedAlertError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedAlertError.swift; sourceTree = "<group>"; };
 		5712326C2B112BD400294392 /* APODView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODView.swift; sourceTree = "<group>"; };
 		5712326E2B112BE500294392 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		571232702B112C0800294392 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
@@ -90,7 +95,6 @@
 		578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		578C96B72B793EB900294392 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		5791A0092B6D321E00294392 /* APODViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODViewModel.swift; sourceTree = "<group>"; };
-		57A827EA2B18A3C600294392 /* JSONDecoderErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderErrorHandler.swift; sourceTree = "<group>"; };
 		57A827EC2B18ACD300294392 /* FetchHistoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchHistoryError.swift; sourceTree = "<group>"; };
 		57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		57D8C43D2B0D53C100294392 /* Preview Content */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Preview Content"; path = "CosmoPic/Preview Content"; sourceTree = SOURCE_ROOT; };
@@ -164,7 +168,6 @@
 				574D86992B1583C800294392 /* PhotoAPIServiceProtocol.swift */,
 				574D86962B15837100294392 /* PhotoAPIService.swift */,
 				571232762B11650900294392 /* FetchPhotoError.swift */,
-				57A827EA2B18A3C600294392 /* JSONDecoderErrorHandler.swift */,
 				57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */,
 				57FC94282B166F3E00294392 /* PhotoAPIServiceErrorMock.swift */,
 				574D86A22B16453D00294392 /* HistoryAPIServiceProtocol.swift */,
@@ -247,6 +250,8 @@
 				57E049062B147CF500294392 /* FileManager.swift */,
 				57F550422B73DEFE00294392 /* DateFormatter.swift */,
 				57F550442B73E3A500294392 /* UIImage.swift */,
+				570652B32B7A743C00294392 /* JSONDecoder.swift */,
+				570652B52B7A7A3D00294392 /* View.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 				574D869D2B161C6200294392 /* PhotoView.swift */,
 				57E4DD812B1A237A00294392 /* CheckmarkView.swift */,
 				57E4DD832B1A23AE00294392 /* FavoriteButtonView.swift */,
+				570652B72B7A7A7D00294392 /* LocalizedAlertError.swift */,
 			);
 			path = GeneralViews;
 			sourceTree = "<group>";
@@ -466,13 +472,15 @@
 				575CFF5D2B17F2E400294392 /* FeatureView.swift in Sources */,
 				57A827ED2B18ACD400294392 /* FetchHistoryError.swift in Sources */,
 				574D869E2B161C6200294392 /* PhotoView.swift in Sources */,
+				570652B62B7A7A3D00294392 /* View.swift in Sources */,
 				57E4DD802B1A235600294392 /* DynamicPhotoView.swift in Sources */,
 				57F550432B73DEFE00294392 /* DateFormatter.swift in Sources */,
+				570652B82B7A7A7D00294392 /* LocalizedAlertError.swift in Sources */,
 				5712326D2B112BD400294392 /* APODView.swift in Sources */,
 				57FC94272B166CB800294392 /* HistoryAPIServiceMock.swift in Sources */,
 				574D86A02B16452600294392 /* HistoryAPIService.swift in Sources */,
 				57409B9F2B700EEC00294392 /* PhotoDetailViewModel.swift in Sources */,
-				57A827EB2B18A3C600294392 /* JSONDecoderErrorHandler.swift in Sources */,
+				570652B42B7A743C00294392 /* JSONDecoder.swift in Sources */,
 				57E049072B147CF500294392 /* FileManager.swift in Sources */,
 				571232772B11650A00294392 /* FetchPhotoError.swift in Sources */,
 				57D8C4432B0D53C100294392 /* MainView.swift in Sources */,
