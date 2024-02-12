@@ -19,16 +19,8 @@ struct APODView: View {
         } else if let photo = viewModel.photo {
           PhotoDetailContentView(photo: photo)
         } else {
-          if let error = viewModel.error {
-            ContentUnavailableView("No Data available", systemImage: "x.circle")
-              .alert(isPresented: $showAlert) {
-                Alert(
-                  title: Text("Error"),
-                  message: Text(error.localizedDescription),
-                  dismissButton: .default(Text("Ok"))
-                )
-              }
-          }
+          ContentUnavailableView("No Data available", systemImage: "x.circle")
+            .errorAlert(error: $viewModel.error)
         }
       }
       .navigationTitle("Cosmo Pic")
