@@ -62,10 +62,9 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
         throw FetchPhotoError.invalidResponseCode
       }
 
-      let photo = try JSONDecoder().decode(Photo.self, from: data)
+      let photo = try JSONDecoder().decodeLogging(Photo.self, from: data)
       return photo
     } catch {
-      try JSONDecoderErrorHandler().handleError(error: error)
       throw error
     }
   }
@@ -92,7 +91,7 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
   func loadPhoto(from jsonPath: URL, for _: String) throws -> Photo {
     do {
       let jsonData = try Data(contentsOf: jsonPath)
-      let photo = try JSONDecoder().decode(Photo.self, from: jsonData)
+      let photo = try JSONDecoder().decodeLogging(Photo.self, from: jsonData)
 
       if let localFilename = photo.localFilename {
         let localFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(localFilename)
@@ -105,7 +104,6 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
 
       return photo
     } catch {
-      try JSONDecoderErrorHandler().handleError(error: error)
       throw error
     }
   }

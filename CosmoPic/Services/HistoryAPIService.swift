@@ -58,10 +58,9 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
         throw FetchHistoryError.invalidResponseCode
       }
 
-      let photos = try JSONDecoder().decode([Photo].self, from: data)
+      let photos = try JSONDecoder().decodeLogging([Photo].self, from: data)
       return photos
     } catch {
-      try JSONDecoderErrorHandler().handleError(error: error)
       throw error
     }
   }
@@ -80,9 +79,8 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
       let historyFileName = "\(date)-history.json"
       let historyFilePath = FileManager.documentsDirectoryURL.appendingPathComponent(historyFileName)
       let jsonData = try Data(contentsOf: historyFilePath)
-      return try JSONDecoder().decode([Photo].self, from: jsonData)
+      return try JSONDecoder().decodeLogging([Photo].self, from: jsonData)
     } catch {
-      try JSONDecoderErrorHandler().handleError(error: error)
       throw error
     }
   }
