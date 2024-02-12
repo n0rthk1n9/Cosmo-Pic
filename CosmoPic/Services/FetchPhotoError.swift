@@ -7,36 +7,40 @@
 
 import Foundation
 
-enum FetchPhotoError: Error {
+enum FetchPhotoError: LocalizedError {
   case invalidURL
   case invalidResponseCode
   case photoForTodayNotAvailableYet
   case savePhotoError
   case noFileFound
-}
 
-extension FetchPhotoError: LocalizedError {
   var errorDescription: String? {
     switch self {
     case .invalidURL:
-      return NSLocalizedString("Soemthing went wrong while creating the URL to download the photo", comment: "")
+      return "Soemthing went wrong while creating the URL to download the photo"
     case .invalidResponseCode:
-      return NSLocalizedString("Soemthing went wrong while downloading the photo", comment: "")
+      return "Something went wrong while downloading the photo"
     case .photoForTodayNotAvailableYet:
-      return NSLocalizedString(
-        "The photo for today is not available yet, do you want to load yesterdays photo?",
-        comment: ""
-      )
+      return "The photo for today is not available yet do you want to load yesterdays photo?"
     case .savePhotoError:
-      return NSLocalizedString(
-        "The file can not be saved because it is not an image",
-        comment: ""
-      )
+      return "The file can not be saved"
     case .noFileFound:
-      return NSLocalizedString(
-        "The cached photo can not be loaded",
-        comment: ""
-      )
+      return "The cached photo can not be loaded"
+    }
+  }
+
+  var recoverySuggestion: String? {
+    switch self {
+    case .invalidURL:
+      return "Try again later"
+    case .invalidResponseCode:
+      return "Try again later"
+    case .photoForTodayNotAvailableYet:
+      return "Do you want to load yesterdays photo?"
+    case .savePhotoError:
+      return "Try again later"
+    case .noFileFound:
+      return "Do you want to try downloading it again?"
     }
   }
 }
