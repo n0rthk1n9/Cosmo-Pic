@@ -26,6 +26,7 @@ struct HistoryView: View {
           ContentUnavailableView("No Data available", systemImage: "x.circle")
         }
       }
+      .padding()
       .navigationTitle("Photo History")
     }
     .alert(isPresented: $showAlert) {

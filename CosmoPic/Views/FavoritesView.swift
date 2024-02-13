@@ -12,24 +12,27 @@ struct FavoritesView: View {
 
   var body: some View {
     NavigationStack {
-      if viewModel.favorites.isEmpty {
-        Text("No favorites yet")
-          .font(.title)
-          .foregroundColor(.gray)
-          .padding()
-          .multilineTextAlignment(.center)
-      } else {
-        List {
-          ForEach(viewModel.favorites, id: \.title) { photo in
-            NavigationLink(destination: PhotoDetailView(photo: photo)) {
-              Text(photo.title)
+      VStack {
+        if viewModel.favorites.isEmpty {
+          Text("No favorites yet")
+            .font(.title)
+            .foregroundColor(.gray)
+            .padding()
+            .multilineTextAlignment(.center)
+        } else {
+          List {
+            ForEach(viewModel.favorites, id: \.title) { photo in
+              NavigationLink(destination: PhotoDetailView(photo: photo)) {
+                Text(photo.title)
+              }
             }
+            .onDelete(perform: delete)
           }
-          .onDelete(perform: delete)
+          .navigationTitle("Favorites")
+          .accessibilityIdentifier("favorites-list")
         }
-        .navigationTitle("Favorites")
-        .accessibilityIdentifier("favorites-list")
       }
+      .padding()
     }
     .onAppear {
       viewModel.loadFavorites()
