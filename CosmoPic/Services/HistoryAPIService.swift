@@ -135,9 +135,14 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
       // Attempt to create and save the thumbnail
       if let image = UIImage(data: imageData) {
         await MainActor.run {
+          #if !os(visionOS)
+            var scale = UIScreen.main.scale
+          #else
+            var scale = 2.0
+          #endif
           if let thumbnailData = image.downsampledData(
             to: CGSize(width: 100, height: 100),
-            scale: UIScreen.main.scale
+            scale: scale
           ) {
             do {
               try thumbnailData.write(to: thumbnailFileURL)

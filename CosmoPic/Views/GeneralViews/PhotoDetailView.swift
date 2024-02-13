@@ -32,6 +32,7 @@ struct PhotoDetailView: View {
         }
       }
     }
+    .padding()
     .task {
       await viewModel.getPhoto(for: photo.date)
       checkAndPrepareErrorAlert()
