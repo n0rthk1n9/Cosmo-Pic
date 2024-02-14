@@ -23,6 +23,15 @@ struct CosmoPicApp: App {
       MainView()
         .environmentObject(favoritesViewModel)
     }
+
+    #if os(visionOS)
+      WindowGroup(for: Photo.self) { $photo in
+        if let photo {
+          PhotoDetailView(photo: photo)
+            .environmentObject(favoritesViewModel)
+        }
+      }
+    #endif
   }
 
   // TODO: Move somwhere else and refactor

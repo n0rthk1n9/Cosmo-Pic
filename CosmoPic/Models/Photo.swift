@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Photo: Codable, Equatable {
+struct Photo: Codable, Equatable, Hashable {
   let copyright: String?
   let date: String
   let explanation: String
