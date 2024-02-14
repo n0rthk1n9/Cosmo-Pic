@@ -10,6 +10,7 @@ import SwiftUI
 struct HistoryView: View {
   @StateObject private var viewModel = HistoryViewModel()
   @State private var showAlert = false
+  @Environment(\.openWindow) private var openWindow
 
   private var sortedHistory: [Photo] {
     viewModel.history.sorted { $0.date > $1.date }
@@ -45,10 +46,21 @@ struct HistoryView: View {
 
   private var historyListView: some View {
     List(sortedHistory, id: \.title) { photo in
-      NavigationLink(destination: PhotoDetailView(photo: photo)) {
+      NavigationLink(value: photo) {
         HistoryRowView(photo: photo)
+          .frame(maxWidth: .infinity, alignment: .leading)
       }
+      #if os(visionOS)
+      .onTapGesture {
+        openWindow(value: photo)
+      }
+      #endif
     }
+    #if !os(visionOS)
+    .navigationDestination(for: Photo.self) { photo in
+      PhotoDetailView(photo: photo)
+    }
+    #endif
   }
 
   private var loadingOverlay: some View {
