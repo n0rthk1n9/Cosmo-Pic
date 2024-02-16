@@ -13,7 +13,7 @@
 		5712326F2B112BE500294392 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5712326E2B112BE500294392 /* FavoritesView.swift */; };
 		571232712B112C0800294392 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232702B112C0800294392 /* HistoryView.swift */; };
 		571232732B115FD100294392 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232722B115FD100294392 /* Photo.swift */; };
-		571232772B11650A00294392 /* FetchPhotoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232762B11650900294392 /* FetchPhotoError.swift */; };
+		571232772B11650A00294392 /* PhotoAPIServiceAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232762B11650900294392 /* PhotoAPIServiceAlert.swift */; };
 		57409B9F2B700EEC00294392 /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57409B9E2B700EEC00294392 /* PhotoDetailViewModel.swift */; };
 		574D86912B14836B00294392 /* APOD-Info-Sample.plist in Resources */ = {isa = PBXBuildFile; fileRef = 574D86902B14836B00294392 /* APOD-Info-Sample.plist */; };
 		574D86952B14A43A00294392 /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D86942B14A43A00294392 /* PhotoDetailView.swift */; };
@@ -75,7 +75,7 @@
 		5712326E2B112BE500294392 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		571232702B112C0800294392 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		571232722B115FD100294392 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		571232762B11650900294392 /* FetchPhotoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoError.swift; sourceTree = "<group>"; };
+		571232762B11650900294392 /* PhotoAPIServiceAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIServiceAlert.swift; sourceTree = "<group>"; };
 		572FAFA62B11276800294392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		57409B9E2B700EEC00294392 /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
 		574D86902B14836B00294392 /* APOD-Info-Sample.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "APOD-Info-Sample.plist"; sourceTree = "<group>"; };
@@ -170,7 +170,6 @@
 				57A8A6F12B7FAED000294392 /* Errors */,
 				574D86992B1583C800294392 /* PhotoAPIServiceProtocol.swift */,
 				574D86962B15837100294392 /* PhotoAPIService.swift */,
-				571232762B11650900294392 /* FetchPhotoError.swift */,
 				57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */,
 				57FC94282B166F3E00294392 /* PhotoAPIServiceErrorMock.swift */,
 				574D86A22B16453D00294392 /* HistoryAPIServiceProtocol.swift */,
@@ -240,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */,
+				571232762B11650900294392 /* PhotoAPIServiceAlert.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -494,7 +494,7 @@
 				57409B9F2B700EEC00294392 /* PhotoDetailViewModel.swift in Sources */,
 				570652B42B7A743C00294392 /* JSONDecoder.swift in Sources */,
 				57E049072B147CF500294392 /* FileManager.swift in Sources */,
-				571232772B11650A00294392 /* FetchPhotoError.swift in Sources */,
+				571232772B11650A00294392 /* PhotoAPIServiceAlert.swift in Sources */,
 				57D8C4432B0D53C100294392 /* MainView.swift in Sources */,
 				57E3F1A82B77C98800294392 /* PhotoDetailContentView.swift in Sources */,
 				575CFF5B2B17F2C800294392 /* WelcomeView.swift in Sources */,

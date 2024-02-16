@@ -1,27 +1,27 @@
 //
-//  FetchPhotoError.swift
+//  PhotoAPIServiceAlert.swift
 //  CosmoPic
 //
 //  Created by Jan Armbrust on 25.11.23.
 //
 
-import Foundation
+import SwiftUI
 
-enum FetchPhotoError: LocalizedError {
+enum PhotoAPIServiceAlert: Error, LocalizedError, CosmoPicAlert {
   case invalidURL
   case invalidResponseCode
   case photoForTodayNotAvailableYet
   case savePhotoError
   case noFileFound
 
-  var errorDescription: String? {
+  var title: String {
     switch self {
     case .invalidURL:
       return "Soemthing went wrong while creating the URL to download the photo"
     case .invalidResponseCode:
       return "Something went wrong while downloading the photo"
     case .photoForTodayNotAvailableYet:
-      return "The photo for today is not available yet do you want to load yesterdays photo?"
+      return "The photo for today is not available yet"
     case .savePhotoError:
       return "The file can not be saved"
     case .noFileFound:
@@ -29,7 +29,7 @@ enum FetchPhotoError: LocalizedError {
     }
   }
 
-  var recoverySuggestion: String? {
+  var subtitle: String? {
     switch self {
     case .invalidURL:
       return "Try again later"
@@ -41,6 +41,22 @@ enum FetchPhotoError: LocalizedError {
       return "Try again later"
     case .noFileFound:
       return "Do you want to try downloading it again?"
+    }
+  }
+
+  var buttons: AnyView {
+    AnyView(getButtonsForAlert)
+  }
+
+  @ViewBuilder var getButtonsForAlert: some View {
+    switch self {
+    case .photoForTodayNotAvailableYet:
+      Button("No") {}
+      Button("Yes") {
+        print("YES PRESSED")
+      }
+    default:
+      Button("OK") {}
     }
   }
 }
