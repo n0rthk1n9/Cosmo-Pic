@@ -29,6 +29,8 @@
 		578C96B82B793EB900294392 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578C96B72B793EB900294392 /* HistoryViewModel.swift */; };
 		5791A00A2B6D321E00294392 /* APODViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791A0092B6D321E00294392 /* APODViewModel.swift */; };
 		57A827ED2B18ACD400294392 /* FetchHistoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A827EC2B18ACD300294392 /* FetchHistoryError.swift */; };
+		57A8A6F32B7FAEEE00294392 /* CosmoPicAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */; };
+		57A8A6F52B7FB12200294392 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A8A6F42B7FB12200294392 /* Binding.swift */; };
 		57B8985F2B6EB37D00294392 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */; };
 		57D8C4412B0D53C100294392 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43D2B0D53C100294392 /* Preview Content */; };
 		57D8C4422B0D53C100294392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43E2B0D53C100294392 /* Assets.xcassets */; };
@@ -94,6 +96,8 @@
 		578C96B72B793EB900294392 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		5791A0092B6D321E00294392 /* APODViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODViewModel.swift; sourceTree = "<group>"; };
 		57A827EC2B18ACD300294392 /* FetchHistoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchHistoryError.swift; sourceTree = "<group>"; };
+		57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicAlert.swift; sourceTree = "<group>"; };
+		57A8A6F42B7FB12200294392 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		57D8C43D2B0D53C100294392 /* Preview Content */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Preview Content"; path = "CosmoPic/Preview Content"; sourceTree = SOURCE_ROOT; };
 		57D8C43E2B0D53C100294392 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CosmoPic/Assets.xcassets; sourceTree = SOURCE_ROOT; };
@@ -163,6 +167,7 @@
 		574D86982B15839700294392 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				57A8A6F12B7FAED000294392 /* Errors */,
 				574D86992B1583C800294392 /* PhotoAPIServiceProtocol.swift */,
 				574D86962B15837100294392 /* PhotoAPIService.swift */,
 				571232762B11650900294392 /* FetchPhotoError.swift */,
@@ -231,6 +236,14 @@
 			path = CosmoPicUITests;
 			sourceTree = "<group>";
 		};
+		57A8A6F12B7FAED000294392 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		57CDE76C2B165BEE00294392 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +263,7 @@
 				57F550442B73E3A500294392 /* UIImage.swift */,
 				570652B32B7A743C00294392 /* JSONDecoder.swift */,
 				570652B52B7A7A3D00294392 /* View.swift */,
+				57A8A6F42B7FB12200294392 /* Binding.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -460,6 +474,7 @@
 				5712326F2B112BE500294392 /* FavoritesView.swift in Sources */,
 				57F550452B73E3A500294392 /* UIImage.swift in Sources */,
 				574D86972B15837100294392 /* PhotoAPIService.swift in Sources */,
+				57A8A6F32B7FAEEE00294392 /* CosmoPicAlert.swift in Sources */,
 				57D8C4442B0D53C100294392 /* CosmoPicApp.swift in Sources */,
 				571232712B112C0800294392 /* HistoryView.swift in Sources */,
 				578C96B82B793EB900294392 /* HistoryViewModel.swift in Sources */,
@@ -472,6 +487,7 @@
 				570652B62B7A7A3D00294392 /* View.swift in Sources */,
 				57E4DD802B1A235600294392 /* DynamicPhotoView.swift in Sources */,
 				57F550432B73DEFE00294392 /* DateFormatter.swift in Sources */,
+				57A8A6F52B7FB12200294392 /* Binding.swift in Sources */,
 				5712326D2B112BD400294392 /* APODView.swift in Sources */,
 				57FC94272B166CB800294392 /* HistoryAPIServiceMock.swift in Sources */,
 				574D86A02B16452600294392 /* HistoryAPIService.swift in Sources */,
