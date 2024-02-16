@@ -20,7 +20,7 @@ struct APODView: View {
           PhotoDetailContentView(photo: photo)
         } else {
           ContentUnavailableView("No Data available", systemImage: "x.circle")
-            .errorAlert(error: $viewModel.error)
+            .showCustomAlert(alert: $viewModel.error)
         }
       }
       .padding()

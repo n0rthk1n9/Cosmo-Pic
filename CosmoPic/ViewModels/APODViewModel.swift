@@ -11,7 +11,7 @@ import SwiftUI
 class APODViewModel: ObservableObject {
   @Published var photo: Photo?
   @Published var isLoading = false
-  @Published var error: Error?
+  @Published var error: PhotoAPIServiceAlert?
 
   private let photoAPIService: PhotoAPIServiceProtocol
 
@@ -47,7 +47,7 @@ class APODViewModel: ObservableObject {
         photo = savedPhoto
       }
     } catch {
-      self.error = error
+      self.error = error as! PhotoAPIServiceAlert
     }
 
     isLoading = false
