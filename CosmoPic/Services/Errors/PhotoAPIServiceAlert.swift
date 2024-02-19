@@ -13,6 +13,7 @@ enum PhotoAPIServiceAlert: Error, LocalizedError, CosmoPicAlert {
   case photoForTodayNotAvailableYet
   case savePhotoError
   case noFileFound
+  case other(error: Error)
 
   var title: String {
     switch self {
@@ -26,6 +27,8 @@ enum PhotoAPIServiceAlert: Error, LocalizedError, CosmoPicAlert {
       return "The file can not be saved"
     case .noFileFound:
       return "The cached photo can not be loaded"
+    case .other:
+      return "Error"
     }
   }
 
@@ -41,6 +44,8 @@ enum PhotoAPIServiceAlert: Error, LocalizedError, CosmoPicAlert {
       return "Try again later"
     case .noFileFound:
       return "Do you want to try downloading it again?"
+    case let .other(error):
+      return error.localizedDescription
     }
   }
 
