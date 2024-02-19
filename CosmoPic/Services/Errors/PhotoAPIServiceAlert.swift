@@ -12,7 +12,9 @@ enum PhotoAPIServiceAlert: Error, LocalizedError, CosmoPicAlert {
   case invalidResponseCode
   case photoForTodayNotAvailableYet
   case savePhotoError
+  case mediaTypeError
   case noFileFound
+  case other(error: Error)
 
   var title: String {
     switch self {
@@ -22,10 +24,14 @@ enum PhotoAPIServiceAlert: Error, LocalizedError, CosmoPicAlert {
       return "Something went wrong while downloading the photo"
     case .photoForTodayNotAvailableYet:
       return "The photo for today is not available yet"
+    case .mediaTypeError:
+      return "Todays photo is actually a video and can not be displayed."
     case .savePhotoError:
-      return "The file can not be saved"
+      return "Found no photo to save"
     case .noFileFound:
       return "The cached photo can not be loaded"
+    case .other:
+      return "Error"
     }
   }
 
@@ -37,10 +43,14 @@ enum PhotoAPIServiceAlert: Error, LocalizedError, CosmoPicAlert {
       return "Try again later"
     case .photoForTodayNotAvailableYet:
       return "Do you want to load yesterdays photo?"
+    case .mediaTypeError:
+      return "Do you want to load yesterdays photo?"
     case .savePhotoError:
       return "Try again later"
     case .noFileFound:
       return "Do you want to try downloading it again?"
+    case let .other(error):
+      return error.localizedDescription
     }
   }
 
@@ -51,6 +61,11 @@ enum PhotoAPIServiceAlert: Error, LocalizedError, CosmoPicAlert {
   @ViewBuilder var getButtonsForAlert: some View {
     switch self {
     case .photoForTodayNotAvailableYet:
+      Button("No") {}
+      Button("Yes") {
+        print("YES PRESSED")
+      }
+    case .mediaTypeError:
       Button("No") {}
       Button("Yes") {
         print("YES PRESSED")

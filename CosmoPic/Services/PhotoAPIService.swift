@@ -70,7 +70,10 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
   }
 
   func savePhoto(_ photo: Photo, for date: String, to directory: URL) async throws -> Photo {
-    guard photo.mediaType == "image", let photoHdURL = photo.hdURL else {
+    guard photo.mediaType == "image" else {
+      throw PhotoAPIServiceAlert.mediaTypeError
+    }
+    guard let photoHdURL = photo.hdURL else {
       throw PhotoAPIServiceAlert.savePhotoError
     }
 
