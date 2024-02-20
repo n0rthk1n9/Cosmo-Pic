@@ -29,7 +29,9 @@ class PhotoDetailViewModel: ObservableObject {
         let loadedPhoto = try photoAPIService.loadPhoto(from: jsonPathURL, for: date)
         photo = loadedPhoto
       } else {
-        let fetchedPhoto = try await photoAPIService.fetchPhoto(from: date)
+        let fetchedPhoto = try await photoAPIService.fetchPhoto(from: date) {
+          print("error")
+        }
         let savedPhoto = try await photoAPIService.savePhoto(
           fetchedPhoto,
           for: date,
