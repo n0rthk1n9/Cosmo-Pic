@@ -20,11 +20,11 @@ class APODViewModel: ObservableObject {
   }
 
   @MainActor
-  func fetchPhotoForToday() async {
+  func fetchPhotoFor(date: Date) async {
     isLoading = true
     error = nil
 
-    let currentDate = DateFormatter.yyyyMMdd.string(from: Date())
+    let currentDate = DateFormatter.yyyyMMdd.string(from: date)
     let jsonPathURL = FileManager.documentsDirectoryURL.appendingPathComponent("\(currentDate).json")
 
     do {
@@ -32,7 +32,11 @@ class APODViewModel: ObservableObject {
         let loadedPhoto = try photoAPIService.loadPhoto(from: jsonPathURL, for: currentDate)
         photo = loadedPhoto
       } else {
-        let fetchedPhoto = try await photoAPIService.fetchPhoto(from: currentDate)
+        let fetchedPhoto = try await photoAPIService.fetchPhoto(from: currentDate) {
+          Task {
+            await self.fetchPhotoForYesterday()
+          }
+        }
         let savedPhoto = try await photoAPIService.savePhoto(
           fetchedPhoto,
           for: currentDate,
@@ -46,10 +50,32 @@ class APODViewModel: ObservableObject {
 
         photo = savedPhoto
       }
+    } catch let error as PhotoAPIServiceAlert {
+      self.error = error
     } catch {
-      self.error = error as? PhotoAPIServiceAlert ?? .other(error: error)
+      self.error = .other(error: error)
     }
 
     isLoading = false
+  }
+
+  @MainActor
+  func fetchPhotoForYesterday() async {
+    guard let yesterday = Calendar.current.date(byAdding: .day, value: -2, to: Date()) else {
+      return
+    }
+
+    Task {
+      await fetchPhotoFor(date: yesterday)
+    }
+  }
+
+  @MainActor
+  func fetchPhotoForToday() async {
+    let today = Date()
+
+    Task {
+      await fetchPhotoFor(date: today)
+    }
   }
 }

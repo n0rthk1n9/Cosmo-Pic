@@ -10,7 +10,7 @@ import Foundation
 struct PhotoAPIServiceMock: PhotoAPIServiceProtocol {
   var photoResponse: Photo = .allProperties
 
-  func fetchPhoto(from _: String) async throws -> Photo {
+  func fetchPhoto(from _: String, retryHandler _: (() -> Void)?) async throws -> Photo {
     photoResponse
   }
 

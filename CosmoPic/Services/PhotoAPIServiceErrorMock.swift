@@ -16,7 +16,7 @@ struct PhotoAPIServiceErrorMock: PhotoAPIServiceProtocol {
     }
   }
 
-  func fetchPhoto(from _: String) async throws -> Photo {
+  func fetchPhoto(from _: String, retryHandler _: (() -> Void)?) async throws -> Photo {
     throw SomeError.anError
   }
 

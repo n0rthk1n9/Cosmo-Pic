@@ -10,7 +10,7 @@ import SwiftUI
 enum PhotoAPIServiceAlert: Error, LocalizedError, CosmoPicAlert {
   case invalidURL
   case invalidResponseCode
-  case photoForTodayNotAvailableYet
+  case photoForTodayNotAvailableYet(retryHandler: (() -> Void)?)
   case savePhotoError
   case mediaTypeError
   case noFileFound
@@ -60,10 +60,10 @@ enum PhotoAPIServiceAlert: Error, LocalizedError, CosmoPicAlert {
 
   @ViewBuilder var getButtonsForAlert: some View {
     switch self {
-    case .photoForTodayNotAvailableYet:
+    case let .photoForTodayNotAvailableYet(retryHandler):
       Button("No") {}
       Button("Yes") {
-        print("YES PRESSED")
+        retryHandler?()
       }
     case .mediaTypeError:
       Button("No") {}

@@ -34,7 +34,7 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
     return URLSession(configuration: sessionConfiguration)
   }
 
-  func fetchPhoto(from date: String) async throws -> Photo {
+  func fetchPhoto(from date: String, retryHandler: (() -> Void)?) async throws -> Photo {
     var urlComponents = URLComponents()
     urlComponents.scheme = "https"
     urlComponents.host = "api.nasa.gov"
@@ -56,7 +56,7 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
         if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 404 {
           let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
           if json?["msg"] as? String == "No data available for date: \(date)" {
-            throw PhotoAPIServiceAlert.photoForTodayNotAvailableYet
+            throw PhotoAPIServiceAlert.photoForTodayNotAvailableYet(retryHandler: retryHandler)
           }
         }
         throw PhotoAPIServiceAlert.invalidResponseCode
