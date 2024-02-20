@@ -50,8 +50,10 @@ class APODViewModel: ObservableObject {
 
         photo = savedPhoto
       }
+    } catch let error as PhotoAPIServiceAlert {
+      self.error = error
     } catch {
-      self.error = error as? PhotoAPIServiceAlert ?? .other(error: error)
+      self.error = .other(error: error)
     }
 
     isLoading = false
