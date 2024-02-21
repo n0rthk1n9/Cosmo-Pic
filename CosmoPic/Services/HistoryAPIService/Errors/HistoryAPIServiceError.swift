@@ -1,5 +1,5 @@
 //
-//  FetchHistoryError.swift
+//  HistoryAPIServiceError.swift
 //  CosmoPic
 //
 //  Created by Jan Armbrust on 30.11.23.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum FetchHistoryError: Error {
+enum HistoryAPIServiceError: Error {
   case invalidURL
   case invalidResponseCode
 }
 
-extension FetchHistoryError: LocalizedError {
+extension HistoryAPIServiceError: LocalizedError {
   var errorDescription: String? {
     switch self {
     case .invalidURL:
