@@ -25,7 +25,9 @@ struct PhotoDetailView: View {
         }
       }
     }
+    #if os(visionOS)
     .padding()
+    #endif
     .task {
       await viewModel.getPhoto(for: photo.date)
     }
