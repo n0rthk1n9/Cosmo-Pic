@@ -1,5 +1,5 @@
 //
-//  HistoryAPIServiceError.swift
+//  HistoryAPIServiceAlert.swift
 //  CosmoPic
 //
 //  Created by Jan Armbrust on 30.11.23.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum HistoryAPIServiceError: Error {
+enum HistoryAPIServiceAlert: Error {
   case invalidURL
   case invalidResponseCode
 }
 
-extension HistoryAPIServiceError: LocalizedError {
+extension HistoryAPIServiceAlert: LocalizedError {
   var errorDescription: String? {
     switch self {
     case .invalidURL:
