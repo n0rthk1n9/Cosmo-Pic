@@ -168,16 +168,49 @@
 			isa = PBXGroup;
 			children = (
 				57A8A6F12B7FAED000294392 /* Errors */,
+				577BC02D2B86599F00294392 /* PhotoAPIService */,
+				577BC02F2B8659D900294392 /* HistoryAPIService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		577BC02D2B86599F00294392 /* PhotoAPIService */ = {
+			isa = PBXGroup;
+			children = (
+				577BC02E2B8659B600294392 /* Errors */,
 				574D86992B1583C800294392 /* PhotoAPIServiceProtocol.swift */,
 				574D86962B15837100294392 /* PhotoAPIService.swift */,
 				57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */,
 				57FC94282B166F3E00294392 /* PhotoAPIServiceErrorMock.swift */,
+			);
+			path = PhotoAPIService;
+			sourceTree = "<group>";
+		};
+		577BC02E2B8659B600294392 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				571232762B11650900294392 /* PhotoAPIServiceAlert.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		577BC02F2B8659D900294392 /* HistoryAPIService */ = {
+			isa = PBXGroup;
+			children = (
+				577BC0302B8659F500294392 /* Errors */,
 				574D86A22B16453D00294392 /* HistoryAPIServiceProtocol.swift */,
 				574D869F2B16452500294392 /* HistoryAPIService.swift */,
 				57FC94262B166CB800294392 /* HistoryAPIServiceMock.swift */,
+			);
+			path = HistoryAPIService;
+			sourceTree = "<group>";
+		};
+		577BC0302B8659F500294392 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
 				57A827EC2B18ACD300294392 /* FetchHistoryError.swift */,
 			);
-			path = Services;
+			path = Errors;
 			sourceTree = "<group>";
 		};
 		578A19A62B0BA94C00294392 = {
@@ -239,7 +272,6 @@
 			isa = PBXGroup;
 			children = (
 				57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */,
-				571232762B11650900294392 /* PhotoAPIServiceAlert.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
