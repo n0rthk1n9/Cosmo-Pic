@@ -14,7 +14,7 @@ class HistoryViewModel: ObservableObject {
   @Published var loadedElements = 0
   @Published var totalElements = 31
 
-  @Published var error: Error?
+  @Published var error: HistoryAPIServiceAlert?
 
   private let historyAPIService: HistoryAPIServiceProtocol
 
@@ -53,8 +53,10 @@ class HistoryViewModel: ObservableObject {
         try historyAPIService.saveHistory(updatedHistory, for: todayString)
         history = updatedHistory
       }
-    } catch {
+    } catch let error as HistoryAPIServiceAlert {
       self.error = error
+    } catch {
+      self.error = .other(error: error)
     }
     isLoading = false
     await deletOldFiles()

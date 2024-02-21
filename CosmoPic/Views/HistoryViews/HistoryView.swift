@@ -9,8 +9,8 @@ import SwiftUI
 
 struct HistoryView: View {
   @StateObject private var viewModel = HistoryViewModel()
-  @State private var showAlert = false
-  @Environment(\.openWindow) private var openWindow
+  @Environment(\.openWindow)
+  private var openWindow
 
   private var sortedHistory: [Photo] {
     viewModel.history.sorted { $0.date > $1.date }
@@ -25,21 +25,16 @@ struct HistoryView: View {
           historyListView
         } else {
           ContentUnavailableView("No Data available", systemImage: "x.circle")
+            .showCustomAlert(alert: $viewModel.error)
         }
       }
+      #if os(visionOS)
       .padding()
+      #endif
       .navigationTitle("Photo History")
-    }
-    .alert(isPresented: $showAlert) {
-      Alert(
-        title: Text("Error"),
-        message: Text(viewModel.error?.localizedDescription ?? "An unknown error occurred"),
-        dismissButton: .default(Text("Ok"))
-      )
     }
     .task {
       await viewModel.getHistory()
-      checkAndPrepareErrorAlert()
     }
     .accessibilityIdentifier("history-list")
   }
@@ -77,13 +72,5 @@ struct HistoryView: View {
     }
     .padding()
     .frame(maxWidth: .infinity, maxHeight: .infinity)
-  }
-
-  func checkAndPrepareErrorAlert() {
-    if let urlError = viewModel.error as? URLError, urlError.code == .cancelled {
-      showAlert = false
-    } else if viewModel.error != nil {
-      showAlert = true
-    }
   }
 }

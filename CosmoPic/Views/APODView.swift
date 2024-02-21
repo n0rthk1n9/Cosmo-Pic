@@ -9,7 +9,6 @@ import SwiftUI
 
 struct APODView: View {
   @StateObject private var viewModel = APODViewModel()
-  @State private var showAlert = false
 
   var body: some View {
     NavigationStack {
@@ -23,20 +22,13 @@ struct APODView: View {
             .showCustomAlert(alert: $viewModel.error)
         }
       }
+      #if os(visionOS)
       .padding()
+      #endif
       .navigationTitle("Cosmo Pic")
       .task {
         await viewModel.fetchPhotoForToday()
-        checkAndPrepareErrorAlert()
       }
-    }
-  }
-
-  func checkAndPrepareErrorAlert() {
-    if let urlError = viewModel.error as? URLError, urlError.code == .cancelled {
-      showAlert = false
-    } else if viewModel.error != nil {
-      showAlert = true
     }
   }
 }
