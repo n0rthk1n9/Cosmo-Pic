@@ -28,7 +28,9 @@ struct HistoryView: View {
             .showCustomAlert(alert: $viewModel.error)
         }
       }
+      #if os(visionOS)
       .padding()
+      #endif
       .navigationTitle("Photo History")
     }
     .task {

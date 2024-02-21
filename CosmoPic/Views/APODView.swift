@@ -22,7 +22,9 @@ struct APODView: View {
             .showCustomAlert(alert: $viewModel.error)
         }
       }
+      #if os(visionOS)
       .padding()
+      #endif
       .navigationTitle("Cosmo Pic")
       .task {
         await viewModel.fetchPhotoForToday()
