@@ -25,6 +25,7 @@ struct HistoryView: View {
           historyListView
         } else {
           ContentUnavailableView("No Data available", systemImage: "x.circle")
+            .showCustomAlert(alert: $viewModel.error)
         }
       }
       .padding()

@@ -5,20 +5,43 @@
 //  Created by Jan Armbrust on 30.11.23.
 //
 
-import Foundation
+import SwiftUI
 
-enum HistoryAPIServiceAlert: Error {
+enum HistoryAPIServiceAlert: Error, LocalizedError, CosmoPicAlert {
   case invalidURL
   case invalidResponseCode
-}
+  case other(error: Error)
 
-extension HistoryAPIServiceAlert: LocalizedError {
-  var errorDescription: String? {
+  var title: String {
     switch self {
     case .invalidURL:
-      return NSLocalizedString("Soemthing went wrong while creating the URL to download the photo", comment: "")
+      return "Soemthing went wrong while creating the URL to download the history"
     case .invalidResponseCode:
-      return NSLocalizedString("Soemthing went wrong while downloading the photo", comment: "")
+      return "Something went wrong while downloading the history"
+    case .other:
+      return "Error"
+    }
+  }
+
+  var subtitle: String? {
+    switch self {
+    case .invalidURL:
+      return "Try again later"
+    case .invalidResponseCode:
+      return "Try again later"
+    case let .other(error):
+      return error.localizedDescription
+    }
+  }
+
+  var buttons: AnyView {
+    AnyView(getButtonsForAlert)
+  }
+
+  @ViewBuilder var getButtonsForAlert: some View {
+    switch self {
+    default:
+      Button("OK") {}
     }
   }
 }
