@@ -32,7 +32,9 @@ struct FavoritesView: View {
           .accessibilityIdentifier("favorites-list")
         }
       }
+      #if os(visionOS)
       .padding()
+      #endif
     }
     .onAppear {
       viewModel.loadFavorites()
