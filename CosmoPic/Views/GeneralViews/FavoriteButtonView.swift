@@ -18,7 +18,7 @@ struct FavoriteButtonView: View {
       addToFavorites()
     }
     .buttonStyle(.bordered)
-    .padding(.top)
+    .padding(.vertical)
     .accessibilityIdentifier("apod-view-favorites-button")
   }
 
