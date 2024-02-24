@@ -14,7 +14,7 @@ struct CheckmarkView: View {
     Image(systemName: "checkmark.circle.fill")
       .font(.title)
       .foregroundStyle(.green)
-      .padding(.top)
+      .padding(.vertical)
       .transition(.opacity)
       .onAppear {
         Task {
