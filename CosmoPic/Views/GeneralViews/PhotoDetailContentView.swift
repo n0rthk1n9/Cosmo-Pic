@@ -16,33 +16,44 @@ struct PhotoDetailContentView: View {
   var fullDetail = false
 
   var body: some View {
-    ScrollView {
+    GeometryReader { geometry in
       if fullDetail {
-        VStack(alignment: .leading) {
-          Text(photo.title)
-            .font(.title)
-            .padding(.horizontal)
+        VStack {
+          ZStack {
+            DynamicPhotoView(photo: photo, showAsHeroImage: true, size: geometry.size)
+          }
+          Form {
+            Section {
+              Text(photo.title)
+                .font(.title)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity, alignment: .center)
+            }
 
-          DynamicPhotoView(photo: photo)
-
-          HStack {
-            Spacer()
             if showCheckmark {
               CheckmarkView(showCheckmark: $showCheckmark)
+                .frame(maxWidth: .infinity, alignment: .center)
             } else if !isCurrentPhotoFavorite {
               FavoriteButtonView(
                 photo: photo,
                 isCurrentPhotoFavorite: $isCurrentPhotoFavorite,
                 showCheckmark: $showCheckmark
               )
+              .frame(maxWidth: .infinity, alignment: .center)
             }
-            Spacer()
+            Section {
+              Text(
+                photo.explanation
+                  .replacingOccurrences(of: "  ", with: " ")
+              )
+              .font(.caption)
+              .accessibilityIdentifier("photo-detail-view-photo-explanation")
+            }
           }
-          Text(photo.explanation)
-            .padding()
-            .accessibilityIdentifier("photo-detail-view-photo-explanation")
+          .padding(.top, -10)
         }
-        .navigationTitle(DateFormatter.localizedDateString(from: photo.date))
+        // TODO: add date somewhere
+//        .navigationTitle(DateFormatter.localizedDateString(from: photo.date))
       } else {
         VStack(alignment: .center) {
           Text(DateFormatter.localizedDateString(from: photo.date))
@@ -68,6 +79,7 @@ struct PhotoDetailContentView: View {
         }
       }
     }
+
     .onAppear {
       favoritesViewModel.loadFavorites()
       checkIfFavorite()
