@@ -41,7 +41,11 @@ class APODViewModel: ObservableObject {
           fetchedPhoto,
           for: currentDate,
           to: FileManager.documentsDirectoryURL
-        )
+        ) {
+          Task {
+            await self.fetchPhotoForYesterday()
+          }
+        }
 
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
@@ -61,7 +65,7 @@ class APODViewModel: ObservableObject {
 
   @MainActor
   func fetchPhotoForYesterday() async {
-    guard let yesterday = Calendar.current.date(byAdding: .day, value: -2, to: Date()) else {
+    guard let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date()) else {
       return
     }
 

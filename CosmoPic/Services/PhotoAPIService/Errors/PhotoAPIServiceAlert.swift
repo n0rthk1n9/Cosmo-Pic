@@ -12,7 +12,7 @@ enum PhotoAPIServiceAlert: Error, LocalizedError, CosmoPicAlert {
   case invalidResponseCode
   case photoForTodayNotAvailableYet(retryHandler: (() -> Void)?)
   case savePhotoError
-  case mediaTypeError
+  case mediaTypeError(retryHandler: (() -> Void)?)
   case noFileFound
   case other(error: Error)
 
@@ -65,10 +65,10 @@ enum PhotoAPIServiceAlert: Error, LocalizedError, CosmoPicAlert {
       Button("Yes") {
         retryHandler?()
       }
-    case .mediaTypeError:
+    case let .mediaTypeError(retryHandler):
       Button("No") {}
       Button("Yes") {
-        print("YES PRESSED")
+        retryHandler?()
       }
     default:
       Button("OK") {}

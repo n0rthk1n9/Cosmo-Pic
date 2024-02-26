@@ -30,13 +30,17 @@ class PhotoDetailViewModel: ObservableObject {
         photo = loadedPhoto
       } else {
         let fetchedPhoto = try await photoAPIService.fetchPhoto(from: date) {
+          // TODO: remove
           print("error")
         }
         let savedPhoto = try await photoAPIService.savePhoto(
           fetchedPhoto,
           for: date,
           to: FileManager.documentsDirectoryURL
-        )
+        ) {
+          // TODO: remove
+          print("error")
+        }
 
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
