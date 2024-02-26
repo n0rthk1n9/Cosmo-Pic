@@ -68,9 +68,7 @@ extension Photo {
       title: "Apple Logo",
       sdURL: URL(
         string: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1024px-Apple_logo_black.svg.png"
-      ),
-      localFilename: "2023-09-04.svg",
-      localFilenameThumbnail: "2023-09-04-thumbnail.svg"
+      )
     )
   }
 }
