@@ -29,3 +29,7 @@ struct FeatureView: View {
     }
   }
 }
+
+#Preview {
+  FeatureView(iconName: "star.fill", featureTitle: "Space pictures", featureText: "Seeing space pictures is amazing")
+}

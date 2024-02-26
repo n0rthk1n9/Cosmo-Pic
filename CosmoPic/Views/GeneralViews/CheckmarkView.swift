@@ -26,3 +26,7 @@ struct CheckmarkView: View {
       }
   }
 }
+
+#Preview {
+  CheckmarkView(showCheckmark: .constant(true))
+}

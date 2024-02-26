@@ -55,3 +55,7 @@ struct WelcomeView: View {
     .background(Color(.systemBackground))
   }
 }
+
+#Preview {
+  WelcomeView(isPresented: .constant(true))
+}

@@ -21,3 +21,7 @@ struct DynamicPhotoView: View {
     }
   }
 }
+
+#Preview {
+  DynamicPhotoView(photo: .allProperties, showAsHeroImage: true)
+}

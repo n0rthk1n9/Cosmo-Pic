@@ -20,7 +20,7 @@ struct PhotoAPIServiceErrorMock: PhotoAPIServiceProtocol {
     throw SomeError.anError
   }
 
-  func savePhoto(_: Photo, for _: String, to _: URL) async throws -> Photo {
+  func savePhoto(_: Photo, for _: String, retryHandler _: (() -> Void)?) async throws -> Photo {
     throw SomeError.anError
   }
 

@@ -19,10 +19,8 @@ struct PhotoDetailView: View {
       } else if let photo = viewModel.photo {
         PhotoDetailContentView(photo: photo, fullDetail: true)
       } else {
-        if let error = viewModel.error {
-          ContentUnavailableView("No Data available", systemImage: "x.circle")
-            .showCustomAlert(alert: $viewModel.error)
-        }
+        ContentUnavailableView("No Data available", systemImage: "x.circle")
+          .showCustomAlert(alert: $viewModel.error)
       }
     }
     #if os(visionOS)
@@ -32,4 +30,8 @@ struct PhotoDetailView: View {
       await viewModel.getPhoto(for: photo.date)
     }
   }
+}
+
+#Preview {
+  PhotoDetailView(photo: .allProperties)
 }
