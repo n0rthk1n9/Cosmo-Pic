@@ -30,3 +30,12 @@ struct FavoriteButtonView: View {
     }
   }
 }
+
+#Preview {
+  FavoriteButtonView(
+    photo: .allProperties,
+    isCurrentPhotoFavorite: .constant(false),
+    showCheckmark: .constant(false)
+  )
+  .environmentObject(FavoritesViewModel())
+}

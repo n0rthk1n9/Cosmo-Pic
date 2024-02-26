@@ -48,3 +48,7 @@ struct PhotoView: View {
     }
   }
 }
+
+#Preview {
+  PhotoView(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1024px-Apple_logo_black.svg.png")!, showAsHeroImage: true)
+}

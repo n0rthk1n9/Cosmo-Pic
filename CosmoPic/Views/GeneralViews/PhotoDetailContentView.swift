@@ -90,3 +90,8 @@ struct PhotoDetailContentView: View {
     isCurrentPhotoFavorite = favoritesViewModel.isFavorite(photo)
   }
 }
+
+#Preview {
+  PhotoDetailContentView(photo: .allProperties, fullDetail: true)
+    .environmentObject(FavoritesViewModel())
+}

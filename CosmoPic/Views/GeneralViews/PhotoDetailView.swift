@@ -31,3 +31,7 @@ struct PhotoDetailView: View {
     }
   }
 }
+
+#Preview {
+  PhotoDetailView(photo: .allProperties)
+}

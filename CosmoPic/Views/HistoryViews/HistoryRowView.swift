@@ -49,3 +49,7 @@ struct HistoryRowView: View {
     }
   }
 }
+
+#Preview {
+  HistoryRowView(photo: .allProperties)
+}
