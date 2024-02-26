@@ -14,7 +14,7 @@ struct PhotoAPIServiceMock: PhotoAPIServiceProtocol {
     photoResponse
   }
 
-  func savePhoto(_: Photo, for _: String, to _: URL, retryHandler _: (() -> Void)?) async throws -> Photo {
+  func savePhoto(_: Photo, for _: String, retryHandler _: (() -> Void)?) async throws -> Photo {
     photoResponse
   }
 

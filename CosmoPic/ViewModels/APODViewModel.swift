@@ -37,11 +37,7 @@ class APODViewModel: ObservableObject {
             await self.fetchPhotoForYesterday()
           }
         }
-        let savedPhoto = try await photoAPIService.savePhoto(
-          fetchedPhoto,
-          for: currentDate,
-          to: FileManager.documentsDirectoryURL
-        ) {
+        let savedPhoto = try await photoAPIService.savePhoto(fetchedPhoto, for: currentDate) {
           Task {
             await self.fetchPhotoForYesterday()
           }

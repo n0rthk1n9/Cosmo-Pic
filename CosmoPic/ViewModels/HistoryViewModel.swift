@@ -73,8 +73,9 @@ class HistoryViewModel: ObservableObject {
   }
 
   func getCutoffDate(from fileURL: URL) -> Date? {
-    guard let jsonData = try? Data(contentsOf: fileURL),
-          let photos = try? JSONDecoder().decode([Photo].self, from: jsonData)
+    guard
+      let jsonData = try? Data(contentsOf: fileURL),
+      let photos = try? JSONDecoder().decode([Photo].self, from: jsonData)
     else {
       return nil
     }

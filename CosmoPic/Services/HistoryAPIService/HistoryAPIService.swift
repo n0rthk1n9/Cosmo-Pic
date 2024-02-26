@@ -136,9 +136,9 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
       if let image = UIImage(data: imageData) {
         await MainActor.run {
           #if !os(visionOS)
-            var scale = UIScreen.main.scale
+            let scale = UIScreen.main.scale
           #else
-            var scale = 2.0
+            let scale = 2.0
           #endif
           if let thumbnailData = image.downsampledData(
             to: CGSize(width: 100, height: 100),

@@ -69,9 +69,7 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
     }
   }
 
-  func savePhoto(_ photo: Photo, for date: String, to directory: URL,
-                 retryHandler: (() -> Void)?) async throws -> Photo
-  {
+  func savePhoto(_ photo: Photo, for date: String, retryHandler: (() -> Void)?) async throws -> Photo {
     guard photo.mediaType == "image" else {
       throw PhotoAPIServiceAlert.mediaTypeError(retryHandler: retryHandler)
     }
@@ -81,7 +79,7 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
 
     let fileExtension = photoHdURL.pathExtension
     let localFilename = "\(date).\(fileExtension)"
-    let localImagePath = directory.appendingPathComponent(localFilename)
+    let localImagePath = FileManager.documentsDirectoryURL.appendingPathComponent(localFilename)
 
     if !FileManager.default.fileExists(atPath: localImagePath.path) {
       let (imageData, _) = try await URLSession.shared.data(from: photoHdURL)

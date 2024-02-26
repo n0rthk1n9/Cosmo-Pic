@@ -33,11 +33,7 @@ class PhotoDetailViewModel: ObservableObject {
           // TODO: remove
           print("error")
         }
-        let savedPhoto = try await photoAPIService.savePhoto(
-          fetchedPhoto,
-          for: date,
-          to: FileManager.documentsDirectoryURL
-        ) {
+        let savedPhoto = try await photoAPIService.savePhoto(fetchedPhoto, for: date) {
           // TODO: remove
           print("error")
         }
