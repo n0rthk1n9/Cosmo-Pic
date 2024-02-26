@@ -50,5 +50,13 @@ struct PhotoView: View {
 }
 
 #Preview {
-  PhotoView(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1024px-Apple_logo_black.svg.png")!, showAsHeroImage: true)
+  guard let url =
+    URL(
+      string: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1024px-Apple_logo_black.svg.png"
+    )
+  else {
+    return Text("Error creating url")
+  }
+
+  return PhotoView(url: url, showAsHeroImage: true)
 }
