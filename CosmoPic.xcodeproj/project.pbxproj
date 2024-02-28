@@ -14,6 +14,7 @@
 		571232712B112C0800294392 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232702B112C0800294392 /* HistoryView.swift */; };
 		571232732B115FD100294392 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232722B115FD100294392 /* Photo.swift */; };
 		571232772B11650A00294392 /* PhotoAPIServiceAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232762B11650900294392 /* PhotoAPIServiceAlert.swift */; };
+		57322E0D2B8F99A700294392 /* ImageSaverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57322E0C2B8F99A700294392 /* ImageSaverService.swift */; };
 		57409B9F2B700EEC00294392 /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57409B9E2B700EEC00294392 /* PhotoDetailViewModel.swift */; };
 		574D86912B14836B00294392 /* APOD-Info-Sample.plist in Resources */ = {isa = PBXBuildFile; fileRef = 574D86902B14836B00294392 /* APOD-Info-Sample.plist */; };
 		574D86952B14A43A00294392 /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D86942B14A43A00294392 /* PhotoDetailView.swift */; };
@@ -77,6 +78,7 @@
 		571232722B115FD100294392 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		571232762B11650900294392 /* PhotoAPIServiceAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIServiceAlert.swift; sourceTree = "<group>"; };
 		572FAFA62B11276800294392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		57322E0C2B8F99A700294392 /* ImageSaverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaverService.swift; sourceTree = "<group>"; };
 		57409B9E2B700EEC00294392 /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
 		574D86902B14836B00294392 /* APOD-Info-Sample.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "APOD-Info-Sample.plist"; sourceTree = "<group>"; };
 		574D86942B14A43A00294392 /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				57A8A6F12B7FAED000294392 /* Errors */,
 				577BC02D2B86599F00294392 /* PhotoAPIService */,
 				577BC02F2B8659D900294392 /* HistoryAPIService */,
+				57322E0C2B8F99A700294392 /* ImageSaverService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				57D8C4432B0D53C100294392 /* MainView.swift in Sources */,
 				57E3F1A82B77C98800294392 /* PhotoDetailContentView.swift in Sources */,
 				575CFF5B2B17F2C800294392 /* WelcomeView.swift in Sources */,
+				57322E0D2B8F99A700294392 /* ImageSaverService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,6 +703,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CosmoPic/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Cosmo Pic";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We want to save space pictures";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -733,6 +738,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CosmoPic/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Cosmo Pic";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We want to save space pictures";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
