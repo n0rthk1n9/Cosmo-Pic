@@ -34,4 +34,5 @@ struct PhotoDetailView: View {
 
 #Preview {
   PhotoDetailView(photo: .allProperties)
+    .environmentObject(FavoritesViewModel())
 }
