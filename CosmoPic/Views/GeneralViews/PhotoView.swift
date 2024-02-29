@@ -66,6 +66,7 @@ struct PhotoView: View {
           .buttonStyle(PlainButtonStyle())
           .disabled(viewModel.isSaving || viewModel.saveCompleted)
         }
+        .showCustomAlert(alert: $viewModel.error)
       } else {
         AsyncImage(url: url) { image in
           image
