@@ -10,12 +10,21 @@ import Foundation
 class PhotoViewModel: ObservableObject {
   @Published var isSaving = false
   @Published var saveCompleted = false
+  @Published var error: CosmoPicError?
+
   private let imageSaver = ImageSaverService()
 
   @MainActor
   func saveImage(from url: URL) async {
     isSaving = true
-    await imageSaver.saveImage(from: url)
+    do {
+      try await imageSaver.saveImage(from: url)
+    } catch let error as CosmoPicError {
+      self.error = error
+    } catch {
+      self.error = .other(error: error)
+    }
+
     saveCompleted = true
     isSaving = false
   }
