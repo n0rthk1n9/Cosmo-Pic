@@ -45,7 +45,7 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
     ]
 
     guard let url = urlComponents.url else {
-      throw PhotoAPIServiceAlert.invalidURL
+      throw CosmoPicError.invalidURL
     }
 
     let request = URLRequest(url: url)
@@ -56,10 +56,10 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
         if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 404 {
           let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
           if json?["msg"] as? String == "No data available for date: \(date)" {
-            throw PhotoAPIServiceAlert.photoForTodayNotAvailableYet(retryHandler: retryHandler)
+            throw CosmoPicError.photoForTodayNotAvailableYet(retryHandler: retryHandler)
           }
         }
-        throw PhotoAPIServiceAlert.invalidResponseCode
+        throw CosmoPicError.invalidResponseCode
       }
 
       let photo = try JSONDecoder().decodeLogging(Photo.self, from: data)
@@ -71,10 +71,10 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
 
   func savePhoto(_ photo: Photo, for date: String, retryHandler: (() -> Void)?) async throws -> Photo {
     guard photo.mediaType == "image" else {
-      throw PhotoAPIServiceAlert.mediaTypeError(retryHandler: retryHandler)
+      throw CosmoPicError.mediaTypeError(retryHandler: retryHandler)
     }
     guard let photoHdURL = photo.hdURL else {
-      throw PhotoAPIServiceAlert.savePhotoError
+      throw CosmoPicError.savePhotoError
     }
 
     let fileExtension = photoHdURL.pathExtension
@@ -99,10 +99,10 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
       if let localFilename = photo.localFilename {
         let localFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(localFilename)
         if !FileManager.default.fileExists(atPath: localFileURL.path) {
-          throw PhotoAPIServiceAlert.noFileFound
+          throw CosmoPicError.noFileFound
         }
       } else {
-        throw PhotoAPIServiceAlert.noFileFound
+        throw CosmoPicError.noFileFound
       }
 
       return photo

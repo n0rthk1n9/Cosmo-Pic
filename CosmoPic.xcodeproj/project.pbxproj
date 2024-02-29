@@ -13,7 +13,7 @@
 		5712326F2B112BE500294392 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5712326E2B112BE500294392 /* FavoritesView.swift */; };
 		571232712B112C0800294392 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232702B112C0800294392 /* HistoryView.swift */; };
 		571232732B115FD100294392 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232722B115FD100294392 /* Photo.swift */; };
-		571232772B11650A00294392 /* PhotoAPIServiceAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232762B11650900294392 /* PhotoAPIServiceAlert.swift */; };
+		571232772B11650A00294392 /* CosmoPicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232762B11650900294392 /* CosmoPicError.swift */; };
 		57322E0D2B8F99A700294392 /* ImageSaverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57322E0C2B8F99A700294392 /* ImageSaverService.swift */; };
 		57346C8F2B90CE1F00294392 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57346C8E2B90CE1F00294392 /* PhotoViewModel.swift */; };
 		57409B9F2B700EEC00294392 /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57409B9E2B700EEC00294392 /* PhotoDetailViewModel.swift */; };
@@ -77,7 +77,7 @@
 		5712326E2B112BE500294392 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		571232702B112C0800294392 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		571232722B115FD100294392 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		571232762B11650900294392 /* PhotoAPIServiceAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIServiceAlert.swift; sourceTree = "<group>"; };
+		571232762B11650900294392 /* CosmoPicError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicError.swift; sourceTree = "<group>"; };
 		572FAFA62B11276800294392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		57322E0C2B8F99A700294392 /* ImageSaverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaverService.swift; sourceTree = "<group>"; };
 		57346C8E2B90CE1F00294392 /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 		577BC02E2B8659B600294392 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
-				571232762B11650900294392 /* PhotoAPIServiceAlert.swift */,
+				571232762B11650900294392 /* CosmoPicError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -533,7 +533,7 @@
 				57409B9F2B700EEC00294392 /* PhotoDetailViewModel.swift in Sources */,
 				570652B42B7A743C00294392 /* JSONDecoder.swift in Sources */,
 				57E049072B147CF500294392 /* FileManager.swift in Sources */,
-				571232772B11650A00294392 /* PhotoAPIServiceAlert.swift in Sources */,
+				571232772B11650A00294392 /* CosmoPicError.swift in Sources */,
 				57D8C4432B0D53C100294392 /* MainView.swift in Sources */,
 				57E3F1A82B77C98800294392 /* PhotoDetailContentView.swift in Sources */,
 				575CFF5B2B17F2C800294392 /* WelcomeView.swift in Sources */,

@@ -47,7 +47,7 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
     ]
 
     guard let url = urlComponents.url else {
-      throw PhotoAPIServiceAlert.invalidURL
+      throw CosmoPicError.invalidURL
     }
 
     let request = URLRequest(url: url)

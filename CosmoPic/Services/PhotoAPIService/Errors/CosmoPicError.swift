@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum PhotoAPIServiceAlert: Error, LocalizedError, CosmoPicAlert {
+enum CosmoPicError: Error, LocalizedError, CosmoPicAlert {
   case invalidURL
   case invalidResponseCode
   case photoForTodayNotAvailableYet(retryHandler: (() -> Void)?)
