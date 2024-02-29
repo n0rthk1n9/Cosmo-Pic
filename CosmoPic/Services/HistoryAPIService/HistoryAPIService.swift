@@ -55,7 +55,7 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
     do {
       let (data, response) = try await session.data(for: request)
       guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-        throw HistoryAPIServiceAlert.invalidResponseCode
+        throw CosmoPicError.invalidResponseCode
       }
 
       let photos = try JSONDecoder().decodeLogging([Photo].self, from: data)
@@ -111,7 +111,7 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
   func updatePhotoWithLocalURL(_ photo: Photo) async throws -> Photo {
     var updatedPhoto = photo
     guard let photoSdURL = photo.sdURL else {
-      throw HistoryAPIServiceAlert.invalidURL
+      throw CosmoPicError.invalidURL
     }
     if let thumbnailFilename = try? await cacheThumbnail(from: photoSdURL, identifier: photo.date) {
       updatedPhoto.localFilenameThumbnail = thumbnailFilename

@@ -14,7 +14,7 @@ class HistoryViewModel: ObservableObject {
   @Published var loadedElements = 0
   @Published var totalElements = 31
 
-  @Published var error: HistoryAPIServiceAlert?
+  @Published var error: CosmoPicError?
 
   private let historyAPIService: HistoryAPIServiceProtocol
 
@@ -53,7 +53,7 @@ class HistoryViewModel: ObservableObject {
         try historyAPIService.saveHistory(updatedHistory, for: todayString)
         history = updatedHistory
       }
-    } catch let error as HistoryAPIServiceAlert {
+    } catch let error as CosmoPicError {
       self.error = error
     } catch {
       self.error = .other(error: error)
