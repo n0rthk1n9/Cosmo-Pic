@@ -1,5 +1,5 @@
 //
-//  PhotoAPIServiceAlert.swift
+//  CosmoPicError.swift
 //  CosmoPic
 //
 //  Created by Jan Armbrust on 25.11.23.
