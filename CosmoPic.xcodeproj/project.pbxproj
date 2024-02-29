@@ -150,6 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				571232722B115FD100294392 /* Photo.swift */,
+				57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */,
+				571232762B11650900294392 /* CosmoPicError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,7 +173,6 @@
 		574D86982B15839700294392 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				57A8A6F12B7FAED000294392 /* Errors */,
 				577BC02D2B86599F00294392 /* PhotoAPIService */,
 				577BC02F2B8659D900294392 /* HistoryAPIService */,
 				57322E0C2B8F99A700294392 /* ImageSaverService.swift */,
@@ -182,21 +183,12 @@
 		577BC02D2B86599F00294392 /* PhotoAPIService */ = {
 			isa = PBXGroup;
 			children = (
-				577BC02E2B8659B600294392 /* Errors */,
 				574D86992B1583C800294392 /* PhotoAPIServiceProtocol.swift */,
 				574D86962B15837100294392 /* PhotoAPIService.swift */,
 				57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */,
 				57FC94282B166F3E00294392 /* PhotoAPIServiceErrorMock.swift */,
 			);
 			path = PhotoAPIService;
-			sourceTree = "<group>";
-		};
-		577BC02E2B8659B600294392 /* Errors */ = {
-			isa = PBXGroup;
-			children = (
-				571232762B11650900294392 /* CosmoPicError.swift */,
-			);
-			path = Errors;
 			sourceTree = "<group>";
 		};
 		577BC02F2B8659D900294392 /* HistoryAPIService */ = {
@@ -271,14 +263,6 @@
 				578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */,
 			);
 			path = CosmoPicUITests;
-			sourceTree = "<group>";
-		};
-		57A8A6F12B7FAED000294392 /* Errors */ = {
-			isa = PBXGroup;
-			children = (
-				57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */,
-			);
-			path = Errors;
 			sourceTree = "<group>";
 		};
 		57CDE76C2B165BEE00294392 /* ViewModels */ = {
