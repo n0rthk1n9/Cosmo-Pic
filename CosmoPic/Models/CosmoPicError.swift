@@ -1,5 +1,5 @@
 //
-//  PhotoAPIServiceAlert.swift
+//  CosmoPicError.swift
 //  CosmoPic
 //
 //  Created by Jan Armbrust on 25.11.23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum PhotoAPIServiceAlert: Error, LocalizedError, CosmoPicAlert {
+enum CosmoPicError: Error, LocalizedError, CosmoPicAlert {
   case invalidURL
   case invalidResponseCode
   case photoForTodayNotAvailableYet(retryHandler: (() -> Void)?)
@@ -19,9 +19,9 @@ enum PhotoAPIServiceAlert: Error, LocalizedError, CosmoPicAlert {
   var title: String {
     switch self {
     case .invalidURL:
-      return "Soemthing went wrong while creating the URL to download the photo"
+      return "Something went wrong while creating the URL to download content"
     case .invalidResponseCode:
-      return "Something went wrong while downloading the photo"
+      return "Something went wrong while downloading the content"
     case .photoForTodayNotAvailableYet:
       return "The photo for today is not available yet"
     case .mediaTypeError:
@@ -38,9 +38,9 @@ enum PhotoAPIServiceAlert: Error, LocalizedError, CosmoPicAlert {
   var subtitle: String? {
     switch self {
     case .invalidURL:
-      return "Try again later"
+      return "Please try again later"
     case .invalidResponseCode:
-      return "Try again later"
+      return "Please try again later"
     case .photoForTodayNotAvailableYet:
       return "Do you want to load yesterdays photo?"
     case .mediaTypeError:

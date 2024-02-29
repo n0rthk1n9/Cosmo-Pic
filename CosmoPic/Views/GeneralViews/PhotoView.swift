@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct PhotoView: View {
-  @State private var isSaving = false
-  @State private var saveCompleted = false
+  @StateObject private var viewModel = PhotoViewModel()
 
   let url: URL
   var showAsHeroImage: Bool? = false
   var size: CGSize? = .init(width: 100, height: 100)
-  let imageSaver = ImageSaverService()
 
   var body: some View {
     if let showAsHeroImage, let size {
@@ -36,15 +34,12 @@ struct PhotoView: View {
 
           Button(
             action: {
-              isSaving = true
               Task {
-                await imageSaver.saveImage(from: url)
-                saveCompleted = true
-                isSaving = false
+                await viewModel.saveImage(from: url)
               }
             }, label: {
               VStack {
-                if saveCompleted {
+                if viewModel.saveCompleted {
                   Image(systemName: "checkmark")
                     .font(.title2)
                     .foregroundColor(.green)
@@ -58,7 +53,7 @@ struct PhotoView: View {
                     }
                   )
                   .font(.title2)
-                  .foregroundColor(isSaving ? .gray : .white)
+                  .foregroundColor(viewModel.isSaving ? .gray : .white)
                 }
               }
               .frame(width: UIScreen.main.bounds.width / 4)
@@ -69,8 +64,9 @@ struct PhotoView: View {
             }
           )
           .buttonStyle(PlainButtonStyle())
-          .disabled(isSaving || saveCompleted)
+          .disabled(viewModel.isSaving || viewModel.saveCompleted)
         }
+        .showCustomAlert(alert: $viewModel.error)
       } else {
         AsyncImage(url: url) { image in
           image

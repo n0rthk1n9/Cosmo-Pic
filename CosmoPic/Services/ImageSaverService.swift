@@ -8,29 +8,35 @@
 import UIKit
 
 class ImageSaverService: NSObject {
-  func saveImage(from url: URL) async {
+  func saveImage(from url: URL) async throws {
     let image: UIImage?
 
-    if url.isFileURL {
-      image = UIImage(contentsOfFile: url.path)
-    } else {
-      image = await downloadImage(from: url)
-    }
+    do {
+      if url.isFileURL {
+        image = UIImage(contentsOfFile: url.path)
+      } else {
+        image = try await downloadImage(from: url)
+      }
 
-    if let imageToSave = image {
+      guard let imageToSave = image else {
+        throw CosmoPicError.noFileFound
+      }
+
       writeToPhotoAlbum(image: imageToSave)
-    } else {
-      print("Could not load image from URL")
+    } catch {
+      throw error
     }
   }
 
-  private func downloadImage(from url: URL) async -> UIImage? {
+  private func downloadImage(from url: URL) async throws -> UIImage? {
     do {
-      let (data, _) = try await URLSession.shared.data(from: url)
+      let (data, response) = try await URLSession.shared.data(from: url)
+      guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+        throw CosmoPicError.invalidResponseCode
+      }
       return UIImage(data: data)
     } catch {
-      print("Failed to download image: \(error)")
-      return nil
+      throw error
     }
   }
 
