@@ -19,7 +19,6 @@ struct FavoritesView: View {
             .foregroundColor(.gray)
             .padding()
             .multilineTextAlignment(.center)
-            .navigationTitle("Favorites 🌟")
         } else {
           List {
             ForEach(viewModel.favorites, id: \.title) { photo in
@@ -29,13 +28,13 @@ struct FavoritesView: View {
             }
             .onDelete(perform: delete)
           }
-          .navigationTitle("Favorites 🌟")
           .accessibilityIdentifier("favorites-list")
         }
       }
       #if os(visionOS)
       .padding()
       #endif
+      .navigationTitle("Favorites 🌟")
     }
     .onAppear {
       viewModel.loadFavorites()
