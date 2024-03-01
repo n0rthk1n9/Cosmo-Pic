@@ -35,4 +35,5 @@ struct TodayView: View {
 
 #Preview {
   TodayView()
+    .environmentObject(FavoritesViewModel())
 }
