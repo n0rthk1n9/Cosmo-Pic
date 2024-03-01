@@ -27,7 +27,7 @@ struct TodayView: View {
       #if os(visionOS)
       .padding()
       #endif
-      .navigationTitle("Cosmo Pic")
+      .navigationTitle("Today 🗓️")
       .task {
         await viewModel.fetchPhotoForToday()
       }
