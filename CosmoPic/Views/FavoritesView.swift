@@ -19,7 +19,7 @@ struct FavoritesView: View {
             .foregroundColor(.gray)
             .padding()
             .multilineTextAlignment(.center)
-            .navigationTitle("Favorites")
+            .navigationTitle("Favorites 🌟")
         } else {
           List {
             ForEach(viewModel.favorites, id: \.title) { photo in
@@ -29,7 +29,7 @@ struct FavoritesView: View {
             }
             .onDelete(perform: delete)
           }
-          .navigationTitle("Favorites")
+          .navigationTitle("Favorites 🌟")
           .accessibilityIdentifier("favorites-list")
         }
       }
