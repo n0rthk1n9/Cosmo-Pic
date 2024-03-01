@@ -1,5 +1,5 @@
 //
-//  APODView.swift
+//  TodayView.swift
 //  CosmoPic
 //
 //  Created by Jan Armbrust on 24.11.23.
@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct APODView: View {
-  @StateObject private var viewModel = APODViewModel()
+struct TodayView: View {
+  @StateObject private var viewModel = TodayViewModel()
 
   var body: some View {
     NavigationStack {
       VStack {
+        Spacer()
         if viewModel.isLoading {
           ProgressView()
         } else if let photo = viewModel.photo {
@@ -21,11 +22,12 @@ struct APODView: View {
           ContentUnavailableView("No Data available", systemImage: "x.circle")
             .showCustomAlert(alert: $viewModel.error)
         }
+        Spacer()
       }
       #if os(visionOS)
       .padding()
       #endif
-      .navigationTitle("Cosmo Pic")
+      .navigationTitle("Today 🗓️")
       .task {
         await viewModel.fetchPhotoForToday()
       }
@@ -34,5 +36,6 @@ struct APODView: View {
 }
 
 #Preview {
-  APODView()
+  TodayView()
+    .environmentObject(FavoritesViewModel())
 }

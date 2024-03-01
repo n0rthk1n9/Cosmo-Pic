@@ -2,40 +2,44 @@
 //  FavoriteButtonView.swift
 //  CosmoPic
 //
-//  Created by Jan Armbrust on 01.12.23.
+//  Created by Jan Armbrust on 01.03.24.
 //
 
 import SwiftUI
 
 struct FavoriteButtonView: View {
-  let photo: Photo
-  @Binding var isCurrentPhotoFavorite: Bool
-  @Binding var showCheckmark: Bool
   @EnvironmentObject var viewModel: FavoritesViewModel
 
+  let photo: Photo
+
   var body: some View {
-    Button("Add to Favorites") {
-      addToFavorites()
+    if viewModel.isFavorite(photo) {
+      Button(action: removeFromFavorites) {
+        Image(systemName: "star.fill")
+          .font(.title)
+          .foregroundColor(.yellow)
+          .padding()
+      }
+    } else {
+      Button(action: addToFavorites) {
+        Image(systemName: "star")
+          .font(.title)
+          .foregroundColor(.yellow)
+          .padding()
+      }
     }
-    .buttonStyle(.bordered)
-    .padding(.vertical)
-    .accessibilityIdentifier("apod-view-favorites-button")
   }
 
   private func addToFavorites() {
     viewModel.addToFavorites(photo)
-    withAnimation {
-      showCheckmark = true
-      isCurrentPhotoFavorite = true
-    }
+  }
+
+  private func removeFromFavorites() {
+    viewModel.removeFromFavorites(photo)
   }
 }
 
 #Preview {
-  FavoriteButtonView(
-    photo: .allProperties,
-    isCurrentPhotoFavorite: .constant(false),
-    showCheckmark: .constant(false)
-  )
-  .environmentObject(FavoritesViewModel())
+  FavoriteButtonView(photo: .allProperties)
+    .environmentObject(FavoritesViewModel())
 }

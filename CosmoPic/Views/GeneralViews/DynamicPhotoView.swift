@@ -15,9 +15,9 @@ struct DynamicPhotoView: View {
   var body: some View {
     if let localFilename = photo.localFilename {
       let localFileURL = FileManager.localFileURL(for: localFilename)
-      PhotoView(url: localFileURL, showAsHeroImage: showAsHeroImage, size: size)
+      PhotoView(photo: photo, url: localFileURL, showAsHeroImage: showAsHeroImage, size: size)
     } else if let hdUrl = photo.hdURL {
-      PhotoView(url: hdUrl, showAsHeroImage: showAsHeroImage, size: size)
+      PhotoView(photo: photo, url: hdUrl, showAsHeroImage: showAsHeroImage, size: size)
     }
   }
 }

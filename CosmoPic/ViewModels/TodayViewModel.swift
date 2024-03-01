@@ -1,5 +1,5 @@
 //
-//  APODViewModel.swift
+//  TodayViewModel.swift
 //  CosmoPic
 //
 //  Created by Jan Armbrust on 02.02.24.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class APODViewModel: ObservableObject {
+class TodayViewModel: ObservableObject {
   @Published var photo: Photo?
   @Published var isLoading = false
   @Published var error: CosmoPicError?

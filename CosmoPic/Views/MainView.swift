@@ -14,17 +14,17 @@ struct MainView: View {
 
   var body: some View {
     TabView {
-      APODView()
+      TodayView()
         .tabItem {
-          Label("APOD", systemImage: "photo.stack")
+          Label("Today", systemImage: "calendar")
         }
       FavoritesView()
         .tabItem {
-          Label("Favorites", systemImage: "list.star")
+          Label("Favorites", systemImage: "star")
         }
       HistoryView()
         .tabItem {
-          Label("History", systemImage: "clock.arrow.circlepath")
+          Label("History", systemImage: "photo.stack")
         }
     }
     .onAppear {

@@ -28,13 +28,13 @@ struct FavoritesView: View {
             }
             .onDelete(perform: delete)
           }
-          .navigationTitle("Favorites")
           .accessibilityIdentifier("favorites-list")
         }
       }
       #if os(visionOS)
       .padding()
       #endif
+      .navigationTitle("Favorites 🌟")
     }
     .onAppear {
       viewModel.loadFavorites()
