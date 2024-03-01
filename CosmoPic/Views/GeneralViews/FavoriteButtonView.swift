@@ -1,5 +1,5 @@
 //
-//  NewFavoriteButtonView.swift
+//  FavoriteButtonView.swift
 //  CosmoPic
 //
 //  Created by Jan Armbrust on 01.03.24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NewFavoriteButtonView: View {
+struct FavoriteButtonView: View {
   @EnvironmentObject var viewModel: FavoritesViewModel
 
   let photo: Photo
@@ -40,6 +40,6 @@ struct NewFavoriteButtonView: View {
 }
 
 #Preview {
-  NewFavoriteButtonView(photo: .allProperties)
+  FavoriteButtonView(photo: .allProperties)
     .environmentObject(FavoritesViewModel())
 }

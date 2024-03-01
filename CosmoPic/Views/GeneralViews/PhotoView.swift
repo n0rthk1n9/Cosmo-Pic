@@ -69,7 +69,7 @@ struct PhotoView: View {
             .disabled(viewModel.isSaving || viewModel.saveCompleted)
           }
 
-          NewFavoriteButtonView(photo: photo)
+          FavoriteButtonView(photo: photo)
         }
         .showCustomAlert(alert: $viewModel.error)
       } else {
@@ -91,7 +91,7 @@ struct PhotoView: View {
             .cornerRadius(20)
             .clipped()
 
-            NewFavoriteButtonView(photo: photo)
+            FavoriteButtonView(photo: photo)
           }
         }
         .padding(.horizontal, 20)
