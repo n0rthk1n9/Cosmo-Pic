@@ -9,8 +9,6 @@ import SwiftUI
 
 struct PhotoDetailContentView: View {
   @EnvironmentObject var favoritesViewModel: FavoritesViewModel
-  @State private var isCurrentPhotoFavorite = false
-  @State private var showCheckmark = false
 
   let photo: Photo
   var fullDetail = false
@@ -30,17 +28,6 @@ struct PhotoDetailContentView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
             }
 
-            if showCheckmark {
-              CheckmarkView(showCheckmark: $showCheckmark)
-                .frame(maxWidth: .infinity, alignment: .center)
-            } else if !isCurrentPhotoFavorite {
-              FavoriteButtonView(
-                photo: photo,
-                isCurrentPhotoFavorite: $isCurrentPhotoFavorite,
-                showCheckmark: $showCheckmark
-              )
-              .frame(maxWidth: .infinity, alignment: .center)
-            }
             Section {
               Text(
                 photo.explanation
@@ -59,28 +46,13 @@ struct PhotoDetailContentView: View {
           Text(photo.title)
             .padding([.top, .trailing, .leading])
             .font(.title2)
-
-          if showCheckmark {
-            CheckmarkView(showCheckmark: $showCheckmark)
-          } else if !isCurrentPhotoFavorite {
-            FavoriteButtonView(
-              photo: photo,
-              isCurrentPhotoFavorite: $isCurrentPhotoFavorite,
-              showCheckmark: $showCheckmark
-            )
-          }
         }
       }
     }
 
     .onAppear {
       favoritesViewModel.loadFavorites()
-      checkIfFavorite()
     }
-  }
-
-  func checkIfFavorite() {
-    isCurrentPhotoFavorite = favoritesViewModel.isFavorite(photo)
   }
 }
 
