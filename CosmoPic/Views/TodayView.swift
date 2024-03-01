@@ -13,6 +13,7 @@ struct TodayView: View {
   var body: some View {
     NavigationStack {
       VStack {
+        Spacer()
         if viewModel.isLoading {
           ProgressView()
         } else if let photo = viewModel.photo {
@@ -21,6 +22,7 @@ struct TodayView: View {
           ContentUnavailableView("No Data available", systemImage: "x.circle")
             .showCustomAlert(alert: $viewModel.error)
         }
+        Spacer()
       }
       #if os(visionOS)
       .padding()

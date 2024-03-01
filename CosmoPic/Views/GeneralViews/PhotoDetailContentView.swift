@@ -77,6 +77,7 @@ struct PhotoDetailContentView: View {
             .accessibilityIdentifier("apod-view-favorites-button")
           }
         }
+        .frame(maxHeight: .infinity)
       }
     }
 
