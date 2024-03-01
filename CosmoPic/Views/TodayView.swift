@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TodayView: View {
-  @StateObject private var viewModel = APODViewModel()
+  @StateObject private var viewModel = TodayViewModel()
 
   var body: some View {
     NavigationStack {
