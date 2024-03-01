@@ -19,6 +19,7 @@ struct FavoritesView: View {
             .foregroundColor(.gray)
             .padding()
             .multilineTextAlignment(.center)
+            .navigationTitle("Favorites")
         } else {
           List {
             ForEach(viewModel.favorites, id: \.title) { photo in
