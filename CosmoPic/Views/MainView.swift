@@ -16,7 +16,7 @@ struct MainView: View {
     TabView {
       TodayView()
         .tabItem {
-          Label("APOD", systemImage: "photo.stack")
+          Label("Today", systemImage: "calendar")
         }
       FavoritesView()
         .tabItem {
