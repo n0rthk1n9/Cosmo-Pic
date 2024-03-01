@@ -31,7 +31,7 @@ struct HistoryView: View {
       #if os(visionOS)
       .padding()
       #endif
-      .navigationTitle("Photo History")
+      .navigationTitle("History 🌌")
     }
     .task {
       await viewModel.getHistory()

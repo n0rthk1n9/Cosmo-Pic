@@ -24,7 +24,7 @@ struct MainView: View {
         }
       HistoryView()
         .tabItem {
-          Label("History", systemImage: "clock.arrow.circlepath")
+          Label("History", systemImage: "photo.stack")
         }
     }
     .onAppear {
