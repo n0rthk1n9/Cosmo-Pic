@@ -52,8 +52,6 @@ struct PhotoDetailContentView: View {
           }
           .padding(.top, -10)
         }
-        // TODO: add date somewhere
-        // .navigationTitle(DateFormatter.localizedDateString(from: photo.date))
       } else {
         VStack(alignment: .center) {
           DynamicPhotoView(photo: photo)

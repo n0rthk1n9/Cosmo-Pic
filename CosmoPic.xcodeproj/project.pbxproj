@@ -50,6 +50,7 @@
 		57FC94252B1667AF00294392 /* PhotoAPIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */; };
 		57FC94272B166CB800294392 /* HistoryAPIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC94262B166CB800294392 /* HistoryAPIServiceMock.swift */; };
 		57FC94292B166F3E00294392 /* PhotoAPIServiceErrorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC94282B166F3E00294392 /* PhotoAPIServiceErrorMock.swift */; };
+		57FECA9D2B92500400294392 /* NewFavoriteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FECA9C2B92500400294392 /* NewFavoriteButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		57FC94242B1667AF00294392 /* PhotoAPIServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIServiceMock.swift; sourceTree = "<group>"; };
 		57FC94262B166CB800294392 /* HistoryAPIServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAPIServiceMock.swift; sourceTree = "<group>"; };
 		57FC94282B166F3E00294392 /* PhotoAPIServiceErrorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIServiceErrorMock.swift; sourceTree = "<group>"; };
+		57FECA9C2B92500400294392 /* NewFavoriteButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFavoriteButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +290,7 @@
 				574D869D2B161C6200294392 /* PhotoView.swift */,
 				57E4DD812B1A237A00294392 /* CheckmarkView.swift */,
 				57E4DD832B1A23AE00294392 /* FavoriteButtonView.swift */,
+				57FECA9C2B92500400294392 /* NewFavoriteButtonView.swift */,
 			);
 			path = GeneralViews;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				57409B9F2B700EEC00294392 /* PhotoDetailViewModel.swift in Sources */,
 				570652B42B7A743C00294392 /* JSONDecoder.swift in Sources */,
 				57E049072B147CF500294392 /* FileManager.swift in Sources */,
+				57FECA9D2B92500400294392 /* NewFavoriteButtonView.swift in Sources */,
 				571232772B11650A00294392 /* CosmoPicError.swift in Sources */,
 				57D8C4432B0D53C100294392 /* MainView.swift in Sources */,
 				57E3F1A82B77C98800294392 /* PhotoDetailContentView.swift in Sources */,

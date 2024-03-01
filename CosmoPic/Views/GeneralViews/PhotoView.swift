@@ -10,6 +10,7 @@ import SwiftUI
 struct PhotoView: View {
   @StateObject private var viewModel = PhotoViewModel()
 
+  let photo: Photo
   let url: URL
   var showAsHeroImage: Bool? = false
   var size: CGSize? = .init(width: 100, height: 100)
@@ -69,21 +70,25 @@ struct PhotoView: View {
         .showCustomAlert(alert: $viewModel.error)
       } else {
         GeometryReader { geometry in
-          AsyncImage(url: url) { image in
-            image
-              .resizable()
-              .aspectRatio(contentMode: .fill)
-          } placeholder: {
-            HStack {
-              Spacer()
-              ProgressView()
-                .frame(height: 300)
-              Spacer()
+          ZStack(alignment: .topTrailing) {
+            AsyncImage(url: url) { image in
+              image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+            } placeholder: {
+              HStack {
+                Spacer()
+                ProgressView()
+                  .frame(height: 300)
+                Spacer()
+              }
             }
+            .frame(width: geometry.size.width, height: geometry.size.height)
+            .cornerRadius(20)
+            .clipped()
+
+            NewFavoriteButtonView(photo: photo)
           }
-          .frame(width: geometry.size.width, height: geometry.size.height)
-          .cornerRadius(20)
-          .clipped()
         }
         .padding(.horizontal, 20)
       }
@@ -100,5 +105,5 @@ struct PhotoView: View {
     return Text("Error creating url")
   }
 
-  return PhotoView(url: url, showAsHeroImage: false)
+  return PhotoView(photo: .allProperties, url: url, showAsHeroImage: false)
 }
