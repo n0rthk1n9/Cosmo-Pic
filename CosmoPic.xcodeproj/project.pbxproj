@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		570652B42B7A743C00294392 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570652B32B7A743C00294392 /* JSONDecoder.swift */; };
 		570652B62B7A7A3D00294392 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570652B52B7A7A3D00294392 /* View.swift */; };
-		5712326D2B112BD400294392 /* APODView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5712326C2B112BD400294392 /* APODView.swift */; };
+		5712326D2B112BD400294392 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5712326C2B112BD400294392 /* TodayView.swift */; };
 		5712326F2B112BE500294392 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5712326E2B112BE500294392 /* FavoritesView.swift */; };
 		571232712B112C0800294392 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232702B112C0800294392 /* HistoryView.swift */; };
 		571232732B115FD100294392 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232722B115FD100294392 /* Photo.swift */; };
@@ -72,7 +72,7 @@
 /* Begin PBXFileReference section */
 		570652B32B7A743C00294392 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
 		570652B52B7A7A3D00294392 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		5712326C2B112BD400294392 /* APODView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODView.swift; sourceTree = "<group>"; };
+		5712326C2B112BD400294392 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		5712326E2B112BE500294392 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		571232702B112C0800294392 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		571232722B115FD100294392 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 				575CFF5A2B17F2C800294392 /* WelcomeView.swift */,
 				575CFF5C2B17F2E400294392 /* FeatureView.swift */,
 				57D8C43F2B0D53C100294392 /* MainView.swift */,
-				5712326C2B112BD400294392 /* APODView.swift */,
+				5712326C2B112BD400294392 /* TodayView.swift */,
 				5712326E2B112BE500294392 /* FavoritesView.swift */,
 				57E4DD892B1A2BBE00294392 /* HistoryViews */,
 				57E4DD852B1A27C700294392 /* GeneralViews */,
@@ -499,7 +499,7 @@
 				57E4DD802B1A235600294392 /* DynamicPhotoView.swift in Sources */,
 				57F550432B73DEFE00294392 /* DateFormatter.swift in Sources */,
 				57A8A6F52B7FB12200294392 /* Binding.swift in Sources */,
-				5712326D2B112BD400294392 /* APODView.swift in Sources */,
+				5712326D2B112BD400294392 /* TodayView.swift in Sources */,
 				57FC94272B166CB800294392 /* HistoryAPIServiceMock.swift in Sources */,
 				574D86A02B16452600294392 /* HistoryAPIService.swift in Sources */,
 				57409B9F2B700EEC00294392 /* PhotoDetailViewModel.swift in Sources */,

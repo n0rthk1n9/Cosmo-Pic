@@ -14,7 +14,7 @@ struct MainView: View {
 
   var body: some View {
     TabView {
-      APODView()
+      TodayView()
         .tabItem {
           Label("APOD", systemImage: "photo.stack")
         }

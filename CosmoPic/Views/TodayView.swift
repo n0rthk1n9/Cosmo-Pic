@@ -1,5 +1,5 @@
 //
-//  APODView.swift
+//  TodayView.swift
 //  CosmoPic
 //
 //  Created by Jan Armbrust on 24.11.23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct APODView: View {
+struct TodayView: View {
   @StateObject private var viewModel = APODViewModel()
 
   var body: some View {
@@ -34,5 +34,5 @@ struct APODView: View {
 }
 
 #Preview {
-  APODView()
+  TodayView()
 }
