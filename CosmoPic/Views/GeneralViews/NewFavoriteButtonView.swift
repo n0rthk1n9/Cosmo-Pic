@@ -16,12 +16,14 @@ struct NewFavoriteButtonView: View {
     if viewModel.isFavorite(photo) {
       Button(action: removeFromFavorites) {
         Image(systemName: "star.fill")
+          .font(.title)
           .foregroundColor(.yellow)
           .padding()
       }
     } else {
       Button(action: addToFavorites) {
         Image(systemName: "star")
+          .font(.title)
           .foregroundColor(.yellow)
           .padding()
       }
