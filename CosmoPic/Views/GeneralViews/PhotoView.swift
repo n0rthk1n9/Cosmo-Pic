@@ -68,21 +68,24 @@ struct PhotoView: View {
         }
         .showCustomAlert(alert: $viewModel.error)
       } else {
-        AsyncImage(url: url) { image in
-          image
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-        } placeholder: {
-          HStack {
-            Spacer()
-            ProgressView()
-              .frame(height: 300)
-            Spacer()
+        GeometryReader { geometry in
+          AsyncImage(url: url) { image in
+            image
+              .resizable()
+              .aspectRatio(contentMode: .fill)
+          } placeholder: {
+            HStack {
+              Spacer()
+              ProgressView()
+                .frame(height: 300)
+              Spacer()
+            }
           }
+          .frame(width: geometry.size.width, height: geometry.size.height)
+          .cornerRadius(20)
+          .clipped()
         }
-        .cornerRadius(20)
-        .clipped()
-        .padding(.horizontal)
+        .padding(.horizontal, 20)
       }
     }
   }
@@ -97,5 +100,5 @@ struct PhotoView: View {
     return Text("Error creating url")
   }
 
-  return PhotoView(url: url, showAsHeroImage: true)
+  return PhotoView(url: url, showAsHeroImage: false)
 }

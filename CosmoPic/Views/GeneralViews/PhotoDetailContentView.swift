@@ -56,11 +56,7 @@ struct PhotoDetailContentView: View {
         // .navigationTitle(DateFormatter.localizedDateString(from: photo.date))
       } else {
         VStack(alignment: .center) {
-          Text(DateFormatter.localizedDateString(from: photo.date))
-            .font(.largeTitle)
-
           DynamicPhotoView(photo: photo)
-            .accessibilityIdentifier("apod-view-photo")
 
           Text(photo.title)
             .padding([.top, .trailing, .leading])
@@ -74,10 +70,8 @@ struct PhotoDetailContentView: View {
               isCurrentPhotoFavorite: $isCurrentPhotoFavorite,
               showCheckmark: $showCheckmark
             )
-            .accessibilityIdentifier("apod-view-favorites-button")
           }
         }
-        .frame(maxHeight: .infinity)
       }
     }
 
@@ -93,6 +87,6 @@ struct PhotoDetailContentView: View {
 }
 
 #Preview {
-  PhotoDetailContentView(photo: .allProperties, fullDetail: true)
+  PhotoDetailContentView(photo: .allProperties, fullDetail: false)
     .environmentObject(FavoritesViewModel())
 }
