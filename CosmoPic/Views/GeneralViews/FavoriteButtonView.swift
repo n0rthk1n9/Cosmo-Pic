@@ -13,29 +13,21 @@ struct FavoriteButtonView: View {
   let photo: Photo
 
   var body: some View {
-    if viewModel.isFavorite(photo) {
-      Button(action: removeFromFavorites) {
-        Image(systemName: "star.fill")
+    Button(
+      action: {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+
+        withAnimation {
+          viewModel.toggleFavoriteStatus(for: photo)
+        }
+      }, label: {
+        Image(systemName: viewModel.isFavorite(photo) ? "star.fill" : "star")
           .font(.title)
           .foregroundColor(.yellow)
           .padding()
       }
-    } else {
-      Button(action: addToFavorites) {
-        Image(systemName: "star")
-          .font(.title)
-          .foregroundColor(.yellow)
-          .padding()
-      }
-    }
-  }
-
-  private func addToFavorites() {
-    viewModel.addToFavorites(photo)
-  }
-
-  private func removeFromFavorites() {
-    viewModel.removeFromFavorites(photo)
+    )
   }
 }
 
