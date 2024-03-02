@@ -110,4 +110,5 @@ struct PhotoView: View {
   }
 
   return PhotoView(photo: .allProperties, url: url, showAsHeroImage: false)
+    .environmentObject(FavoritesViewModel())
 }

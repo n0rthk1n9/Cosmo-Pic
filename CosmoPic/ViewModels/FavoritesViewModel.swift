@@ -39,13 +39,25 @@ class FavoritesViewModel: ObservableObject {
     isLoading = false
   }
 
-  func addToFavorites(_ photo: Photo) {
+  func isFavorite(_ photo: Photo) -> Bool {
+    favorites.contains { $0.title == photo.title }
+  }
+
+  func toggleFavoriteStatus(for photo: Photo) {
+    if isFavorite(photo) {
+      removeFromFavorites(photo)
+    } else {
+      addToFavorites(photo)
+    }
+  }
+
+  private func addToFavorites(_ photo: Photo) {
     guard !favorites.contains(where: { $0.title == photo.title }) else { return }
     favorites.append(photo)
     saveFavorites()
   }
 
-  func removeFromFavorites(_ photo: Photo) {
+  private func removeFromFavorites(_ photo: Photo) {
     favorites.removeAll { $0.title == photo.title }
     saveFavorites()
   }
@@ -60,9 +72,5 @@ class FavoritesViewModel: ObservableObject {
       self.error = error
       errorIsPresented = true
     }
-  }
-
-  func isFavorite(_ photo: Photo) -> Bool {
-    favorites.contains { $0.title == photo.title }
   }
 }
