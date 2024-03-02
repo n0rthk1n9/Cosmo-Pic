@@ -13,21 +13,22 @@ struct FavoriteButtonView: View {
   let photo: Photo
 
   var body: some View {
-    Button(
-      action: {
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred()
+    Button(action: {
+      let generator = UIImpactFeedbackGenerator(style: .medium)
+      generator.impactOccurred()
 
-        withAnimation {
-          viewModel.toggleFavoriteStatus(for: photo)
-        }
-      }, label: {
-        Image(systemName: viewModel.isFavorite(photo) ? "star.fill" : "star")
-          .font(.title)
-          .foregroundColor(.yellow)
-          .padding()
+      withAnimation {
+        viewModel.toggleFavoriteStatus(for: photo)
       }
-    )
+    }, label: {
+      Image(systemName: viewModel.isFavorite(photo) ? "star.fill" : "star")
+        .font(.title)
+        .foregroundColor(.yellow)
+        .padding()
+    })
+    .background(.ultraThinMaterial)
+    .clipShape(Circle())
+    .padding()
   }
 }
 
