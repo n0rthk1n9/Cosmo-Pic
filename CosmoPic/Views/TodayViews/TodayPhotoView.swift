@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct TodayPhotoView: View {
-  @EnvironmentObject var favoritesViewModel: FavoritesViewModel
-
   let photo: Photo
 
   var body: some View {

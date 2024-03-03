@@ -39,14 +39,6 @@ struct PhotoDetailContentView: View {
           }
           .padding(.top, -10)
         }
-      } else {
-        VStack(alignment: .center) {
-          DynamicPhotoView(photo: photo)
-
-          Text(photo.title)
-            .padding([.top, .trailing, .leading])
-            .font(.title2)
-        }
       }
     }
 
