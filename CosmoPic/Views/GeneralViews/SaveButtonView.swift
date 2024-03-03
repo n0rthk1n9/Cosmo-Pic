@@ -19,24 +19,17 @@ struct SaveButtonView: View {
           await viewModel.saveImage(from: photoURL)
         }
       }, label: {
-        VStack {
-          if viewModel.saveCompleted {
-            Image(systemName: "checkmark")
-              .font(.title)
-              .foregroundColor(.green)
-          } else {
-            Image(systemName: "square.and.arrow.down")
-              .font(.title)
-              .foregroundColor(viewModel.isSaving ? .gray : .white)
-          }
-        }
-        .padding()
-        .background(.ultraThinMaterial)
-        .clipShape(Circle())
-        .padding()
+        Image(systemName: viewModel.saveCompleted ? "checkmark" : "square.and.arrow.down")
+          .font(.title)
+          .foregroundColor(viewModel.isSaving ? .gray : viewModel.saveCompleted ? .green : .white)
+          .frame(width: 32, height: 32)
+          .padding()
       }
     )
     .disabled(viewModel.isSaving || viewModel.saveCompleted)
+    .background(.ultraThinMaterial)
+    .clipShape(Circle())
+    .padding()
     .showCustomAlert(alert: $viewModel.error)
   }
 }
