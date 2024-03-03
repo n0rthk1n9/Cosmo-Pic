@@ -1,5 +1,5 @@
 //
-//  DynamicPhotoViewModel.swift
+//  SaveButtonViewModel.swift
 //  CosmoPic
 //
 //  Created by Jan Armbrust on 29.02.24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DynamicPhotoViewModel: ObservableObject {
+class SaveButtonViewModel: ObservableObject {
   @Published var isSaving = false
   @Published var saveCompleted = false
   @Published var error: CosmoPicError?

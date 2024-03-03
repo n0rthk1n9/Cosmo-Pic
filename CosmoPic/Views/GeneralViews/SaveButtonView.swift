@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SaveButtonView: View {
-  @StateObject private var viewModel = DynamicPhotoViewModel()
+  @StateObject private var viewModel = SaveButtonViewModel()
 
   let photoURL: URL?
 

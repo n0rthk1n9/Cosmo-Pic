@@ -15,7 +15,7 @@
 		571232732B115FD100294392 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232722B115FD100294392 /* Photo.swift */; };
 		571232772B11650A00294392 /* CosmoPicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232762B11650900294392 /* CosmoPicError.swift */; };
 		57322E0D2B8F99A700294392 /* ImageSaverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57322E0C2B8F99A700294392 /* ImageSaverService.swift */; };
-		57346C8F2B90CE1F00294392 /* DynamicPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57346C8E2B90CE1F00294392 /* DynamicPhotoViewModel.swift */; };
+		57346C8F2B90CE1F00294392 /* SaveButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57346C8E2B90CE1F00294392 /* SaveButtonViewModel.swift */; };
 		57409B9F2B700EEC00294392 /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57409B9E2B700EEC00294392 /* PhotoDetailViewModel.swift */; };
 		574D86912B14836B00294392 /* APOD-Info-Sample.plist in Resources */ = {isa = PBXBuildFile; fileRef = 574D86902B14836B00294392 /* APOD-Info-Sample.plist */; };
 		574D86952B14A43A00294392 /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D86942B14A43A00294392 /* PhotoDetailView.swift */; };
@@ -79,7 +79,7 @@
 		571232762B11650900294392 /* CosmoPicError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicError.swift; sourceTree = "<group>"; };
 		572FAFA62B11276800294392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		57322E0C2B8F99A700294392 /* ImageSaverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaverService.swift; sourceTree = "<group>"; };
-		57346C8E2B90CE1F00294392 /* DynamicPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPhotoViewModel.swift; sourceTree = "<group>"; };
+		57346C8E2B90CE1F00294392 /* SaveButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonViewModel.swift; sourceTree = "<group>"; };
 		57409B9E2B700EEC00294392 /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
 		574D86902B14836B00294392 /* APOD-Info-Sample.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "APOD-Info-Sample.plist"; sourceTree = "<group>"; };
 		574D86942B14A43A00294392 /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 				5791A0092B6D321E00294392 /* TodayViewModel.swift */,
 				57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */,
 				57409B9E2B700EEC00294392 /* PhotoDetailViewModel.swift */,
-				57346C8E2B90CE1F00294392 /* DynamicPhotoViewModel.swift */,
+				57346C8E2B90CE1F00294392 /* SaveButtonViewModel.swift */,
 				578C96B72B793EB900294392 /* HistoryViewModel.swift */,
 			);
 			path = ViewModels;
@@ -498,7 +498,7 @@
 				5751B6972B948D0100294392 /* SaveButtonView.swift in Sources */,
 				578C96B82B793EB900294392 /* HistoryViewModel.swift in Sources */,
 				57FC94292B166F3E00294392 /* PhotoAPIServiceErrorMock.swift in Sources */,
-				57346C8F2B90CE1F00294392 /* DynamicPhotoViewModel.swift in Sources */,
+				57346C8F2B90CE1F00294392 /* SaveButtonViewModel.swift in Sources */,
 				574D86A32B16453D00294392 /* HistoryAPIServiceProtocol.swift in Sources */,
 				5791A00A2B6D321E00294392 /* TodayViewModel.swift in Sources */,
 				575CFF5D2B17F2E400294392 /* FeatureView.swift in Sources */,
