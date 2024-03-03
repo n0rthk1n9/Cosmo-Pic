@@ -15,7 +15,7 @@ class PhotoViewModel: ObservableObject {
   private let imageSaver = ImageSaverService()
 
   @MainActor
-  func saveImage(from url: URL) async {
+  func saveImage(from url: URL?) async {
     isSaving = true
     do {
       try await imageSaver.saveImage(from: url)
