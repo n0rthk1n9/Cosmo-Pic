@@ -12,90 +12,64 @@ struct PhotoView: View {
 
   let photo: Photo
   let url: URL
-  var showAsHeroImage: Bool? = false
   var size: CGSize? = .init(width: 100, height: 100)
 
   var body: some View {
-    if let showAsHeroImage, let size {
-      if showAsHeroImage {
-        ZStack(alignment: .topTrailing) {
-          ZStack(alignment: .bottomTrailing) {
-            AsyncImage(
-              url: url,
-              content: { image in
-                image
-                  .resizable()
-              },
-              placeholder: {
-                ProgressView()
-              }
-            )
-            .scaledToFill()
-            .ignoresSafeArea()
-            .frame(maxWidth: size.width, maxHeight: size.height * 0.60)
-
-            Button(
-              action: {
-                Task {
-                  await viewModel.saveImage(from: url)
-                }
-              }, label: {
-                VStack {
-                  if viewModel.saveCompleted {
-                    Image(systemName: "checkmark")
-                      .font(.title2)
-                      .foregroundColor(.green)
-                  } else {
-                    Label(
-                      title: {
-                        Text("Save")
-                      },
-                      icon: {
-                        Image(systemName: "square.and.arrow.down")
-                      }
-                    )
-                    .font(.title2)
-                    .foregroundColor(viewModel.isSaving ? .gray : .white)
-                  }
-                }
-                .frame(width: UIScreen.main.bounds.width / 4)
-                .padding()
-                .background(.thinMaterial)
-                .cornerRadius(10)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 20))
-              }
-            )
-            .buttonStyle(PlainButtonStyle())
-            .disabled(viewModel.isSaving || viewModel.saveCompleted)
-          }
-
-          FavoriteButtonView(photo: photo)
-        }
-        .showCustomAlert(alert: $viewModel.error)
-      } else {
-        GeometryReader { geometry in
-          ZStack(alignment: .topTrailing) {
-            AsyncImage(url: url) { image in
+    if let size {
+      ZStack(alignment: .topTrailing) {
+        ZStack(alignment: .bottomTrailing) {
+          AsyncImage(
+            url: url,
+            content: { image in
               image
                 .resizable()
-                .aspectRatio(contentMode: .fill)
-            } placeholder: {
-              HStack {
-                Spacer()
-                ProgressView()
-                  .frame(height: 300)
-                Spacer()
-              }
+            },
+            placeholder: {
+              ProgressView()
             }
-            .frame(width: geometry.size.width, height: geometry.size.height)
-            .cornerRadius(20)
-            .clipped()
+          )
+          .scaledToFill()
+          .ignoresSafeArea()
+          .frame(maxWidth: size.width, maxHeight: size.height * 0.60)
 
-            FavoriteButtonView(photo: photo)
-          }
+          Button(
+            action: {
+              Task {
+                await viewModel.saveImage(from: url)
+              }
+            }, label: {
+              VStack {
+                if viewModel.saveCompleted {
+                  Image(systemName: "checkmark")
+                    .font(.title2)
+                    .foregroundColor(.green)
+                } else {
+                  Label(
+                    title: {
+                      Text("Save")
+                    },
+                    icon: {
+                      Image(systemName: "square.and.arrow.down")
+                    }
+                  )
+                  .font(.title2)
+                  .foregroundColor(viewModel.isSaving ? .gray : .white)
+                }
+              }
+              .frame(width: UIScreen.main.bounds.width / 4)
+              .padding()
+              .background(.thinMaterial)
+              .cornerRadius(10)
+              .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 20))
+            }
+          )
+          .buttonStyle(PlainButtonStyle())
+          .disabled(viewModel.isSaving || viewModel.saveCompleted)
         }
-        .padding(.horizontal, 20)
+
+        FavoriteButtonView(photo: photo)
       }
+      .showCustomAlert(alert: $viewModel.error)
     }
   }
 }
@@ -109,6 +83,6 @@ struct PhotoView: View {
     return Text("Error creating url")
   }
 
-  return PhotoView(photo: .allProperties, url: url, showAsHeroImage: false)
+  return PhotoView(photo: .allProperties, url: url)
     .environmentObject(FavoritesViewModel())
 }

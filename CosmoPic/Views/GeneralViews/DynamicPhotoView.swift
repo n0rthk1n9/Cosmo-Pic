@@ -15,13 +15,14 @@ struct DynamicPhotoView: View {
   var body: some View {
     if let localFilename = photo.localFilename {
       let localFileURL = FileManager.localFileURL(for: localFilename)
-      PhotoView(photo: photo, url: localFileURL, showAsHeroImage: showAsHeroImage, size: size)
+      PhotoView(photo: photo, url: localFileURL, size: size)
     } else if let hdUrl = photo.hdURL {
-      PhotoView(photo: photo, url: hdUrl, showAsHeroImage: showAsHeroImage, size: size)
+      PhotoView(photo: photo, url: hdUrl, size: size)
     }
   }
 }
 
 #Preview {
-  DynamicPhotoView(photo: .allProperties, showAsHeroImage: true)
+  DynamicPhotoView(photo: .allProperties)
+    .environmentObject(FavoritesViewModel())
 }
