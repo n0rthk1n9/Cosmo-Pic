@@ -8,13 +8,13 @@
 import UIKit
 
 class ImageSaverService: NSObject {
-  func saveImage(from url: URL) async throws {
-    let image: UIImage?
+  func saveImage(from url: URL?) async throws {
+    var image: UIImage? = nil
 
     do {
-      if url.isFileURL {
+      if let url, url.isFileURL {
         image = UIImage(contentsOfFile: url.path)
-      } else {
+      } else if let url {
         image = try await downloadImage(from: url)
       }
 

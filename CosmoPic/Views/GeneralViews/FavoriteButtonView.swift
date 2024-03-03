@@ -24,6 +24,7 @@ struct FavoriteButtonView: View {
       Image(systemName: viewModel.isFavorite(photo) ? "star.fill" : "star")
         .font(.title)
         .foregroundColor(.yellow)
+        .frame(width: 32, height: 32)
         .padding()
     })
     .background(.ultraThinMaterial)

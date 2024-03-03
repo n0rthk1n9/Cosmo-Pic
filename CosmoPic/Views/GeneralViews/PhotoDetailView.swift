@@ -17,7 +17,7 @@ struct PhotoDetailView: View {
       if viewModel.isLoading {
         ProgressView()
       } else if let photo = viewModel.photo {
-        PhotoDetailContentView(photo: photo, fullDetail: true)
+        PhotoDetailContentView(photo: photo)
       } else {
         ContentUnavailableView("No Data available", systemImage: "x.circle")
           .showCustomAlert(alert: $viewModel.error)

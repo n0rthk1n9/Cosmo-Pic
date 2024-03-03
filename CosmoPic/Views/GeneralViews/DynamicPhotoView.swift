@@ -9,19 +9,46 @@ import SwiftUI
 
 struct DynamicPhotoView: View {
   let photo: Photo
-  var showAsHeroImage: Bool? = false
   var size: CGSize? = .init(width: 100, height: 100)
 
-  var body: some View {
+  var photoURL: URL? {
     if let localFilename = photo.localFilename {
-      let localFileURL = FileManager.localFileURL(for: localFilename)
-      PhotoView(photo: photo, url: localFileURL, showAsHeroImage: showAsHeroImage, size: size)
+      return FileManager.localFileURL(for: localFilename)
     } else if let hdUrl = photo.hdURL {
-      PhotoView(photo: photo, url: hdUrl, showAsHeroImage: showAsHeroImage, size: size)
+      return hdUrl
+    } else {
+      return nil
+    }
+  }
+
+  var body: some View {
+    if let size {
+      ZStack(alignment: .topTrailing) {
+        ZStack(alignment: .bottomTrailing) {
+          AsyncImage(
+            url: photoURL,
+            content: { image in
+              image
+                .resizable()
+            },
+            placeholder: {
+              ProgressView()
+            }
+          )
+          .scaledToFill()
+          .ignoresSafeArea()
+          .frame(maxWidth: size.width, maxHeight: size.height * 0.60)
+
+          SaveButtonView(photoURL: photoURL)
+        }
+
+        FavoriteButtonView(photo: photo)
+      }
     }
   }
 }
 
 #Preview {
-  DynamicPhotoView(photo: .allProperties, showAsHeroImage: true)
+  DynamicPhotoView(photo: .allProperties)
+    .environmentObject(FavoritesViewModel())
 }
