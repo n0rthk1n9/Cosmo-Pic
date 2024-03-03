@@ -24,23 +24,32 @@ struct TodayPhotoView: View {
     VStack(alignment: .center) {
       GeometryReader { geometry in
         ZStack(alignment: .topTrailing) {
-          AsyncImage(url: photoURL) { image in
-            image
-              .resizable()
-              .aspectRatio(contentMode: .fill)
-          } placeholder: {
-            HStack {
-              Spacer()
-              ProgressView()
-                .frame(height: 300)
-              Spacer()
+          ZStack(alignment: .bottomTrailing) {
+            AsyncImage(url: photoURL) { image in
+              image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+            } placeholder: {
+              HStack {
+                Spacer()
+                ProgressView()
+                  .frame(height: 300)
+                Spacer()
+              }
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height)
+            .cornerRadius(20)
+            .clipped()
+
+            SaveButtonView(photoURL: photoURL)
+          }
+
+          VStack {
+            FavoriteButtonView(photo: photo)
+            if let photoURL {
+              ShareButtonView(photoURL: photoURL)
             }
           }
-          .frame(width: geometry.size.width, height: geometry.size.height)
-          .cornerRadius(20)
-          .clipped()
-
-          FavoriteButtonView(photo: photo)
         }
       }
 

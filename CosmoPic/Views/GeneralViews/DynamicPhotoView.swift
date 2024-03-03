@@ -42,7 +42,12 @@ struct DynamicPhotoView: View {
           SaveButtonView(photoURL: photoURL)
         }
 
-        FavoriteButtonView(photo: photo)
+        VStack {
+          FavoriteButtonView(photo: photo)
+          if let photoURL {
+            ShareButtonView(photoURL: photoURL)
+          }
+        }
       }
     }
   }
