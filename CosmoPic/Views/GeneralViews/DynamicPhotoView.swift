@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DynamicPhotoView: View {
-  @StateObject private var viewModel = PhotoViewModel()
+  @StateObject private var viewModel = DynamicPhotoViewModel()
 
   let photo: Photo
   var size: CGSize? = .init(width: 100, height: 100)
