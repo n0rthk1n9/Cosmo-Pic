@@ -33,4 +33,6 @@ struct ShareButtonView: View {
       photoURL: photoURL
     )
   }
+
+  return Text("No url to share")
 }
