@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct DynamicPhotoView: View {
-  @StateObject private var viewModel = DynamicPhotoViewModel()
-
   let photo: Photo
   var size: CGSize? = .init(width: 100, height: 100)
 
@@ -41,44 +39,11 @@ struct DynamicPhotoView: View {
           .ignoresSafeArea()
           .frame(maxWidth: size.width, maxHeight: size.height * 0.60)
 
-          Button(
-            action: {
-              Task {
-                await viewModel.saveImage(from: photoURL)
-              }
-            }, label: {
-              VStack {
-                if viewModel.saveCompleted {
-                  Image(systemName: "checkmark")
-                    .font(.title2)
-                    .foregroundColor(.green)
-                } else {
-                  Label(
-                    title: {
-                      Text("Save")
-                    },
-                    icon: {
-                      Image(systemName: "square.and.arrow.down")
-                    }
-                  )
-                  .font(.title2)
-                  .foregroundColor(viewModel.isSaving ? .gray : .white)
-                }
-              }
-              .frame(width: UIScreen.main.bounds.width / 4)
-              .padding()
-              .background(.thinMaterial)
-              .cornerRadius(10)
-              .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 20))
-            }
-          )
-          .buttonStyle(PlainButtonStyle())
-          .disabled(viewModel.isSaving || viewModel.saveCompleted)
+          SaveButtonView(photoURL: photoURL)
         }
 
         FavoriteButtonView(photo: photo)
       }
-      .showCustomAlert(alert: $viewModel.error)
     }
   }
 }

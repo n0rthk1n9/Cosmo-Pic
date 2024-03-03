@@ -24,6 +24,7 @@
 		574D86A02B16452600294392 /* HistoryAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D869F2B16452500294392 /* HistoryAPIService.swift */; };
 		574D86A32B16453D00294392 /* HistoryAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D86A22B16453D00294392 /* HistoryAPIServiceProtocol.swift */; };
 		5751B6942B947F3600294392 /* TodayPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5751B6932B947F3600294392 /* TodayPhotoView.swift */; };
+		5751B6972B948D0100294392 /* SaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5751B6962B948D0100294392 /* SaveButtonView.swift */; };
 		575CFF5B2B17F2C800294392 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CFF5A2B17F2C800294392 /* WelcomeView.swift */; };
 		575CFF5D2B17F2E400294392 /* FeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CFF5C2B17F2E400294392 /* FeatureView.swift */; };
 		578A19C42B0BA94E00294392 /* CosmoPicDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19C32B0BA94E00294392 /* CosmoPicDataStoreTests.swift */; };
@@ -87,6 +88,7 @@
 		574D869F2B16452500294392 /* HistoryAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAPIService.swift; sourceTree = "<group>"; };
 		574D86A22B16453D00294392 /* HistoryAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAPIServiceProtocol.swift; sourceTree = "<group>"; };
 		5751B6932B947F3600294392 /* TodayPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayPhotoView.swift; sourceTree = "<group>"; };
+		5751B6962B948D0100294392 /* SaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonView.swift; sourceTree = "<group>"; };
 		575CFF5A2B17F2C800294392 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		575CFF5C2B17F2E400294392 /* FeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureView.swift; sourceTree = "<group>"; };
 		578A19AF2B0BA94C00294392 /* CosmoPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CosmoPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -293,6 +295,7 @@
 				57E3F1A72B77C98800294392 /* PhotoDetailContentView.swift */,
 				57E4DD7F2B1A235600294392 /* DynamicPhotoView.swift */,
 				57FECA9C2B92500400294392 /* FavoriteButtonView.swift */,
+				5751B6962B948D0100294392 /* SaveButtonView.swift */,
 			);
 			path = GeneralViews;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				57A8A6F32B7FAEEE00294392 /* CosmoPicAlert.swift in Sources */,
 				57D8C4442B0D53C100294392 /* CosmoPicApp.swift in Sources */,
 				571232712B112C0800294392 /* HistoryView.swift in Sources */,
+				5751B6972B948D0100294392 /* SaveButtonView.swift in Sources */,
 				578C96B82B793EB900294392 /* HistoryViewModel.swift in Sources */,
 				57FC94292B166F3E00294392 /* PhotoAPIServiceErrorMock.swift in Sources */,
 				57346C8F2B90CE1F00294392 /* DynamicPhotoViewModel.swift in Sources */,
