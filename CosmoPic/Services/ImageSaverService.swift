@@ -9,7 +9,7 @@ import UIKit
 
 class ImageSaverService: NSObject {
   func saveImage(from url: URL?) async throws {
-    var image: UIImage? = nil
+    var image: UIImage?
 
     do {
       if let url, url.isFileURL {

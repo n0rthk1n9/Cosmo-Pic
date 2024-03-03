@@ -15,6 +15,9 @@ struct SaveButtonView: View {
   var body: some View {
     Button(
       action: {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+
         Task {
           await viewModel.saveImage(from: photoURL)
         }
