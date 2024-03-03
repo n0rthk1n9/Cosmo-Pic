@@ -43,12 +43,12 @@ struct TodayPhotoView: View {
           FavoriteButtonView(photo: photo)
         }
       }
-      .padding(.horizontal, 20)
 
       Text(photo.title)
         .padding([.top, .trailing, .leading])
         .font(.title2)
     }
+    .padding(20)
   }
 }
 
