@@ -14,7 +14,7 @@ struct PhotoDetailContentView: View {
     GeometryReader { geometry in
       VStack {
         ZStack {
-          DynamicPhotoView(photo: photo, showAsHeroImage: true, size: geometry.size)
+          DynamicPhotoView(photo: photo, size: geometry.size)
         }
         Form {
           Section {
