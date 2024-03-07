@@ -20,13 +20,15 @@ actor PurchaseManager {
     let transaction: Transaction
 
     switch verificationResult {
-    case let .verified(t):
-      transaction = t
-    case let .unverified(t, error):
+    case let .verified(trans):
+      transaction = trans
+    case .unverified:
       return
     }
 
     await transaction.finish()
+
+    await PurchaseStatusPublisher.shared.setPurchaseMade(true)
   }
 
   func checkForUnfinishedTransactions() async {
