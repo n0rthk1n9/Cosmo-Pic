@@ -18,4 +18,8 @@ extension View {
         }
       })
   }
+
+  func cosmoPicStore() -> some View {
+    modifier(CosmoPicStoreViewModifier())
+  }
 }
