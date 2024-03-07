@@ -31,6 +31,7 @@
 		575CFF5D2B17F2E400294392 /* FeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CFF5C2B17F2E400294392 /* FeatureView.swift */; };
 		578071242B9A19C200294392 /* CosmoPicStoreViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578071232B9A19C200294392 /* CosmoPicStoreViewModifier.swift */; };
 		578071262B9A19D900294392 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578071252B9A19D900294392 /* PurchaseManager.swift */; };
+		578071282B9A206F00294392 /* PurchaseStatusPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578071272B9A206E00294392 /* PurchaseStatusPublisher.swift */; };
 		578A19C42B0BA94E00294392 /* CosmoPicDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19C32B0BA94E00294392 /* CosmoPicDataStoreTests.swift */; };
 		578A19D02B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */; };
 		578C96B82B793EB900294392 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578C96B72B793EB900294392 /* HistoryViewModel.swift */; };
@@ -101,6 +102,7 @@
 		575CFF5C2B17F2E400294392 /* FeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureView.swift; sourceTree = "<group>"; };
 		578071232B9A19C200294392 /* CosmoPicStoreViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicStoreViewModifier.swift; sourceTree = "<group>"; };
 		578071252B9A19D900294392 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
+		578071272B9A206E00294392 /* PurchaseStatusPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseStatusPublisher.swift; sourceTree = "<group>"; };
 		578A19AF2B0BA94C00294392 /* CosmoPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CosmoPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		578A19BF2B0BA94E00294392 /* CosmoPicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmoPicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		578A19C32B0BA94E00294392 /* CosmoPicDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicDataStoreTests.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				57131E972B9618F900294392 /* CosmoPicStoreView.swift */,
 				578071232B9A19C200294392 /* CosmoPicStoreViewModifier.swift */,
 				578071252B9A19D900294392 /* PurchaseManager.swift */,
+				578071272B9A206E00294392 /* PurchaseStatusPublisher.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				57E049072B147CF500294392 /* FileManager.swift in Sources */,
 				57FECA9D2B92500400294392 /* FavoriteButtonView.swift in Sources */,
 				571232772B11650A00294392 /* CosmoPicError.swift in Sources */,
+				578071282B9A206F00294392 /* PurchaseStatusPublisher.swift in Sources */,
 				57131E982B9618F900294392 /* CosmoPicStoreView.swift in Sources */,
 				57D8C4432B0D53C100294392 /* MainView.swift in Sources */,
 				57E3F1A82B77C98800294392 /* PhotoDetailContentView.swift in Sources */,
