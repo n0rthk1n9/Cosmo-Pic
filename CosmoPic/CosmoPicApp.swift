@@ -22,6 +22,7 @@ struct CosmoPicApp: App {
     WindowGroup {
       MainView()
         .environmentObject(favoritesViewModel)
+        .cosmoPicStore()
     }
 
     #if os(visionOS)
