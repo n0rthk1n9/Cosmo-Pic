@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct SaveButtonView: View {
+  @ObservedObject private var purchaseStatus = PurchaseStatusPublisher.shared
+
   @StateObject private var viewModel = SaveButtonViewModel()
+  @State private var storeSheetIsPresented = false
 
   let photoURL: URL?
 
@@ -18,8 +21,12 @@ struct SaveButtonView: View {
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
 
-        Task {
-          await viewModel.saveImage(from: photoURL)
+        if purchaseStatus.purchaseMade {
+          Task {
+            await viewModel.saveImage(from: photoURL)
+          }
+        } else {
+          storeSheetIsPresented = true
         }
       }, label: {
         Image(systemName: viewModel.saveCompleted ? "checkmark" : "square.and.arrow.down")
@@ -33,6 +40,9 @@ struct SaveButtonView: View {
     .background(.ultraThinMaterial)
     .clipShape(Circle())
     .padding()
+    .sheet(isPresented: $storeSheetIsPresented) {
+      CosmoPicStoreView(storeSheetIsPresented: $storeSheetIsPresented)
+    }
     .showCustomAlert(alert: $viewModel.error)
   }
 }
