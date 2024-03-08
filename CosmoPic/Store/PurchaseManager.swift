@@ -22,13 +22,12 @@ actor PurchaseManager {
     switch verificationResult {
     case let .verified(trans):
       transaction = trans
+      await PurchaseStatusPublisher.shared.setPurchaseMade(true)
     case .unverified:
       return
     }
 
     await transaction.finish()
-
-    await PurchaseStatusPublisher.shared.setPurchaseMade(true)
   }
 
   func checkForUnfinishedTransactions() async {
@@ -44,6 +43,17 @@ actor PurchaseManager {
       for await update in Transaction.updates {
         guard let self else { break }
         await self.process(transaction: update)
+      }
+    }
+  }
+
+  func refreshPurchasedProducts() async {
+    for await verificationResult in Transaction.currentEntitlements {
+      switch verificationResult {
+      case .verified:
+        await PurchaseStatusPublisher.shared.setPurchaseMade(true)
+      case .unverified:
+        return
       }
     }
   }
