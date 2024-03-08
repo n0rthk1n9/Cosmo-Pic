@@ -17,8 +17,7 @@ struct CosmoPicStoreView: View {
     StoreView(ids: ids)
       .storeButton(.visible, for: .restorePurchases)
       .onInAppPurchaseCompletion { _, purchaseResult in
-        guard case let .success(verificationResult) = purchaseResult,
-              case .success = verificationResult
+        guard case let .success(verificationResult) = purchaseResult, case .success = verificationResult
         else {
           return
         }
