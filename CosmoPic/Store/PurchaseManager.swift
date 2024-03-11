@@ -12,11 +12,9 @@ class PurchaseManager: ObservableObject {
 
   private var updatesTask: Task<Void, Never>?
 
-  private(set) static var shared: PurchaseManager!
+  static let shared = PurchaseManager()
 
-  static func createSharedInstance() {
-    shared = PurchaseManager()
-  }
+  private init() {}
 
   @MainActor
   private func setIsShareAndSaveCustomer() {
