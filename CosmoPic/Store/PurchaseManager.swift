@@ -8,7 +8,7 @@
 import StoreKit
 
 class PurchaseManager: ObservableObject {
-  @Published var isShareAndSaveCustomoer = false
+  @Published var isShareAndSaveCustomer = false
 
   private var updatesTask: Task<Void, Never>?
 
@@ -19,8 +19,8 @@ class PurchaseManager: ObservableObject {
   }
 
   @MainActor
-  private func setIsShareAndSaveCustomoer() {
-    isShareAndSaveCustomoer.toggle()
+  private func setIsShareAndSaveCustomer() {
+    isShareAndSaveCustomer.toggle()
   }
 
   func process(transaction verificationResult: VerificationResult<Transaction>) async {
@@ -30,7 +30,7 @@ class PurchaseManager: ObservableObject {
     case let .verified(trans):
       transaction = trans
       Task {
-        await setIsShareAndSaveCustomoer()
+        await setIsShareAndSaveCustomer()
       }
       await PurchaseStatusPublisher.shared.setPurchaseMade(true)
     case .unverified:
@@ -62,7 +62,7 @@ class PurchaseManager: ObservableObject {
       switch verificationResult {
       case .verified:
         Task {
-          await setIsShareAndSaveCustomoer()
+          await setIsShareAndSaveCustomer()
         }
         await PurchaseStatusPublisher.shared.setPurchaseMade(true)
       case .unverified:

@@ -22,7 +22,7 @@ struct SaveButtonView: View {
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
 
-        if purchaseManager.isShareAndSaveCustomoer {
+        if purchaseManager.isShareAndSaveCustomer {
           Task {
             await viewModel.saveImage(from: photoURL)
           }
