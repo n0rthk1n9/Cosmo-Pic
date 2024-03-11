@@ -22,7 +22,7 @@ struct CosmoPicStoreView: View {
           return
         }
 
-        await PurchaseManager.shared.observeTransactionUpdates()
+        PurchaseManager.shared.observeTransactionUpdates()
         await PurchaseManager.shared.checkForUnfinishedTransactions()
         storeSheetIsPresented = false
       }

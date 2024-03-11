@@ -32,7 +32,6 @@ class PurchaseManager: ObservableObject {
       Task {
         await setIsShareAndSaveCustomer()
       }
-      await PurchaseStatusPublisher.shared.setPurchaseMade(true)
     case .unverified:
       return
     }
@@ -64,7 +63,6 @@ class PurchaseManager: ObservableObject {
         Task {
           await setIsShareAndSaveCustomer()
         }
-        await PurchaseStatusPublisher.shared.setPurchaseMade(true)
       case .unverified:
         return
       }

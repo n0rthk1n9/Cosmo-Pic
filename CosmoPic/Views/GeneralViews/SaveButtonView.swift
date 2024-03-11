@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SaveButtonView: View {
-  @ObservedObject private var purchaseStatus = PurchaseStatusPublisher.shared
   @ObservedObject private var purchaseManager = PurchaseManager.shared
 
   @StateObject private var viewModel = SaveButtonViewModel()

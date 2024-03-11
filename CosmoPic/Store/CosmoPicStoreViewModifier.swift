@@ -16,7 +16,7 @@ struct CosmoPicStoreViewModifier: ViewModifier {
       PurchaseManager.createSharedInstance()
     }
     .task {
-      await PurchaseManager.shared.observeTransactionUpdates()
+      PurchaseManager.shared.observeTransactionUpdates()
       await PurchaseManager.shared.checkForUnfinishedTransactions()
       await PurchaseManager.shared.refreshPurchasedProducts()
     }
