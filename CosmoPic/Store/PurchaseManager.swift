@@ -7,7 +7,9 @@
 
 import StoreKit
 
-actor PurchaseManager {
+class PurchaseManager: ObservableObject {
+  @Published var isShareAndSaveCustomoer = false
+
   private var updatesTask: Task<Void, Never>?
 
   private(set) static var shared: PurchaseManager!
@@ -16,12 +18,20 @@ actor PurchaseManager {
     shared = PurchaseManager()
   }
 
+  @MainActor
+  private func setIsShareAndSaveCustomoer() {
+    isShareAndSaveCustomoer.toggle()
+  }
+
   func process(transaction verificationResult: VerificationResult<Transaction>) async {
     let transaction: Transaction
 
     switch verificationResult {
     case let .verified(trans):
       transaction = trans
+      Task {
+        await setIsShareAndSaveCustomoer()
+      }
       await PurchaseStatusPublisher.shared.setPurchaseMade(true)
     case .unverified:
       return
@@ -51,6 +61,9 @@ actor PurchaseManager {
     for await verificationResult in Transaction.currentEntitlements {
       switch verificationResult {
       case .verified:
+        Task {
+          await setIsShareAndSaveCustomoer()
+        }
         await PurchaseStatusPublisher.shared.setPurchaseMade(true)
       case .unverified:
         return

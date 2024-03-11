@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SaveButtonView: View {
   @ObservedObject private var purchaseStatus = PurchaseStatusPublisher.shared
+  @ObservedObject private var purchaseManager = PurchaseManager.shared
 
   @StateObject private var viewModel = SaveButtonViewModel()
   @State private var storeSheetIsPresented = false
@@ -21,7 +22,7 @@ struct SaveButtonView: View {
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
 
-        if purchaseStatus.purchaseMade {
+        if purchaseManager.isShareAndSaveCustomoer {
           Task {
             await viewModel.saveImage(from: photoURL)
           }
