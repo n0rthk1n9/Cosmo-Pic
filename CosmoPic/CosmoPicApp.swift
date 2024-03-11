@@ -22,6 +22,7 @@ struct CosmoPicApp: App {
     WindowGroup {
       MainView()
         .environmentObject(favoritesViewModel)
+        .cosmoPicStore()
     }
 
     #if os(visionOS)
@@ -48,7 +49,6 @@ struct CosmoPicApp: App {
 
       for fileURL in tmpDirectoryContents where fileURL.path.contains("CFNetworkDownload") {
         try fileManager.removeItem(at: fileURL)
-        print("Deleted: \(fileURL.lastPathComponent)")
       }
     } catch {
       print("Error deleting CFNetworkDownload files: \(error)")

@@ -44,7 +44,5 @@ class ImageSaverService: NSObject {
     UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveCompleted), nil)
   }
 
-  @objc func saveCompleted(_: UIImage, didFinishSavingWithError _: Error?, contextInfo _: UnsafeRawPointer) {
-    print("Save finished!")
-  }
+  @objc func saveCompleted(_: UIImage, didFinishSavingWithError _: Error?, contextInfo _: UnsafeRawPointer) {}
 }

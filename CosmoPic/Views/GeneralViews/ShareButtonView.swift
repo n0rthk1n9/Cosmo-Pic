@@ -8,19 +8,41 @@
 import SwiftUI
 
 struct ShareButtonView: View {
+  @ObservedObject private var purchaseManager = PurchaseManager.shared
+
+  @State private var storeSheetIsPresented = false
+
   let photoURL: URL
 
   var body: some View {
-    ShareLink(item: photoURL) {
-      Image(systemName: "square.and.arrow.up")
-        .font(.title)
-        .foregroundColor(.white)
-        .frame(width: 32, height: 32)
-        .padding()
+    if purchaseManager.isShareAndSaveCustomer {
+      ShareLink(item: photoURL) {
+        Image(systemName: "square.and.arrow.up")
+          .font(.title)
+          .foregroundColor(.white)
+          .frame(width: 32, height: 32)
+          .padding()
+      }
+      .background(.ultraThinMaterial)
+      .clipShape(Circle())
+      .padding(.horizontal)
+    } else {
+      Button {
+        storeSheetIsPresented = true
+      } label: {
+        Image(systemName: "square.and.arrow.up")
+          .font(.title)
+          .foregroundColor(.white)
+          .frame(width: 32, height: 32)
+          .padding()
+      }
+      .background(.ultraThinMaterial)
+      .clipShape(Circle())
+      .padding(.horizontal)
+      .sheet(isPresented: $storeSheetIsPresented) {
+        CosmoPicStoreView(storeSheetIsPresented: $storeSheetIsPresented)
+      }
     }
-    .background(.ultraThinMaterial)
-    .clipShape(Circle())
-    .padding(.horizontal)
   }
 }
 
