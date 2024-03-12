@@ -35,6 +35,7 @@
 		578A19D02B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */; };
 		578C96B82B793EB900294392 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578C96B72B793EB900294392 /* HistoryViewModel.swift */; };
 		5791A00A2B6D321E00294392 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791A0092B6D321E00294392 /* TodayViewModel.swift */; };
+		579A9A122BA0509A00294392 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579A9A112BA0509A00294392 /* StoreKit.framework */; };
 		57A8A6F32B7FAEEE00294392 /* CosmoPicAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */; };
 		57A8A6F52B7FB12200294392 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A8A6F42B7FB12200294392 /* Binding.swift */; };
 		57B8985F2B6EB37D00294392 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */; };
@@ -109,6 +110,7 @@
 		578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		578C96B72B793EB900294392 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		5791A0092B6D321E00294392 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
+		579A9A112BA0509A00294392 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicAlert.swift; sourceTree = "<group>"; };
 		57A8A6F42B7FB12200294392 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				579A9A122BA0509A00294392 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +241,7 @@
 				578A19C22B0BA94E00294392 /* CosmoPicTests */,
 				578A19CC2B0BA94E00294392 /* CosmoPicUITests */,
 				578A19B02B0BA94C00294392 /* Products */,
+				579A9A102BA0509A00294392 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -285,6 +289,14 @@
 				578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */,
 			);
 			path = CosmoPicUITests;
+			sourceTree = "<group>";
+		};
+		579A9A102BA0509A00294392 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				579A9A112BA0509A00294392 /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		57CDE76C2B165BEE00294392 /* ViewModels */ = {

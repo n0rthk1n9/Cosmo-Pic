@@ -10,7 +10,7 @@
       "internalID" : "6478867179",
       "localizations" : [
         {
-          "description" : "Access to the Share and Save functions",
+          "description" : "Store stars, share sights 🌌",
           "displayName" : "Share and Save",
           "locale" : "en_US"
         }
@@ -24,7 +24,7 @@
     "_applicationInternalID" : "6472663048",
     "_developerTeamID" : "G7HRH2B3C7",
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 731256679.687971,
+    "_lastSynchronizedDate" : 731931952.62859297,
     "_locale" : "en_US",
     "_storefront" : "USA",
     "_storeKitErrors" : [

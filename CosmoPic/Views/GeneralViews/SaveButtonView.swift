@@ -41,7 +41,7 @@ struct SaveButtonView: View {
     .clipShape(Circle())
     .padding()
     .sheet(isPresented: $storeSheetIsPresented) {
-      CosmoPicStoreView(storeSheetIsPresented: $storeSheetIsPresented)
+      CosmoPicStoreView()
     }
     .showCustomAlert(alert: $viewModel.error)
   }

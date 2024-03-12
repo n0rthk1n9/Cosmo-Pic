@@ -9,26 +9,25 @@ import StoreKit
 import SwiftUI
 
 struct CosmoPicStoreView: View {
-  @Binding var storeSheetIsPresented: Bool
+  @Environment(\.dismiss)
+  var dismiss
 
   let ids = ["dev.xbow.cosmopic.shareandsave"]
 
   var body: some View {
-    StoreView(ids: ids)
-      .storeButton(.visible, for: .restorePurchases)
-      .onInAppPurchaseCompletion { _, purchaseResult in
-        guard case let .success(verificationResult) = purchaseResult, case .success = verificationResult
-        else {
-          return
-        }
-
-        PurchaseManager.shared.observeTransactionUpdates()
-        await PurchaseManager.shared.checkForUnfinishedTransactions()
-        storeSheetIsPresented = false
-      }
+    StoreView(ids: ids) { _ in
+      Image("ShareAndSave")
+        .resizable()
+        .scaledToFit()
+        .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
+    }
+    .storeButton(.visible, for: .restorePurchases)
+    .onChange(of: PurchaseManager.shared.isShareAndSaveCustomer) {
+      dismiss()
+    }
   }
 }
 
 #Preview {
-  CosmoPicStoreView(storeSheetIsPresented: .constant(true))
+  CosmoPicStoreView()
 }
