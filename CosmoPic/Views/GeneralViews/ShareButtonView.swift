@@ -40,7 +40,7 @@ struct ShareButtonView: View {
       .clipShape(Circle())
       .padding(.horizontal)
       .sheet(isPresented: $storeSheetIsPresented) {
-        CosmoPicStoreView(storeSheetIsPresented: $storeSheetIsPresented)
+        CosmoPicStoreView()
       }
     }
   }
