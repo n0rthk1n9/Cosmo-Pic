@@ -15,11 +15,16 @@ struct CosmoPicStoreView: View {
   let ids = ["dev.xbow.cosmopic.shareandsave"]
 
   var body: some View {
-    StoreView(ids: ids)
-      .storeButton(.visible, for: .restorePurchases)
-      .onChange(of: PurchaseManager.shared.isShareAndSaveCustomer) {
-        dismiss()
-      }
+    StoreView(ids: ids) { _ in
+      Image("ShareAndSave")
+        .resizable()
+        .scaledToFit()
+        .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
+    }
+    .storeButton(.visible, for: .restorePurchases)
+    .onChange(of: PurchaseManager.shared.isShareAndSaveCustomer) {
+      dismiss()
+    }
   }
 }
 
