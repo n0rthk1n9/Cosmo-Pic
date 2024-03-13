@@ -31,6 +31,8 @@
 		575CFF5D2B17F2E400294392 /* FeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CFF5C2B17F2E400294392 /* FeatureView.swift */; };
 		578071242B9A19C200294392 /* CosmoPicStoreViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578071232B9A19C200294392 /* CosmoPicStoreViewModifier.swift */; };
 		578071262B9A19D900294392 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578071252B9A19D900294392 /* PurchaseManager.swift */; };
+		5787682F2BA21E1E00294392 /* PhotoZoomableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787682E2BA21E1E00294392 /* PhotoZoomableView.swift */; };
+		578768312BA21E3B00294392 /* PhotoZoomableContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578768302BA21E3B00294392 /* PhotoZoomableContainerView.swift */; };
 		578A19C42B0BA94E00294392 /* CosmoPicDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19C32B0BA94E00294392 /* CosmoPicDataStoreTests.swift */; };
 		578A19D02B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */; };
 		578C96B82B793EB900294392 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578C96B72B793EB900294392 /* HistoryViewModel.swift */; };
@@ -102,6 +104,8 @@
 		575CFF5C2B17F2E400294392 /* FeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureView.swift; sourceTree = "<group>"; };
 		578071232B9A19C200294392 /* CosmoPicStoreViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicStoreViewModifier.swift; sourceTree = "<group>"; };
 		578071252B9A19D900294392 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
+		5787682E2BA21E1E00294392 /* PhotoZoomableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoZoomableView.swift; sourceTree = "<group>"; };
+		578768302BA21E3B00294392 /* PhotoZoomableContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoZoomableContainerView.swift; sourceTree = "<group>"; };
 		578A19AF2B0BA94C00294392 /* CosmoPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CosmoPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		578A19BF2B0BA94E00294392 /* CosmoPicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmoPicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		578A19C32B0BA94E00294392 /* CosmoPicDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicDataStoreTests.swift; sourceTree = "<group>"; };
@@ -333,6 +337,8 @@
 				57FECA9C2B92500400294392 /* FavoriteButtonView.swift */,
 				57EF5E942B950BF500294392 /* ShareButtonView.swift */,
 				5751B6962B948D0100294392 /* SaveButtonView.swift */,
+				5787682E2BA21E1E00294392 /* PhotoZoomableView.swift */,
+				578768302BA21E3B00294392 /* PhotoZoomableContainerView.swift */,
 			);
 			path = GeneralViews;
 			sourceTree = "<group>";
@@ -529,11 +535,13 @@
 				57E4DD872B1A28F200294392 /* HistoryRowView.swift in Sources */,
 				5712326F2B112BE500294392 /* FavoritesView.swift in Sources */,
 				57F550452B73E3A500294392 /* UIImage.swift in Sources */,
+				578768312BA21E3B00294392 /* PhotoZoomableContainerView.swift in Sources */,
 				574D86972B15837100294392 /* PhotoAPIService.swift in Sources */,
 				57A8A6F32B7FAEEE00294392 /* CosmoPicAlert.swift in Sources */,
 				57D8C4442B0D53C100294392 /* CosmoPicApp.swift in Sources */,
 				571232712B112C0800294392 /* HistoryView.swift in Sources */,
 				57EF5E952B950BF500294392 /* ShareButtonView.swift in Sources */,
+				5787682F2BA21E1E00294392 /* PhotoZoomableView.swift in Sources */,
 				578071262B9A19D900294392 /* PurchaseManager.swift in Sources */,
 				5751B6972B948D0100294392 /* SaveButtonView.swift in Sources */,
 				578C96B82B793EB900294392 /* HistoryViewModel.swift in Sources */,
