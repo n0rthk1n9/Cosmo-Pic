@@ -10,6 +10,8 @@ import SwiftUI
 struct PhotoDetailView: View {
   @StateObject private var viewModel = PhotoDetailViewModel()
 
+  @State private var photoZoomableSheetIsShown = false
+
   let photo: Photo
 
   var body: some View {
@@ -18,6 +20,17 @@ struct PhotoDetailView: View {
         ProgressView()
       } else if let photo = viewModel.photo {
         PhotoDetailContentView(photo: photo)
+          .sheet(
+            isPresented: $photoZoomableSheetIsShown,
+            content: {
+              PhotoZoomableView(photo: photo)
+                .presentationBackground(.ultraThinMaterial)
+                .presentationCornerRadius(16)
+            }
+          )
+          .onTapGesture {
+            photoZoomableSheetIsShown.toggle()
+          }
       } else {
         ContentUnavailableView("No Data available", systemImage: "x.circle")
           .showCustomAlert(alert: $viewModel.error)
