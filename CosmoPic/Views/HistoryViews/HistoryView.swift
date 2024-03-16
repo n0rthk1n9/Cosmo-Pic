@@ -12,8 +12,23 @@ struct HistoryView: View {
   @Environment(\.openWindow)
   private var openWindow
 
+  @State private var searchText = ""
+
+  let suggestions: [String] = [
+    "Swift", "SwiftUI", "Obj-C"
+  ]
+
   private var sortedHistory: [Photo] {
     viewModel.history.sorted { $0.date > $1.date }
+  }
+
+  var searchResults: [Photo] {
+    if searchText.isEmpty {
+      return sortedHistory
+    } else {
+      return sortedHistory.filter { $0.title.contains(searchText)
+      }
+    }
   }
 
   var body: some View {
@@ -37,10 +52,11 @@ struct HistoryView: View {
       await viewModel.getHistory()
     }
     .accessibilityIdentifier("history-list")
+    .searchable(text: $searchText, prompt: "Search for an image title")
   }
 
   private var historyListView: some View {
-    List(sortedHistory, id: \.title) { photo in
+    List(searchResults, id: \.title) { photo in
       NavigationLink(value: photo) {
         HistoryRowView(photo: photo)
           .frame(maxWidth: .infinity, alignment: .leading)

@@ -10,6 +10,17 @@ import SwiftUI
 struct FavoritesView: View {
   @EnvironmentObject var viewModel: FavoritesViewModel
 
+  @State private var searchText = ""
+
+  var searchResults: [Photo] {
+    if searchText.isEmpty {
+      return viewModel.favorites
+    } else {
+      return viewModel.favorites.filter { $0.title.contains(searchText)
+      }
+    }
+  }
+
   var body: some View {
     NavigationStack {
       VStack {
@@ -21,7 +32,7 @@ struct FavoritesView: View {
             .multilineTextAlignment(.center)
         } else {
           List {
-            ForEach(viewModel.favorites, id: \.title) { photo in
+            ForEach(searchResults, id: \.title) { photo in
               NavigationLink(destination: PhotoDetailView(photo: photo)) {
                 Text(photo.title)
               }
@@ -39,6 +50,7 @@ struct FavoritesView: View {
     .onAppear {
       viewModel.loadFavorites()
     }
+    .searchable(text: $searchText, prompt: "Search for an image title")
   }
 
   private func delete(at offsets: IndexSet) {
