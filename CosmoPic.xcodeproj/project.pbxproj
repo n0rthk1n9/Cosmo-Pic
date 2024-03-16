@@ -115,6 +115,7 @@
 		578C96B72B793EB900294392 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		5791A0092B6D321E00294392 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		579A9A112BA0509A00294392 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		579C7F032BA6064900294392 /* CosmoPic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CosmoPic.entitlements; sourceTree = "<group>"; };
 		57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicAlert.swift; sourceTree = "<group>"; };
 		57A8A6F42B7FB12200294392 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
@@ -262,6 +263,7 @@
 		578A19B12B0BA94C00294392 /* CosmoPic */ = {
 			isa = PBXGroup;
 			children = (
+				579C7F032BA6064900294392 /* CosmoPic.entitlements */,
 				572FAFA62B11276800294392 /* Info.plist */,
 				57E049082B1481F300294392 /* APOD-Info.plist */,
 				574D86902B14836B00294392 /* APOD-Info-Sample.plist */,
@@ -728,6 +730,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CosmoPic/CosmoPic.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CosmoPic/Preview Content\"";
@@ -763,6 +766,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CosmoPic/CosmoPic.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CosmoPic/Preview Content\"";
