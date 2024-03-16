@@ -23,10 +23,9 @@ class FavoritesViewModel: ObservableObject {
   func loadFavorites() {
     isLoading = true
 
-    let fileManager = FileManager.default
-    let favoritesFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(favoritesFileName)
+    let favoritesFileURL = FileManager.appGroupContainerURL.appendingPathComponent(favoritesFileName)
 
-    if fileManager.fileExists(atPath: favoritesFileURL.path) {
+    if FileManager.default.fileExists(atPath: favoritesFileURL.path) {
       do {
         let jsonData = try Data(contentsOf: favoritesFileURL)
         favorites = try JSONDecoder().decode([Photo].self, from: jsonData)
@@ -63,7 +62,7 @@ class FavoritesViewModel: ObservableObject {
   }
 
   private func saveFavorites() {
-    let favoritesFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(favoritesFileName)
+    let favoritesFileURL = FileManager.appGroupContainerURL.appendingPathComponent(favoritesFileName)
 
     do {
       let jsonData = try JSONEncoder().encode(favorites)

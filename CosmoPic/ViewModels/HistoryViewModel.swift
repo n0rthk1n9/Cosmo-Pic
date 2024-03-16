@@ -33,7 +33,7 @@ class HistoryViewModel: ObservableObject {
       let todayString = DateFormatter.yyyyMMdd.string(from: currentDate)
       let startDate = DateFormatter.yyyyMMdd.string(from: oneMonthAgo)
 
-      let historyFilePath = FileManager.documentsDirectoryURL
+      let historyFilePath = FileManager.appGroupContainerURL
         .appendingPathComponent("\(todayString)-history.json")
 
       if FileManager.default.fileExists(atPath: historyFilePath.path) {
@@ -63,7 +63,7 @@ class HistoryViewModel: ObservableObject {
   }
 
   func getFavoriteFilenames() -> Set<String> {
-    guard let jsonData = try? Data(contentsOf: FileManager.documentsDirectoryURL
+    guard let jsonData = try? Data(contentsOf: FileManager.appGroupContainerURL
       .appendingPathComponent("favorites.json")),
       let favorites = try? JSONDecoder().decode([Photo].self, from: jsonData)
     else {
@@ -83,7 +83,7 @@ class HistoryViewModel: ObservableObject {
   }
 
   func deleteFilesOlderThan(cutoffDate: Date, excluding favorites: Set<String>) {
-    guard let fileURLs = try? FileManager.default.contentsOfDirectory(at: FileManager.documentsDirectoryURL)
+    guard let fileURLs = try? FileManager.default.contentsOfDirectory(at: FileManager.appGroupContainerURL)
     else { return }
 
     for fileURL in fileURLs {
@@ -108,7 +108,7 @@ class HistoryViewModel: ObservableObject {
   }
 
   func deleteOlderHistoryFiles(excluding currentDayFileName: String, favorites: Set<String>) {
-    guard let fileURLs = try? FileManager.default.contentsOfDirectory(at: FileManager.documentsDirectoryURL)
+    guard let fileURLs = try? FileManager.default.contentsOfDirectory(at: FileManager.appGroupContainerURL)
     else { return }
 
     for fileURL in fileURLs where fileURL.lastPathComponent.hasSuffix("-history.json") {
@@ -123,7 +123,7 @@ class HistoryViewModel: ObservableObject {
   func deletOldFiles() async {
     let todayHistoryFileName = "\(DateFormatter.yyyyMMdd.string(from: Date()))-history.json"
     let favoriteFilenames = getFavoriteFilenames()
-    let todayHistoryFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(todayHistoryFileName)
+    let todayHistoryFileURL = FileManager.appGroupContainerURL.appendingPathComponent(todayHistoryFileName)
 
     if let cutoffDate = getCutoffDate(from: todayHistoryFileURL) {
       // Delete non-history files older than the cutoff date, excluding favorites

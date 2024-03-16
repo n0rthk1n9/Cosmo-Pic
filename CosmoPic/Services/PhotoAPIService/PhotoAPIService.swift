@@ -79,7 +79,7 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
 
     let fileExtension = photoHdURL.pathExtension
     let localFilename = "\(date).\(fileExtension)"
-    let localImagePath = FileManager.documentsDirectoryURL.appendingPathComponent(localFilename)
+    let localImagePath = FileManager.appGroupContainerURL.appendingPathComponent(localFilename)
 
     if !FileManager.default.fileExists(atPath: localImagePath.path) {
       let (imageData, _) = try await URLSession.shared.data(from: photoHdURL)
@@ -97,7 +97,7 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
       let photo = try JSONDecoder().decodeLogging(Photo.self, from: jsonData)
 
       if let localFilename = photo.localFilename {
-        let localFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(localFilename)
+        let localFileURL = FileManager.appGroupContainerURL.appendingPathComponent(localFilename)
         if !FileManager.default.fileExists(atPath: localFileURL.path) {
           throw CosmoPicError.noFileFound
         }
