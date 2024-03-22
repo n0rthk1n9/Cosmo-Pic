@@ -65,7 +65,9 @@ class FavoritesViewModel: ObservableObject {
     let favoritesFileURL = FileManager.appGroupContainerURL.appendingPathComponent(favoritesFileName)
 
     do {
-      let jsonData = try JSONEncoder().encode(favorites)
+      let encoder = JSONEncoder()
+      encoder.outputFormatting = .prettyPrinted
+      let jsonData = try encoder.encode(favorites)
       try jsonData.write(to: favoritesFileURL)
     } catch {
       self.error = error
