@@ -44,6 +44,9 @@
 		579C7F112BA614DF00294392 /* FavoritesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579C7F102BA614DF00294392 /* FavoritesWidget.swift */; };
 		579C7F132BA614E100294392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579C7F122BA614E100294392 /* Assets.xcassets */; };
 		579C7F172BA614E100294392 /* FavoritesWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 579C7F082BA614DF00294392 /* FavoritesWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		579C7F1C2BA616C800294392 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */; };
+		579C7F1D2BA616DF00294392 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232722B115FD100294392 /* Photo.swift */; };
+		579C7F1E2BA616EE00294392 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E049062B147CF500294392 /* FileManager.swift */; };
 		57A8A6F32B7FAEEE00294392 /* CosmoPicAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */; };
 		57A8A6F52B7FB12200294392 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A8A6F42B7FB12200294392 /* Binding.swift */; };
 		57B8985F2B6EB37D00294392 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */; };
@@ -150,6 +153,7 @@
 		579C7F102BA614DF00294392 /* FavoritesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesWidget.swift; sourceTree = "<group>"; };
 		579C7F122BA614E100294392 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		579C7F142BA614E100294392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		579C7F1F2BA6186100294392 /* FavoritesWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FavoritesWidgetExtension.entitlements; sourceTree = "<group>"; };
 		57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicAlert.swift; sourceTree = "<group>"; };
 		57A8A6F42B7FB12200294392 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
@@ -285,6 +289,7 @@
 		578A19A62B0BA94C00294392 = {
 			isa = PBXGroup;
 			children = (
+				579C7F1F2BA6186100294392 /* FavoritesWidgetExtension.entitlements */,
 				578A19B12B0BA94C00294392 /* CosmoPic */,
 				579C7F0D2BA614DF00294392 /* FavoritesWidget */,
 				578A19C22B0BA94E00294392 /* CosmoPicTests */,
@@ -683,6 +688,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				579C7F1E2BA616EE00294392 /* FileManager.swift in Sources */,
+				579C7F1D2BA616DF00294392 /* Photo.swift in Sources */,
+				579C7F1C2BA616C800294392 /* FavoritesViewModel.swift in Sources */,
 				579C7F0F2BA614DF00294392 /* FavoritesWidgetBundle.swift in Sources */,
 				579C7F112BA614DF00294392 /* FavoritesWidget.swift in Sources */,
 			);
@@ -989,6 +997,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = FavoritesWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G7HRH2B3C7;
@@ -1017,6 +1026,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = FavoritesWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G7HRH2B3C7;
