@@ -65,6 +65,8 @@ struct FavoritesWidgetEntryView: View {
         .resizable()
         .scaledToFit()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+    } else {
+      Text("Add some favorites in the app")
     }
   }
 }
