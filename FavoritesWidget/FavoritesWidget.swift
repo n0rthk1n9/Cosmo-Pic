@@ -60,13 +60,26 @@ struct FavoritesWidgetEntryView: View {
   var entry: Provider.Entry
 
   var body: some View {
-    if let photo = entry.photo {
-      Image(uiImage: photo)
-        .resizable()
-        .scaledToFit()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-    } else {
-      Text("Add some favorites in the app")
+    ZStack(alignment: .bottomTrailing) {
+      if let photo = entry.photo {
+        Image(uiImage: photo)
+          .resizable()
+          .scaledToFit()
+          .frame(maxWidth: .infinity, maxHeight: .infinity)
+      } else {
+        Text("Add some favorites in the app")
+          .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+      }
+
+      Button(intent: RefreshWidgetToggleIntent(refreshState: true)) {
+        Image(systemName: "arrow.clockwise")
+          .padding()
+          .foregroundColor(.blue)
+          .background(
+            Circle()
+              .fill(Material.ultraThinMaterial)
+          )
+      }.buttonStyle(.plain)
     }
   }
 }
