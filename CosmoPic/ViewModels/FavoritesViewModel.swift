@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import WidgetKit
 
 class FavoritesViewModel: ObservableObject {
   @Published var favorites: [Photo] = []
@@ -69,6 +70,7 @@ class FavoritesViewModel: ObservableObject {
       encoder.outputFormatting = .prettyPrinted
       let jsonData = try encoder.encode(favorites)
       try jsonData.write(to: favoritesFileURL)
+      WidgetCenter.shared.reloadAllTimelines()
     } catch {
       self.error = error
       errorIsPresented = true
