@@ -55,9 +55,10 @@ struct FavoritesView: View {
 
   private func delete(at offsets: IndexSet) {
     for index in offsets {
-      let photo = viewModel.favorites[index]
+      let photo = searchResults[index]
       viewModel.toggleFavoriteStatus(for: photo)
     }
+    viewModel.loadFavorites()
   }
 }
 
