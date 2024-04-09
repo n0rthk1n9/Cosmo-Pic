@@ -28,15 +28,18 @@ struct Provider: TimelineProvider {
   }
 
   func placeholder(in _: Context) -> SimpleEntry {
-    SimpleEntry(date: Date(), photo: randomPhoto)
+    viewModel.loadFavorites()
+    return SimpleEntry(date: Date(), photo: randomPhoto)
   }
 
   func getSnapshot(in _: Context, completion: @escaping (SimpleEntry) -> Void) {
+    viewModel.loadFavorites()
     let entry = SimpleEntry(date: Date(), photo: randomPhoto)
     completion(entry)
   }
 
   func getTimeline(in _: Context, completion: @escaping (Timeline<Entry>) -> Void) {
+    viewModel.loadFavorites()
     var entries: [SimpleEntry] = []
 
     let currentDate = Date()
