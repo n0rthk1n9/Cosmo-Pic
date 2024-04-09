@@ -11,10 +11,20 @@ import WidgetKit
 struct Provider: TimelineProvider {
   let viewModel: FavoritesViewModel
 
-  var randomPhoto: UIImage? {
+  var currentPhoto: UIImage? {
     guard !viewModel.favorites.isEmpty else { return nil }
-    let randomIndex = Int.random(in: 0 ..< viewModel.favorites.count)
-    let photo = viewModel.favorites[randomIndex]
+
+    let sharedDefaults = UserDefaults(suiteName: "group.dev.xbow.Cosmo-Pic")
+    var currentIndex = sharedDefaults?.integer(forKey: "currentIndex") ?? 0
+    let totalFavoritesCount = viewModel.favorites.count
+    sharedDefaults?.set(totalFavoritesCount, forKey: "totalFavoritesCount")
+
+    if currentIndex < 0 || currentIndex >= totalFavoritesCount {
+      currentIndex = 0
+      sharedDefaults?.set(currentIndex, forKey: "currentIndex")
+    }
+
+    let photo = viewModel.favorites[currentIndex]
 
     if let localFilenameThumbnail = photo.localFilenameThumbnail {
       let url = FileManager.localFileURL(for: localFilenameThumbnail)
@@ -29,12 +39,12 @@ struct Provider: TimelineProvider {
 
   func placeholder(in _: Context) -> SimpleEntry {
     viewModel.loadFavorites()
-    return SimpleEntry(date: Date(), photo: randomPhoto)
+    return SimpleEntry(date: Date(), photo: currentPhoto)
   }
 
   func getSnapshot(in _: Context, completion: @escaping (SimpleEntry) -> Void) {
     viewModel.loadFavorites()
-    let entry = SimpleEntry(date: Date(), photo: randomPhoto)
+    let entry = SimpleEntry(date: Date(), photo: currentPhoto)
     completion(entry)
   }
 
@@ -45,7 +55,7 @@ struct Provider: TimelineProvider {
     let currentDate = Date()
     for hourOffset in 0 ..< 5 {
       let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-      let entry = SimpleEntry(date: entryDate, photo: randomPhoto)
+      let entry = SimpleEntry(date: entryDate, photo: currentPhoto)
       entries.append(entry)
     }
 
@@ -63,26 +73,34 @@ struct FavoritesWidgetEntryView: View {
   var entry: Provider.Entry
 
   var body: some View {
-    ZStack(alignment: .bottomTrailing) {
-      if let photo = entry.photo {
-        Image(uiImage: photo)
-          .resizable()
-          .scaledToFit()
-          .frame(maxWidth: .infinity, maxHeight: .infinity)
-      } else {
-        Text("Add some favorites in the app")
-          .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+    if let photo = entry.photo {
+      VStack {
+        Spacer()
+        HStack {
+          Spacer()
+          Button(intent: ShowNewFavoritesPhotoIntent(showPreviousPhoto: true)) {
+            Image(systemName: "arrow.left.circle")
+              .padding()
+              .foregroundColor(.blue)
+              .background(
+                Circle()
+                  .fill(Material.ultraThinMaterial)
+              )
+          }.buttonStyle(.plain)
+          Button(intent: ShowNewFavoritesPhotoIntent(showPreviousPhoto: false)) {
+            Image(systemName: "arrow.right.circle")
+              .padding()
+              .foregroundColor(.blue)
+              .background(
+                Circle()
+                  .fill(Material.ultraThinMaterial)
+              )
+          }.buttonStyle(.plain)
+        }
       }
-
-      Button(intent: RefreshWidgetToggleIntent(refreshState: true)) {
-        Image(systemName: "arrow.clockwise")
-          .padding()
-          .foregroundColor(.blue)
-          .background(
-            Circle()
-              .fill(Material.ultraThinMaterial)
-          )
-      }.buttonStyle(.plain)
+    } else {
+      Text("Add some favorites in the app")
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
     }
   }
 }
@@ -93,17 +111,18 @@ struct FavoritesWidget: Widget {
 
   var body: some WidgetConfiguration {
     StaticConfiguration(kind: kind, provider: Provider(viewModel: viewModel)) { entry in
-      if #available(iOS 17.0, *) {
-        FavoritesWidgetEntryView(entry: entry)
-          .containerBackground(.fill.tertiary, for: .widget)
-      } else {
-        FavoritesWidgetEntryView(entry: entry)
-          .padding()
-          .background()
-      }
+      FavoritesWidgetEntryView(entry: entry)
+        .containerBackground(for: .widget) {
+          if let photo = entry.photo {
+            Image(uiImage: photo)
+              .resizable()
+              .scaledToFill()
+              .frame(maxWidth: .infinity, maxHeight: .infinity)
+          }
+        }
     }
-    .configurationDisplayName("My Widget")
-    .description("This is an example widget.")
+    .configurationDisplayName("Favorites Widget")
+    .description("Add your favorites right to your homescreen.")
   }
 }
 
