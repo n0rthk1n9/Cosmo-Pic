@@ -53,11 +53,8 @@ struct Provider: TimelineProvider {
     var entries: [SimpleEntry] = []
 
     let currentDate = Date()
-    for hourOffset in 0 ..< 5 {
-      let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-      let entry = SimpleEntry(date: entryDate, photo: currentPhoto)
-      entries.append(entry)
-    }
+    let entry = SimpleEntry(date: currentDate, photo: currentPhoto)
+    entries.append(entry)
 
     let timeline = Timeline(entries: entries, policy: .atEnd)
     completion(timeline)
