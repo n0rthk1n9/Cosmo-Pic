@@ -128,5 +128,4 @@ struct FavoritesWidget: Widget {
   FavoritesWidget()
 } timeline: {
   FavoritesEntry(date: .now, photo: nil)
-  FavoritesEntry(date: .now, photo: nil)
 }
