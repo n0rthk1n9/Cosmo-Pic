@@ -82,7 +82,7 @@ struct FavoritesWidgetEntryView: View {
   var entry: Provider.Entry
 
   var body: some View {
-    if let photo = entry.photo {
+    if entry.photo != nil {
       VStack {
         Spacer()
         HStack {
