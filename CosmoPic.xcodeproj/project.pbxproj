@@ -16,6 +16,8 @@
 		571232772B11650A00294392 /* CosmoPicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232762B11650900294392 /* CosmoPicError.swift */; };
 		57131E962B96183A00294392 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 57131E952B96183A00294392 /* StoreKitTestCertificate.cer */; };
 		57131E982B9618F900294392 /* CosmoPicStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57131E972B9618F900294392 /* CosmoPicStoreView.swift */; };
+		572106092BC6D28800294392 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 572106082BC6D28800294392 /* PrivacyInfo.xcprivacy */; };
+		5721060A2BC6D28800294392 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 572106082BC6D28800294392 /* PrivacyInfo.xcprivacy */; };
 		57322E0D2B8F99A700294392 /* ImageSaverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57322E0C2B8F99A700294392 /* ImageSaverService.swift */; };
 		57346C8F2B90CE1F00294392 /* SaveButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57346C8E2B90CE1F00294392 /* SaveButtonViewModel.swift */; };
 		57409B9F2B700EEC00294392 /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57409B9E2B700EEC00294392 /* PhotoDetailViewModel.swift */; };
@@ -120,6 +122,7 @@
 		57131E942B96176400294392 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
 		57131E952B96183A00294392 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		57131E972B9618F900294392 /* CosmoPicStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicStoreView.swift; sourceTree = "<group>"; };
+		572106082BC6D28800294392 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		572FAFA62B11276800294392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		57322E0C2B8F99A700294392 /* ImageSaverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaverService.swift; sourceTree = "<group>"; };
 		57346C8E2B90CE1F00294392 /* SaveButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonViewModel.swift; sourceTree = "<group>"; };
@@ -333,6 +336,7 @@
 			children = (
 				579C7F032BA6064900294392 /* CosmoPic.entitlements */,
 				572FAFA62B11276800294392 /* Info.plist */,
+				572106082BC6D28800294392 /* PrivacyInfo.xcprivacy */,
 				57E049082B1481F300294392 /* APOD-Info.plist */,
 				574D86902B14836B00294392 /* APOD-Info-Sample.plist */,
 				57D8C4402B0D53C100294392 /* CosmoPicApp.swift */,
@@ -566,6 +570,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				572106092BC6D28800294392 /* PrivacyInfo.xcprivacy in Resources */,
 				57131E962B96183A00294392 /* StoreKitTestCertificate.cer in Resources */,
 				574D86912B14836B00294392 /* APOD-Info-Sample.plist in Resources */,
 				57E049092B1481F300294392 /* APOD-Info.plist in Resources */,
@@ -592,6 +597,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5721060A2BC6D28800294392 /* PrivacyInfo.xcprivacy in Resources */,
 				579C7F132BA614E100294392 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
