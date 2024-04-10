@@ -66,6 +66,18 @@ struct FavoritesEntry: TimelineEntry {
   let photo: UIImage?
 }
 
+struct FavoritesWidgetButtonStyle: ButtonStyle {
+  func makeBody(configuration: Configuration) -> some View {
+    configuration.label
+      .labelStyle(.iconOnly)
+      .symbolVariant(.fill.circle)
+      .imageScale(.large)
+      .font(.system(size: 32, weight: .bold))
+      .foregroundStyle(.thickMaterial.opacity(configuration.isPressed ? 0.66 : 1))
+      .frame(width: 44, height: 44)
+  }
+}
+
 struct FavoritesWidgetEntryView: View {
   var entry: Provider.Entry
 
@@ -76,24 +88,13 @@ struct FavoritesWidgetEntryView: View {
         HStack {
           Spacer()
           Button(intent: ShowNewFavoritesPhotoIntent(showPreviousPhoto: true)) {
-            Image(systemName: "arrow.left.circle")
-              .padding()
-              .foregroundColor(.blue)
-              .background(
-                Circle()
-                  .fill(Material.ultraThinMaterial)
-              )
-          }.buttonStyle(.plain)
+            Label("Previous", systemImage: "chevron.backward")
+          }
           Button(intent: ShowNewFavoritesPhotoIntent(showPreviousPhoto: false)) {
-            Image(systemName: "arrow.right.circle")
-              .padding()
-              .foregroundColor(.blue)
-              .background(
-                Circle()
-                  .fill(Material.ultraThinMaterial)
-              )
-          }.buttonStyle(.plain)
+            Label("Next", systemImage: "chevron.forward")
+          }
         }
+        .buttonStyle(FavoritesWidgetButtonStyle())
       }
     } else {
       Text("Add some favorites in the app")
