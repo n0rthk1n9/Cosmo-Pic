@@ -37,23 +37,23 @@ struct Provider: TimelineProvider {
     return nil
   }
 
-  func placeholder(in _: Context) -> SimpleEntry {
+  func placeholder(in _: Context) -> FavoritesEntry {
     viewModel.loadFavorites()
-    return SimpleEntry(date: Date(), photo: currentPhoto)
+    return FavoritesEntry(date: Date(), photo: currentPhoto)
   }
 
-  func getSnapshot(in _: Context, completion: @escaping (SimpleEntry) -> Void) {
+  func getSnapshot(in _: Context, completion: @escaping (FavoritesEntry) -> Void) {
     viewModel.loadFavorites()
-    let entry = SimpleEntry(date: Date(), photo: currentPhoto)
+    let entry = FavoritesEntry(date: Date(), photo: currentPhoto)
     completion(entry)
   }
 
   func getTimeline(in _: Context, completion: @escaping (Timeline<Entry>) -> Void) {
     viewModel.loadFavorites()
-    var entries: [SimpleEntry] = []
+    var entries: [FavoritesEntry] = []
 
     let currentDate = Date()
-    let entry = SimpleEntry(date: currentDate, photo: currentPhoto)
+    let entry = FavoritesEntry(date: currentDate, photo: currentPhoto)
     entries.append(entry)
 
     let timeline = Timeline(entries: entries, policy: .atEnd)
@@ -61,7 +61,7 @@ struct Provider: TimelineProvider {
   }
 }
 
-struct SimpleEntry: TimelineEntry {
+struct FavoritesEntry: TimelineEntry {
   let date: Date
   let photo: UIImage?
 }
@@ -123,9 +123,9 @@ struct FavoritesWidget: Widget {
   }
 }
 
-// #Preview(as: .systemSmall) {
-//  FavoritesWidget()
-// } timeline: {
-//  SimpleEntry(date: .now, emoji: "😀")
-//  SimpleEntry(date: .now, emoji: "🤩")
-// }
+#Preview(as: .systemSmall) {
+  FavoritesWidget()
+} timeline: {
+  FavoritesEntry(date: .now, photo: nil)
+  FavoritesEntry(date: .now, photo: nil)
+}
