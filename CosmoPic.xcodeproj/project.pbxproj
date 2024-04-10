@@ -27,6 +27,8 @@
 		574D86A32B16453D00294392 /* HistoryAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D86A22B16453D00294392 /* HistoryAPIServiceProtocol.swift */; };
 		5751B6942B947F3600294392 /* TodayPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5751B6932B947F3600294392 /* TodayPhotoView.swift */; };
 		5751B6972B948D0100294392 /* SaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5751B6962B948D0100294392 /* SaveButtonView.swift */; };
+		575627372BB70DD200294392 /* ShowNewFavoritesPhotoIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575627362BB70DD200294392 /* ShowNewFavoritesPhotoIntent.swift */; };
+		575627382BB70F6400294392 /* ShowNewFavoritesPhotoIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575627362BB70DD200294392 /* ShowNewFavoritesPhotoIntent.swift */; };
 		575CFF5B2B17F2C800294392 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CFF5A2B17F2C800294392 /* WelcomeView.swift */; };
 		575CFF5D2B17F2E400294392 /* FeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CFF5C2B17F2E400294392 /* FeatureView.swift */; };
 		578071242B9A19C200294392 /* CosmoPicStoreViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578071232B9A19C200294392 /* CosmoPicStoreViewModifier.swift */; };
@@ -38,6 +40,15 @@
 		578C96B82B793EB900294392 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578C96B72B793EB900294392 /* HistoryViewModel.swift */; };
 		5791A00A2B6D321E00294392 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791A0092B6D321E00294392 /* TodayViewModel.swift */; };
 		579A9A122BA0509A00294392 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579A9A112BA0509A00294392 /* StoreKit.framework */; };
+		579C7F0A2BA614DF00294392 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579C7F092BA614DF00294392 /* WidgetKit.framework */; };
+		579C7F0C2BA614DF00294392 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579C7F0B2BA614DF00294392 /* SwiftUI.framework */; };
+		579C7F0F2BA614DF00294392 /* FavoritesWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579C7F0E2BA614DF00294392 /* FavoritesWidgetBundle.swift */; };
+		579C7F112BA614DF00294392 /* FavoritesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579C7F102BA614DF00294392 /* FavoritesWidget.swift */; };
+		579C7F132BA614E100294392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579C7F122BA614E100294392 /* Assets.xcassets */; };
+		579C7F172BA614E100294392 /* FavoritesWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 579C7F082BA614DF00294392 /* FavoritesWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		579C7F1C2BA616C800294392 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */; };
+		579C7F1D2BA616DF00294392 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232722B115FD100294392 /* Photo.swift */; };
+		579C7F1E2BA616EE00294392 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E049062B147CF500294392 /* FileManager.swift */; };
 		57A8A6F32B7FAEEE00294392 /* CosmoPicAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */; };
 		57A8A6F52B7FB12200294392 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A8A6F42B7FB12200294392 /* Binding.swift */; };
 		57B8985F2B6EB37D00294392 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */; };
@@ -75,7 +86,28 @@
 			remoteGlobalIDString = 578A19AE2B0BA94C00294392;
 			remoteInfo = "Cosmo Pic";
 		};
+		579C7F152BA614E100294392 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 578A19A72B0BA94C00294392 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 579C7F072BA614DF00294392;
+			remoteInfo = FavoritesWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		579C7F1B2BA614E100294392 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				579C7F172BA614E100294392 /* FavoritesWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		570652B32B7A743C00294392 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
@@ -100,6 +132,7 @@
 		574D86A22B16453D00294392 /* HistoryAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAPIServiceProtocol.swift; sourceTree = "<group>"; };
 		5751B6932B947F3600294392 /* TodayPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayPhotoView.swift; sourceTree = "<group>"; };
 		5751B6962B948D0100294392 /* SaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonView.swift; sourceTree = "<group>"; };
+		575627362BB70DD200294392 /* ShowNewFavoritesPhotoIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNewFavoritesPhotoIntent.swift; sourceTree = "<group>"; };
 		575CFF5A2B17F2C800294392 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		575CFF5C2B17F2E400294392 /* FeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureView.swift; sourceTree = "<group>"; };
 		578071232B9A19C200294392 /* CosmoPicStoreViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicStoreViewModifier.swift; sourceTree = "<group>"; };
@@ -115,6 +148,15 @@
 		578C96B72B793EB900294392 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		5791A0092B6D321E00294392 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		579A9A112BA0509A00294392 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		579C7F032BA6064900294392 /* CosmoPic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CosmoPic.entitlements; sourceTree = "<group>"; };
+		579C7F082BA614DF00294392 /* FavoritesWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FavoritesWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		579C7F092BA614DF00294392 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		579C7F0B2BA614DF00294392 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		579C7F0E2BA614DF00294392 /* FavoritesWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesWidgetBundle.swift; sourceTree = "<group>"; };
+		579C7F102BA614DF00294392 /* FavoritesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesWidget.swift; sourceTree = "<group>"; };
+		579C7F122BA614E100294392 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		579C7F142BA614E100294392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		579C7F1F2BA6186100294392 /* FavoritesWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FavoritesWidgetExtension.entitlements; sourceTree = "<group>"; };
 		57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicAlert.swift; sourceTree = "<group>"; };
 		57A8A6F42B7FB12200294392 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
@@ -156,6 +198,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		579C7F052BA614DF00294392 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				579C7F0C2BA614DF00294392 /* SwiftUI.framework in Frameworks */,
+				579C7F0A2BA614DF00294392 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +292,9 @@
 		578A19A62B0BA94C00294392 = {
 			isa = PBXGroup;
 			children = (
+				579C7F1F2BA6186100294392 /* FavoritesWidgetExtension.entitlements */,
 				578A19B12B0BA94C00294392 /* CosmoPic */,
+				579C7F0D2BA614DF00294392 /* FavoritesWidget */,
 				578A19C22B0BA94E00294392 /* CosmoPicTests */,
 				578A19CC2B0BA94E00294392 /* CosmoPicUITests */,
 				578A19B02B0BA94C00294392 /* Products */,
@@ -255,6 +308,7 @@
 				578A19AF2B0BA94C00294392 /* CosmoPic.app */,
 				578A19BF2B0BA94E00294392 /* CosmoPicTests.xctest */,
 				578A19C92B0BA94E00294392 /* CosmoPicUITests.xctest */,
+				579C7F082BA614DF00294392 /* FavoritesWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -262,6 +316,7 @@
 		578A19B12B0BA94C00294392 /* CosmoPic */ = {
 			isa = PBXGroup;
 			children = (
+				579C7F032BA6064900294392 /* CosmoPic.entitlements */,
 				572FAFA62B11276800294392 /* Info.plist */,
 				57E049082B1481F300294392 /* APOD-Info.plist */,
 				574D86902B14836B00294392 /* APOD-Info-Sample.plist */,
@@ -299,8 +354,22 @@
 			isa = PBXGroup;
 			children = (
 				579A9A112BA0509A00294392 /* StoreKit.framework */,
+				579C7F092BA614DF00294392 /* WidgetKit.framework */,
+				579C7F0B2BA614DF00294392 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		579C7F0D2BA614DF00294392 /* FavoritesWidget */ = {
+			isa = PBXGroup;
+			children = (
+				575627362BB70DD200294392 /* ShowNewFavoritesPhotoIntent.swift */,
+				579C7F0E2BA614DF00294392 /* FavoritesWidgetBundle.swift */,
+				579C7F102BA614DF00294392 /* FavoritesWidget.swift */,
+				579C7F122BA614E100294392 /* Assets.xcassets */,
+				579C7F142BA614E100294392 /* Info.plist */,
+			);
+			path = FavoritesWidget;
 			sourceTree = "<group>";
 		};
 		57CDE76C2B165BEE00294392 /* ViewModels */ = {
@@ -363,10 +432,12 @@
 				578A19AB2B0BA94C00294392 /* Sources */,
 				578A19AC2B0BA94C00294392 /* Frameworks */,
 				578A19AD2B0BA94C00294392 /* Resources */,
+				579C7F1B2BA614E100294392 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				579C7F162BA614E100294392 /* PBXTargetDependency */,
 			);
 			name = CosmoPic;
 			productName = "Cosmo Pic";
@@ -410,6 +481,23 @@
 			productReference = 578A19C92B0BA94E00294392 /* CosmoPicUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		579C7F072BA614DF00294392 /* FavoritesWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 579C7F182BA614E100294392 /* Build configuration list for PBXNativeTarget "FavoritesWidgetExtension" */;
+			buildPhases = (
+				579C7F042BA614DF00294392 /* Sources */,
+				579C7F052BA614DF00294392 /* Frameworks */,
+				579C7F062BA614DF00294392 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FavoritesWidgetExtension;
+			productName = FavoritesWidgetExtension;
+			productReference = 579C7F082BA614DF00294392 /* FavoritesWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -417,7 +505,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					578A19AE2B0BA94C00294392 = {
@@ -430,6 +518,9 @@
 					578A19C82B0BA94E00294392 = {
 						CreatedOnToolsVersion = 15.0.1;
 						TestTargetID = 578A19AE2B0BA94C00294392;
+					};
+					579C7F072BA614DF00294392 = {
+						CreatedOnToolsVersion = 15.3;
 					};
 				};
 			};
@@ -449,6 +540,7 @@
 				578A19AE2B0BA94C00294392 /* CosmoPic */,
 				578A19BE2B0BA94E00294392 /* CosmoPicTests */,
 				578A19C82B0BA94E00294392 /* CosmoPicUITests */,
+				579C7F072BA614DF00294392 /* FavoritesWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -477,6 +569,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		579C7F062BA614DF00294392 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				579C7F132BA614E100294392 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +639,7 @@
 				574D86972B15837100294392 /* PhotoAPIService.swift in Sources */,
 				57A8A6F32B7FAEEE00294392 /* CosmoPicAlert.swift in Sources */,
 				57D8C4442B0D53C100294392 /* CosmoPicApp.swift in Sources */,
+				575627372BB70DD200294392 /* ShowNewFavoritesPhotoIntent.swift in Sources */,
 				571232712B112C0800294392 /* HistoryView.swift in Sources */,
 				57EF5E952B950BF500294392 /* ShareButtonView.swift in Sources */,
 				5787682F2BA21E1E00294392 /* PhotoZoomableView.swift in Sources */,
@@ -588,6 +689,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		579C7F042BA614DF00294392 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				579C7F1E2BA616EE00294392 /* FileManager.swift in Sources */,
+				579C7F1D2BA616DF00294392 /* Photo.swift in Sources */,
+				579C7F1C2BA616C800294392 /* FavoritesViewModel.swift in Sources */,
+				575627382BB70F6400294392 /* ShowNewFavoritesPhotoIntent.swift in Sources */,
+				579C7F0F2BA614DF00294392 /* FavoritesWidgetBundle.swift in Sources */,
+				579C7F112BA614DF00294392 /* FavoritesWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -600,6 +714,11 @@
 			isa = PBXTargetDependency;
 			target = 578A19AE2B0BA94C00294392 /* CosmoPic */;
 			targetProxy = 578A19CA2B0BA94E00294392 /* PBXContainerItemProxy */;
+		};
+		579C7F162BA614E100294392 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 579C7F072BA614DF00294392 /* FavoritesWidgetExtension */;
+			targetProxy = 579C7F152BA614E100294392 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -726,8 +845,10 @@
 		578A19D42B0BA94E00294392 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CosmoPic/CosmoPic.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CosmoPic/Preview Content\"";
@@ -761,8 +882,10 @@
 		578A19D52B0BA94E00294392 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CosmoPic/CosmoPic.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CosmoPic/Preview Content\"";
@@ -875,6 +998,64 @@
 			};
 			name = Release;
 		};
+		579C7F192BA614E100294392 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = FavoritesWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G7HRH2B3C7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FavoritesWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FavoritesWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.xbow.Cosmo-Pic.FavoritesWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		579C7F1A2BA614E100294392 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = FavoritesWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G7HRH2B3C7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FavoritesWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FavoritesWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.xbow.Cosmo-Pic.FavoritesWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -910,6 +1091,15 @@
 			buildConfigurations = (
 				578A19DA2B0BA94E00294392 /* Debug */,
 				578A19DB2B0BA94E00294392 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		579C7F182BA614E100294392 /* Build configuration list for PBXNativeTarget "FavoritesWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				579C7F192BA614E100294392 /* Debug */,
+				579C7F1A2BA614E100294392 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

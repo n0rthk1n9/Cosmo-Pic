@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import WidgetKit
 
 class FavoritesViewModel: ObservableObject {
   @Published var favorites: [Photo] = []
@@ -23,10 +24,9 @@ class FavoritesViewModel: ObservableObject {
   func loadFavorites() {
     isLoading = true
 
-    let fileManager = FileManager.default
-    let favoritesFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(favoritesFileName)
+    let favoritesFileURL = FileManager.appGroupContainerURL.appendingPathComponent(favoritesFileName)
 
-    if fileManager.fileExists(atPath: favoritesFileURL.path) {
+    if FileManager.default.fileExists(atPath: favoritesFileURL.path) {
       do {
         let jsonData = try Data(contentsOf: favoritesFileURL)
         favorites = try JSONDecoder().decode([Photo].self, from: jsonData)
@@ -63,11 +63,14 @@ class FavoritesViewModel: ObservableObject {
   }
 
   private func saveFavorites() {
-    let favoritesFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(favoritesFileName)
+    let favoritesFileURL = FileManager.appGroupContainerURL.appendingPathComponent(favoritesFileName)
 
     do {
-      let jsonData = try JSONEncoder().encode(favorites)
+      let encoder = JSONEncoder()
+      encoder.outputFormatting = .prettyPrinted
+      let jsonData = try encoder.encode(favorites)
       try jsonData.write(to: favoritesFileURL)
+      WidgetCenter.shared.reloadAllTimelines()
     } catch {
       self.error = error
       errorIsPresented = true

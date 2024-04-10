@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct PhotoAPIService: PhotoAPIServiceProtocol {
   private var apiKey: String {
@@ -79,7 +80,7 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
 
     let fileExtension = photoHdURL.pathExtension
     let localFilename = "\(date).\(fileExtension)"
-    let localImagePath = FileManager.documentsDirectoryURL.appendingPathComponent(localFilename)
+    let localImagePath = FileManager.appGroupContainerURL.appendingPathComponent(localFilename)
 
     if !FileManager.default.fileExists(atPath: localImagePath.path) {
       let (imageData, _) = try await URLSession.shared.data(from: photoHdURL)
@@ -88,7 +89,52 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
 
     var updatedPhoto = photo
     updatedPhoto.localFilename = localFilename
+
+    guard let photoSdURL = photo.sdURL else {
+      throw CosmoPicError.invalidURL
+    }
+
+    if let thumbnailFilename = try? await cacheThumbnail(from: photoSdURL, identifier: photo.date) {
+      updatedPhoto.localFilenameThumbnail = thumbnailFilename
+    }
     return updatedPhoto
+  }
+
+  func cacheThumbnail(from url: URL, identifier: String) async throws -> String {
+    let fileExtension = url.pathExtension
+    let thumbnailFilename = "\(identifier)-thumbnail.\(fileExtension)"
+    let thumbnailFileURL = FileManager.appGroupContainerURL.appendingPathComponent(thumbnailFilename)
+
+    // Check if the thumbnail file already exists
+    if FileManager.default.fileExists(atPath: thumbnailFileURL.path) {
+      // The thumbnail already exists, no need to re-download or recreate it
+      return thumbnailFilename
+    } else {
+      // Download the image data
+      let (imageData, _) = try await URLSession.shared.data(from: url)
+
+      // Attempt to create and save the thumbnail
+      if let image = UIImage(data: imageData) {
+        await MainActor.run {
+          #if !os(visionOS)
+            let scale = UIScreen.main.scale
+          #else
+            let scale = 2.0
+          #endif
+          if let thumbnailData = image.downsampledData(
+            to: CGSize(width: 100, height: 100),
+            scale: scale
+          ) {
+            do {
+              try thumbnailData.write(to: thumbnailFileURL)
+            } catch {
+              print("Failed to write thumbnail data: \(error)")
+            }
+          }
+        }
+      }
+      return thumbnailFilename
+    }
   }
 
   func loadPhoto(from jsonPath: URL, for _: String) throws -> Photo {
@@ -97,7 +143,7 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
       let photo = try JSONDecoder().decodeLogging(Photo.self, from: jsonData)
 
       if let localFilename = photo.localFilename {
-        let localFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(localFilename)
+        let localFileURL = FileManager.appGroupContainerURL.appendingPathComponent(localFilename)
         if !FileManager.default.fileExists(atPath: localFileURL.path) {
           throw CosmoPicError.noFileFound
         }

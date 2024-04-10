@@ -25,7 +25,7 @@ class TodayViewModel: ObservableObject {
     error = nil
 
     let currentDate = DateFormatter.yyyyMMdd.string(from: date)
-    let jsonPathURL = FileManager.documentsDirectoryURL.appendingPathComponent("\(currentDate).json")
+    let jsonPathURL = FileManager.appGroupContainerURL.appendingPathComponent("\(currentDate).json")
 
     do {
       if FileManager.default.fileExists(atPath: jsonPathURL.path) {

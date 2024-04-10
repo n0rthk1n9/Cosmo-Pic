@@ -22,7 +22,7 @@ class PhotoDetailViewModel: ObservableObject {
   @MainActor
   func getPhoto(for date: String) async {
     isLoading = true
-    let jsonPathURL = FileManager.documentsDirectoryURL.appendingPathComponent("\(date).json")
+    let jsonPathURL = FileManager.appGroupContainerURL.appendingPathComponent("\(date).json")
 
     do {
       if FileManager.default.fileExists(atPath: jsonPathURL.path) {

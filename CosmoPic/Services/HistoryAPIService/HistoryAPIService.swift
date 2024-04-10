@@ -67,7 +67,7 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
 
   func saveHistory(_ history: [Photo], for date: String) throws {
     let historyFileName = "\(date)-history.json"
-    let historyFilePath = FileManager.documentsDirectoryURL.appendingPathComponent(historyFileName)
+    let historyFilePath = FileManager.appGroupContainerURL.appendingPathComponent(historyFileName)
     let encoder = JSONEncoder()
     encoder.outputFormatting = .prettyPrinted
     let jsonData = try encoder.encode(history)
@@ -77,7 +77,7 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
   func loadHistory(for date: String) throws -> [Photo] {
     do {
       let historyFileName = "\(date)-history.json"
-      let historyFilePath = FileManager.documentsDirectoryURL.appendingPathComponent(historyFileName)
+      let historyFilePath = FileManager.appGroupContainerURL.appendingPathComponent(historyFileName)
       let jsonData = try Data(contentsOf: historyFilePath)
       return try JSONDecoder().decodeLogging([Photo].self, from: jsonData)
     } catch {
@@ -122,7 +122,7 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
   func cacheThumbnail(from url: URL, identifier: String) async throws -> String {
     let fileExtension = url.pathExtension
     let thumbnailFilename = "\(identifier)-thumbnail.\(fileExtension)"
-    let thumbnailFileURL = FileManager.documentsDirectoryURL.appendingPathComponent(thumbnailFilename)
+    let thumbnailFileURL = FileManager.appGroupContainerURL.appendingPathComponent(thumbnailFilename)
 
     // Check if the thumbnail file already exists
     if FileManager.default.fileExists(atPath: thumbnailFileURL.path) {
