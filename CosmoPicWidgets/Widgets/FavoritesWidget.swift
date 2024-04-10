@@ -37,23 +37,23 @@ struct Provider: TimelineProvider {
     return nil
   }
 
-  func placeholder(in _: Context) -> SimpleEntry {
+  func placeholder(in _: Context) -> FavoritesEntry {
     viewModel.loadFavorites()
-    return SimpleEntry(date: Date(), photo: currentPhoto)
+    return FavoritesEntry(date: Date(), photo: currentPhoto)
   }
 
-  func getSnapshot(in _: Context, completion: @escaping (SimpleEntry) -> Void) {
+  func getSnapshot(in _: Context, completion: @escaping (FavoritesEntry) -> Void) {
     viewModel.loadFavorites()
-    let entry = SimpleEntry(date: Date(), photo: currentPhoto)
+    let entry = FavoritesEntry(date: Date(), photo: currentPhoto)
     completion(entry)
   }
 
   func getTimeline(in _: Context, completion: @escaping (Timeline<Entry>) -> Void) {
     viewModel.loadFavorites()
-    var entries: [SimpleEntry] = []
+    var entries: [FavoritesEntry] = []
 
     let currentDate = Date()
-    let entry = SimpleEntry(date: currentDate, photo: currentPhoto)
+    let entry = FavoritesEntry(date: currentDate, photo: currentPhoto)
     entries.append(entry)
 
     let timeline = Timeline(entries: entries, policy: .atEnd)
@@ -61,39 +61,40 @@ struct Provider: TimelineProvider {
   }
 }
 
-struct SimpleEntry: TimelineEntry {
+struct FavoritesEntry: TimelineEntry {
   let date: Date
   let photo: UIImage?
+}
+
+struct FavoritesWidgetButtonStyle: ButtonStyle {
+  func makeBody(configuration: Configuration) -> some View {
+    configuration.label
+      .labelStyle(.iconOnly)
+      .symbolVariant(.fill.circle)
+      .imageScale(.large)
+      .font(.system(size: 32, weight: .bold))
+      .foregroundStyle(.thickMaterial.opacity(configuration.isPressed ? 0.66 : 1))
+      .frame(width: 44, height: 44)
+  }
 }
 
 struct FavoritesWidgetEntryView: View {
   var entry: Provider.Entry
 
   var body: some View {
-    if let photo = entry.photo {
+    if entry.photo != nil {
       VStack {
         Spacer()
         HStack {
           Spacer()
           Button(intent: ShowNewFavoritesPhotoIntent(showPreviousPhoto: true)) {
-            Image(systemName: "arrow.left.circle")
-              .padding()
-              .foregroundColor(.blue)
-              .background(
-                Circle()
-                  .fill(Material.ultraThinMaterial)
-              )
-          }.buttonStyle(.plain)
+            Label("Previous", systemImage: "chevron.backward")
+          }
           Button(intent: ShowNewFavoritesPhotoIntent(showPreviousPhoto: false)) {
-            Image(systemName: "arrow.right.circle")
-              .padding()
-              .foregroundColor(.blue)
-              .background(
-                Circle()
-                  .fill(Material.ultraThinMaterial)
-              )
-          }.buttonStyle(.plain)
+            Label("Next", systemImage: "chevron.forward")
+          }
         }
+        .buttonStyle(FavoritesWidgetButtonStyle())
       }
     } else {
       Text("Add some favorites in the app")
@@ -123,9 +124,8 @@ struct FavoritesWidget: Widget {
   }
 }
 
-// #Preview(as: .systemSmall) {
-//  FavoritesWidget()
-// } timeline: {
-//  SimpleEntry(date: .now, emoji: "😀")
-//  SimpleEntry(date: .now, emoji: "🤩")
-// }
+#Preview(as: .systemSmall) {
+  FavoritesWidget()
+} timeline: {
+  FavoritesEntry(date: .now, photo: nil)
+}
