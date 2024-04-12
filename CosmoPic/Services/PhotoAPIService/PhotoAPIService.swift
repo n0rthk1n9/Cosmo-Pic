@@ -59,6 +59,12 @@ struct PhotoAPIService: PhotoAPIServiceProtocol {
           if json?["msg"] as? String == "No data available for date: \(date)" {
             throw CosmoPicError.photoForTodayNotAvailableYet(retryHandler: retryHandler)
           }
+        } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 400 {
+          let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+          let msg = json?["msg"] as? String
+          if msg?.contains("Date must be between") != nil {
+            throw CosmoPicError.photoForTodayNotAvailableYet(retryHandler: retryHandler)
+          }
         }
         throw CosmoPicError.invalidResponseCode
       }
