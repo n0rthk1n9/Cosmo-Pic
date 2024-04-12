@@ -32,8 +32,27 @@ struct TodayView: View {
               photoZoomableSheetIsShown.toggle()
             }
         } else {
-          ContentUnavailableView("No Data available", systemImage: "x.circle")
-            .showCustomAlert(alert: $viewModel.error)
+          ContentUnavailableView(
+            label: {
+              Label("No photo downloaded", systemImage: "photo.fill")
+            }, description: {
+              Text(
+                "Sorry, we were not able to get you your daily dose of space! Come back later or try again with the button below"
+              )
+            }, actions: {
+              Button(
+                action: {
+                  Task {
+                    await viewModel.fetchPhotoForToday()
+                  }
+                },
+                label: {
+                  Image(systemName: "arrow.clockwise")
+                }
+              )
+            }
+          )
+          .showCustomAlert(alert: $viewModel.error)
         }
         Spacer()
       }
