@@ -53,6 +53,8 @@
 		579C7F1E2BA616EE00294392 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E049062B147CF500294392 /* FileManager.swift */; };
 		57A8A6F32B7FAEEE00294392 /* CosmoPicAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */; };
 		57A8A6F52B7FB12200294392 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A8A6F42B7FB12200294392 /* Binding.swift */; };
+		57B22D772BCAADA100294392 /* FetchPhotoForTodayIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B22D762BCAADA100294392 /* FetchPhotoForTodayIntent.swift */; };
+		57B22D7B2BCAAF5300294392 /* CosmoPicShortcutsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B22D7A2BCAAF5300294392 /* CosmoPicShortcutsProvider.swift */; };
 		57B8985F2B6EB37D00294392 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */; };
 		57D8C4412B0D53C100294392 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43D2B0D53C100294392 /* Preview Content */; };
 		57D8C4422B0D53C100294392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43E2B0D53C100294392 /* Assets.xcassets */; };
@@ -162,6 +164,8 @@
 		579C7F1F2BA6186100294392 /* CosmoPicWidgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CosmoPicWidgets.entitlements; sourceTree = "<group>"; };
 		57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicAlert.swift; sourceTree = "<group>"; };
 		57A8A6F42B7FB12200294392 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
+		57B22D762BCAADA100294392 /* FetchPhotoForTodayIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoForTodayIntent.swift; sourceTree = "<group>"; };
+		57B22D7A2BCAAF5300294392 /* CosmoPicShortcutsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicShortcutsProvider.swift; sourceTree = "<group>"; };
 		57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		57D8C43D2B0D53C100294392 /* Preview Content */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Preview Content"; path = "CosmoPic/Preview Content"; sourceTree = SOURCE_ROOT; };
 		57D8C43E2B0D53C100294392 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CosmoPic/Assets.xcassets; sourceTree = SOURCE_ROOT; };
@@ -346,6 +350,8 @@
 				57E049052B147CDF00294392 /* Extensions */,
 				574D86982B15839700294392 /* Services */,
 				57131E932B96173200294392 /* Store */,
+				57B22D782BCAADA700294392 /* Intents */,
+				57B22D792BCAAF3200294392 /* Shortcuts */,
 				57D8C43E2B0D53C100294392 /* Assets.xcassets */,
 				57D8C43D2B0D53C100294392 /* Preview Content */,
 			);
@@ -390,6 +396,22 @@
 				579C7F142BA614E100294392 /* Info.plist */,
 			);
 			path = CosmoPicWidgets;
+			sourceTree = "<group>";
+		};
+		57B22D782BCAADA700294392 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				57B22D762BCAADA100294392 /* FetchPhotoForTodayIntent.swift */,
+			);
+			path = Intents;
+			sourceTree = "<group>";
+		};
+		57B22D792BCAAF3200294392 /* Shortcuts */ = {
+			isa = PBXGroup;
+			children = (
+				57B22D7A2BCAAF5300294392 /* CosmoPicShortcutsProvider.swift */,
+			);
+			path = Shortcuts;
 			sourceTree = "<group>";
 		};
 		57CDE76C2B165BEE00294392 /* ViewModels */ = {
@@ -677,6 +699,8 @@
 				570652B62B7A7A3D00294392 /* View.swift in Sources */,
 				57E4DD802B1A235600294392 /* DynamicPhotoView.swift in Sources */,
 				57F550432B73DEFE00294392 /* DateFormatter.swift in Sources */,
+				57B22D7B2BCAAF5300294392 /* CosmoPicShortcutsProvider.swift in Sources */,
+				57B22D772BCAADA100294392 /* FetchPhotoForTodayIntent.swift in Sources */,
 				57A8A6F52B7FB12200294392 /* Binding.swift in Sources */,
 				5712326D2B112BD400294392 /* TodayView.swift in Sources */,
 				57FC94272B166CB800294392 /* HistoryAPIServiceMock.swift in Sources */,
