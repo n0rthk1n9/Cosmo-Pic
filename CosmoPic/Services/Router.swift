@@ -13,4 +13,6 @@ class Router: ObservableObject {
   func resetActiveTab() {
     activeTab = .today
   }
+
+  static var shared: Router = .init()
 }

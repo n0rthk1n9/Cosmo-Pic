@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct CosmoPicApp: App {
   @StateObject var favoritesViewModel = FavoritesViewModel()
-  @StateObject var router = Router()
+  @StateObject var router = Router.shared
 
   init() {
     if ProcessInfo.processInfo.arguments.contains("UITesting") {

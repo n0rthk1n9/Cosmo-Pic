@@ -6,6 +6,7 @@
 //
 
 import AppIntents
+import SwiftUI
 
 struct FetchPhotoForTodayIntent: AppIntent {
   static let title: LocalizedStringResource = "Show today's photo"
@@ -17,6 +18,10 @@ struct FetchPhotoForTodayIntent: AppIntent {
     let viewModel = TodayViewModel()
 
     await viewModel.fetchPhotoForToday()
+
+    Task { @MainActor in
+      Router.shared.activeTab = .today
+    }
 
     return .result()
   }
