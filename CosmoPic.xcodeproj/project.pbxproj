@@ -66,6 +66,7 @@
 		57E3F1A82B77C98800294392 /* PhotoDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E3F1A72B77C98800294392 /* PhotoDetailContentView.swift */; };
 		57E4DD802B1A235600294392 /* DynamicPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4DD7F2B1A235600294392 /* DynamicPhotoView.swift */; };
 		57E4DD872B1A28F200294392 /* HistoryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4DD862B1A28F200294392 /* HistoryRowView.swift */; };
+		57E4EFBA2BCBFD1800294392 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4EFB92BCBFD1800294392 /* Tab.swift */; };
 		57EF5E952B950BF500294392 /* ShareButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF5E942B950BF500294392 /* ShareButtonView.swift */; };
 		57F550432B73DEFE00294392 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F550422B73DEFE00294392 /* DateFormatter.swift */; };
 		57F550452B73E3A500294392 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F550442B73E3A500294392 /* UIImage.swift */; };
@@ -176,6 +177,7 @@
 		57E3F1A72B77C98800294392 /* PhotoDetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailContentView.swift; sourceTree = "<group>"; };
 		57E4DD7F2B1A235600294392 /* DynamicPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPhotoView.swift; sourceTree = "<group>"; };
 		57E4DD862B1A28F200294392 /* HistoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRowView.swift; sourceTree = "<group>"; };
+		57E4EFB92BCBFD1800294392 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		57EF5E942B950BF500294392 /* ShareButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButtonView.swift; sourceTree = "<group>"; };
 		57F550422B73DEFE00294392 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		57F550442B73E3A500294392 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				571232722B115FD100294392 /* Photo.swift */,
 				57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */,
 				571232762B11650900294392 /* CosmoPicError.swift */,
+				57E4EFB92BCBFD1800294392 /* Tab.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 				571232712B112C0800294392 /* HistoryView.swift in Sources */,
 				57EF5E952B950BF500294392 /* ShareButtonView.swift in Sources */,
 				5787682F2BA21E1E00294392 /* PhotoZoomableView.swift in Sources */,
+				57E4EFBA2BCBFD1800294392 /* Tab.swift in Sources */,
 				578071262B9A19D900294392 /* PurchaseManager.swift in Sources */,
 				5751B6972B948D0100294392 /* SaveButtonView.swift in Sources */,
 				578C96B82B793EB900294392 /* HistoryViewModel.swift in Sources */,
