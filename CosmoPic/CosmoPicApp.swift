@@ -27,9 +27,8 @@ struct CosmoPicApp: App {
         .onOpenURL { url in
           guard let scheme = url.scheme, scheme == "cosmopic" else { return }
           guard let tab = url.host else { return }
-          if let requestedTab = Tab.allCases.first(where: { $0.rawValue == tab }) {
-            router.activeTab = requestedTab
-          }
+          guard let requestedTab = Tab.allCases.first(where: { $0.rawValue == tab }) else { return }
+          router.activeTab = requestedTab
         }
         .cosmoPicStore()
     }
