@@ -24,6 +24,13 @@ struct CosmoPicApp: App {
       MainView()
         .environmentObject(favoritesViewModel)
         .environmentObject(router)
+        .onOpenURL { url in
+          guard let scheme = url.scheme, scheme == "cosmopic" else { return }
+          guard let tab = url.host else { return }
+          if let requestedTab = Tab.allCases.first(where: { $0.rawValue == tab }) {
+            router.activeTab = requestedTab
+          }
+        }
         .cosmoPicStore()
     }
 

@@ -9,4 +9,8 @@ import SwiftUI
 
 class Router: ObservableObject {
   @Published var activeTab: Tab = .today
+
+  func resetActiveTab() {
+    activeTab = .today
+  }
 }
