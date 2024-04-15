@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct CosmoPicApp: App {
   @StateObject var favoritesViewModel = FavoritesViewModel()
+  @StateObject var router = Router.shared
 
   init() {
     if ProcessInfo.processInfo.arguments.contains("UITesting") {
@@ -22,6 +23,13 @@ struct CosmoPicApp: App {
     WindowGroup {
       MainView()
         .environmentObject(favoritesViewModel)
+        .environmentObject(router)
+        .onOpenURL { url in
+          guard let scheme = url.scheme, scheme == "cosmopic" else { return }
+          guard let tab = url.host else { return }
+          guard let requestedTab = Tab.allCases.first(where: { $0.rawValue == tab }) else { return }
+          router.activeTab = requestedTab
+        }
         .cosmoPicStore()
     }
 

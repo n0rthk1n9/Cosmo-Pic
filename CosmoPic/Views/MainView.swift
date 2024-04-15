@@ -10,21 +10,25 @@ import SwiftUI
 struct MainView: View {
   @AppStorage("WelcomeScreenShown")
   var welcomeScreenShown = false
+  @EnvironmentObject private var router: Router
   @State private var showingWelcomeScreen = false
 
   var body: some View {
-    TabView {
+    TabView(selection: $router.activeTab) {
       TodayView()
+        .tag(Tab.today)
         .tabItem {
-          Label("Today", systemImage: "calendar")
+          Label(Tab.today.rawValue, systemImage: Tab.today.tabSymbol)
         }
       FavoritesView()
+        .tag(Tab.favorites)
         .tabItem {
-          Label("Favorites", systemImage: "star")
+          Label(Tab.favorites.rawValue, systemImage: Tab.favorites.tabSymbol)
         }
       HistoryView()
+        .tag(Tab.history)
         .tabItem {
-          Label("History", systemImage: "photo.stack")
+          Label(Tab.history.rawValue, systemImage: Tab.history.tabSymbol)
         }
     }
     .onAppear {
@@ -46,4 +50,5 @@ struct MainView: View {
 #Preview {
   MainView()
     .environmentObject(FavoritesViewModel())
+    .environmentObject(Router())
 }
