@@ -8,10 +8,15 @@
 import SwiftUI
 
 class Router: ObservableObject {
+  @Published var path = NavigationPath()
   @Published var activeTab: Tab = .today
 
   func resetActiveTab() {
     activeTab = .today
+  }
+
+  func resetPath() {
+    path = NavigationPath()
   }
 
   static var shared: Router = .init()
