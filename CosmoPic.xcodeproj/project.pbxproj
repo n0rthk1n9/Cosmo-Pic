@@ -33,6 +33,8 @@
 		575627382BB70F6400294392 /* ShowNewFavoritesPhotoIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575627362BB70DD200294392 /* ShowNewFavoritesPhotoIntent.swift */; };
 		575CFF5B2B17F2C800294392 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CFF5A2B17F2C800294392 /* WelcomeView.swift */; };
 		575CFF5D2B17F2E400294392 /* FeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CFF5C2B17F2E400294392 /* FeatureView.swift */; };
+		5760A9662BCE722600294392 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4EFBB2BCBFEB100294392 /* Router.swift */; };
+		5760A9672BCE723200294392 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4EFB92BCBFD1800294392 /* Tab.swift */; };
 		578071242B9A19C200294392 /* CosmoPicStoreViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578071232B9A19C200294392 /* CosmoPicStoreViewModifier.swift */; };
 		578071262B9A19D900294392 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578071252B9A19D900294392 /* PurchaseManager.swift */; };
 		5787682F2BA21E1E00294392 /* PhotoZoomableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787682E2BA21E1E00294392 /* PhotoZoomableView.swift */; };
@@ -750,6 +752,8 @@
 				579C7F1E2BA616EE00294392 /* FileManager.swift in Sources */,
 				579C7F1D2BA616DF00294392 /* Photo.swift in Sources */,
 				579C7F1C2BA616C800294392 /* FavoritesViewModel.swift in Sources */,
+				5760A9672BCE723200294392 /* Tab.swift in Sources */,
+				5760A9662BCE722600294392 /* Router.swift in Sources */,
 				575627382BB70F6400294392 /* ShowNewFavoritesPhotoIntent.swift in Sources */,
 				579C7F0F2BA614DF00294392 /* CosmoPicWidgetBundle.swift in Sources */,
 				579C7F112BA614DF00294392 /* FavoritesWidget.swift in Sources */,
