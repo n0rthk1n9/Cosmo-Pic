@@ -14,10 +14,6 @@ struct HistoryView: View {
 
   @State private var searchText = ""
 
-  let suggestions: [String] = [
-    "Swift", "SwiftUI", "Obj-C"
-  ]
-
   private var sortedHistory: [Photo] {
     viewModel.history.sorted { $0.date > $1.date }
   }
@@ -43,6 +39,11 @@ struct HistoryView: View {
             .showCustomAlert(alert: $viewModel.error)
         }
       }
+      #if !os(visionOS)
+      .navigationDestination(for: Photo.self) { photo in
+        PhotoDetailView(photo: photo)
+      }
+      #endif
       #if os(visionOS)
       .padding()
       #endif
@@ -67,11 +68,6 @@ struct HistoryView: View {
       }
       #endif
     }
-    #if !os(visionOS)
-    .navigationDestination(for: Photo.self) { photo in
-      PhotoDetailView(photo: photo)
-    }
-    #endif
   }
 
   private var loadingOverlay: some View {

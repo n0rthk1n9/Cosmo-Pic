@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FavoritesView: View {
   @EnvironmentObject var viewModel: FavoritesViewModel
+  @EnvironmentObject var router: Router
 
   @State private var searchText = ""
 
@@ -22,7 +23,7 @@ struct FavoritesView: View {
   }
 
   var body: some View {
-    NavigationStack {
+    NavigationStack(path: $router.path) {
       VStack {
         if viewModel.favorites.isEmpty {
           Text("No favorites yet")
@@ -33,7 +34,7 @@ struct FavoritesView: View {
         } else {
           List {
             ForEach(searchResults, id: \.title) { photo in
-              NavigationLink(destination: PhotoDetailView(photo: photo)) {
+              NavigationLink(value: photo) {
                 Text(photo.title)
               }
             }
@@ -41,6 +42,9 @@ struct FavoritesView: View {
           }
           .accessibilityIdentifier("favorites-list")
         }
+      }
+      .navigationDestination(for: Photo.self) { photo in
+        PhotoDetailView(photo: photo)
       }
       #if os(visionOS)
       .padding()

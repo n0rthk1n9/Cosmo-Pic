@@ -37,14 +37,37 @@ struct Provider: TimelineProvider {
     return nil
   }
 
+  var deepLinkToCurrentPhoto: URL? {
+    guard !viewModel.favorites.isEmpty else { return nil }
+
+    let sharedDefaults = UserDefaults(suiteName: "group.dev.xbow.Cosmo-Pic")
+    var currentIndex = sharedDefaults?.integer(forKey: "currentIndex") ?? 0
+    let totalFavoritesCount = viewModel.favorites.count
+    sharedDefaults?.set(totalFavoritesCount, forKey: "totalFavoritesCount")
+
+    if currentIndex < 0 || currentIndex >= totalFavoritesCount {
+      currentIndex = 0
+      sharedDefaults?.set(currentIndex, forKey: "currentIndex")
+    }
+    let deepLinkBase = "cosmopic://Favorites/"
+    let deepLinkDetail = viewModel.favorites[currentIndex].title.replacingOccurrences(of: " ", with: "%20")
+    let deeplinkURL = URL(string: deepLinkBase + deepLinkDetail)
+
+    if let correctDeeplinkURL = deeplinkURL {
+      return correctDeeplinkURL
+    }
+
+    return nil
+  }
+
   func placeholder(in _: Context) -> FavoritesEntry {
     viewModel.loadFavorites()
-    return FavoritesEntry(date: Date(), photo: currentPhoto)
+    return FavoritesEntry(date: Date(), photo: currentPhoto, deepLink: nil)
   }
 
   func getSnapshot(in _: Context, completion: @escaping (FavoritesEntry) -> Void) {
     viewModel.loadFavorites()
-    let entry = FavoritesEntry(date: Date(), photo: currentPhoto)
+    let entry = FavoritesEntry(date: Date(), photo: currentPhoto, deepLink: deepLinkToCurrentPhoto)
     completion(entry)
   }
 
@@ -53,10 +76,10 @@ struct Provider: TimelineProvider {
     var entries: [FavoritesEntry] = []
 
     let currentDate = Date()
-    let entry = FavoritesEntry(date: currentDate, photo: currentPhoto)
+    let entry = FavoritesEntry(date: currentDate, photo: currentPhoto, deepLink: deepLinkToCurrentPhoto)
     entries.append(entry)
 
-    let timeline = Timeline(entries: entries, policy: .atEnd)
+    let timeline = Timeline(entries: entries, policy: .never)
     completion(timeline)
   }
 }
@@ -64,6 +87,7 @@ struct Provider: TimelineProvider {
 struct FavoritesEntry: TimelineEntry {
   let date: Date
   let photo: UIImage?
+  let deepLink: URL?
 }
 
 struct FavoritesWidgetButtonStyle: ButtonStyle {
@@ -96,6 +120,7 @@ struct FavoritesWidgetEntryView: View {
         }
         .buttonStyle(FavoritesWidgetButtonStyle())
       }
+      .widgetURL(entry.deepLink)
     } else {
       Text("Add some favorites in the app")
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
@@ -127,5 +152,5 @@ struct FavoritesWidget: Widget {
 #Preview(as: .systemSmall) {
   FavoritesWidget()
 } timeline: {
-  FavoritesEntry(date: .now, photo: nil)
+  FavoritesEntry(date: .now, photo: nil, deepLink: nil)
 }
