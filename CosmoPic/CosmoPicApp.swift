@@ -36,9 +36,7 @@ struct CosmoPicApp: App {
             if let foundNameOfRequestedFavorite = favoritesViewModel.favorites.first(
               where: { $0.title == cleanedTitleOfRequestedFavorite }
             ) {
-              router.resetPath()
               router.path.append(foundNameOfRequestedFavorite)
-              print(foundNameOfRequestedFavorite)
             }
           }
         }
