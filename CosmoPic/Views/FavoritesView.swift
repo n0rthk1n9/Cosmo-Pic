@@ -40,11 +40,11 @@ struct FavoritesView: View {
             }
             .onDelete(perform: delete)
           }
-          .navigationDestination(for: Photo.self) { photo in
-            PhotoDetailView(photo: photo)
-          }
           .accessibilityIdentifier("favorites-list")
         }
+      }
+      .navigationDestination(for: Photo.self) { photo in
+        PhotoDetailView(photo: photo)
       }
       #if os(visionOS)
       .padding()
