@@ -28,7 +28,19 @@ struct CosmoPicApp: App {
           guard let scheme = url.scheme, scheme == "cosmopic" else { return }
           guard let tab = url.host else { return }
           guard let requestedTab = Tab.allCases.first(where: { $0.rawValue == tab }) else { return }
+          router.resetPath()
           router.activeTab = requestedTab
+          if url.pathComponents.count == 2 {
+            let titleOfRequestedFavorite = url.lastPathComponent
+            let cleanedTitleOfRequestedFavorite = titleOfRequestedFavorite.replacingOccurrences(of: "%20", with: " ")
+            if let foundNameOfRequestedFavorite = favoritesViewModel.favorites.first(
+              where: { $0.title == cleanedTitleOfRequestedFavorite }
+            ) {
+              router.resetPath()
+              router.path.append(foundNameOfRequestedFavorite)
+              print(foundNameOfRequestedFavorite)
+            }
+          }
         }
         .cosmoPicStore()
     }
