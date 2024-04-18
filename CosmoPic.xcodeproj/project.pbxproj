@@ -74,6 +74,7 @@
 		57EB4AD72BD1177D00294392 /* TriviaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4AD62BD1177D00294392 /* TriviaItem.swift */; };
 		57EB4ADA2BD1188200294392 /* SoloarSystemAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4AD92BD1188200294392 /* SoloarSystemAPIService.swift */; };
 		57EB4ADC2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4ADB2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift */; };
+		57EB4ADE2BD119C000294392 /* TriviaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4ADD2BD119C000294392 /* TriviaViewModel.swift */; };
 		57EF5E952B950BF500294392 /* ShareButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF5E942B950BF500294392 /* ShareButtonView.swift */; };
 		57F550432B73DEFE00294392 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F550422B73DEFE00294392 /* DateFormatter.swift */; };
 		57F550452B73E3A500294392 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F550442B73E3A500294392 /* UIImage.swift */; };
@@ -190,6 +191,7 @@
 		57EB4AD62BD1177D00294392 /* TriviaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaItem.swift; sourceTree = "<group>"; };
 		57EB4AD92BD1188200294392 /* SoloarSystemAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoloarSystemAPIService.swift; sourceTree = "<group>"; };
 		57EB4ADB2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoloarSystemAPIServiceProtocol.swift; sourceTree = "<group>"; };
+		57EB4ADD2BD119C000294392 /* TriviaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaViewModel.swift; sourceTree = "<group>"; };
 		57EF5E942B950BF500294392 /* ShareButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButtonView.swift; sourceTree = "<group>"; };
 		57F550422B73DEFE00294392 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		57F550442B73E3A500294392 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 				57409B9E2B700EEC00294392 /* PhotoDetailViewModel.swift */,
 				57346C8E2B90CE1F00294392 /* SaveButtonViewModel.swift */,
 				578C96B72B793EB900294392 /* HistoryViewModel.swift */,
+				57EB4ADD2BD119C000294392 /* TriviaViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 				5712326F2B112BE500294392 /* FavoritesView.swift in Sources */,
 				57F550452B73E3A500294392 /* UIImage.swift in Sources */,
 				578768312BA21E3B00294392 /* PhotoZoomableContainerView.swift in Sources */,
+				57EB4ADE2BD119C000294392 /* TriviaViewModel.swift in Sources */,
 				574D86972B15837100294392 /* PhotoAPIService.swift in Sources */,
 				57A8A6F32B7FAEEE00294392 /* CosmoPicAlert.swift in Sources */,
 				57D8C4442B0D53C100294392 /* CosmoPicApp.swift in Sources */,
