@@ -75,6 +75,7 @@
 		57EB4ADA2BD1188200294392 /* SoloarSystemAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4AD92BD1188200294392 /* SoloarSystemAPIService.swift */; };
 		57EB4ADC2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4ADB2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift */; };
 		57EB4ADE2BD119C000294392 /* TriviaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4ADD2BD119C000294392 /* TriviaViewModel.swift */; };
+		57EB4AE02BD11FC400294392 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4ADF2BD11FC400294392 /* Collection.swift */; };
 		57EF5E952B950BF500294392 /* ShareButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF5E942B950BF500294392 /* ShareButtonView.swift */; };
 		57F550432B73DEFE00294392 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F550422B73DEFE00294392 /* DateFormatter.swift */; };
 		57F550452B73E3A500294392 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F550442B73E3A500294392 /* UIImage.swift */; };
@@ -192,6 +193,7 @@
 		57EB4AD92BD1188200294392 /* SoloarSystemAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoloarSystemAPIService.swift; sourceTree = "<group>"; };
 		57EB4ADB2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoloarSystemAPIServiceProtocol.swift; sourceTree = "<group>"; };
 		57EB4ADD2BD119C000294392 /* TriviaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaViewModel.swift; sourceTree = "<group>"; };
+		57EB4ADF2BD11FC400294392 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		57EF5E942B950BF500294392 /* ShareButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButtonView.swift; sourceTree = "<group>"; };
 		57F550422B73DEFE00294392 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		57F550442B73E3A500294392 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -457,6 +459,7 @@
 				570652B32B7A743C00294392 /* JSONDecoder.swift */,
 				570652B52B7A7A3D00294392 /* View.swift */,
 				57A8A6F42B7FB12200294392 /* Binding.swift */,
+				57EB4ADF2BD11FC400294392 /* Collection.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -716,6 +719,7 @@
 				57FC94252B1667AF00294392 /* PhotoAPIServiceMock.swift in Sources */,
 				5751B6942B947F3600294392 /* TodayPhotoView.swift in Sources */,
 				57EB4ADC2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift in Sources */,
+				57EB4AE02BD11FC400294392 /* Collection.swift in Sources */,
 				57E4DD872B1A28F200294392 /* HistoryRowView.swift in Sources */,
 				5712326F2B112BE500294392 /* FavoritesView.swift in Sources */,
 				57F550452B73E3A500294392 /* UIImage.swift in Sources */,
