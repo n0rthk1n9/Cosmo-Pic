@@ -58,6 +58,7 @@
 		57B22D772BCAADA100294392 /* FetchPhotoForTodayIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B22D762BCAADA100294392 /* FetchPhotoForTodayIntent.swift */; };
 		57B22D7B2BCAAF5300294392 /* CosmoPicShortcutsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B22D7A2BCAAF5300294392 /* CosmoPicShortcutsProvider.swift */; };
 		57B8985F2B6EB37D00294392 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */; };
+		57D72BB82BD125A200294392 /* TriviaItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D72BB72BD125A200294392 /* TriviaItems.swift */; };
 		57D8C4412B0D53C100294392 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43D2B0D53C100294392 /* Preview Content */; };
 		57D8C4422B0D53C100294392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43E2B0D53C100294392 /* Assets.xcassets */; };
 		57D8C4432B0D53C100294392 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8C43F2B0D53C100294392 /* MainView.swift */; };
@@ -177,6 +178,7 @@
 		57B22D762BCAADA100294392 /* FetchPhotoForTodayIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoForTodayIntent.swift; sourceTree = "<group>"; };
 		57B22D7A2BCAAF5300294392 /* CosmoPicShortcutsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicShortcutsProvider.swift; sourceTree = "<group>"; };
 		57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		57D72BB72BD125A200294392 /* TriviaItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaItems.swift; sourceTree = "<group>"; };
 		57D8C43D2B0D53C100294392 /* Preview Content */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Preview Content"; path = "CosmoPic/Preview Content"; sourceTree = SOURCE_ROOT; };
 		57D8C43E2B0D53C100294392 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CosmoPic/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		57D8C43F2B0D53C100294392 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainView.swift; path = CosmoPic/Views/MainView.swift; sourceTree = SOURCE_ROOT; };
@@ -243,6 +245,7 @@
 			children = (
 				571232722B115FD100294392 /* Photo.swift */,
 				57EB4AD62BD1177D00294392 /* TriviaItem.swift */,
+				57D72BB72BD125A200294392 /* TriviaItems.swift */,
 				57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */,
 				571232762B11650900294392 /* CosmoPicError.swift */,
 				57E4EFB92BCBFD1800294392 /* Tab.swift */,
@@ -757,6 +760,7 @@
 				57EB4AD42BD115D000294392 /* TriviaView.swift in Sources */,
 				57409B9F2B700EEC00294392 /* PhotoDetailViewModel.swift in Sources */,
 				570652B42B7A743C00294392 /* JSONDecoder.swift in Sources */,
+				57D72BB82BD125A200294392 /* TriviaItems.swift in Sources */,
 				57E049072B147CF500294392 /* FileManager.swift in Sources */,
 				57FECA9D2B92500400294392 /* FavoriteButtonView.swift in Sources */,
 				571232772B11650A00294392 /* CosmoPicError.swift in Sources */,
