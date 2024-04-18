@@ -24,7 +24,7 @@ class TriviaViewModel {
   @MainActor
   func getPlanets() async {
     isLoading = true
-    
+
     let planetsFilePath = FileManager.appGroupContainerURL.appendingPathComponent("planets.json")
 
     do {
@@ -46,4 +46,3 @@ class TriviaViewModel {
     isLoading = false
   }
 }
-
