@@ -8,7 +8,7 @@
 import Foundation
 
 struct TriviaItem: Codable, Equatable, Hashable {
-  let englishName: String?
+  let englishName: String
 
   enum CodingKeys: String, CodingKey {
     case englishName
@@ -17,7 +17,7 @@ struct TriviaItem: Codable, Equatable, Hashable {
 
 extension TriviaItem {
   static func fixture(
-    englishName: String? = "Earth"
+    englishName: String = "Earth"
   ) -> TriviaItem {
     TriviaItem(
       englishName: englishName
