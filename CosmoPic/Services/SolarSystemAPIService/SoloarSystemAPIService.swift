@@ -46,4 +46,25 @@ struct SoloarSystemAPIService: SoloarSystemAPIServiceProtocol {
       throw error
     }
   }
+
+  func savePlanets(_ planets: TriviaItems) throws {
+    let planetsFileName = "planets.json"
+    let planetsFilePath = FileManager.appGroupContainerURL.appendingPathComponent(planetsFileName)
+    let encoder = JSONEncoder()
+    encoder.outputFormatting = .prettyPrinted
+    let jsonData = try encoder.encode(planets)
+    try jsonData.write(to: planetsFilePath)
+  }
+
+  func loadPlanets() throws -> [TriviaItem] {
+    do {
+      let planetsFileName = "planets.json"
+      let planetsFilePath = FileManager.appGroupContainerURL.appendingPathComponent(planetsFileName)
+      let jsonData = try Data(contentsOf: planetsFilePath)
+      let triviaItems = try JSONDecoder().decodeLogging(TriviaItems.self, from: jsonData)
+      return triviaItems.bodies
+    } catch {
+      throw error
+    }
+  }
 }

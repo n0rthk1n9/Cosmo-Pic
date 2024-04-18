@@ -14,8 +14,7 @@ class TriviaViewModel {
 
   var error: CosmoPicError?
 
-  @ObservationIgnored
-  private let soloarSystemAPIService: SoloarSystemAPIServiceProtocol
+  @ObservationIgnored private let soloarSystemAPIService: SoloarSystemAPIServiceProtocol
 
   init(soloarSystemAPIService: SoloarSystemAPIServiceProtocol = SoloarSystemAPIService()) {
     self.soloarSystemAPIService = soloarSystemAPIService
@@ -29,12 +28,13 @@ class TriviaViewModel {
 
     do {
       if FileManager.default.fileExists(atPath: planetsFilePath.path) {
-//        planets = try soloarSystemAPIService.loadPlanets()
+        planets = try soloarSystemAPIService.loadPlanets()
         print("loaded from file")
       } else {
         let fetchedPlanets = try await soloarSystemAPIService.fetchPlanets()
 
-        // try soloarSystemAPIService.savePlanets()
+        try soloarSystemAPIService.savePlanets(TriviaItems(bodies: fetchedPlanets))
+
         planets = fetchedPlanets
         print("loaded from web")
       }

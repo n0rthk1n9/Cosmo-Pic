@@ -9,4 +9,6 @@ import Foundation
 
 protocol SoloarSystemAPIServiceProtocol {
   func fetchPlanets() async throws -> [TriviaItem]
+  func savePlanets(_ planets: TriviaItems) throws
+  func loadPlanets() throws -> [TriviaItem]
 }
