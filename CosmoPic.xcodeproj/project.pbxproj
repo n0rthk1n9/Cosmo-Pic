@@ -72,6 +72,8 @@
 		57E4EFBC2BCBFEB100294392 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4EFBB2BCBFEB100294392 /* Router.swift */; };
 		57EB4AD42BD115D000294392 /* TriviaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4AD32BD115D000294392 /* TriviaView.swift */; };
 		57EB4AD72BD1177D00294392 /* TriviaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4AD62BD1177D00294392 /* TriviaItem.swift */; };
+		57EB4ADA2BD1188200294392 /* SoloarSystemAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4AD92BD1188200294392 /* SoloarSystemAPIService.swift */; };
+		57EB4ADC2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4ADB2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift */; };
 		57EF5E952B950BF500294392 /* ShareButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF5E942B950BF500294392 /* ShareButtonView.swift */; };
 		57F550432B73DEFE00294392 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F550422B73DEFE00294392 /* DateFormatter.swift */; };
 		57F550452B73E3A500294392 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F550442B73E3A500294392 /* UIImage.swift */; };
@@ -186,6 +188,8 @@
 		57E4EFBB2BCBFEB100294392 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		57EB4AD32BD115D000294392 /* TriviaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaView.swift; sourceTree = "<group>"; };
 		57EB4AD62BD1177D00294392 /* TriviaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaItem.swift; sourceTree = "<group>"; };
+		57EB4AD92BD1188200294392 /* SoloarSystemAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoloarSystemAPIService.swift; sourceTree = "<group>"; };
+		57EB4ADB2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoloarSystemAPIServiceProtocol.swift; sourceTree = "<group>"; };
 		57EF5E942B950BF500294392 /* ShareButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButtonView.swift; sourceTree = "<group>"; };
 		57F550422B73DEFE00294392 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		57F550442B73E3A500294392 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -290,6 +294,7 @@
 			children = (
 				577BC02D2B86599F00294392 /* PhotoAPIService */,
 				577BC02F2B8659D900294392 /* HistoryAPIService */,
+				57EB4AD82BD1185F00294392 /* SolarSystemAPIService */,
 				57322E0C2B8F99A700294392 /* ImageSaverService.swift */,
 				57E4EFBB2BCBFEB100294392 /* Router.swift */,
 			);
@@ -483,6 +488,15 @@
 				57EB4AD32BD115D000294392 /* TriviaView.swift */,
 			);
 			path = TiviaViews;
+			sourceTree = "<group>";
+		};
+		57EB4AD82BD1185F00294392 /* SolarSystemAPIService */ = {
+			isa = PBXGroup;
+			children = (
+				57EB4AD92BD1188200294392 /* SoloarSystemAPIService.swift */,
+				57EB4ADB2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift */,
+			);
+			path = SolarSystemAPIService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -698,6 +712,7 @@
 				574D869A2B1583C800294392 /* PhotoAPIServiceProtocol.swift in Sources */,
 				57FC94252B1667AF00294392 /* PhotoAPIServiceMock.swift in Sources */,
 				5751B6942B947F3600294392 /* TodayPhotoView.swift in Sources */,
+				57EB4ADC2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift in Sources */,
 				57E4DD872B1A28F200294392 /* HistoryRowView.swift in Sources */,
 				5712326F2B112BE500294392 /* FavoritesView.swift in Sources */,
 				57F550452B73E3A500294392 /* UIImage.swift in Sources */,
@@ -711,6 +726,7 @@
 				5787682F2BA21E1E00294392 /* PhotoZoomableView.swift in Sources */,
 				57E4EFBA2BCBFD1800294392 /* Tab.swift in Sources */,
 				578071262B9A19D900294392 /* PurchaseManager.swift in Sources */,
+				57EB4ADA2BD1188200294392 /* SoloarSystemAPIService.swift in Sources */,
 				5751B6972B948D0100294392 /* SaveButtonView.swift in Sources */,
 				578C96B82B793EB900294392 /* HistoryViewModel.swift in Sources */,
 				57FC94292B166F3E00294392 /* PhotoAPIServiceErrorMock.swift in Sources */,
