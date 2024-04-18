@@ -30,6 +30,11 @@ struct MainView: View {
         .tabItem {
           Label(Tab.history.rawValue, systemImage: Tab.history.tabSymbol)
         }
+      TriviaView()
+        .tag(Tab.trivia)
+        .tabItem {
+          Label(Tab.trivia.rawValue, systemImage: Tab.trivia.tabSymbol)
+        }
     }
     .onAppear {
       if !welcomeScreenShown {
