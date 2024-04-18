@@ -26,8 +26,8 @@ struct TriviaView: View {
       .navigationDestination(for: TriviaItem.self) { planet in
         Text(planet.englishName)
       }
+      .navigationTitle("Planets 🪐")
     }
-    .navigationTitle("Planets 🪐")
     .task {
       await viewModel.getPlanets()
     }
