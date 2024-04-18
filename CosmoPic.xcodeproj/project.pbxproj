@@ -58,6 +58,7 @@
 		57B22D772BCAADA100294392 /* FetchPhotoForTodayIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B22D762BCAADA100294392 /* FetchPhotoForTodayIntent.swift */; };
 		57B22D7B2BCAAF5300294392 /* CosmoPicShortcutsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B22D7A2BCAAF5300294392 /* CosmoPicShortcutsProvider.swift */; };
 		57B8985F2B6EB37D00294392 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */; };
+		57D72BB82BD125A200294392 /* TriviaItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D72BB72BD125A200294392 /* TriviaItems.swift */; };
 		57D8C4412B0D53C100294392 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43D2B0D53C100294392 /* Preview Content */; };
 		57D8C4422B0D53C100294392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57D8C43E2B0D53C100294392 /* Assets.xcassets */; };
 		57D8C4432B0D53C100294392 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8C43F2B0D53C100294392 /* MainView.swift */; };
@@ -70,6 +71,12 @@
 		57E4DD872B1A28F200294392 /* HistoryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4DD862B1A28F200294392 /* HistoryRowView.swift */; };
 		57E4EFBA2BCBFD1800294392 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4EFB92BCBFD1800294392 /* Tab.swift */; };
 		57E4EFBC2BCBFEB100294392 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4EFBB2BCBFEB100294392 /* Router.swift */; };
+		57EB4AD42BD115D000294392 /* TriviaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4AD32BD115D000294392 /* TriviaView.swift */; };
+		57EB4AD72BD1177D00294392 /* TriviaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4AD62BD1177D00294392 /* TriviaItem.swift */; };
+		57EB4ADA2BD1188200294392 /* SoloarSystemAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4AD92BD1188200294392 /* SoloarSystemAPIService.swift */; };
+		57EB4ADC2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4ADB2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift */; };
+		57EB4ADE2BD119C000294392 /* TriviaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4ADD2BD119C000294392 /* TriviaViewModel.swift */; };
+		57EB4AE02BD11FC400294392 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4ADF2BD11FC400294392 /* Collection.swift */; };
 		57EF5E952B950BF500294392 /* ShareButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF5E942B950BF500294392 /* ShareButtonView.swift */; };
 		57F550432B73DEFE00294392 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F550422B73DEFE00294392 /* DateFormatter.swift */; };
 		57F550452B73E3A500294392 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F550442B73E3A500294392 /* UIImage.swift */; };
@@ -171,6 +178,7 @@
 		57B22D762BCAADA100294392 /* FetchPhotoForTodayIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoForTodayIntent.swift; sourceTree = "<group>"; };
 		57B22D7A2BCAAF5300294392 /* CosmoPicShortcutsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicShortcutsProvider.swift; sourceTree = "<group>"; };
 		57B8985E2B6EB37D00294392 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		57D72BB72BD125A200294392 /* TriviaItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaItems.swift; sourceTree = "<group>"; };
 		57D8C43D2B0D53C100294392 /* Preview Content */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Preview Content"; path = "CosmoPic/Preview Content"; sourceTree = SOURCE_ROOT; };
 		57D8C43E2B0D53C100294392 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CosmoPic/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		57D8C43F2B0D53C100294392 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainView.swift; path = CosmoPic/Views/MainView.swift; sourceTree = SOURCE_ROOT; };
@@ -182,6 +190,12 @@
 		57E4DD862B1A28F200294392 /* HistoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRowView.swift; sourceTree = "<group>"; };
 		57E4EFB92BCBFD1800294392 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		57E4EFBB2BCBFEB100294392 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		57EB4AD32BD115D000294392 /* TriviaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaView.swift; sourceTree = "<group>"; };
+		57EB4AD62BD1177D00294392 /* TriviaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaItem.swift; sourceTree = "<group>"; };
+		57EB4AD92BD1188200294392 /* SoloarSystemAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoloarSystemAPIService.swift; sourceTree = "<group>"; };
+		57EB4ADB2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoloarSystemAPIServiceProtocol.swift; sourceTree = "<group>"; };
+		57EB4ADD2BD119C000294392 /* TriviaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaViewModel.swift; sourceTree = "<group>"; };
+		57EB4ADF2BD11FC400294392 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		57EF5E942B950BF500294392 /* ShareButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButtonView.swift; sourceTree = "<group>"; };
 		57F550422B73DEFE00294392 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		57F550442B73E3A500294392 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -230,6 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				571232722B115FD100294392 /* Photo.swift */,
+				57EB4AD62BD1177D00294392 /* TriviaItem.swift */,
+				57D72BB72BD125A200294392 /* TriviaItems.swift */,
 				57A8A6F22B7FAEEE00294392 /* CosmoPicAlert.swift */,
 				571232762B11650900294392 /* CosmoPicError.swift */,
 				57E4EFB92BCBFD1800294392 /* Tab.swift */,
@@ -246,6 +262,7 @@
 				5751B6952B947F4600294392 /* TodayViews */,
 				5712326E2B112BE500294392 /* FavoritesView.swift */,
 				57E4DD892B1A2BBE00294392 /* HistoryViews */,
+				57EB4AD52BD115D800294392 /* TiviaViews */,
 				57E4DD852B1A27C700294392 /* GeneralViews */,
 			);
 			path = Views;
@@ -284,6 +301,7 @@
 			children = (
 				577BC02D2B86599F00294392 /* PhotoAPIService */,
 				577BC02F2B8659D900294392 /* HistoryAPIService */,
+				57EB4AD82BD1185F00294392 /* SolarSystemAPIService */,
 				57322E0C2B8F99A700294392 /* ImageSaverService.swift */,
 				57E4EFBB2BCBFEB100294392 /* Router.swift */,
 			);
@@ -430,6 +448,7 @@
 				57409B9E2B700EEC00294392 /* PhotoDetailViewModel.swift */,
 				57346C8E2B90CE1F00294392 /* SaveButtonViewModel.swift */,
 				578C96B72B793EB900294392 /* HistoryViewModel.swift */,
+				57EB4ADD2BD119C000294392 /* TriviaViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -443,6 +462,7 @@
 				570652B32B7A743C00294392 /* JSONDecoder.swift */,
 				570652B52B7A7A3D00294392 /* View.swift */,
 				57A8A6F42B7FB12200294392 /* Binding.swift */,
+				57EB4ADF2BD11FC400294392 /* Collection.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -469,6 +489,23 @@
 				57E4DD862B1A28F200294392 /* HistoryRowView.swift */,
 			);
 			path = HistoryViews;
+			sourceTree = "<group>";
+		};
+		57EB4AD52BD115D800294392 /* TiviaViews */ = {
+			isa = PBXGroup;
+			children = (
+				57EB4AD32BD115D000294392 /* TriviaView.swift */,
+			);
+			path = TiviaViews;
+			sourceTree = "<group>";
+		};
+		57EB4AD82BD1185F00294392 /* SolarSystemAPIService */ = {
+			isa = PBXGroup;
+			children = (
+				57EB4AD92BD1188200294392 /* SoloarSystemAPIService.swift */,
+				57EB4ADB2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift */,
+			);
+			path = SolarSystemAPIService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -684,10 +721,13 @@
 				574D869A2B1583C800294392 /* PhotoAPIServiceProtocol.swift in Sources */,
 				57FC94252B1667AF00294392 /* PhotoAPIServiceMock.swift in Sources */,
 				5751B6942B947F3600294392 /* TodayPhotoView.swift in Sources */,
+				57EB4ADC2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift in Sources */,
+				57EB4AE02BD11FC400294392 /* Collection.swift in Sources */,
 				57E4DD872B1A28F200294392 /* HistoryRowView.swift in Sources */,
 				5712326F2B112BE500294392 /* FavoritesView.swift in Sources */,
 				57F550452B73E3A500294392 /* UIImage.swift in Sources */,
 				578768312BA21E3B00294392 /* PhotoZoomableContainerView.swift in Sources */,
+				57EB4ADE2BD119C000294392 /* TriviaViewModel.swift in Sources */,
 				574D86972B15837100294392 /* PhotoAPIService.swift in Sources */,
 				57A8A6F32B7FAEEE00294392 /* CosmoPicAlert.swift in Sources */,
 				57D8C4442B0D53C100294392 /* CosmoPicApp.swift in Sources */,
@@ -697,6 +737,7 @@
 				5787682F2BA21E1E00294392 /* PhotoZoomableView.swift in Sources */,
 				57E4EFBA2BCBFD1800294392 /* Tab.swift in Sources */,
 				578071262B9A19D900294392 /* PurchaseManager.swift in Sources */,
+				57EB4ADA2BD1188200294392 /* SoloarSystemAPIService.swift in Sources */,
 				5751B6972B948D0100294392 /* SaveButtonView.swift in Sources */,
 				578C96B82B793EB900294392 /* HistoryViewModel.swift in Sources */,
 				57FC94292B166F3E00294392 /* PhotoAPIServiceErrorMock.swift in Sources */,
@@ -704,6 +745,7 @@
 				574D86A32B16453D00294392 /* HistoryAPIServiceProtocol.swift in Sources */,
 				5791A00A2B6D321E00294392 /* TodayViewModel.swift in Sources */,
 				575CFF5D2B17F2E400294392 /* FeatureView.swift in Sources */,
+				57EB4AD72BD1177D00294392 /* TriviaItem.swift in Sources */,
 				578071242B9A19C200294392 /* CosmoPicStoreViewModifier.swift in Sources */,
 				570652B62B7A7A3D00294392 /* View.swift in Sources */,
 				57E4DD802B1A235600294392 /* DynamicPhotoView.swift in Sources */,
@@ -715,8 +757,10 @@
 				5712326D2B112BD400294392 /* TodayView.swift in Sources */,
 				57FC94272B166CB800294392 /* HistoryAPIServiceMock.swift in Sources */,
 				574D86A02B16452600294392 /* HistoryAPIService.swift in Sources */,
+				57EB4AD42BD115D000294392 /* TriviaView.swift in Sources */,
 				57409B9F2B700EEC00294392 /* PhotoDetailViewModel.swift in Sources */,
 				570652B42B7A743C00294392 /* JSONDecoder.swift in Sources */,
+				57D72BB82BD125A200294392 /* TriviaItems.swift in Sources */,
 				57E049072B147CF500294392 /* FileManager.swift in Sources */,
 				57FECA9D2B92500400294392 /* FavoriteButtonView.swift in Sources */,
 				571232772B11650A00294392 /* CosmoPicError.swift in Sources */,

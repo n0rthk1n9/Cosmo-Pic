@@ -9,12 +9,14 @@ enum Tab: String, CaseIterable {
   case today = "Today"
   case favorites = "Favorites"
   case history = "History"
+  case trivia = "Trivia"
 
   var tabSymbol: String {
     switch self {
     case .today: "calendar"
     case .favorites: "star"
     case .history: "photo.stack"
+    case .trivia: "doc.text"
     }
   }
 
