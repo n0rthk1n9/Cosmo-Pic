@@ -1,5 +1,5 @@
 //
-//  SoloarSystemAPIService.swift
+//  SolarSystemAPIService.swift
 //  CosmoPic
 //
 //  Created by Jan Armbrust on 18.04.24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SoloarSystemAPIService: SoloarSystemAPIServiceProtocol {
+struct SolarSystemAPIService: SolarSystemAPIServiceProtocol {
   var session: URLSession {
     let sessionConfiguration: URLSessionConfiguration
     sessionConfiguration = URLSessionConfiguration.default
@@ -20,7 +20,7 @@ struct SoloarSystemAPIService: SoloarSystemAPIServiceProtocol {
     urlComponents.host = "api.le-systeme-solaire.net"
     urlComponents.path = "/rest.php/bodies"
     urlComponents.percentEncodedQueryItems = [
-      URLQueryItem(name: "data", value: "englishName"),
+      URLQueryItem(name: "data", value: "englishName%2CdiscoveredBy%2CdiscoveryDate"),
       URLQueryItem(name: "filter%5B%5D", value: "isPlanet%2Ceq%2Ctrue")
     ]
 

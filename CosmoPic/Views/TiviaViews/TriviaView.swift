@@ -16,11 +16,16 @@ struct TriviaView: View {
         if viewModel.isLoading {
           ProgressView()
         } else if viewModel.planets.isNotEmpty {
-          List(viewModel.planets, id: \.englishName) { planet in
-            NavigationLink(value: planet) {
-              Text(planet.englishName)
+          List {
+            ForEach(viewModel.planets, id: \.englishName) { planet in
+              NavigationLink(value: planet) {
+                PlanetRowView(planet: planet)
+              }
+              .listRowSeparator(.hidden)
+              .listRowInsets(.init(top: 10, leading: 20, bottom: 0, trailing: 20))
             }
           }
+          .listStyle(.plain)
         }
       }
       .navigationDestination(for: TriviaItem.self) { planet in

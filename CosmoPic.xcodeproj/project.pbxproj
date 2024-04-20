@@ -35,6 +35,7 @@
 		575CFF5D2B17F2E400294392 /* FeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CFF5C2B17F2E400294392 /* FeatureView.swift */; };
 		5760A9662BCE722600294392 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4EFBB2BCBFEB100294392 /* Router.swift */; };
 		5760A9672BCE723200294392 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4EFB92BCBFD1800294392 /* Tab.swift */; };
+		576892802BD3A27D00294392 /* PlanetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5768927F2BD3A27D00294392 /* PlanetRowView.swift */; };
 		578071242B9A19C200294392 /* CosmoPicStoreViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578071232B9A19C200294392 /* CosmoPicStoreViewModifier.swift */; };
 		578071262B9A19D900294392 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578071252B9A19D900294392 /* PurchaseManager.swift */; };
 		5787682F2BA21E1E00294392 /* PhotoZoomableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787682E2BA21E1E00294392 /* PhotoZoomableView.swift */; };
@@ -73,8 +74,8 @@
 		57E4EFBC2BCBFEB100294392 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4EFBB2BCBFEB100294392 /* Router.swift */; };
 		57EB4AD42BD115D000294392 /* TriviaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4AD32BD115D000294392 /* TriviaView.swift */; };
 		57EB4AD72BD1177D00294392 /* TriviaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4AD62BD1177D00294392 /* TriviaItem.swift */; };
-		57EB4ADA2BD1188200294392 /* SoloarSystemAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4AD92BD1188200294392 /* SoloarSystemAPIService.swift */; };
-		57EB4ADC2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4ADB2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift */; };
+		57EB4ADA2BD1188200294392 /* SolarSystemAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4AD92BD1188200294392 /* SolarSystemAPIService.swift */; };
+		57EB4ADC2BD1189000294392 /* SolarSystemAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4ADB2BD1189000294392 /* SolarSystemAPIServiceProtocol.swift */; };
 		57EB4ADE2BD119C000294392 /* TriviaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4ADD2BD119C000294392 /* TriviaViewModel.swift */; };
 		57EB4AE02BD11FC400294392 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB4ADF2BD11FC400294392 /* Collection.swift */; };
 		57EF5E952B950BF500294392 /* ShareButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF5E942B950BF500294392 /* ShareButtonView.swift */; };
@@ -151,6 +152,7 @@
 		575627362BB70DD200294392 /* ShowNewFavoritesPhotoIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNewFavoritesPhotoIntent.swift; sourceTree = "<group>"; };
 		575CFF5A2B17F2C800294392 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		575CFF5C2B17F2E400294392 /* FeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureView.swift; sourceTree = "<group>"; };
+		5768927F2BD3A27D00294392 /* PlanetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetRowView.swift; sourceTree = "<group>"; };
 		578071232B9A19C200294392 /* CosmoPicStoreViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicStoreViewModifier.swift; sourceTree = "<group>"; };
 		578071252B9A19D900294392 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		5787682E2BA21E1E00294392 /* PhotoZoomableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoZoomableView.swift; sourceTree = "<group>"; };
@@ -192,8 +194,8 @@
 		57E4EFBB2BCBFEB100294392 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		57EB4AD32BD115D000294392 /* TriviaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaView.swift; sourceTree = "<group>"; };
 		57EB4AD62BD1177D00294392 /* TriviaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaItem.swift; sourceTree = "<group>"; };
-		57EB4AD92BD1188200294392 /* SoloarSystemAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoloarSystemAPIService.swift; sourceTree = "<group>"; };
-		57EB4ADB2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoloarSystemAPIServiceProtocol.swift; sourceTree = "<group>"; };
+		57EB4AD92BD1188200294392 /* SolarSystemAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarSystemAPIService.swift; sourceTree = "<group>"; };
+		57EB4ADB2BD1189000294392 /* SolarSystemAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarSystemAPIServiceProtocol.swift; sourceTree = "<group>"; };
 		57EB4ADD2BD119C000294392 /* TriviaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaViewModel.swift; sourceTree = "<group>"; };
 		57EB4ADF2BD11FC400294392 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		57EF5E942B950BF500294392 /* ShareButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButtonView.swift; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 				5751B6962B948D0100294392 /* SaveButtonView.swift */,
 				5787682E2BA21E1E00294392 /* PhotoZoomableView.swift */,
 				578768302BA21E3B00294392 /* PhotoZoomableContainerView.swift */,
+				5768927F2BD3A27D00294392 /* PlanetRowView.swift */,
 			);
 			path = GeneralViews;
 			sourceTree = "<group>";
@@ -502,8 +505,8 @@
 		57EB4AD82BD1185F00294392 /* SolarSystemAPIService */ = {
 			isa = PBXGroup;
 			children = (
-				57EB4AD92BD1188200294392 /* SoloarSystemAPIService.swift */,
-				57EB4ADB2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift */,
+				57EB4AD92BD1188200294392 /* SolarSystemAPIService.swift */,
+				57EB4ADB2BD1189000294392 /* SolarSystemAPIServiceProtocol.swift */,
 			);
 			path = SolarSystemAPIService;
 			sourceTree = "<group>";
@@ -721,7 +724,7 @@
 				574D869A2B1583C800294392 /* PhotoAPIServiceProtocol.swift in Sources */,
 				57FC94252B1667AF00294392 /* PhotoAPIServiceMock.swift in Sources */,
 				5751B6942B947F3600294392 /* TodayPhotoView.swift in Sources */,
-				57EB4ADC2BD1189000294392 /* SoloarSystemAPIServiceProtocol.swift in Sources */,
+				57EB4ADC2BD1189000294392 /* SolarSystemAPIServiceProtocol.swift in Sources */,
 				57EB4AE02BD11FC400294392 /* Collection.swift in Sources */,
 				57E4DD872B1A28F200294392 /* HistoryRowView.swift in Sources */,
 				5712326F2B112BE500294392 /* FavoritesView.swift in Sources */,
@@ -737,7 +740,7 @@
 				5787682F2BA21E1E00294392 /* PhotoZoomableView.swift in Sources */,
 				57E4EFBA2BCBFD1800294392 /* Tab.swift in Sources */,
 				578071262B9A19D900294392 /* PurchaseManager.swift in Sources */,
-				57EB4ADA2BD1188200294392 /* SoloarSystemAPIService.swift in Sources */,
+				57EB4ADA2BD1188200294392 /* SolarSystemAPIService.swift in Sources */,
 				5751B6972B948D0100294392 /* SaveButtonView.swift in Sources */,
 				578C96B82B793EB900294392 /* HistoryViewModel.swift in Sources */,
 				57FC94292B166F3E00294392 /* PhotoAPIServiceErrorMock.swift in Sources */,
@@ -768,6 +771,7 @@
 				57D8C4432B0D53C100294392 /* MainView.swift in Sources */,
 				57E3F1A82B77C98800294392 /* PhotoDetailContentView.swift in Sources */,
 				575CFF5B2B17F2C800294392 /* WelcomeView.swift in Sources */,
+				576892802BD3A27D00294392 /* PlanetRowView.swift in Sources */,
 				57322E0D2B8F99A700294392 /* ImageSaverService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
