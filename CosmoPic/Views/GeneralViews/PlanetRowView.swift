@@ -18,13 +18,27 @@ struct PlanetRowView: View {
         .clipShape(RoundedRectangle(cornerRadius: 5))
       VStack(alignment: .leading, spacing: 5) {
         Text(planet.englishName)
-
-        Text(planet.englishName)
+        Text(planet.discoveredBy)
           .font(.caption)
+        Text(getFormattedDiscoveryDate(planet.discoveryDate))
       }
       .padding(.trailing, 10)
       .padding(.vertical, 5)
     }
+  }
+
+  func getFormattedDiscoveryDate(_ date: String) -> String {
+    let dateFormatter = DateFormatter()
+
+    dateFormatter.dateFormat = "dd/MM/yyyy"
+    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+    guard let safeDate = dateFormatter.date(from: date) else { return "Date not available" }
+
+    dateFormatter.dateStyle = .long
+    dateFormatter.timeStyle = .none
+    dateFormatter.locale = Locale.current
+
+    return dateFormatter.string(from: safeDate)
   }
 }
 
