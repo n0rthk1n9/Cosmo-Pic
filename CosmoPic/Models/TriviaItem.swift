@@ -9,24 +9,32 @@ import Foundation
 
 struct TriviaItem: Codable, Equatable, Hashable {
   let englishName: String
+  let discoveredBy: String
+  let discoveryDate: String
 
   enum CodingKeys: String, CodingKey {
-    case englishName
+    case englishName, discoveredBy, discoveryDate
   }
 }
 
 extension TriviaItem {
   static func fixture(
-    englishName: String = "Earth"
+    englishName: String = "Earth",
+    discoveredBy: String = "Hans Müller",
+    discoveryDate: String = "09/04/1992"
   ) -> TriviaItem {
     TriviaItem(
-      englishName: englishName
+      englishName: englishName,
+      discoveredBy: discoveredBy,
+      discoveryDate: discoveryDate
     )
   }
 
   static var allProperties: TriviaItem {
     .fixture(
-      englishName: "Earth"
+      englishName: "Earth",
+      discoveredBy: "Hans Müller",
+      discoveryDate: "09/04/1992"
     )
   }
 }
