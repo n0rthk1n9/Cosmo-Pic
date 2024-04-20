@@ -14,9 +14,9 @@ class TriviaViewModel {
 
   var error: CosmoPicError?
 
-  @ObservationIgnored private let soloarSystemAPIService: SoloarSystemAPIServiceProtocol
+  @ObservationIgnored private let soloarSystemAPIService: SolarSystemAPIServiceProtocol
 
-  init(soloarSystemAPIService: SoloarSystemAPIServiceProtocol = SoloarSystemAPIService()) {
+  init(soloarSystemAPIService: SolarSystemAPIServiceProtocol = SolarSystemAPIService()) {
     self.soloarSystemAPIService = soloarSystemAPIService
   }
 
