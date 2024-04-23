@@ -29,7 +29,7 @@ struct TriviaView: View {
         }
       }
       .navigationDestination(for: TriviaItem.self) { planet in
-        Text(planet.englishName)
+        TriviaDetailView(planet: planet, allPlanets: viewModel.planets)
       }
       .navigationTitle("Planets 🪐")
     }

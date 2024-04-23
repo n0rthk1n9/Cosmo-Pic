@@ -11,6 +11,8 @@
 		570652B62B7A7A3D00294392 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570652B52B7A7A3D00294392 /* View.swift */; };
 		570FA4DA2BD808BB00294392 /* Mass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570FA4D92BD808BB00294392 /* Mass.swift */; };
 		570FA4DC2BD80CC500294392 /* Vol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570FA4DB2BD80CC500294392 /* Vol.swift */; };
+		570FA4DE2BD810BB00294392 /* TriviaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570FA4DD2BD810BB00294392 /* TriviaDetailView.swift */; };
+		570FA4E02BD8184900294392 /* SizeComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570FA4DF2BD8184900294392 /* SizeComparisonView.swift */; };
 		5712326D2B112BD400294392 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5712326C2B112BD400294392 /* TodayView.swift */; };
 		5712326F2B112BE500294392 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5712326E2B112BE500294392 /* FavoritesView.swift */; };
 		571232712B112C0800294392 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571232702B112C0800294392 /* HistoryView.swift */; };
@@ -132,6 +134,8 @@
 		570652B52B7A7A3D00294392 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		570FA4D92BD808BB00294392 /* Mass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mass.swift; sourceTree = "<group>"; };
 		570FA4DB2BD80CC500294392 /* Vol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vol.swift; sourceTree = "<group>"; };
+		570FA4DD2BD810BB00294392 /* TriviaDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaDetailView.swift; sourceTree = "<group>"; };
+		570FA4DF2BD8184900294392 /* SizeComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeComparisonView.swift; sourceTree = "<group>"; };
 		5712326C2B112BD400294392 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		5712326E2B112BE500294392 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		571232702B112C0800294392 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
@@ -504,6 +508,8 @@
 			isa = PBXGroup;
 			children = (
 				57EB4AD32BD115D000294392 /* TriviaView.swift */,
+				570FA4DD2BD810BB00294392 /* TriviaDetailView.swift */,
+				570FA4DF2BD8184900294392 /* SizeComparisonView.swift */,
 			);
 			path = TiviaViews;
 			sourceTree = "<group>";
@@ -742,6 +748,7 @@
 				57A8A6F32B7FAEEE00294392 /* CosmoPicAlert.swift in Sources */,
 				57D8C4442B0D53C100294392 /* CosmoPicApp.swift in Sources */,
 				575627372BB70DD200294392 /* ShowNewFavoritesPhotoIntent.swift in Sources */,
+				570FA4DE2BD810BB00294392 /* TriviaDetailView.swift in Sources */,
 				571232712B112C0800294392 /* HistoryView.swift in Sources */,
 				57EF5E952B950BF500294392 /* ShareButtonView.swift in Sources */,
 				5787682F2BA21E1E00294392 /* PhotoZoomableView.swift in Sources */,
@@ -762,6 +769,7 @@
 				57F550432B73DEFE00294392 /* DateFormatter.swift in Sources */,
 				57B22D7B2BCAAF5300294392 /* CosmoPicShortcutsProvider.swift in Sources */,
 				57B22D772BCAADA100294392 /* FetchPhotoForTodayIntent.swift in Sources */,
+				570FA4E02BD8184900294392 /* SizeComparisonView.swift in Sources */,
 				57E4EFBC2BCBFEB100294392 /* Router.swift in Sources */,
 				57A8A6F52B7FB12200294392 /* Binding.swift in Sources */,
 				5712326D2B112BD400294392 /* TodayView.swift in Sources */,
