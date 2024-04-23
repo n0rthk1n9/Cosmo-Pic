@@ -13,6 +13,7 @@ struct TriviaItem: Codable, Equatable, Hashable {
   let discoveryDate: String
   let mass: Mass
   let vol: Vol
+  let meanRadius: Double
   let semimajorAxis: Double
   let perihelion: Double
   let aphelion: Double
@@ -20,8 +21,8 @@ struct TriviaItem: Codable, Equatable, Hashable {
   let sideralRotation: Double
 
   enum CodingKeys: String, CodingKey {
-    case englishName, discoveredBy, discoveryDate, mass, vol, semimajorAxis, perihelion, aphelion, sideralOrbit,
-         sideralRotation
+    case englishName, discoveredBy, discoveryDate, mass, vol, meanRadius, semimajorAxis, perihelion, aphelion,
+         sideralOrbit, sideralRotation
   }
 }
 
@@ -32,6 +33,7 @@ extension TriviaItem {
     discoveryDate: String = "09/04/1992",
     mass: Mass = Mass.fixture(),
     vol: Vol = Vol.fixture(),
+    meanRadius: Double = 25362,
     semimajorAxis: Double = 149.6e6,
     perihelion: Double = 147.1e6,
     aphelion: Double = 152.1e6,
@@ -44,6 +46,7 @@ extension TriviaItem {
       discoveryDate: discoveryDate,
       mass: mass,
       vol: vol,
+      meanRadius: meanRadius,
       semimajorAxis: semimajorAxis,
       perihelion: perihelion,
       aphelion: aphelion,
@@ -59,6 +62,7 @@ extension TriviaItem {
       discoveryDate: "09/04/1992",
       mass: Mass.allProperties,
       vol: Vol.allProperties,
+      meanRadius: 25362,
       semimajorAxis: 149.6e6,
       perihelion: 147.1e6,
       aphelion: 152.1e6,
