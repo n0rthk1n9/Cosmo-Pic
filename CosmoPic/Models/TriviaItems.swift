@@ -18,11 +18,7 @@ struct TriviaItems: Codable, Equatable, Hashable {
 extension TriviaItems {
   static func fixture(
     bodies: [TriviaItem] = [
-      TriviaItem(
-        englishName: "Earth",
-        discoveredBy: "Hans Müller",
-        discoveryDate: "09/04/1992"
-      )
+      TriviaItem.fixture()
     ]
   ) -> TriviaItems {
     TriviaItems(
@@ -33,11 +29,7 @@ extension TriviaItems {
   static var allProperties: TriviaItems {
     .fixture(
       bodies: [
-        TriviaItem(
-          englishName: "Earth",
-          discoveredBy: "Hans Müller",
-          discoveryDate: "09/04/1992"
-        )
+        TriviaItem.allProperties
       ]
     )
   }
