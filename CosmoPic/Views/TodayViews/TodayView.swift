@@ -37,7 +37,10 @@ struct TodayView: View {
               Label("No photo downloaded", systemImage: "photo.fill")
             }, description: {
               Text(
-                "Sorry, we were not able to get you your daily dose of space! Come back later or try again with the button below"
+                """
+                Sorry, we were not able to get you your daily dose of space!
+                Come back later or try again with the button below
+                """
               )
             }, actions: {
               Button(
