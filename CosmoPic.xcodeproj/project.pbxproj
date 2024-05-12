@@ -48,6 +48,7 @@
 		578A19D02B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */; };
 		578C96B82B793EB900294392 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578C96B72B793EB900294392 /* HistoryViewModel.swift */; };
 		5791A00A2B6D321E00294392 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791A0092B6D321E00294392 /* TodayViewModel.swift */; };
+		579A05FC2BF0F61E00294392 /* InformationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A05FB2BF0F61E00294392 /* InformationButtonView.swift */; };
 		579A9A122BA0509A00294392 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579A9A112BA0509A00294392 /* StoreKit.framework */; };
 		579C7F0A2BA614DF00294392 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579C7F092BA614DF00294392 /* WidgetKit.framework */; };
 		579C7F0C2BA614DF00294392 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579C7F0B2BA614DF00294392 /* SwiftUI.framework */; };
@@ -173,6 +174,7 @@
 		578A19CF2B0BA94E00294392 /* CosmoPicUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		578C96B72B793EB900294392 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		5791A0092B6D321E00294392 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
+		579A05FB2BF0F61E00294392 /* InformationButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationButtonView.swift; sourceTree = "<group>"; };
 		579A9A112BA0509A00294392 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		579C7F032BA6064900294392 /* CosmoPic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CosmoPic.entitlements; sourceTree = "<group>"; };
 		579C7F082BA614DF00294392 /* CosmoPicWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CosmoPicWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -488,6 +490,7 @@
 				57FECA9C2B92500400294392 /* FavoriteButtonView.swift */,
 				57EF5E942B950BF500294392 /* ShareButtonView.swift */,
 				5751B6962B948D0100294392 /* SaveButtonView.swift */,
+				579A05FB2BF0F61E00294392 /* InformationButtonView.swift */,
 				5787682E2BA21E1E00294392 /* PhotoZoomableView.swift */,
 				578768302BA21E3B00294392 /* PhotoZoomableContainerView.swift */,
 				5768927F2BD3A27D00294392 /* PlanetRowView.swift */,
@@ -761,6 +764,7 @@
 				57346C8F2B90CE1F00294392 /* SaveButtonViewModel.swift in Sources */,
 				574D86A32B16453D00294392 /* HistoryAPIServiceProtocol.swift in Sources */,
 				5791A00A2B6D321E00294392 /* TodayViewModel.swift in Sources */,
+				579A05FC2BF0F61E00294392 /* InformationButtonView.swift in Sources */,
 				575CFF5D2B17F2E400294392 /* FeatureView.swift in Sources */,
 				57EB4AD72BD1177D00294392 /* TriviaItem.swift in Sources */,
 				578071242B9A19C200294392 /* CosmoPicStoreViewModifier.swift in Sources */,

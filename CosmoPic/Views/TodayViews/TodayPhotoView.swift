@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TodayPhotoView: View {
   let photo: Photo
+  var onInfoButtonTapped: () -> Void
 
   var photoURL: URL? {
     if let localFilename = photo.localFilename {
@@ -25,21 +26,27 @@ struct TodayPhotoView: View {
       GeometryReader { geometry in
         ZStack(alignment: .topTrailing) {
           ZStack(alignment: .bottomTrailing) {
-            AsyncImage(url: photoURL) { image in
-              image
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-            } placeholder: {
-              HStack {
-                Spacer()
-                ProgressView()
-                  .frame(height: 300)
-                Spacer()
+            ZStack(alignment: .bottomLeading) {
+              AsyncImage(url: photoURL) { image in
+                image
+                  .resizable()
+                  .aspectRatio(contentMode: .fill)
+              } placeholder: {
+                HStack {
+                  Spacer()
+                  ProgressView()
+                    .frame(height: 300)
+                  Spacer()
+                }
+              }
+              .frame(width: geometry.size.width, height: geometry.size.height)
+              .cornerRadius(20)
+              .clipped()
+
+              InformationButtonView(photo: photo) {
+                onInfoButtonTapped()
               }
             }
-            .frame(width: geometry.size.width, height: geometry.size.height)
-            .cornerRadius(20)
-            .clipped()
 
             SaveButtonView(photoURL: photoURL)
           }
@@ -62,6 +69,8 @@ struct TodayPhotoView: View {
 }
 
 #Preview {
-  TodayPhotoView(photo: .allProperties)
-    .environmentObject(FavoritesViewModel())
+  TodayPhotoView(photo: .allProperties) {
+    print("pressed")
+  }
+  .environmentObject(FavoritesViewModel())
 }

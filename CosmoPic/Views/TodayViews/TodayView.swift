@@ -19,18 +19,22 @@ struct TodayView: View {
         if viewModel.isLoading {
           ProgressView()
         } else if let photo = viewModel.photo {
-          TodayPhotoView(photo: photo)
-            .sheet(
-              isPresented: $photoZoomableSheetIsShown,
-              content: {
-                PhotoZoomableView(photo: photo)
-                  .presentationBackground(.ultraThinMaterial)
-                  .presentationCornerRadius(16)
-              }
-            )
-            .onTapGesture {
-              photoZoomableSheetIsShown.toggle()
+          TodayPhotoView(photo: photo, onInfoButtonTapped: {
+            Task { @MainActor in
+              viewModel.isDescriptionShowing.toggle()
             }
+          })
+          .sheet(
+            isPresented: $photoZoomableSheetIsShown,
+            content: {
+              PhotoZoomableView(photo: photo)
+                .presentationBackground(.ultraThinMaterial)
+                .presentationCornerRadius(16)
+            }
+          )
+          .onTapGesture {
+            photoZoomableSheetIsShown.toggle()
+          }
         } else {
           ContentUnavailableView(
             label: {
