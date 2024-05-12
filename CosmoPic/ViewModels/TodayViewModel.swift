@@ -13,6 +13,8 @@ class TodayViewModel: ObservableObject {
   @Published var isLoading = false
   @Published var error: CosmoPicError?
 
+  @Published var isDescriptionShowing = false
+
   private let photoAPIService: PhotoAPIServiceProtocol
 
   init(photoAPIService: PhotoAPIServiceProtocol = PhotoAPIService()) {

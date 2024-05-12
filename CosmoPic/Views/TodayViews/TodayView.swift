@@ -19,25 +19,35 @@ struct TodayView: View {
         if viewModel.isLoading {
           ProgressView()
         } else if let photo = viewModel.photo {
-          TodayPhotoView(photo: photo)
-            .sheet(
-              isPresented: $photoZoomableSheetIsShown,
-              content: {
-                PhotoZoomableView(photo: photo)
-                  .presentationBackground(.ultraThinMaterial)
-                  .presentationCornerRadius(16)
+          TodayPhotoView(photo: photo, isDescriptionShowing: viewModel.isDescriptionShowing) {
+            Task { @MainActor in
+              withAnimation {
+                viewModel.isDescriptionShowing.toggle()
               }
-            )
-            .onTapGesture {
-              photoZoomableSheetIsShown.toggle()
             }
+          }
+          .animation(.easeIn, value: viewModel.isDescriptionShowing)
+          .sheet(
+            isPresented: $photoZoomableSheetIsShown,
+            content: {
+              PhotoZoomableView(photo: photo)
+                .presentationBackground(.ultraThinMaterial)
+                .presentationCornerRadius(16)
+            }
+          )
+          .onTapGesture {
+            photoZoomableSheetIsShown.toggle()
+          }
         } else {
           ContentUnavailableView(
             label: {
               Label("No photo downloaded", systemImage: "photo.fill")
             }, description: {
               Text(
-                "Sorry, we were not able to get you your daily dose of space! Come back later or try again with the button below"
+                """
+                Sorry, we were not able to get you your daily dose of space!
+                Come back later or try again with the button below
+                """
               )
             }, actions: {
               Button(

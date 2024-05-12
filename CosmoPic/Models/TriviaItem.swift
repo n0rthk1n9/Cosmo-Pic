@@ -21,8 +21,8 @@ struct TriviaItem: Codable, Equatable, Hashable {
   let sideralRotation: Double
 
   enum CodingKeys: String, CodingKey {
-    case englishName, discoveredBy, discoveryDate, mass, vol, meanRadius, semimajorAxis, perihelion, aphelion,
-         sideralOrbit, sideralRotation
+    case englishName, discoveredBy, discoveryDate, mass, vol
+    case meanRadius, semimajorAxis, perihelion, aphelion, sideralOrbit, sideralRotation
   }
 }
 
