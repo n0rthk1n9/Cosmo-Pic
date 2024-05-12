@@ -19,11 +19,14 @@ struct TodayView: View {
         if viewModel.isLoading {
           ProgressView()
         } else if let photo = viewModel.photo {
-          TodayPhotoView(photo: photo, onInfoButtonTapped: {
+          TodayPhotoView(photo: photo, isDescriptionShowing: viewModel.isDescriptionShowing) {
             Task { @MainActor in
-              viewModel.isDescriptionShowing.toggle()
+              withAnimation {
+                viewModel.isDescriptionShowing.toggle()
+              }
             }
-          })
+          }
+          .animation(.easeIn, value: viewModel.isDescriptionShowing)
           .sheet(
             isPresented: $photoZoomableSheetIsShown,
             content: {

@@ -15,7 +15,9 @@ struct InformationButtonView: View {
     Button(action: {
       let generator = UIImpactFeedbackGenerator(style: .medium)
       generator.impactOccurred()
-      onInfoButtonTapped()
+      withAnimation {
+        onInfoButtonTapped()
+      }
     }, label: {
       Image(systemName: "info.circle")
         .font(.title)

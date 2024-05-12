@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TodayPhotoView: View {
   let photo: Photo
+  let isDescriptionShowing: Bool
   var onInfoButtonTapped: () -> Void
 
   var photoURL: URL? {
@@ -44,7 +45,9 @@ struct TodayPhotoView: View {
               .clipped()
 
               InformationButtonView(photo: photo) {
-                onInfoButtonTapped()
+                withAnimation {
+                  onInfoButtonTapped()
+                }
               }
             }
 
@@ -55,6 +58,22 @@ struct TodayPhotoView: View {
             FavoriteButtonView(photo: photo)
             if let photoURL {
               ShareButtonView(photoURL: photoURL)
+            }
+          }
+
+          if isDescriptionShowing {
+            ScrollView {
+              Text(photo.explanation)
+            }
+            .padding()
+            .frame(width: geometry.size.width, height: geometry.size.height)
+            .background(.ultraThinMaterial)
+            .cornerRadius(20)
+            .clipped()
+            .onTapGesture {
+              withAnimation {
+                onInfoButtonTapped()
+              }
             }
           }
         }
@@ -69,7 +88,7 @@ struct TodayPhotoView: View {
 }
 
 #Preview {
-  TodayPhotoView(photo: .allProperties) {
+  TodayPhotoView(photo: .allProperties, isDescriptionShowing: true) {
     print("pressed")
   }
   .environmentObject(FavoritesViewModel())
