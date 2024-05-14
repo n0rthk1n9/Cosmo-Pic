@@ -25,18 +25,7 @@ struct TodayPhotoView: View {
   var body: some View {
     VStack(alignment: .center) {
       GeometryReader { geometry in
-        TodayPhotoCardFrontView(
-          photo: photo,
-          photoURL: photoURL,
-          height: geometry.size.height,
-          width: geometry.size.width
-        ) {
-          withAnimation {
-            onInfoButtonTapped()
-          }
-        }
-
-        if isDescriptionShowing {
+        ZStack {
           TodayPhotoCardBackView(
             photoExplanation: photo.explanation,
             height: geometry.size.height,
@@ -46,6 +35,31 @@ struct TodayPhotoView: View {
               onInfoButtonTapped()
             }
           }
+          .rotation3DEffect(
+            .degrees(isDescriptionShowing ? 0 : 90),
+            axis: (x: 0.0, y: 1.0, z: 0.0)
+          )
+          .animation(
+            isDescriptionShowing ? .linear.delay(0.35) : .linear, value: isDescriptionShowing
+          )
+
+          TodayPhotoCardFrontView(
+            photo: photo,
+            photoURL: photoURL,
+            height: geometry.size.height,
+            width: geometry.size.width
+          ) {
+            withAnimation {
+              onInfoButtonTapped()
+            }
+          }
+          .rotation3DEffect(
+            .degrees(isDescriptionShowing ? -90 : 0),
+            axis: (x: 0.0, y: 1.0, z: 0.0)
+          )
+          .animation(
+            isDescriptionShowing ? .linear : .linear.delay(0.35), value: isDescriptionShowing
+          )
         }
       }
 
