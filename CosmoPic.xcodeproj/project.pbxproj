@@ -26,6 +26,7 @@
 		57346C8F2B90CE1F00294392 /* SaveButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57346C8E2B90CE1F00294392 /* SaveButtonViewModel.swift */; };
 		57409B9F2B700EEC00294392 /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57409B9E2B700EEC00294392 /* PhotoDetailViewModel.swift */; };
 		574746682BF3BE2F00294392 /* TodayPhotoCardFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574746672BF3BE2F00294392 /* TodayPhotoCardFrontView.swift */; };
+		5747466A2BF3BECC00294392 /* TodayPhotoCardBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574746692BF3BECC00294392 /* TodayPhotoCardBackView.swift */; };
 		574D86912B14836B00294392 /* APOD-Info-Sample.plist in Resources */ = {isa = PBXBuildFile; fileRef = 574D86902B14836B00294392 /* APOD-Info-Sample.plist */; };
 		574D86952B14A43A00294392 /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D86942B14A43A00294392 /* PhotoDetailView.swift */; };
 		574D86972B15837100294392 /* PhotoAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D86962B15837100294392 /* PhotoAPIService.swift */; };
@@ -152,6 +153,7 @@
 		57346C8E2B90CE1F00294392 /* SaveButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonViewModel.swift; sourceTree = "<group>"; };
 		57409B9E2B700EEC00294392 /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
 		574746672BF3BE2F00294392 /* TodayPhotoCardFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayPhotoCardFrontView.swift; sourceTree = "<group>"; };
+		574746692BF3BECC00294392 /* TodayPhotoCardBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayPhotoCardBackView.swift; sourceTree = "<group>"; };
 		574D86902B14836B00294392 /* APOD-Info-Sample.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "APOD-Info-Sample.plist"; sourceTree = "<group>"; };
 		574D86942B14A43A00294392 /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
 		574D86962B15837100294392 /* PhotoAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIService.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				5712326C2B112BD400294392 /* TodayView.swift */,
 				5751B6932B947F3600294392 /* TodayPhotoView.swift */,
 				574746672BF3BE2F00294392 /* TodayPhotoCardFrontView.swift */,
+				574746692BF3BECC00294392 /* TodayPhotoCardBackView.swift */,
 			);
 			path = TodayViews;
 			sourceTree = "<group>";
@@ -782,6 +785,7 @@
 				57A8A6F52B7FB12200294392 /* Binding.swift in Sources */,
 				5712326D2B112BD400294392 /* TodayView.swift in Sources */,
 				57FC94272B166CB800294392 /* HistoryAPIServiceMock.swift in Sources */,
+				5747466A2BF3BECC00294392 /* TodayPhotoCardBackView.swift in Sources */,
 				570FA4DA2BD808BB00294392 /* Mass.swift in Sources */,
 				574D86A02B16452600294392 /* HistoryAPIService.swift in Sources */,
 				57EB4AD42BD115D000294392 /* TriviaView.swift in Sources */,
