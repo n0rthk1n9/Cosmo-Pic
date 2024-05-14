@@ -10,7 +10,7 @@ import SwiftUI
 struct TodayPhotoView: View {
   let photo: Photo
   let isDescriptionShowing: Bool
-  var onInfoButtonTapped: () -> Void
+  let onInfoButtonTapped: () -> Void
 
   var photoURL: URL? {
     if let localFilename = photo.localFilename {
@@ -25,57 +25,41 @@ struct TodayPhotoView: View {
   var body: some View {
     VStack(alignment: .center) {
       GeometryReader { geometry in
-        ZStack(alignment: .topTrailing) {
-          ZStack(alignment: .bottomTrailing) {
-            ZStack(alignment: .bottomLeading) {
-              AsyncImage(url: photoURL) { image in
-                image
-                  .resizable()
-                  .aspectRatio(contentMode: .fill)
-              } placeholder: {
-                HStack {
-                  Spacer()
-                  ProgressView()
-                    .frame(height: 300)
-                  Spacer()
-                }
-              }
-              .frame(width: geometry.size.width, height: geometry.size.height)
-              .cornerRadius(20)
-              .clipped()
-
-              InformationButtonView(photo: photo) {
-                withAnimation {
-                  onInfoButtonTapped()
-                }
-              }
-            }
-
-            SaveButtonView(photoURL: photoURL)
-          }
-
-          VStack {
-            FavoriteButtonView(photo: photo)
-            if let photoURL {
-              ShareButtonView(photoURL: photoURL)
+        ZStack {
+          TodayPhotoCardBackView(
+            photoExplanation: photo.explanation,
+            height: geometry.size.height,
+            width: geometry.size.width
+          ) {
+            withAnimation {
+              onInfoButtonTapped()
             }
           }
+          .rotation3DEffect(
+            .degrees(isDescriptionShowing ? 0 : 90),
+            axis: (x: 0.0, y: 1.0, z: 0.0)
+          )
+          .animation(
+            isDescriptionShowing ? .linear.delay(0.35) : .linear, value: isDescriptionShowing
+          )
 
-          if isDescriptionShowing {
-            ScrollView {
-              Text(photo.explanation)
-            }
-            .padding()
-            .frame(width: geometry.size.width, height: geometry.size.height)
-            .background(.ultraThinMaterial)
-            .cornerRadius(20)
-            .clipped()
-            .onTapGesture {
-              withAnimation {
-                onInfoButtonTapped()
-              }
+          TodayPhotoCardFrontView(
+            photo: photo,
+            photoURL: photoURL,
+            height: geometry.size.height,
+            width: geometry.size.width
+          ) {
+            withAnimation {
+              onInfoButtonTapped()
             }
           }
+          .rotation3DEffect(
+            .degrees(isDescriptionShowing ? -90 : 0),
+            axis: (x: 0.0, y: 1.0, z: 0.0)
+          )
+          .animation(
+            isDescriptionShowing ? .linear : .linear.delay(0.35), value: isDescriptionShowing
+          )
         }
       }
 
