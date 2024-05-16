@@ -65,6 +65,10 @@ class FavoritesViewModel: ObservableObject {
     favorites.contains { $0.title == photo.title }
   }
 
+  func isRecentlyDeletedFavorite(_ photo: Photo) -> Bool {
+    recentlyDeletedFavorites.contains { $0.title == photo.title }
+  }
+
   func toggleFavoriteStatus(for photo: Photo) {
     if isFavorite(photo) {
       removeFromFavorites(photo)
@@ -74,13 +78,23 @@ class FavoritesViewModel: ObservableObject {
   }
 
   private func addToFavorites(_ photo: Photo) {
-    guard !favorites.contains(where: { $0.title == photo.title }) else { return }
+    guard !isFavorite(photo) else { return }
     favorites.append(photo)
     saveFavorites()
   }
 
+  private func addToRecentlyDeletedFavorites(_ photo: Photo) {
+    guard !isRecentlyDeletedFavorite(photo) else { return }
+    recentlyDeletedFavorites.append(photo)
+    saveRecentlyDeletedFavorites()
+  }
+
   private func removeFromFavorites(_ photo: Photo) {
     favorites.removeAll { $0.title == photo.title }
+    let currentDateString = DateFormatter.yyyyMMdd.string(from: Date())
+    var modifiedPhoto = photo
+    modifiedPhoto.deletionFromFavoritesDate = currentDateString
+    addToRecentlyDeletedFavorites(modifiedPhoto)
     saveFavorites()
   }
 
@@ -92,6 +106,22 @@ class FavoritesViewModel: ObservableObject {
       encoder.outputFormatting = .prettyPrinted
       let jsonData = try encoder.encode(favorites)
       try jsonData.write(to: favoritesFileURL)
+      WidgetCenter.shared.reloadAllTimelines()
+    } catch {
+      self.error = error
+      errorIsPresented = true
+    }
+  }
+
+  private func saveRecentlyDeletedFavorites() {
+    let recentlyDeletedFavoritesFileURL = FileManager.appGroupContainerURL
+      .appendingPathComponent(recentlyDeletedFavoritesFileName)
+
+    do {
+      let encoder = JSONEncoder()
+      encoder.outputFormatting = .prettyPrinted
+      let jsonData = try encoder.encode(recentlyDeletedFavorites)
+      try jsonData.write(to: recentlyDeletedFavoritesFileURL)
       WidgetCenter.shared.reloadAllTimelines()
     } catch {
       self.error = error
