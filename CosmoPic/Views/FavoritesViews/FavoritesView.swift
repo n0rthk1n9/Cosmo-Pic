@@ -12,6 +12,8 @@ struct FavoritesView: View {
   @EnvironmentObject var router: Router
 
   @State private var searchText = ""
+  @State private var isFavoritesSectionExpanded = true
+  @State private var isRecentlyDeletedSectionExpanded = false
 
   var searchResults: [Photo] {
     if searchText.isEmpty {
@@ -35,23 +37,37 @@ struct FavoritesView: View {
           VStack {
             List {
               Section {
-                ForEach(searchResults, id: \.title) { photo in
-                  NavigationLink(value: photo) {
-                    Text(photo.title)
+                if isFavoritesSectionExpanded {
+                  ForEach(searchResults, id: \.title) { photo in
+                    NavigationLink(value: photo) {
+                      Text(photo.title)
+                    }
                   }
+                  .onDelete(perform: delete)
                 }
-                .onDelete(perform: delete)
               } header: {
-                Text("Favorites")
+                FavoritesListSectionHeader(
+                  title: "Favorites",
+                  isOn: $isFavoritesSectionExpanded,
+                  onLabel: "Hide",
+                  offLabel: "Show"
+                )
               }
               Section {
-                ForEach(viewModel.recentlyDeletedFavorites, id: \.title) { photo in
-                  NavigationLink(value: photo) {
-                    Text(photo.title)
+                if isRecentlyDeletedSectionExpanded {
+                  ForEach(viewModel.recentlyDeletedFavorites, id: \.title) { photo in
+                    NavigationLink(value: photo) {
+                      Text(photo.title)
+                    }
                   }
                 }
               } header: {
-                Text("Recently deleted")
+                FavoritesListSectionHeader(
+                  title: "Recently Deleted",
+                  isOn: $isRecentlyDeletedSectionExpanded,
+                  onLabel: "Hide",
+                  offLabel: "Show"
+                )
               }
             }
             .listStyle(.sidebar)

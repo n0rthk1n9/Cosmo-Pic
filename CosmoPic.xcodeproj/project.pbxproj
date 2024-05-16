@@ -23,6 +23,7 @@
 		572106092BC6D28800294392 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 572106082BC6D28800294392 /* PrivacyInfo.xcprivacy */; };
 		5721060A2BC6D28800294392 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 572106082BC6D28800294392 /* PrivacyInfo.xcprivacy */; };
 		5722683E2BF67C6F00294392 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F550422B73DEFE00294392 /* DateFormatter.swift */; };
+		572268412BF67D8A00294392 /* FavoritesListSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572268402BF67D8A00294392 /* FavoritesListSectionHeader.swift */; };
 		57322E0D2B8F99A700294392 /* ImageSaverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57322E0C2B8F99A700294392 /* ImageSaverService.swift */; };
 		57346C8F2B90CE1F00294392 /* SaveButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57346C8E2B90CE1F00294392 /* SaveButtonViewModel.swift */; };
 		57409B9F2B700EEC00294392 /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57409B9E2B700EEC00294392 /* PhotoDetailViewModel.swift */; };
@@ -149,6 +150,7 @@
 		57131E952B96183A00294392 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		57131E972B9618F900294392 /* CosmoPicStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmoPicStoreView.swift; sourceTree = "<group>"; };
 		572106082BC6D28800294392 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		572268402BF67D8A00294392 /* FavoritesListSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListSectionHeader.swift; sourceTree = "<group>"; };
 		572FAFA62B11276800294392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		57322E0C2B8F99A700294392 /* ImageSaverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaverService.swift; sourceTree = "<group>"; };
 		57346C8E2B90CE1F00294392 /* SaveButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonViewModel.swift; sourceTree = "<group>"; };
@@ -279,7 +281,7 @@
 				575CFF5C2B17F2E400294392 /* FeatureView.swift */,
 				57D8C43F2B0D53C100294392 /* MainView.swift */,
 				5751B6952B947F4600294392 /* TodayViews */,
-				5712326E2B112BE500294392 /* FavoritesView.swift */,
+				5722683F2BF67D7400294392 /* FavoritesViews */,
 				57E4DD892B1A2BBE00294392 /* HistoryViews */,
 				57EB4AD52BD115D800294392 /* TiviaViews */,
 				57E4DD852B1A27C700294392 /* GeneralViews */,
@@ -313,6 +315,15 @@
 				575627362BB70DD200294392 /* ShowNewFavoritesPhotoIntent.swift */,
 			);
 			path = Intents;
+			sourceTree = "<group>";
+		};
+		5722683F2BF67D7400294392 /* FavoritesViews */ = {
+			isa = PBXGroup;
+			children = (
+				5712326E2B112BE500294392 /* FavoritesView.swift */,
+				572268402BF67D8A00294392 /* FavoritesListSectionHeader.swift */,
+			);
+			path = FavoritesViews;
 			sourceTree = "<group>";
 		};
 		574D86982B15839700294392 /* Services */ = {
@@ -763,6 +774,7 @@
 				57EF5E952B950BF500294392 /* ShareButtonView.swift in Sources */,
 				5787682F2BA21E1E00294392 /* PhotoZoomableView.swift in Sources */,
 				57E4EFBA2BCBFD1800294392 /* Tab.swift in Sources */,
+				572268412BF67D8A00294392 /* FavoritesListSectionHeader.swift in Sources */,
 				578071262B9A19D900294392 /* PurchaseManager.swift in Sources */,
 				57EB4ADA2BD1188200294392 /* SolarSystemAPIService.swift in Sources */,
 				5751B6972B948D0100294392 /* SaveButtonView.swift in Sources */,
