@@ -98,6 +98,11 @@ class FavoritesViewModel: ObservableObject {
     saveFavorites()
   }
 
+  func removeFromRecentlyDeletedFavorites(_ photo: Photo) {
+    recentlyDeletedFavorites.removeAll { $0.title == photo.title }
+    saveRecentlyDeletedFavorites()
+  }
+
   private func saveFavorites() {
     let favoritesFileURL = FileManager.appGroupContainerURL.appendingPathComponent(favoritesFileName)
 

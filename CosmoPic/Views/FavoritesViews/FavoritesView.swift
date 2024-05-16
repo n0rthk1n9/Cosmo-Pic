@@ -43,7 +43,7 @@ struct FavoritesView: View {
                       Text(photo.title)
                     }
                   }
-                  .onDelete(perform: delete)
+                  .onDelete(perform: deleteFavorite)
                 }
               } header: {
                 FavoritesListSectionHeader(
@@ -60,6 +60,7 @@ struct FavoritesView: View {
                       Text(photo.title)
                     }
                   }
+                  .onDelete(perform: deleteRecentlyDeletedFavorite)
                 }
               } header: {
                 FavoritesListSectionHeader(
@@ -89,10 +90,18 @@ struct FavoritesView: View {
     .searchable(text: $searchText, prompt: "Search for an image title")
   }
 
-  private func delete(at offsets: IndexSet) {
+  private func deleteFavorite(at offsets: IndexSet) {
     for index in offsets {
       let photo = searchResults[index]
       viewModel.toggleFavoriteStatus(for: photo)
+    }
+    viewModel.loadFavorites()
+  }
+
+  private func deleteRecentlyDeletedFavorite(at offsets: IndexSet) {
+    for index in offsets {
+      let photo = viewModel.recentlyDeletedFavorites[index]
+      viewModel.removeFromRecentlyDeletedFavorites(photo)
     }
     viewModel.loadFavorites()
   }
