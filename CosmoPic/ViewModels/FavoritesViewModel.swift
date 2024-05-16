@@ -11,6 +11,7 @@ import WidgetKit
 
 class FavoritesViewModel: ObservableObject {
   @Published var favorites: [Photo] = []
+  @Published var recentlyDeletedFavorites: [Photo] = []
   @Published var isLoading = false
   @Published var error: Error?
   @Published var errorIsPresented = false
