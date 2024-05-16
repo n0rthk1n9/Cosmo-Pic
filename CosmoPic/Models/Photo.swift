@@ -18,9 +18,10 @@ struct Photo: Codable, Equatable, Hashable {
   let sdURL: URL?
   var localFilename: String?
   var localFilenameThumbnail: String?
+  var deletionFromFavoritesDate: String?
 
   enum CodingKeys: String, CodingKey {
-    case copyright, date, explanation, title, localFilename, localFilenameThumbnail
+    case copyright, date, explanation, title, localFilename, localFilenameThumbnail, deletionFromFavoritesDate
     case hdURL = "hdurl"
     case mediaType = "media_type"
     case serviceVersion = "service_version"
@@ -39,7 +40,8 @@ extension Photo {
     title: String = "",
     sdURL: URL? = nil,
     localFilename: String? = nil,
-    localFilenameThumbnail: String? = nil
+    localFilenameThumbnail: String? = nil,
+    deletionFromFavoritesDate: String? = nil
   ) -> Photo {
     Photo(
       copyright: copyright,
@@ -51,7 +53,8 @@ extension Photo {
       title: title,
       sdURL: sdURL,
       localFilename: localFilename,
-      localFilenameThumbnail: localFilenameThumbnail
+      localFilenameThumbnail: localFilenameThumbnail,
+      deletionFromFavoritesDate: deletionFromFavoritesDate
     )
   }
 
