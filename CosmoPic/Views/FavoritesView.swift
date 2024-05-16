@@ -32,15 +32,31 @@ struct FavoritesView: View {
             .padding()
             .multilineTextAlignment(.center)
         } else {
-          List {
-            ForEach(searchResults, id: \.title) { photo in
-              NavigationLink(value: photo) {
-                Text(photo.title)
+          VStack {
+            List {
+              Section {
+                ForEach(searchResults, id: \.title) { photo in
+                  NavigationLink(value: photo) {
+                    Text(photo.title)
+                  }
+                }
+                .onDelete(perform: delete)
+              } header: {
+                Text("Favorites")
+              }
+              Section {
+                ForEach(viewModel.recentlyDeletedFavorites, id: \.title) { photo in
+                  NavigationLink(value: photo) {
+                    Text(photo.title)
+                  }
+                }
+              } header: {
+                Text("Recently deleted")
               }
             }
-            .onDelete(perform: delete)
+            .listStyle(.sidebar)
+            .accessibilityIdentifier("favorites-list")
           }
-          .accessibilityIdentifier("favorites-list")
         }
       }
       .navigationDestination(for: Photo.self) { photo in
