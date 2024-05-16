@@ -17,9 +17,11 @@ class FavoritesViewModel: ObservableObject {
   @Published var errorIsPresented = false
 
   private let favoritesFileName = "favorites.json"
+  private let recentlyDeletedFavoritesFileName = "recentlyDeletedFavorites.json"
 
   init() {
     loadFavorites()
+    loadRecentlyDeletedFavorites()
   }
 
   func loadFavorites() {
@@ -31,6 +33,25 @@ class FavoritesViewModel: ObservableObject {
       do {
         let jsonData = try Data(contentsOf: favoritesFileURL)
         favorites = try JSONDecoder().decode([Photo].self, from: jsonData)
+      } catch {
+        self.error = error
+        errorIsPresented = true
+      }
+    }
+
+    isLoading = false
+  }
+
+  func loadRecentlyDeletedFavorites() {
+    isLoading = true
+
+    let recentlyDeletedFavoritesFileURL = FileManager.appGroupContainerURL
+      .appendingPathComponent(recentlyDeletedFavoritesFileName)
+
+    if FileManager.default.fileExists(atPath: recentlyDeletedFavoritesFileURL.path) {
+      do {
+        let jsonData = try Data(contentsOf: recentlyDeletedFavoritesFileURL)
+        recentlyDeletedFavorites = try JSONDecoder().decode([Photo].self, from: jsonData)
       } catch {
         self.error = error
         errorIsPresented = true
