@@ -103,7 +103,7 @@ struct FavoritesView: View {
       let photo = viewModel.recentlyDeletedFavorites[index]
       viewModel.removeFromRecentlyDeletedFavorites(photo)
     }
-    viewModel.loadFavorites()
+    viewModel.loadRecentlyDeletedFavorites()
   }
 }
 
