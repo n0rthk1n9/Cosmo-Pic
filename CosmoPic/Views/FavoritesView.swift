@@ -25,7 +25,7 @@ struct FavoritesView: View {
   var body: some View {
     NavigationStack(path: $router.path) {
       VStack {
-        if viewModel.favorites.isEmpty {
+        if viewModel.favorites.isEmpty && viewModel.recentlyDeletedFavorites.isEmpty {
           Text("No favorites yet")
             .font(.title)
             .foregroundColor(.gray)
