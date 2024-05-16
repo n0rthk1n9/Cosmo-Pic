@@ -64,7 +64,7 @@ struct FavoritesView: View {
                 }
               } header: {
                 FavoritesListSectionHeader(
-                  title: "Recently Deleted",
+                  title: "Recently Deleted (Last 30 days)",
                   isOn: $isRecentlyDeletedSectionExpanded,
                   onLabel: "Hide",
                   offLabel: "Show"
@@ -86,6 +86,8 @@ struct FavoritesView: View {
     }
     .onAppear {
       viewModel.loadFavorites()
+      viewModel.loadRecentlyDeletedFavorites()
+      viewModel.purgeOldRecentlyDeletedFavorites()
     }
     .searchable(text: $searchText, prompt: "Search for an image title")
   }

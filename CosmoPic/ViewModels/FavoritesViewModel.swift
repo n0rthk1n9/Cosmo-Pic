@@ -103,6 +103,19 @@ class FavoritesViewModel: ObservableObject {
     saveRecentlyDeletedFavorites()
   }
 
+  func purgeOldRecentlyDeletedFavorites() {
+    let currentDate = Date()
+    recentlyDeletedFavorites.removeAll { photo in
+      if let deletionDateString = photo.deletionFromFavoritesDate,
+         let deletionDate = DateFormatter.yyyyMMdd.date(from: deletionDateString)
+      {
+        return currentDate.timeIntervalSince(deletionDate) > 30 * 24 * 60 * 60
+      }
+      return false
+    }
+    saveRecentlyDeletedFavorites()
+  }
+
   private func saveFavorites() {
     let favoritesFileURL = FileManager.appGroupContainerURL.appendingPathComponent(favoritesFileName)
 
