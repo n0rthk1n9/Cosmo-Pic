@@ -22,6 +22,7 @@
 		57131E982B9618F900294392 /* CosmoPicStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57131E972B9618F900294392 /* CosmoPicStoreView.swift */; };
 		572106092BC6D28800294392 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 572106082BC6D28800294392 /* PrivacyInfo.xcprivacy */; };
 		5721060A2BC6D28800294392 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 572106082BC6D28800294392 /* PrivacyInfo.xcprivacy */; };
+		5722683E2BF67C6F00294392 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F550422B73DEFE00294392 /* DateFormatter.swift */; };
 		57322E0D2B8F99A700294392 /* ImageSaverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57322E0C2B8F99A700294392 /* ImageSaverService.swift */; };
 		57346C8F2B90CE1F00294392 /* SaveButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57346C8E2B90CE1F00294392 /* SaveButtonViewModel.swift */; };
 		57409B9F2B700EEC00294392 /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57409B9E2B700EEC00294392 /* PhotoDetailViewModel.swift */; };
@@ -825,6 +826,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5722683E2BF67C6F00294392 /* DateFormatter.swift in Sources */,
 				579C7F1E2BA616EE00294392 /* FileManager.swift in Sources */,
 				579C7F1D2BA616DF00294392 /* Photo.swift in Sources */,
 				579C7F1C2BA616C800294392 /* FavoritesViewModel.swift in Sources */,
