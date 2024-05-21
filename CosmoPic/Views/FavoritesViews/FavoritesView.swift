@@ -51,6 +51,7 @@ struct FavoritesView: View {
                     NavigationLink(value: photo) {
                       Text(photo.title)
                     }
+                    .transition(.move(edge: .leading).combined(with: .opacity))
                   }
                   .onDelete(perform: deleteFavorite)
                 }
@@ -68,6 +69,7 @@ struct FavoritesView: View {
                     NavigationLink(value: photo) {
                       Text(photo.title)
                     }
+                    .transition(.move(edge: .leading).combined(with: .opacity))
                   }
                   .onDelete(perform: deleteRecentlyDeletedFavorite)
                 }
@@ -82,6 +84,7 @@ struct FavoritesView: View {
             }
             .listStyle(.sidebar)
             .accessibilityIdentifier("favorites-list")
+            .animation(.easeInOut, value: searchText)
           }
         }
       }
@@ -101,11 +104,15 @@ struct FavoritesView: View {
     .searchable(text: $searchText, prompt: "Search for an image title")
     .onChange(of: searchText) { _, newValue in
       if newValue.isEmpty {
-        isFavoritesSectionExpanded = true
-        isRecentlyDeletedSectionExpanded = false
+        withAnimation {
+          isFavoritesSectionExpanded = true
+          isRecentlyDeletedSectionExpanded = false
+        }
       } else {
-        isFavoritesSectionExpanded = true
-        isRecentlyDeletedSectionExpanded = true
+        withAnimation {
+          isFavoritesSectionExpanded = true
+          isRecentlyDeletedSectionExpanded = true
+        }
       }
     }
   }
