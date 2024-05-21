@@ -2,6 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>NSAppIconComplementingColorNames</key>
+			<array>
+				<string>AppIntentBackground2</string>
+				<string>AppIntentBackground1</string>
+			</array>
+			<key>NSAppIconActionTintColorName</key>
+			<string>AppIntentForeground</string>
+		</dict>
+	</dict>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
