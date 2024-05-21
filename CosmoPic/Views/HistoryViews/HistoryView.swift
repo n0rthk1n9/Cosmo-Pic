@@ -68,6 +68,7 @@ struct HistoryView: View {
       }
       #endif
     }
+    .animation(.easeInOut, value: searchText)
   }
 
   private var loadingOverlay: some View {
