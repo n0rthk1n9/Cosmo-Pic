@@ -74,6 +74,7 @@ class FavoritesViewModel: ObservableObject {
       removeFromFavorites(photo)
     } else {
       addToFavorites(photo)
+      removeFromRecentlyDeletedFavorites(photo)
     }
   }
 

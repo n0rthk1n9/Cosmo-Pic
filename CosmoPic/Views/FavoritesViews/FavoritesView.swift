@@ -15,11 +15,20 @@ struct FavoritesView: View {
   @State private var isFavoritesSectionExpanded = true
   @State private var isRecentlyDeletedSectionExpanded = false
 
-  var searchResults: [Photo] {
+  var filteredFavorites: [Photo] {
     if searchText.isEmpty {
       return viewModel.favorites
     } else {
       return viewModel.favorites.filter { $0.title.contains(searchText)
+      }
+    }
+  }
+
+  var filteredRecentlyDeletedFavorites: [Photo] {
+    if searchText.isEmpty {
+      return viewModel.recentlyDeletedFavorites
+    } else {
+      return viewModel.recentlyDeletedFavorites.filter { $0.title.contains(searchText)
       }
     }
   }
@@ -38,10 +47,11 @@ struct FavoritesView: View {
             List {
               Section {
                 if isFavoritesSectionExpanded {
-                  ForEach(searchResults, id: \.title) { photo in
+                  ForEach(filteredFavorites, id: \.title) { photo in
                     NavigationLink(value: photo) {
                       Text(photo.title)
                     }
+                    .transition(.move(edge: .leading).combined(with: .opacity))
                   }
                   .onDelete(perform: deleteFavorite)
                 }
@@ -55,10 +65,11 @@ struct FavoritesView: View {
               }
               Section {
                 if isRecentlyDeletedSectionExpanded {
-                  ForEach(viewModel.recentlyDeletedFavorites, id: \.title) { photo in
+                  ForEach(filteredRecentlyDeletedFavorites, id: \.title) { photo in
                     NavigationLink(value: photo) {
                       Text(photo.title)
                     }
+                    .transition(.move(edge: .leading).combined(with: .opacity))
                   }
                   .onDelete(perform: deleteRecentlyDeletedFavorite)
                 }
@@ -73,6 +84,7 @@ struct FavoritesView: View {
             }
             .listStyle(.sidebar)
             .accessibilityIdentifier("favorites-list")
+            .animation(.easeInOut, value: searchText)
           }
         }
       }
@@ -90,11 +102,24 @@ struct FavoritesView: View {
       viewModel.purgeOldRecentlyDeletedFavorites()
     }
     .searchable(text: $searchText, prompt: "Search for an image title")
+    .onChange(of: searchText) { _, newValue in
+      if newValue.isEmpty {
+        withAnimation {
+          isFavoritesSectionExpanded = true
+          isRecentlyDeletedSectionExpanded = false
+        }
+      } else {
+        withAnimation {
+          isFavoritesSectionExpanded = true
+          isRecentlyDeletedSectionExpanded = true
+        }
+      }
+    }
   }
 
   private func deleteFavorite(at offsets: IndexSet) {
     for index in offsets {
-      let photo = searchResults[index]
+      let photo = filteredFavorites[index]
       viewModel.toggleFavoriteStatus(for: photo)
     }
     viewModel.loadFavorites()

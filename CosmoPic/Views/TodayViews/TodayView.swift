@@ -27,14 +27,11 @@ struct TodayView: View {
             }
           }
           .animation(.easeIn, value: viewModel.isDescriptionShowing)
-          .sheet(
-            isPresented: $photoZoomableSheetIsShown,
-            content: {
-              PhotoZoomableView(photo: photo)
-                .presentationBackground(.ultraThinMaterial)
-                .presentationCornerRadius(16)
-            }
-          )
+          .sheet(isPresented: $photoZoomableSheetIsShown) {
+            PhotoZoomableView(photo: photo)
+              .presentationBackground(.ultraThinMaterial)
+              .presentationCornerRadius(16)
+          }
           .onTapGesture {
             photoZoomableSheetIsShown.toggle()
           }

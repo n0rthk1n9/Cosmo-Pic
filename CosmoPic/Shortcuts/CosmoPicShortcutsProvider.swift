@@ -16,7 +16,7 @@ struct CosmoPicShortcutsProvider: AppShortcutsProvider {
         "Show today's photo in \(.applicationName)",
         "Show today's space photo"
       ],
-      shortTitle: "Show today's photo",
+      shortTitle: "Today's photo",
       systemImageName: "photo.fill"
     )
   }

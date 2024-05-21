@@ -9,7 +9,7 @@ import AppIntents
 import SwiftUI
 
 struct FetchPhotoForTodayIntent: AppIntent {
-  static let title: LocalizedStringResource = "Show today's photo"
+  static let title: LocalizedStringResource = "Today's photo"
   static let description: LocalizedStringResource = "Loads and shows today's space photo"
 
   static let openAppWhenRun = true
