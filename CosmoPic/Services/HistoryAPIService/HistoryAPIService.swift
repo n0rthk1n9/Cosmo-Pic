@@ -155,4 +155,20 @@ struct HistoryAPIService: HistoryAPIServiceProtocol {
       return thumbnailFilename
     }
   }
+
+  func downloadAndUpdatePhoto(for photo: Photo, in history: [Photo], for _: String) async throws -> Int {
+    var updatedPhoto = photo
+    guard let photoSdURL = photo.sdURL else {
+      throw CosmoPicError.invalidURL
+    }
+    if let thumbnailFilename = try? await cacheThumbnail(from: photoSdURL, identifier: photo.date) {
+      updatedPhoto.localFilenameThumbnail = thumbnailFilename
+    }
+
+    guard let index = history.firstIndex(where: { $0.date == photo.date }) else {
+      throw CosmoPicError.savePhotoError
+    }
+
+    return index
+  }
 }
