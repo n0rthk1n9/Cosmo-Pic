@@ -61,6 +61,9 @@ struct HistoryView: View {
       NavigationLink(value: photo) {
         HistoryRowView(photo: photo)
           .frame(maxWidth: .infinity, alignment: .leading)
+          .task {
+            await viewModel.getHistoryPhoto(for: photo)
+          }
       }
       #if os(visionOS)
       .onTapGesture {
@@ -88,6 +91,6 @@ struct HistoryView: View {
   }
 }
 
-#Preview {
-  HistoryView()
-}
+// #Preview {
+//  HistoryView()
+// }
