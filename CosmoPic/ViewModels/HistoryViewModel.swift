@@ -36,22 +36,24 @@ class HistoryViewModel: ObservableObject {
       let historyFilePath = FileManager.appGroupContainerURL
         .appendingPathComponent("\(todayString)-history.json")
 
-      if FileManager.default.fileExists(atPath: historyFilePath.path) {
-        history = try historyAPIService.loadHistory(for: todayString)
-      } else {
-        let fetchedHistory = try await historyAPIService.fetchHistory(
-          starting: startDate,
-          ending: todayString
-        )
+      if history.isEmpty {
+        if FileManager.default.fileExists(atPath: historyFilePath.path) {
+          history = try historyAPIService.loadHistory(for: todayString)
+        } else {
+          let fetchedHistory = try await historyAPIService.fetchHistory(
+            starting: startDate,
+            ending: todayString
+          )
 
-        let updatedHistory = try await historyAPIService.updatePhotosWithLocalURLs(fetchedHistory) {
-          Task { @MainActor in
-            self.loadedElements += 1
-          }
+          //        let updatedHistory = try await historyAPIService.updatePhotosWithLocalURLs(fetchedHistory) {
+          //          Task { @MainActor in
+          //            self.loadedElements += 1
+          //          }
+          //        }
+
+          try historyAPIService.saveHistory(fetchedHistory, for: todayString)
+          history = fetchedHistory
         }
-
-        try historyAPIService.saveHistory(updatedHistory, for: todayString)
-        history = updatedHistory
       }
     } catch let error as CosmoPicError {
       self.error = error
@@ -60,6 +62,34 @@ class HistoryViewModel: ObservableObject {
     }
     isLoading = false
     await deletOldFiles()
+  }
+
+  @MainActor
+  func getHistoryPhoto(for photo: Photo) async {
+    isLoading = true
+
+    do {
+      let currentDate = Date()
+      let todayString = DateFormatter.yyyyMMdd.string(from: currentDate)
+      guard let photoSdURL = photo.sdURL else {
+        throw CosmoPicError.invalidURL
+      }
+      let fileExtension = photoSdURL.pathExtension
+      let thumbnailFilename = "\(photo.date)-thumbnail.\(fileExtension)"
+      let thumbnailFileURL = FileManager.appGroupContainerURL.appendingPathComponent(thumbnailFilename)
+
+      if !FileManager.default.fileExists(atPath: thumbnailFileURL.path) {
+        let index = try await historyAPIService.downloadAndUpdatePhoto(for: photo, in: history, for: photo.date)
+
+        history[index] = photo
+        try historyAPIService.saveHistory(history, for: todayString)
+      }
+    } catch let error as CosmoPicError {
+      self.error = error
+    } catch {
+      self.error = .other(error: error)
+    }
+    isLoading = false
   }
 
   func getFavoriteFilenames() -> Set<String> {
